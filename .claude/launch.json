@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "signos",
+      "runtimeExecutable": "py",
+      "runtimeArgs": ["servidor.py"],
+      "port": 8765
+    }
+  ]
+}

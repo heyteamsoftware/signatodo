@@ -1,0 +1,19 @@
+# Material con derechos de terceros: no se publica. Se regenera en local (ver README).
+*.pdf
+banco/signos/
+banco/dactilologico/
+
+# Vídeos de referencia de ARASAAC (900 MB) y modelo de poses: se descargan con los scripts.
+referencia/
+
+# Vídeos propios y resultados
+videos/*
+!videos/prueba.mp4
+!videos/prueba.signos.json
+!videos/prueba-lenta.mp4
+!videos/prueba-lenta.signos.json
+exportados/
+research_notes/
+
+__pycache__/
+*.pyc

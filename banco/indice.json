@@ -1,0 +1,4211 @@
+{
+ "fuentes": [
+  "Diccionario básico de lengua de signos española, recopilado por la Asociación Equitación como Terapia",
+  "Manual básico. Curso de lengua de signos española (academia-formacion.com)"
+ ],
+ "tarjetas": {
+  "abajo": {
+   "etiqueta": "ABAJO",
+   "archivo": "signos/abajo.png",
+   "pagina": 3
+  },
+  "abrazar": {
+   "etiqueta": "ABRAZAR",
+   "archivo": "signos/abrazar.png",
+   "pagina": 3
+  },
+  "abrigo": {
+   "etiqueta": "ABRIGO",
+   "archivo": "signos/abrigo.png",
+   "pagina": 3
+  },
+  "abrir-los-grifos": {
+   "etiqueta": "ABRIR LOS GRIFOS",
+   "archivo": "signos/abrir-los-grifos.png",
+   "pagina": 3
+  },
+  "abrir-los-grifos-2": {
+   "etiqueta": "ABRIR LOS GRIFOS",
+   "archivo": "signos/abrir-los-grifos-2.png",
+   "pagina": 3
+  },
+  "abrir": {
+   "etiqueta": "ABRIR",
+   "archivo": "signos/abrir.png",
+   "pagina": 4
+  },
+  "acido": {
+   "etiqueta": "ACIDO",
+   "archivo": "signos/acido.png",
+   "pagina": 4
+  },
+  "aconsejar": {
+   "etiqueta": "ACONSEJAR",
+   "archivo": "signos/aconsejar.png",
+   "pagina": 4
+  },
+  "ahora": {
+   "etiqueta": "AHORA",
+   "archivo": "signos/ahora.png",
+   "pagina": 4
+  },
+  "aire": {
+   "etiqueta": "AIRE",
+   "archivo": "signos/aire.png",
+   "pagina": 4
+  },
+  "ajo": {
+   "etiqueta": "AJO",
+   "archivo": "signos/ajo.png",
+   "pagina": 4
+  },
+  "alfombra": {
+   "etiqueta": "ALFOMBRA",
+   "archivo": "signos/alfombra.png",
+   "pagina": 4
+  },
+  "algo": {
+   "etiqueta": "ALGO",
+   "archivo": "signos/algo.png",
+   "pagina": 4
+  },
+  "algunos": {
+   "etiqueta": "ALGUNOS",
+   "archivo": "signos/algunos.png",
+   "pagina": 5
+  },
+  "alli": {
+   "etiqueta": "ALLI",
+   "archivo": "signos/alli.png",
+   "pagina": 5
+  },
+  "alimentos": {
+   "etiqueta": "ALIMENTOS",
+   "archivo": "signos/alimentos.png",
+   "pagina": 5
+  },
+  "almohada": {
+   "etiqueta": "ALMOHADA",
+   "archivo": "signos/almohada.png",
+   "pagina": 5
+  },
+  "alto": {
+   "etiqueta": "ALTO",
+   "archivo": "signos/alto.png",
+   "pagina": 5
+  },
+  "amigo": {
+   "etiqueta": "AMIGO",
+   "archivo": "signos/amigo.png",
+   "pagina": 5
+  },
+  "amor": {
+   "etiqueta": "AMOR",
+   "archivo": "signos/amor.png",
+   "pagina": 5
+  },
+  "andar": {
+   "etiqueta": "ANDAR",
+   "archivo": "signos/andar.png",
+   "pagina": 6
+  },
+  "animal": {
+   "etiqueta": "ANIMAL",
+   "archivo": "signos/animal.png",
+   "pagina": 6
+  },
+  "antes": {
+   "etiqueta": "ANTES",
+   "archivo": "signos/antes.png",
+   "pagina": 6
+  },
+  "anyo": {
+   "etiqueta": "AÑO",
+   "archivo": "signos/anyo.png",
+   "pagina": 6
+  },
+  "apoyar": {
+   "etiqueta": "APOYAR",
+   "archivo": "signos/apoyar.png",
+   "pagina": 6
+  },
+  "aprender": {
+   "etiqueta": "APRENDER",
+   "archivo": "signos/aprender.png",
+   "pagina": 6
+  },
+  "aqui": {
+   "etiqueta": "AQUI",
+   "archivo": "signos/aqui.png",
+   "pagina": 6
+  },
+  "arcilla": {
+   "etiqueta": "ARCILLA",
+   "archivo": "signos/arcilla.png",
+   "pagina": 6
+  },
+  "arbol": {
+   "etiqueta": "ARBOL",
+   "archivo": "signos/arbol.png",
+   "pagina": 7
+  },
+  "arco-iris": {
+   "etiqueta": "ARCO IRIS",
+   "archivo": "signos/arco-iris.png",
+   "pagina": 7
+  },
+  "arena": {
+   "etiqueta": "ARENA",
+   "archivo": "signos/arena.png",
+   "pagina": 7
+  },
+  "armario": {
+   "etiqueta": "ARMARIO",
+   "archivo": "signos/armario.png",
+   "pagina": 7
+  },
+  "arrastrar": {
+   "etiqueta": "ARRASTRAR",
+   "archivo": "signos/arrastrar.png",
+   "pagina": 7
+  },
+  "arreglar": {
+   "etiqueta": "ARREGLAR",
+   "archivo": "signos/arreglar.png",
+   "pagina": 7
+  },
+  "arriba": {
+   "etiqueta": "ARRIBA",
+   "archivo": "signos/arriba.png",
+   "pagina": 8
+  },
+  "asar": {
+   "etiqueta": "ASAR",
+   "archivo": "signos/asar.png",
+   "pagina": 8
+  },
+  "ascensor": {
+   "etiqueta": "ASCENSOR",
+   "archivo": "signos/ascensor.png",
+   "pagina": 8
+  },
+  "asco": {
+   "etiqueta": "ASCO",
+   "archivo": "signos/asco.png",
+   "pagina": 8
+  },
+  "asustar": {
+   "etiqueta": "ASUSTAR",
+   "archivo": "signos/asustar.png",
+   "pagina": 8
+  },
+  "atender": {
+   "etiqueta": "ATENDER",
+   "archivo": "signos/atender.png",
+   "pagina": 8
+  },
+  "atender-2": {
+   "etiqueta": "ATENDER",
+   "archivo": "signos/atender-2.png",
+   "pagina": 8
+  },
+  "atender-cuidar": {
+   "etiqueta": "ATENDER, CUIDAR",
+   "archivo": "signos/atender-cuidar.png",
+   "pagina": 8
+  },
+  "atletismo": {
+   "etiqueta": "ATLETISMO",
+   "archivo": "signos/atletismo.png",
+   "pagina": 9
+  },
+  "autobus": {
+   "etiqueta": "AUTOBUS",
+   "archivo": "signos/autobus.png",
+   "pagina": 9
+  },
+  "autor": {
+   "etiqueta": "AUTOR",
+   "archivo": "signos/autor.png",
+   "pagina": 9
+  },
+  "avion": {
+   "etiqueta": "AVION",
+   "archivo": "signos/avion.png",
+   "pagina": 9
+  },
+  "avisar": {
+   "etiqueta": "AVISAR",
+   "archivo": "signos/avisar.png",
+   "pagina": 9
+  },
+  "ayer": {
+   "etiqueta": "AYER",
+   "archivo": "signos/ayer.png",
+   "pagina": 9
+  },
+  "ayudar": {
+   "etiqueta": "AYUDAR",
+   "archivo": "signos/ayudar.png",
+   "pagina": 9
+  },
+  "azucar": {
+   "etiqueta": "AZUCAR",
+   "archivo": "signos/azucar.png",
+   "pagina": 9
+  },
+  "babero": {
+   "etiqueta": "BABERO",
+   "archivo": "signos/babero.png",
+   "pagina": 10
+  },
+  "bajar": {
+   "etiqueta": "BAJAR",
+   "archivo": "signos/bajar.png",
+   "pagina": 10
+  },
+  "bajo": {
+   "etiqueta": "BAJO",
+   "archivo": "signos/bajo.png",
+   "pagina": 10
+  },
+  "baloncesto": {
+   "etiqueta": "BALONCESTO",
+   "archivo": "signos/baloncesto.png",
+   "pagina": 10
+  },
+  "balon-de-futbol": {
+   "etiqueta": "BALON DE FUTBOL",
+   "archivo": "signos/balon-de-futbol.png",
+   "pagina": 10
+  },
+  "bancos": {
+   "etiqueta": "BANCOS",
+   "archivo": "signos/bancos.png",
+   "pagina": 11
+  },
+  "banyador": {
+   "etiqueta": "BAÑADOR",
+   "archivo": "signos/banyador.png",
+   "pagina": 11
+  },
+  "banyarse": {
+   "etiqueta": "BAÑARSE",
+   "archivo": "signos/banyarse.png",
+   "pagina": 11
+  },
+  "bar": {
+   "etiqueta": "BAR",
+   "archivo": "signos/bar.png",
+   "pagina": 11
+  },
+  "banyo-cuarto-de": {
+   "etiqueta": "BAÑO, CUARTO DE",
+   "archivo": "signos/banyo-cuarto-de.png",
+   "pagina": 11
+  },
+  "barato": {
+   "etiqueta": "BARATO",
+   "archivo": "signos/barato.png",
+   "pagina": 12
+  },
+  "barco": {
+   "etiqueta": "BARCO",
+   "archivo": "signos/barco.png",
+   "pagina": 12
+  },
+  "barro": {
+   "etiqueta": "BARRO",
+   "archivo": "signos/barro.png",
+   "pagina": 12
+  },
+  "bata": {
+   "etiqueta": "BATA",
+   "archivo": "signos/bata.png",
+   "pagina": 12
+  },
+  "bebe": {
+   "etiqueta": "BEBE",
+   "archivo": "signos/bebe.png",
+   "pagina": 12
+  },
+  "beber": {
+   "etiqueta": "BEBER",
+   "archivo": "signos/beber.png",
+   "pagina": 12
+  },
+  "biberon": {
+   "etiqueta": "BIBERON",
+   "archivo": "signos/biberon.png",
+   "pagina": 12
+  },
+  "bicicleta": {
+   "etiqueta": "BICICLETA",
+   "archivo": "signos/bicicleta.png",
+   "pagina": 12
+  },
+  "bien": {
+   "etiqueta": "BIEN",
+   "archivo": "signos/bien.png",
+   "pagina": 13
+  },
+  "blando": {
+   "etiqueta": "BLANDO",
+   "archivo": "signos/blando.png",
+   "pagina": 13
+  },
+  "bloques": {
+   "etiqueta": "BLOQUES",
+   "archivo": "signos/bloques.png",
+   "pagina": 13
+  },
+  "boligrafo": {
+   "etiqueta": "BOLIGRAFO",
+   "archivo": "signos/boligrafo.png",
+   "pagina": 13
+  },
+  "boda": {
+   "etiqueta": "BODA",
+   "archivo": "signos/boda.png",
+   "pagina": 13
+  },
+  "bolso": {
+   "etiqueta": "BOLSO",
+   "archivo": "signos/bolso.png",
+   "pagina": 13
+  },
+  "bonita": {
+   "etiqueta": "BONITA",
+   "archivo": "signos/bonita.png",
+   "pagina": 13
+  },
+  "bosque": {
+   "etiqueta": "BOSQUE",
+   "archivo": "signos/bosque.png",
+   "pagina": 14
+  },
+  "botella": {
+   "etiqueta": "BOTELLA",
+   "archivo": "signos/botella.png",
+   "pagina": 14
+  },
+  "braga": {
+   "etiqueta": "BRAGA",
+   "archivo": "signos/braga.png",
+   "pagina": 14
+  },
+  "brazos": {
+   "etiqueta": "BRAZOS",
+   "archivo": "signos/brazos.png",
+   "pagina": 14
+  },
+  "buen-tiempo": {
+   "etiqueta": "BUEN TIEMPO",
+   "archivo": "signos/buen-tiempo.png",
+   "pagina": 14
+  },
+  "bueno": {
+   "etiqueta": "BUENO",
+   "archivo": "signos/bueno.png",
+   "pagina": 14
+  },
+  "bufanda": {
+   "etiqueta": "BUFANDA",
+   "archivo": "signos/bufanda.png",
+   "pagina": 14
+  },
+  "burbujas": {
+   "etiqueta": "BURBUJAS",
+   "archivo": "signos/burbujas.png",
+   "pagina": 14
+  },
+  "caballo-de-madera": {
+   "etiqueta": "CABALLO DE MADERA",
+   "archivo": "signos/caballo-de-madera.png",
+   "pagina": 15
+  },
+  "cabeza": {
+   "etiqueta": "CABEZA",
+   "archivo": "signos/cabeza.png",
+   "pagina": 15
+  },
+  "cada-uno": {
+   "etiqueta": "CADA UNO",
+   "archivo": "signos/cada-uno.png",
+   "pagina": 15
+  },
+  "caerse": {
+   "etiqueta": "CAERSE",
+   "archivo": "signos/caerse.png",
+   "pagina": 15
+  },
+  "cafe": {
+   "etiqueta": "CAFE",
+   "archivo": "signos/cafe.png",
+   "pagina": 15
+  },
+  "caja": {
+   "etiqueta": "CAJA",
+   "archivo": "signos/caja.png",
+   "pagina": 16
+  },
+  "calcetines": {
+   "etiqueta": "CALCETINES",
+   "archivo": "signos/calcetines.png",
+   "pagina": 16
+  },
+  "caliente": {
+   "etiqueta": "CALIENTE",
+   "archivo": "signos/caliente.png",
+   "pagina": 16
+  },
+  "calle": {
+   "etiqueta": "CALLE",
+   "archivo": "signos/calle.png",
+   "pagina": 16
+  },
+  "calor": {
+   "etiqueta": "CALOR",
+   "archivo": "signos/calor.png",
+   "pagina": 16
+  },
+  "calzado": {
+   "etiqueta": "CALZADO",
+   "archivo": "signos/calzado.png",
+   "pagina": 16
+  },
+  "calzoncillos": {
+   "etiqueta": "CALZONCILLOS",
+   "archivo": "signos/calzoncillos.png",
+   "pagina": 16
+  },
+  "cama": {
+   "etiqueta": "CAMA",
+   "archivo": "signos/cama.png",
+   "pagina": 16
+  },
+  "camion": {
+   "etiqueta": "CAMION",
+   "archivo": "signos/camion.png",
+   "pagina": 17
+  },
+  "camisa": {
+   "etiqueta": "CAMISA",
+   "archivo": "signos/camisa.png",
+   "pagina": 17
+  },
+  "camiseta": {
+   "etiqueta": "CAMISETA",
+   "archivo": "signos/camiseta.png",
+   "pagina": 17
+  },
+  "cansado": {
+   "etiqueta": "CANSADO",
+   "archivo": "signos/cansado.png",
+   "pagina": 17
+  },
+  "canya-de-pescar": {
+   "etiqueta": "CAÑA DE PESCAR",
+   "archivo": "signos/canya-de-pescar.png",
+   "pagina": 17
+  },
+  "capitan": {
+   "etiqueta": "CAPITAN",
+   "archivo": "signos/capitan.png",
+   "pagina": 17
+  },
+  "cara": {
+   "etiqueta": "CARA",
+   "archivo": "signos/cara.png",
+   "pagina": 17
+  },
+  "caramelo": {
+   "etiqueta": "CARAMELO",
+   "archivo": "signos/caramelo.png",
+   "pagina": 18
+  },
+  "carnaval": {
+   "etiqueta": "CARNAVAL",
+   "archivo": "signos/carnaval.png",
+   "pagina": 18
+  },
+  "carne": {
+   "etiqueta": "CARNE",
+   "archivo": "signos/carne.png",
+   "pagina": 18
+  },
+  "caro": {
+   "etiqueta": "CARO",
+   "archivo": "signos/caro.png",
+   "pagina": 18
+  },
+  "cartera": {
+   "etiqueta": "CARTERA",
+   "archivo": "signos/cartera.png",
+   "pagina": 18
+  },
+  "casa": {
+   "etiqueta": "CASA",
+   "archivo": "signos/casa.png",
+   "pagina": 18
+  },
+  "casi": {
+   "etiqueta": "CASI",
+   "archivo": "signos/casi.png",
+   "pagina": 18
+  },
+  "castillo": {
+   "etiqueta": "CASTILLO",
+   "archivo": "signos/castillo.png",
+   "pagina": 18
+  },
+  "cazo": {
+   "etiqueta": "CAZO",
+   "archivo": "signos/cazo.png",
+   "pagina": 19
+  },
+  "cazuela": {
+   "etiqueta": "CAZUELA",
+   "archivo": "signos/cazuela.png",
+   "pagina": 19
+  },
+  "cebolla": {
+   "etiqueta": "CEBOLLA",
+   "archivo": "signos/cebolla.png",
+   "pagina": 19
+  },
+  "celebrar": {
+   "etiqueta": "CELEBRAR",
+   "archivo": "signos/celebrar.png",
+   "pagina": 19
+  },
+  "celoso": {
+   "etiqueta": "CELOSO",
+   "archivo": "signos/celoso.png",
+   "pagina": 19
+  },
+  "cenar": {
+   "etiqueta": "CENAR",
+   "archivo": "signos/cenar.png",
+   "pagina": 19
+  },
+  "cepillarse-los-dientes": {
+   "etiqueta": "CEPILLARSE LOS DIENTES",
+   "archivo": "signos/cepillarse-los-dientes.png",
+   "pagina": 19
+  },
+  "cepillo-de-unyas": {
+   "etiqueta": "CEPILLO DE UÑAS",
+   "archivo": "signos/cepillo-de-unyas.png",
+   "pagina": 20
+  },
+  "cerezas": {
+   "etiqueta": "CEREZAS",
+   "archivo": "signos/cerezas.png",
+   "pagina": 20
+  },
+  "cerrar": {
+   "etiqueta": "CERRAR",
+   "archivo": "signos/cerrar.png",
+   "pagina": 20
+  },
+  "cerveza": {
+   "etiqueta": "CERVEZA",
+   "archivo": "signos/cerveza.png",
+   "pagina": 20
+  },
+  "cesto": {
+   "etiqueta": "CESTO",
+   "archivo": "signos/cesto.png",
+   "pagina": 20
+  },
+  "chocolate": {
+   "etiqueta": "CHOCOLATE",
+   "archivo": "signos/chocolate.png",
+   "pagina": 20
+  },
+  "chorizo": {
+   "etiqueta": "CHORIZO",
+   "archivo": "signos/chorizo.png",
+   "pagina": 20
+  },
+  "chuletas": {
+   "etiqueta": "CHULETAS",
+   "archivo": "signos/chuletas.png",
+   "pagina": 20
+  },
+  "ciclismo": {
+   "etiqueta": "CICLISMO",
+   "archivo": "signos/ciclismo.png",
+   "pagina": 21
+  },
+  "cielo": {
+   "etiqueta": "CIELO",
+   "archivo": "signos/cielo.png",
+   "pagina": 21
+  },
+  "cine": {
+   "etiqueta": "CINE",
+   "archivo": "signos/cine.png",
+   "pagina": 21
+  },
+  "circo": {
+   "etiqueta": "CIRCO",
+   "archivo": "signos/circo.png",
+   "pagina": 21
+  },
+  "ciudad": {
+   "etiqueta": "CIUDAD",
+   "archivo": "signos/ciudad.png",
+   "pagina": 21
+  },
+  "claro": {
+   "etiqueta": "CLARO",
+   "archivo": "signos/claro.png",
+   "pagina": 21
+  },
+  "clases": {
+   "etiqueta": "CLASES",
+   "archivo": "signos/clases.png",
+   "pagina": 21
+  },
+  "coche": {
+   "etiqueta": "COCHE",
+   "archivo": "signos/coche.png",
+   "pagina": 21
+  },
+  "cocina": {
+   "etiqueta": "COCINA",
+   "archivo": "signos/cocina.png",
+   "pagina": 22
+  },
+  "cocinar": {
+   "etiqueta": "COCINAR",
+   "archivo": "signos/cocinar.png",
+   "pagina": 22
+  },
+  "coger": {
+   "etiqueta": "COGER",
+   "archivo": "signos/coger.png",
+   "pagina": 22
+  },
+  "colegio": {
+   "etiqueta": "COLEGIO",
+   "archivo": "signos/colegio.png",
+   "pagina": 22
+  },
+  "colonia": {
+   "etiqueta": "COLONIA",
+   "archivo": "signos/colonia.png",
+   "pagina": 22
+  },
+  "color": {
+   "etiqueta": "COLOR",
+   "archivo": "signos/color.png",
+   "pagina": 22
+  },
+  "columpiarse": {
+   "etiqueta": "COLUMPIARSE",
+   "archivo": "signos/columpiarse.png",
+   "pagina": 22
+  },
+  "comedor": {
+   "etiqueta": "COMEDOR",
+   "archivo": "signos/comedor.png",
+   "pagina": 23
+  },
+  "comer": {
+   "etiqueta": "COMER",
+   "archivo": "signos/comer.png",
+   "pagina": 23
+  },
+  "comodo": {
+   "etiqueta": "COMODO",
+   "archivo": "signos/comodo.png",
+   "pagina": 23
+  },
+  "companyero": {
+   "etiqueta": "COMPAÑERO",
+   "archivo": "signos/companyero.png",
+   "pagina": 23
+  },
+  "competir": {
+   "etiqueta": "COMPETIR",
+   "archivo": "signos/competir.png",
+   "pagina": 23
+  },
+  "comprar": {
+   "etiqueta": "COMPRAR",
+   "archivo": "signos/comprar.png",
+   "pagina": 23
+  },
+  "comunicacion": {
+   "etiqueta": "COMUNICACION",
+   "archivo": "signos/comunicacion.png",
+   "pagina": 23
+  },
+  "comunicarse": {
+   "etiqueta": "COMUNICARSE",
+   "archivo": "signos/comunicarse.png",
+   "pagina": 24
+  },
+  "con": {
+   "etiqueta": "CON",
+   "archivo": "signos/con.png",
+   "pagina": 24
+  },
+  "conducir": {
+   "etiqueta": "CONDUCIR",
+   "archivo": "signos/conducir.png",
+   "pagina": 24
+  },
+  "conocer": {
+   "etiqueta": "CONOCER",
+   "archivo": "signos/conocer.png",
+   "pagina": 24
+  },
+  "constipado": {
+   "etiqueta": "CONSTIPADO",
+   "archivo": "signos/constipado.png",
+   "pagina": 24
+  },
+  "construir": {
+   "etiqueta": "CONSTRUIR",
+   "archivo": "signos/construir.png",
+   "pagina": 24
+  },
+  "contar": {
+   "etiqueta": "CONTAR",
+   "archivo": "signos/contar.png",
+   "pagina": 24
+  },
+  "contar-explicar": {
+   "etiqueta": "CONTAR, EXPLICAR",
+   "archivo": "signos/contar-explicar.png",
+   "pagina": 24
+  },
+  "contento": {
+   "etiqueta": "CONTENTO",
+   "archivo": "signos/contento.png",
+   "pagina": 25
+  },
+  "contigo": {
+   "etiqueta": "CONTIGO",
+   "archivo": "signos/contigo.png",
+   "pagina": 25
+  },
+  "copiar": {
+   "etiqueta": "COPIAR",
+   "archivo": "signos/copiar.png",
+   "pagina": 25
+  },
+  "corbata": {
+   "etiqueta": "CORBATA",
+   "archivo": "signos/corbata.png",
+   "pagina": 25
+  },
+  "correr": {
+   "etiqueta": "CORRER",
+   "archivo": "signos/correr.png",
+   "pagina": 25
+  },
+  "cortina": {
+   "etiqueta": "CORTINA",
+   "archivo": "signos/cortina.png",
+   "pagina": 25
+  },
+  "cosas": {
+   "etiqueta": "COSAS",
+   "archivo": "signos/cosas.png",
+   "pagina": 25
+  },
+  "costa": {
+   "etiqueta": "COSTA",
+   "archivo": "signos/costa.png",
+   "pagina": 25
+  },
+  "cotillear": {
+   "etiqueta": "COTILLEAR",
+   "archivo": "signos/cotillear.png",
+   "pagina": 26
+  },
+  "cuadrado": {
+   "etiqueta": "CUADRADO",
+   "archivo": "signos/cuadrado.png",
+   "pagina": 26
+  },
+  "cuaderno": {
+   "etiqueta": "CUADERNO",
+   "archivo": "signos/cuaderno.png",
+   "pagina": 26
+  },
+  "cuadro": {
+   "etiqueta": "CUADRO",
+   "archivo": "signos/cuadro.png",
+   "pagina": 26
+  },
+  "cual": {
+   "etiqueta": "CUAL",
+   "archivo": "signos/cual.png",
+   "pagina": 26
+  },
+  "cuantas": {
+   "etiqueta": "CUANTAS",
+   "archivo": "signos/cuantas.png",
+   "pagina": 26
+  },
+  "cuarto": {
+   "etiqueta": "CUARTO",
+   "archivo": "signos/cuarto.png",
+   "pagina": 26
+  },
+  "cubo": {
+   "etiqueta": "CUBO",
+   "archivo": "signos/cubo.png",
+   "pagina": 27
+  },
+  "cuchara": {
+   "etiqueta": "CUCHARA",
+   "archivo": "signos/cuchara.png",
+   "pagina": 27
+  },
+  "cuchillo": {
+   "etiqueta": "CUCHILLO",
+   "archivo": "signos/cuchillo.png",
+   "pagina": 27
+  },
+  "cuento": {
+   "etiqueta": "CUENTO",
+   "archivo": "signos/cuento.png",
+   "pagina": 27
+  },
+  "cuerda": {
+   "etiqueta": "CUERDA",
+   "archivo": "signos/cuerda.png",
+   "pagina": 27
+  },
+  "cuerpo": {
+   "etiqueta": "CUERPO",
+   "archivo": "signos/cuerpo.png",
+   "pagina": 27
+  },
+  "cuidado": {
+   "etiqueta": "CUIDADO",
+   "archivo": "signos/cuidado.png",
+   "pagina": 27
+  },
+  "cuidar": {
+   "etiqueta": "CUIDAR",
+   "archivo": "signos/cuidar.png",
+   "pagina": 27
+  },
+  "cumpleanyos": {
+   "etiqueta": "CUMPLEAÑOS",
+   "archivo": "signos/cumpleanyos.png",
+   "pagina": 28
+  },
+  "cuna": {
+   "etiqueta": "CUNA",
+   "archivo": "signos/cuna.png",
+   "pagina": 28
+  },
+  "curar": {
+   "etiqueta": "CURAR",
+   "archivo": "signos/curar.png",
+   "pagina": 28
+  },
+  "dar": {
+   "etiqueta": "DAR",
+   "archivo": "signos/dar.png",
+   "pagina": 29
+  },
+  "dar-patadas": {
+   "etiqueta": "DAR PATADAS",
+   "archivo": "signos/dar-patadas.png",
+   "pagina": 29
+  },
+  "dar-asco": {
+   "etiqueta": "DAR, ASCO",
+   "archivo": "signos/dar-asco.png",
+   "pagina": 29
+  },
+  "debajo": {
+   "etiqueta": "DEBAJO",
+   "archivo": "signos/debajo.png",
+   "pagina": 29
+  },
+  "debe": {
+   "etiqueta": "DEBE",
+   "archivo": "signos/debe.png",
+   "pagina": 29
+  },
+  "decir": {
+   "etiqueta": "DECIR",
+   "archivo": "signos/decir.png",
+   "pagina": 29
+  },
+  "decorar": {
+   "etiqueta": "DECORAR",
+   "archivo": "signos/decorar.png",
+   "pagina": 30
+  },
+  "defender": {
+   "etiqueta": "DEFENDER",
+   "archivo": "signos/defender.png",
+   "pagina": 30
+  },
+  "delgado": {
+   "etiqueta": "DELGADO",
+   "archivo": "signos/delgado.png",
+   "pagina": 30
+  },
+  "dentro": {
+   "etiqueta": "DENTRO",
+   "archivo": "signos/dentro.png",
+   "pagina": 30
+  },
+  "deporte": {
+   "etiqueta": "DEPORTE",
+   "archivo": "signos/deporte.png",
+   "pagina": 30
+  },
+  "deprisa": {
+   "etiqueta": "DEPRISA",
+   "archivo": "signos/deprisa.png",
+   "pagina": 30
+  },
+  "desayunar": {
+   "etiqueta": "DESAYUNAR",
+   "archivo": "signos/desayunar.png",
+   "pagina": 30
+  },
+  "descansar": {
+   "etiqueta": "DESCANSAR",
+   "archivo": "signos/descansar.png",
+   "pagina": 30
+  },
+  "desgracia": {
+   "etiqueta": "DESGRACIA",
+   "archivo": "signos/desgracia.png",
+   "pagina": 31
+  },
+  "desnudarse": {
+   "etiqueta": "DESNUDARSE",
+   "archivo": "signos/desnudarse.png",
+   "pagina": 31
+  },
+  "desierto": {
+   "etiqueta": "DESIERTO",
+   "archivo": "signos/desierto.png",
+   "pagina": 31
+  },
+  "desobedecer": {
+   "etiqueta": "DESOBEDECER",
+   "archivo": "signos/desobedecer.png",
+   "pagina": 31
+  },
+  "despues": {
+   "etiqueta": "DESPUES",
+   "archivo": "signos/despues.png",
+   "pagina": 31
+  },
+  "dia": {
+   "etiqueta": "DIA",
+   "archivo": "signos/dia.png",
+   "pagina": 31
+  },
+  "diario-a": {
+   "etiqueta": "DIARIO, A",
+   "archivo": "signos/diario-a.png",
+   "pagina": 31
+  },
+  "dibujar": {
+   "etiqueta": "DIBUJAR",
+   "archivo": "signos/dibujar.png",
+   "pagina": 32
+  },
+  "dificil": {
+   "etiqueta": "DIFICIL",
+   "archivo": "signos/dificil.png",
+   "pagina": 32
+  },
+  "diminuto": {
+   "etiqueta": "DIMINUTO",
+   "archivo": "signos/diminuto.png",
+   "pagina": 32
+  },
+  "disfraces": {
+   "etiqueta": "DISFRACES",
+   "archivo": "signos/disfraces.png",
+   "pagina": 32
+  },
+  "distinto": {
+   "etiqueta": "DISTINTO",
+   "archivo": "signos/distinto.png",
+   "pagina": 32
+  },
+  "divertido": {
+   "etiqueta": "DIVERTIDO",
+   "archivo": "signos/divertido.png",
+   "pagina": 32
+  },
+  "dolor-doler": {
+   "etiqueta": "DOLOR/DOLER",
+   "archivo": "signos/dolor-doler.png",
+   "pagina": 32
+  },
+  "dormir": {
+   "etiqueta": "DORMIR",
+   "archivo": "signos/dormir.png",
+   "pagina": 32
+  },
+  "dormitorio": {
+   "etiqueta": "DORMITORIO",
+   "archivo": "signos/dormitorio.png",
+   "pagina": 33
+  },
+  "ducha": {
+   "etiqueta": "DUCHA",
+   "archivo": "signos/ducha.png",
+   "pagina": 33
+  },
+  "duro": {
+   "etiqueta": "DURO",
+   "archivo": "signos/duro.png",
+   "pagina": 33
+  },
+  "educado": {
+   "etiqueta": "EDUCADO",
+   "archivo": "signos/educado.png",
+   "pagina": 34
+  },
+  "elegante": {
+   "etiqueta": "ELEGANTE",
+   "archivo": "signos/elegante.png",
+   "pagina": 34
+  },
+  "empujar": {
+   "etiqueta": "EMPUJAR",
+   "archivo": "signos/empujar.png",
+   "pagina": 34
+  },
+  "empujar-2": {
+   "etiqueta": "EMPUJAR",
+   "archivo": "signos/empujar-2.png",
+   "pagina": 34
+  },
+  "encima": {
+   "etiqueta": "ENCIMA",
+   "archivo": "signos/encima.png",
+   "pagina": 34
+  },
+  "enfadarse": {
+   "etiqueta": "ENFADARSE",
+   "archivo": "signos/enfadarse.png",
+   "pagina": 34
+  },
+  "enfermo": {
+   "etiqueta": "ENFERMO",
+   "archivo": "signos/enfermo.png",
+   "pagina": 35
+  },
+  "ensenyar": {
+   "etiqueta": "ENSEÑAR",
+   "archivo": "signos/ensenyar.png",
+   "pagina": 35
+  },
+  "enorme": {
+   "etiqueta": "ENORME",
+   "archivo": "signos/enorme.png",
+   "pagina": 35
+  },
+  "ensalada": {
+   "etiqueta": "ENSALADA",
+   "archivo": "signos/ensalada.png",
+   "pagina": 35
+  },
+  "ensuciarse": {
+   "etiqueta": "ENSUCIARSE",
+   "archivo": "signos/ensuciarse.png",
+   "pagina": 35
+  },
+  "escalera": {
+   "etiqueta": "ESCALERA",
+   "archivo": "signos/escalera.png",
+   "pagina": 35
+  },
+  "equipo-de-futbol": {
+   "etiqueta": "EQUIPO DE FUTBOL",
+   "archivo": "signos/equipo-de-futbol.png",
+   "pagina": 36
+  },
+  "escoba": {
+   "etiqueta": "ESCOBA",
+   "archivo": "signos/escoba.png",
+   "pagina": 36
+  },
+  "esconder": {
+   "etiqueta": "ESCONDER",
+   "archivo": "signos/esconder.png",
+   "pagina": 36
+  },
+  "escribir": {
+   "etiqueta": "ESCRIBIR",
+   "archivo": "signos/escribir.png",
+   "pagina": 36
+  },
+  "escuchar": {
+   "etiqueta": "ESCUCHAR",
+   "archivo": "signos/escuchar.png",
+   "pagina": 36
+  },
+  "espejo": {
+   "etiqueta": "ESPEJO",
+   "archivo": "signos/espejo.png",
+   "pagina": 36
+  },
+  "esponja": {
+   "etiqueta": "ESPONJA",
+   "archivo": "signos/esponja.png",
+   "pagina": 36
+  },
+  "esposo": {
+   "etiqueta": "ESPOSO",
+   "archivo": "signos/esposo.png",
+   "pagina": 37
+  },
+  "esquiar": {
+   "etiqueta": "ESQUIAR",
+   "archivo": "signos/esquiar.png",
+   "pagina": 37
+  },
+  "estar": {
+   "etiqueta": "ESTAR",
+   "archivo": "signos/estar.png",
+   "pagina": 37
+  },
+  "estirarse": {
+   "etiqueta": "ESTIRARSE",
+   "archivo": "signos/estirarse.png",
+   "pagina": 37
+  },
+  "esto": {
+   "etiqueta": "ESTO",
+   "archivo": "signos/esto.png",
+   "pagina": 37
+  },
+  "estomago": {
+   "etiqueta": "ESTOMAGO",
+   "archivo": "signos/estomago.png",
+   "pagina": 37
+  },
+  "estrellas": {
+   "etiqueta": "ESTRELLAS",
+   "archivo": "signos/estrellas.png",
+   "pagina": 37
+  },
+  "estudiante": {
+   "etiqueta": "ESTUDIANTE",
+   "archivo": "signos/estudiante.png",
+   "pagina": 38
+  },
+  "estudiar": {
+   "etiqueta": "ESTUDIAR",
+   "archivo": "signos/estudiar.png",
+   "pagina": 38
+  },
+  "examen": {
+   "etiqueta": "EXAMEN",
+   "archivo": "signos/examen.png",
+   "pagina": 38
+  },
+  "examinar": {
+   "etiqueta": "EXAMINAR",
+   "archivo": "signos/examinar.png",
+   "pagina": 38
+  },
+  "facil": {
+   "etiqueta": "FACIL",
+   "archivo": "signos/facil.png",
+   "pagina": 39
+  },
+  "familia": {
+   "etiqueta": "FAMILIA",
+   "archivo": "signos/familia.png",
+   "pagina": 39
+  },
+  "famoso": {
+   "etiqueta": "FAMOSO",
+   "archivo": "signos/famoso.png",
+   "pagina": 39
+  },
+  "fantasma": {
+   "etiqueta": "FANTASMA",
+   "archivo": "signos/fantasma.png",
+   "pagina": 39
+  },
+  "feo": {
+   "etiqueta": "FEO",
+   "archivo": "signos/feo.png",
+   "pagina": 39
+  },
+  "fiebre": {
+   "etiqueta": "FIEBRE",
+   "archivo": "signos/fiebre.png",
+   "pagina": 39
+  },
+  "fiesta": {
+   "etiqueta": "FIESTA",
+   "archivo": "signos/fiesta.png",
+   "pagina": 40
+  },
+  "flan": {
+   "etiqueta": "FLAN",
+   "archivo": "signos/flan.png",
+   "pagina": 40
+  },
+  "flor": {
+   "etiqueta": "FLOR",
+   "archivo": "signos/flor.png",
+   "pagina": 40
+  },
+  "fogon": {
+   "etiqueta": "FOGON",
+   "archivo": "signos/fogon.png",
+   "pagina": 40
+  },
+  "foto": {
+   "etiqueta": "FOTO",
+   "archivo": "signos/foto.png",
+   "pagina": 40
+  },
+  "frascos": {
+   "etiqueta": "FRASCOS",
+   "archivo": "signos/frascos.png",
+   "pagina": 40
+  },
+  "frase": {
+   "etiqueta": "FRASE",
+   "archivo": "signos/frase.png",
+   "pagina": 40
+  },
+  "freir": {
+   "etiqueta": "FREIR",
+   "archivo": "signos/freir.png",
+   "pagina": 40
+  },
+  "fresas": {
+   "etiqueta": "FRESAS",
+   "archivo": "signos/fresas.png",
+   "pagina": 41
+  },
+  "frigorifico": {
+   "etiqueta": "FRIGORIFICO",
+   "archivo": "signos/frigorifico.png",
+   "pagina": 41
+  },
+  "frio": {
+   "etiqueta": "FRIO",
+   "archivo": "signos/frio.png",
+   "pagina": 41
+  },
+  "fronton": {
+   "etiqueta": "FRONTON",
+   "archivo": "signos/fronton.png",
+   "pagina": 41
+  },
+  "frotar": {
+   "etiqueta": "FROTAR",
+   "archivo": "signos/frotar.png",
+   "pagina": 41
+  },
+  "fruta": {
+   "etiqueta": "FRUTA",
+   "archivo": "signos/fruta.png",
+   "pagina": 41
+  },
+  "fuego": {
+   "etiqueta": "FUEGO",
+   "archivo": "signos/fuego.png",
+   "pagina": 41
+  },
+  "fuente": {
+   "etiqueta": "FUENTE",
+   "archivo": "signos/fuente.png",
+   "pagina": 41
+  },
+  "fuera-de-la-casa": {
+   "etiqueta": "FUERA DE LA CASA",
+   "archivo": "signos/fuera-de-la-casa.png",
+   "pagina": 42
+  },
+  "futbol": {
+   "etiqueta": "FUTBOL",
+   "archivo": "signos/futbol.png",
+   "pagina": 42
+  },
+  "futbolista": {
+   "etiqueta": "FUTBOLISTA",
+   "archivo": "signos/futbolista.png",
+   "pagina": 42
+  },
+  "galleta": {
+   "etiqueta": "GALLETA",
+   "archivo": "signos/galleta.png",
+   "pagina": 43
+  },
+  "gallina": {
+   "etiqueta": "GALLINA",
+   "archivo": "signos/gallina.png",
+   "pagina": 43
+  },
+  "ganar": {
+   "etiqueta": "GANAR",
+   "archivo": "signos/ganar.png",
+   "pagina": 43
+  },
+  "gato": {
+   "etiqueta": "GATO",
+   "archivo": "signos/gato.png",
+   "pagina": 43
+  },
+  "geografia": {
+   "etiqueta": "GEOGRAFIA",
+   "archivo": "signos/geografia.png",
+   "pagina": 43
+  },
+  "gestion": {
+   "etiqueta": "GESTION",
+   "archivo": "signos/gestion.png",
+   "pagina": 43
+  },
+  "gimnasia": {
+   "etiqueta": "GIMNASIA",
+   "archivo": "signos/gimnasia.png",
+   "pagina": 44
+  },
+  "gol": {
+   "etiqueta": "GOL",
+   "archivo": "signos/gol.png",
+   "pagina": 44
+  },
+  "goma": {
+   "etiqueta": "GOMA",
+   "archivo": "signos/goma.png",
+   "pagina": 44
+  },
+  "gordo": {
+   "etiqueta": "GORDO",
+   "archivo": "signos/gordo.png",
+   "pagina": 44
+  },
+  "gorro": {
+   "etiqueta": "GORRO",
+   "archivo": "signos/gorro.png",
+   "pagina": 44
+  },
+  "grande": {
+   "etiqueta": "GRANDE",
+   "archivo": "signos/grande.png",
+   "pagina": 44
+  },
+  "gritar": {
+   "etiqueta": "GRITAR",
+   "archivo": "signos/gritar.png",
+   "pagina": 44
+  },
+  "guantes": {
+   "etiqueta": "GUANTES",
+   "archivo": "signos/guantes.png",
+   "pagina": 44
+  },
+  "guapo": {
+   "etiqueta": "GUAPO",
+   "archivo": "signos/guapo.png",
+   "pagina": 45
+  },
+  "guardar": {
+   "etiqueta": "GUARDAR",
+   "archivo": "signos/guardar.png",
+   "pagina": 45
+  },
+  "guisar": {
+   "etiqueta": "GUISAR",
+   "archivo": "signos/guisar.png",
+   "pagina": 45
+  },
+  "gustar": {
+   "etiqueta": "GUSTAR",
+   "archivo": "signos/gustar.png",
+   "pagina": 45
+  },
+  "habil": {
+   "etiqueta": "HABIL",
+   "archivo": "signos/habil.png",
+   "pagina": 46
+  },
+  "hablar-en-mimica": {
+   "etiqueta": "HABLAR EN MIMICA",
+   "archivo": "signos/hablar-en-mimica.png",
+   "pagina": 46
+  },
+  "hablar": {
+   "etiqueta": "HABLAR",
+   "archivo": "signos/hablar.png",
+   "pagina": 46
+  },
+  "hacer": {
+   "etiqueta": "HACER",
+   "archivo": "signos/hacer.png",
+   "pagina": 46
+  },
+  "hambre": {
+   "etiqueta": "HAMBRE",
+   "archivo": "signos/hambre.png",
+   "pagina": 46
+  },
+  "hay": {
+   "etiqueta": "HAY",
+   "archivo": "signos/hay.png",
+   "pagina": 47
+  },
+  "helado": {
+   "etiqueta": "HELADO",
+   "archivo": "signos/helado.png",
+   "pagina": 47
+  },
+  "hojas-arbol": {
+   "etiqueta": "HOJAS (ARBOL)",
+   "archivo": "signos/hojas-arbol.png",
+   "pagina": 47
+  },
+  "hombre": {
+   "etiqueta": "HOMBRE",
+   "archivo": "signos/hombre.png",
+   "pagina": 47
+  },
+  "hora-exacta": {
+   "etiqueta": "HORA EXACTA",
+   "archivo": "signos/hora-exacta.png",
+   "pagina": 47
+  },
+  "hora": {
+   "etiqueta": "HORA",
+   "archivo": "signos/hora.png",
+   "pagina": 47
+  },
+  "horno": {
+   "etiqueta": "HORNO",
+   "archivo": "signos/horno.png",
+   "pagina": 47
+  },
+  "hospital": {
+   "etiqueta": "HOSPITAL",
+   "archivo": "signos/hospital.png",
+   "pagina": 48
+  },
+  "hoy": {
+   "etiqueta": "HOY",
+   "archivo": "signos/hoy.png",
+   "pagina": 48
+  },
+  "huesos": {
+   "etiqueta": "HUESOS",
+   "archivo": "signos/huesos.png",
+   "pagina": 48
+  },
+  "huevo": {
+   "etiqueta": "HUEVO",
+   "archivo": "signos/huevo.png",
+   "pagina": 48
+  },
+  "humedo": {
+   "etiqueta": "HUMEDO",
+   "archivo": "signos/humedo.png",
+   "pagina": 48
+  },
+  "igual": {
+   "etiqueta": "IGUAL",
+   "archivo": "signos/igual.png",
+   "pagina": 49
+  },
+  "imaginar": {
+   "etiqueta": "IMAGINAR",
+   "archivo": "signos/imaginar.png",
+   "pagina": 49
+  },
+  "imitar": {
+   "etiqueta": "IMITAR",
+   "archivo": "signos/imitar.png",
+   "pagina": 49
+  },
+  "incomodo": {
+   "etiqueta": "INCOMODO",
+   "archivo": "signos/incomodo.png",
+   "pagina": 49
+  },
+  "impermeable": {
+   "etiqueta": "IMPERMEABLE",
+   "archivo": "signos/impermeable.png",
+   "pagina": 49
+  },
+  "insistir": {
+   "etiqueta": "INSISTIR",
+   "archivo": "signos/insistir.png",
+   "pagina": 50
+  },
+  "invitar": {
+   "etiqueta": "INVITAR",
+   "archivo": "signos/invitar.png",
+   "pagina": 50
+  },
+  "inyeccion": {
+   "etiqueta": "INYECCION",
+   "archivo": "signos/inyeccion.png",
+   "pagina": 50
+  },
+  "ir": {
+   "etiqueta": "IR",
+   "archivo": "signos/ir.png",
+   "pagina": 50
+  },
+  "isla": {
+   "etiqueta": "ISLA",
+   "archivo": "signos/isla.png",
+   "pagina": 50
+  },
+  "jabon": {
+   "etiqueta": "JABON",
+   "archivo": "signos/jabon.png",
+   "pagina": 51
+  },
+  "jamon": {
+   "etiqueta": "JAMON",
+   "archivo": "signos/jamon.png",
+   "pagina": 51
+  },
+  "jarabe": {
+   "etiqueta": "JARABE",
+   "archivo": "signos/jarabe.png",
+   "pagina": 51
+  },
+  "joven": {
+   "etiqueta": "JOVEN",
+   "archivo": "signos/joven.png",
+   "pagina": 51
+  },
+  "jersey": {
+   "etiqueta": "JERSEY",
+   "archivo": "signos/jersey.png",
+   "pagina": 51
+  },
+  "jugar": {
+   "etiqueta": "JUGAR",
+   "archivo": "signos/jugar.png",
+   "pagina": 52
+  },
+  "juguetes": {
+   "etiqueta": "JUGUETES",
+   "archivo": "signos/juguetes.png",
+   "pagina": 52
+  },
+  "juguetes-varios": {
+   "etiqueta": "JUGUETES (VARIOS)",
+   "archivo": "signos/juguetes-varios.png",
+   "pagina": 52
+  },
+  "juntos": {
+   "etiqueta": "JUNTOS",
+   "archivo": "signos/juntos.png",
+   "pagina": 52
+  },
+  "lampara": {
+   "etiqueta": "LAMPARA",
+   "archivo": "signos/lampara.png",
+   "pagina": 53
+  },
+  "lapiz": {
+   "etiqueta": "LAPIZ",
+   "archivo": "signos/lapiz.png",
+   "pagina": 53
+  },
+  "lapices-de-colores": {
+   "etiqueta": "LAPICES DE COLORES",
+   "archivo": "signos/lapices-de-colores.png",
+   "pagina": 53
+  },
+  "latas": {
+   "etiqueta": "LATAS",
+   "archivo": "signos/latas.png",
+   "pagina": 53
+  },
+  "lavarse": {
+   "etiqueta": "LAVARSE",
+   "archivo": "signos/lavarse.png",
+   "pagina": 53
+  },
+  "lazo": {
+   "etiqueta": "LAZO",
+   "archivo": "signos/lazo.png",
+   "pagina": 54
+  },
+  "leche": {
+   "etiqueta": "LECHE",
+   "archivo": "signos/leche.png",
+   "pagina": 54
+  },
+  "leer": {
+   "etiqueta": "LEER",
+   "archivo": "signos/leer.png",
+   "pagina": 54
+  },
+  "lejos": {
+   "etiqueta": "LEJOS",
+   "archivo": "signos/lejos.png",
+   "pagina": 54
+  },
+  "levantarse": {
+   "etiqueta": "LEVANTARSE",
+   "archivo": "signos/levantarse.png",
+   "pagina": 54
+  },
+  "libro": {
+   "etiqueta": "LIBRO",
+   "archivo": "signos/libro.png",
+   "pagina": 54
+  },
+  "libreria": {
+   "etiqueta": "LIBRERIA",
+   "archivo": "signos/libreria.png",
+   "pagina": 54
+  },
+  "ligero": {
+   "etiqueta": "LIGERO",
+   "archivo": "signos/ligero.png",
+   "pagina": 55
+  },
+  "limon": {
+   "etiqueta": "LIMON",
+   "archivo": "signos/limon.png",
+   "pagina": 55
+  },
+  "limpio": {
+   "etiqueta": "LIMPIO",
+   "archivo": "signos/limpio.png",
+   "pagina": 55
+  },
+  "lio": {
+   "etiqueta": "LIO",
+   "archivo": "signos/lio.png",
+   "pagina": 55
+  },
+  "listo": {
+   "etiqueta": "LISTO",
+   "archivo": "signos/listo.png",
+   "pagina": 55
+  },
+  "luna": {
+   "etiqueta": "LUNA",
+   "archivo": "signos/luna.png",
+   "pagina": 55
+  },
+  "luz": {
+   "etiqueta": "LUZ",
+   "archivo": "signos/luz.png",
+   "pagina": 55
+  },
+  "lleno": {
+   "etiqueta": "LLENO",
+   "archivo": "signos/lleno.png",
+   "pagina": 56
+  },
+  "lleno-comida": {
+   "etiqueta": "LLENO (COMIDA)",
+   "archivo": "signos/lleno-comida.png",
+   "pagina": 56
+  },
+  "llorar": {
+   "etiqueta": "LLORAR",
+   "archivo": "signos/llorar.png",
+   "pagina": 56
+  },
+  "lluvia": {
+   "etiqueta": "LLUVIA",
+   "archivo": "signos/lluvia.png",
+   "pagina": 56
+  },
+  "macarrones": {
+   "etiqueta": "MACARRONES",
+   "archivo": "signos/macarrones.png",
+   "pagina": 57
+  },
+  "madera": {
+   "etiqueta": "MADERA",
+   "archivo": "signos/madera.png",
+   "pagina": 57
+  },
+  "mal-tiempo": {
+   "etiqueta": "MAL TIEMPO",
+   "archivo": "signos/mal-tiempo.png",
+   "pagina": 57
+  },
+  "malo": {
+   "etiqueta": "MALO",
+   "archivo": "signos/malo.png",
+   "pagina": 57
+  },
+  "maleducado": {
+   "etiqueta": "MALEDUCADO",
+   "archivo": "signos/maleducado.png",
+   "pagina": 57
+  },
+  "manchado": {
+   "etiqueta": "MANCHADO",
+   "archivo": "signos/manchado.png",
+   "pagina": 58
+  },
+  "manos": {
+   "etiqueta": "MANOS",
+   "archivo": "signos/manos.png",
+   "pagina": 58
+  },
+  "manta": {
+   "etiqueta": "MANTA",
+   "archivo": "signos/manta.png",
+   "pagina": 58
+  },
+  "mantel": {
+   "etiqueta": "MANTEL",
+   "archivo": "signos/mantel.png",
+   "pagina": 58
+  },
+  "mantequilla": {
+   "etiqueta": "MANTEQUILLA",
+   "archivo": "signos/mantequilla.png",
+   "pagina": 58
+  },
+  "manzana": {
+   "etiqueta": "MANZANA",
+   "archivo": "signos/manzana.png",
+   "pagina": 58
+  },
+  "manyana-por-la": {
+   "etiqueta": "MAÑANA (POR LA...)",
+   "archivo": "signos/manyana-por-la.png",
+   "pagina": 58
+  },
+  "manyana": {
+   "etiqueta": "MAÑANA",
+   "archivo": "signos/manyana.png",
+   "pagina": 58
+  },
+  "mapa": {
+   "etiqueta": "MAPA",
+   "archivo": "signos/mapa.png",
+   "pagina": 59
+  },
+  "mar": {
+   "etiqueta": "MAR",
+   "archivo": "signos/mar.png",
+   "pagina": 59
+  },
+  "mas": {
+   "etiqueta": "MAS",
+   "archivo": "signos/mas.png",
+   "pagina": 59
+  },
+  "masa": {
+   "etiqueta": "MASA",
+   "archivo": "signos/masa.png",
+   "pagina": 59
+  },
+  "mayor": {
+   "etiqueta": "MAYOR",
+   "archivo": "signos/mayor.png",
+   "pagina": 59
+  },
+  "melon": {
+   "etiqueta": "MELON",
+   "archivo": "signos/melon.png",
+   "pagina": 59
+  },
+  "menos": {
+   "etiqueta": "MENOS",
+   "archivo": "signos/menos.png",
+   "pagina": 59
+  },
+  "merendar": {
+   "etiqueta": "MERENDAR",
+   "archivo": "signos/merendar.png",
+   "pagina": 59
+  },
+  "mesa": {
+   "etiqueta": "MESA",
+   "archivo": "signos/mesa.png",
+   "pagina": 60
+  },
+  "mesilla": {
+   "etiqueta": "MESILLA",
+   "archivo": "signos/mesilla.png",
+   "pagina": 60
+  },
+  "metro": {
+   "etiqueta": "METRO",
+   "archivo": "signos/metro.png",
+   "pagina": 60
+  },
+  "migas": {
+   "etiqueta": "MIGAS",
+   "archivo": "signos/migas.png",
+   "pagina": 60
+  },
+  "minuto": {
+   "etiqueta": "MINUTO",
+   "archivo": "signos/minuto.png",
+   "pagina": 60
+  },
+  "modelar": {
+   "etiqueta": "MODELAR",
+   "archivo": "signos/modelar.png",
+   "pagina": 60
+  },
+  "monopatin": {
+   "etiqueta": "MONOPATIN",
+   "archivo": "signos/monopatin.png",
+   "pagina": 60
+  },
+  "montanya": {
+   "etiqueta": "MONTAÑA",
+   "archivo": "signos/montanya.png",
+   "pagina": 60
+  },
+  "montar-a-caballo": {
+   "etiqueta": "MONTAR A CABALLO",
+   "archivo": "signos/montar-a-caballo.png",
+   "pagina": 61
+  },
+  "moreno": {
+   "etiqueta": "MORENO",
+   "archivo": "signos/moreno.png",
+   "pagina": 61
+  },
+  "morir": {
+   "etiqueta": "MORIR",
+   "archivo": "signos/morir.png",
+   "pagina": 61
+  },
+  "moto": {
+   "etiqueta": "MOTO",
+   "archivo": "signos/moto.png",
+   "pagina": 61
+  },
+  "mucho": {
+   "etiqueta": "MUCHO",
+   "archivo": "signos/mucho.png",
+   "pagina": 61
+  },
+  "mujer": {
+   "etiqueta": "MUJER",
+   "archivo": "signos/mujer.png",
+   "pagina": 61
+  },
+  "mundo": {
+   "etiqueta": "MUNDO",
+   "archivo": "signos/mundo.png",
+   "pagina": 61
+  },
+  "munyeca": {
+   "etiqueta": "MUÑECA",
+   "archivo": "signos/munyeca.png",
+   "pagina": 61
+  },
+  "musica": {
+   "etiqueta": "MUSICA",
+   "archivo": "signos/musica.png",
+   "pagina": 62
+  },
+  "nacer": {
+   "etiqueta": "NACER",
+   "archivo": "signos/nacer.png",
+   "pagina": 63
+  },
+  "nada": {
+   "etiqueta": "NADA",
+   "archivo": "signos/nada.png",
+   "pagina": 63
+  },
+  "nada-2": {
+   "etiqueta": "NADA",
+   "archivo": "signos/nada-2.png",
+   "pagina": 63
+  },
+  "navidad": {
+   "etiqueta": "NAVIDAD",
+   "archivo": "signos/navidad.png",
+   "pagina": 63
+  },
+  "necesitar": {
+   "etiqueta": "NECESITAR",
+   "archivo": "signos/necesitar.png",
+   "pagina": 63
+  },
+  "nervioso": {
+   "etiqueta": "NERVIOSO",
+   "archivo": "signos/nervioso.png",
+   "pagina": 63
+  },
+  "niebla": {
+   "etiqueta": "NIEBLA",
+   "archivo": "signos/niebla.png",
+   "pagina": 64
+  },
+  "nieve": {
+   "etiqueta": "NIEVE",
+   "archivo": "signos/nieve.png",
+   "pagina": 64
+  },
+  "ninya": {
+   "etiqueta": "NIÑA",
+   "archivo": "signos/ninya.png",
+   "pagina": 64
+  },
+  "ninyo": {
+   "etiqueta": "NIÑO",
+   "archivo": "signos/ninyo.png",
+   "pagina": 64
+  },
+  "no-hacer-caso": {
+   "etiqueta": "NO HACER CASO",
+   "archivo": "signos/no-hacer-caso.png",
+   "pagina": 64
+  },
+  "no": {
+   "etiqueta": "NO",
+   "archivo": "signos/no.png",
+   "pagina": 64
+  },
+  "noche-vieja": {
+   "etiqueta": "NOCHE VIEJA",
+   "archivo": "signos/noche-vieja.png",
+   "pagina": 64
+  },
+  "noche": {
+   "etiqueta": "NOCHE",
+   "archivo": "signos/noche.png",
+   "pagina": 65
+  },
+  "normal": {
+   "etiqueta": "NORMAL",
+   "archivo": "signos/normal.png",
+   "pagina": 65
+  },
+  "novio": {
+   "etiqueta": "NOVIO",
+   "archivo": "signos/novio.png",
+   "pagina": 65
+  },
+  "nubes": {
+   "etiqueta": "NUBES",
+   "archivo": "signos/nubes.png",
+   "pagina": 65
+  },
+  "nuevo-moderno": {
+   "etiqueta": "NUEVO (MODERNO)",
+   "archivo": "signos/nuevo-moderno.png",
+   "pagina": 65
+  },
+  "nunca": {
+   "etiqueta": "NUNCA",
+   "archivo": "signos/nunca.png",
+   "pagina": 65
+  },
+  "obedecer": {
+   "etiqueta": "OBEDECER",
+   "archivo": "signos/obedecer.png",
+   "pagina": 66
+  },
+  "oler": {
+   "etiqueta": "OLER",
+   "archivo": "signos/oler.png",
+   "pagina": 66
+  },
+  "olvidar": {
+   "etiqueta": "OLVIDAR",
+   "archivo": "signos/olvidar.png",
+   "pagina": 66
+  },
+  "operar": {
+   "etiqueta": "OPERAR",
+   "archivo": "signos/operar.png",
+   "pagina": 66
+  },
+  "oscuro": {
+   "etiqueta": "OSCURO",
+   "archivo": "signos/oscuro.png",
+   "pagina": 66
+  },
+  "otro": {
+   "etiqueta": "OTRO",
+   "archivo": "signos/otro.png",
+   "pagina": 66
+  },
+  "paises": {
+   "etiqueta": "PAISES",
+   "archivo": "signos/paises.png",
+   "pagina": 67
+  },
+  "paja": {
+   "etiqueta": "PAJA",
+   "archivo": "signos/paja.png",
+   "pagina": 67
+  },
+  "pala": {
+   "etiqueta": "PALA",
+   "archivo": "signos/pala.png",
+   "pagina": 67
+  },
+  "palabras": {
+   "etiqueta": "PALABRAS",
+   "archivo": "signos/palabras.png",
+   "pagina": 67
+  },
+  "pan": {
+   "etiqueta": "PAN",
+   "archivo": "signos/pan.png",
+   "pagina": 67
+  },
+  "pantalon": {
+   "etiqueta": "PANTALON",
+   "archivo": "signos/pantalon.png",
+   "pagina": 67
+  },
+  "panyuelo": {
+   "etiqueta": "PAÑUELO",
+   "archivo": "signos/panyuelo.png",
+   "pagina": 68
+  },
+  "papel-higienico": {
+   "etiqueta": "PAPEL HIGIENICO",
+   "archivo": "signos/papel-higienico.png",
+   "pagina": 68
+  },
+  "papel": {
+   "etiqueta": "PAPEL",
+   "archivo": "signos/papel.png",
+   "pagina": 68
+  },
+  "pastilla": {
+   "etiqueta": "PASTILLA",
+   "archivo": "signos/pastilla.png",
+   "pagina": 68
+  },
+  "parque": {
+   "etiqueta": "PARQUE",
+   "archivo": "signos/parque.png",
+   "pagina": 68
+  },
+  "patata": {
+   "etiqueta": "PATATA",
+   "archivo": "signos/patata.png",
+   "pagina": 68
+  },
+  "patinar": {
+   "etiqueta": "PATINAR",
+   "archivo": "signos/patinar.png",
+   "pagina": 68
+  },
+  "patines": {
+   "etiqueta": "PATINES",
+   "archivo": "signos/patines.png",
+   "pagina": 69
+  },
+  "pato": {
+   "etiqueta": "PATO",
+   "archivo": "signos/pato.png",
+   "pagina": 69
+  },
+  "patio": {
+   "etiqueta": "PATIO",
+   "archivo": "signos/patio.png",
+   "pagina": 69
+  },
+  "pedir": {
+   "etiqueta": "PEDIR",
+   "archivo": "signos/pedir.png",
+   "pagina": 69
+  },
+  "pedir-perdon": {
+   "etiqueta": "PEDIR PERDON",
+   "archivo": "signos/pedir-perdon.png",
+   "pagina": 69
+  },
+  "peinarse": {
+   "etiqueta": "PEINARSE",
+   "archivo": "signos/peinarse.png",
+   "pagina": 69
+  },
+  "peine": {
+   "etiqueta": "PEINE",
+   "archivo": "signos/peine.png",
+   "pagina": 69
+  },
+  "pelearse": {
+   "etiqueta": "PELEARSE",
+   "archivo": "signos/pelearse.png",
+   "pagina": 70
+  },
+  "pelota": {
+   "etiqueta": "PELOTA",
+   "archivo": "signos/pelota.png",
+   "pagina": 70
+  },
+  "pensar": {
+   "etiqueta": "PENSAR",
+   "archivo": "signos/pensar.png",
+   "pagina": 70
+  },
+  "pequenya": {
+   "etiqueta": "PEQUEÑA",
+   "archivo": "signos/pequenya.png",
+   "pagina": 70
+  },
+  "pequenyo": {
+   "etiqueta": "PEQUEÑO",
+   "archivo": "signos/pequenyo.png",
+   "pagina": 70
+  },
+  "pera": {
+   "etiqueta": "PERA",
+   "archivo": "signos/pera.png",
+   "pagina": 70
+  },
+  "perder": {
+   "etiqueta": "PERDER",
+   "archivo": "signos/perder.png",
+   "pagina": 70
+  },
+  "perder-2": {
+   "etiqueta": "PERDER",
+   "archivo": "signos/perder-2.png",
+   "pagina": 70
+  },
+  "perdonar": {
+   "etiqueta": "PERDONAR",
+   "archivo": "signos/perdonar.png",
+   "pagina": 71
+  },
+  "pero": {
+   "etiqueta": "PERO",
+   "archivo": "signos/pero.png",
+   "pagina": 71
+  },
+  "perro": {
+   "etiqueta": "PERRO",
+   "archivo": "signos/perro.png",
+   "pagina": 71
+  },
+  "persona": {
+   "etiqueta": "PERSONA",
+   "archivo": "signos/persona.png",
+   "pagina": 71
+  },
+  "persona-s": {
+   "etiqueta": "PERSONA (S)",
+   "archivo": "signos/persona-s.png",
+   "pagina": 71
+  },
+  "pesado": {
+   "etiqueta": "PESADO",
+   "archivo": "signos/pesado.png",
+   "pagina": 71
+  },
+  "pesado-2": {
+   "etiqueta": "PESADO",
+   "archivo": "signos/pesado-2.png",
+   "pagina": 71
+  },
+  "pez": {
+   "etiqueta": "PEZ",
+   "archivo": "signos/pez.png",
+   "pagina": 71
+  },
+  "picotear": {
+   "etiqueta": "PICOTEAR",
+   "archivo": "signos/picotear.png",
+   "pagina": 72
+  },
+  "piedras": {
+   "etiqueta": "PIEDRAS",
+   "archivo": "signos/piedras.png",
+   "pagina": 72
+  },
+  "piel": {
+   "etiqueta": "PIEL",
+   "archivo": "signos/piel.png",
+   "pagina": 72
+  },
+  "piensa": {
+   "etiqueta": "PIENSA",
+   "archivo": "signos/piensa.png",
+   "pagina": 72
+  },
+  "pies": {
+   "etiqueta": "PIES",
+   "archivo": "signos/pies.png",
+   "pagina": 72
+  },
+  "ping-pong": {
+   "etiqueta": "PING-PONG",
+   "archivo": "signos/ping-pong.png",
+   "pagina": 72
+  },
+  "pijama": {
+   "etiqueta": "PIJAMA",
+   "archivo": "signos/pijama.png",
+   "pagina": 72
+  },
+  "pintar": {
+   "etiqueta": "PINTAR",
+   "archivo": "signos/pintar.png",
+   "pagina": 73
+  },
+  "pirata": {
+   "etiqueta": "PIRATA",
+   "archivo": "signos/pirata.png",
+   "pagina": 73
+  },
+  "piscina": {
+   "etiqueta": "PISCINA",
+   "archivo": "signos/piscina.png",
+   "pagina": 73
+  },
+  "piso": {
+   "etiqueta": "PISO",
+   "archivo": "signos/piso.png",
+   "pagina": 73
+  },
+  "pistola": {
+   "etiqueta": "PISTOLA",
+   "archivo": "signos/pistola.png",
+   "pagina": 73
+  },
+  "pizarra": {
+   "etiqueta": "PIZARRA",
+   "archivo": "signos/pizarra.png",
+   "pagina": 73
+  },
+  "plastico": {
+   "etiqueta": "PLASTICO",
+   "archivo": "signos/plastico.png",
+   "pagina": 73
+  },
+  "platano": {
+   "etiqueta": "PLATANO",
+   "archivo": "signos/platano.png",
+   "pagina": 73
+  },
+  "plato": {
+   "etiqueta": "PLATO",
+   "archivo": "signos/plato.png",
+   "pagina": 74
+  },
+  "poco": {
+   "etiqueta": "POCO",
+   "archivo": "signos/poco.png",
+   "pagina": 74
+  },
+  "playa": {
+   "etiqueta": "PLAYA",
+   "archivo": "signos/playa.png",
+   "pagina": 74
+  },
+  "poder": {
+   "etiqueta": "PODER",
+   "archivo": "signos/poder.png",
+   "pagina": 74
+  },
+  "por-que": {
+   "etiqueta": "¿POR QUE?",
+   "archivo": "signos/por-que.png",
+   "pagina": 74
+  },
+  "portal": {
+   "etiqueta": "PORTAL",
+   "archivo": "signos/portal.png",
+   "pagina": 74
+  },
+  "portero": {
+   "etiqueta": "PORTERO",
+   "archivo": "signos/portero.png",
+   "pagina": 74
+  },
+  "postre": {
+   "etiqueta": "POSTRE",
+   "archivo": "signos/postre.png",
+   "pagina": 75
+  },
+  "practicar": {
+   "etiqueta": "PRACTICAR",
+   "archivo": "signos/practicar.png",
+   "pagina": 75
+  },
+  "preguntar": {
+   "etiqueta": "PREGUNTAR",
+   "archivo": "signos/preguntar.png",
+   "pagina": 75
+  },
+  "preparar": {
+   "etiqueta": "PREPARAR",
+   "archivo": "signos/preparar.png",
+   "pagina": 75
+  },
+  "primero": {
+   "etiqueta": "PRIMERO",
+   "archivo": "signos/primero.png",
+   "pagina": 75
+  },
+  "princesa": {
+   "etiqueta": "PRINCESA",
+   "archivo": "signos/princesa.png",
+   "pagina": 75
+  },
+  "probar": {
+   "etiqueta": "PROBAR",
+   "archivo": "signos/probar.png",
+   "pagina": 75
+  },
+  "prohibir": {
+   "etiqueta": "PROHIBIR",
+   "archivo": "signos/prohibir.png",
+   "pagina": 75
+  },
+  "pronto": {
+   "etiqueta": "PRONTO",
+   "archivo": "signos/pronto.png",
+   "pagina": 76
+  },
+  "prueba": {
+   "etiqueta": "PRUEBA",
+   "archivo": "signos/prueba.png",
+   "pagina": 76
+  },
+  "proxima-vez": {
+   "etiqueta": "PROXIMA VEZ",
+   "archivo": "signos/proxima-vez.png",
+   "pagina": 76
+  },
+  "pueblo": {
+   "etiqueta": "PUEBLO",
+   "archivo": "signos/pueblo.png",
+   "pagina": 76
+  },
+  "puerta": {
+   "etiqueta": "PUERTA",
+   "archivo": "signos/puerta.png",
+   "pagina": 76
+  },
+  "pure": {
+   "etiqueta": "PURE",
+   "archivo": "signos/pure.png",
+   "pagina": 76
+  },
+  "que": {
+   "etiqueta": "QUE",
+   "archivo": "signos/que.png",
+   "pagina": 77
+  },
+  "querer": {
+   "etiqueta": "QUERER",
+   "archivo": "signos/querer.png",
+   "pagina": 77
+  },
+  "queso": {
+   "etiqueta": "QUESO",
+   "archivo": "signos/queso.png",
+   "pagina": 77
+  },
+  "quien": {
+   "etiqueta": "QUIEN",
+   "archivo": "signos/quien.png",
+   "pagina": 77
+  },
+  "quinto": {
+   "etiqueta": "QUINTO",
+   "archivo": "signos/quinto.png",
+   "pagina": 77
+  },
+  "rabia": {
+   "etiqueta": "RABIA",
+   "archivo": "signos/rabia.png",
+   "pagina": 78
+  },
+  "radio": {
+   "etiqueta": "RADIO",
+   "archivo": "signos/radio.png",
+   "pagina": 78
+  },
+  "rana": {
+   "etiqueta": "RANA",
+   "archivo": "signos/rana.png",
+   "pagina": 78
+  },
+  "rapidamente-rapido": {
+   "etiqueta": "RAPIDAMENTE, RAPIDO",
+   "archivo": "signos/rapidamente-rapido.png",
+   "pagina": 78
+  },
+  "raro": {
+   "etiqueta": "RARO",
+   "archivo": "signos/raro.png",
+   "pagina": 78
+  },
+  "rastrillo": {
+   "etiqueta": "RASTRILLO",
+   "archivo": "signos/rastrillo.png",
+   "pagina": 78
+  },
+  "rayo": {
+   "etiqueta": "RAYO",
+   "archivo": "signos/rayo.png",
+   "pagina": 79
+  },
+  "recoger": {
+   "etiqueta": "RECOGER",
+   "archivo": "signos/recoger.png",
+   "pagina": 79
+  },
+  "recordar": {
+   "etiqueta": "RECORDAR",
+   "archivo": "signos/recordar.png",
+   "pagina": 79
+  },
+  "redondo": {
+   "etiqueta": "REDONDO",
+   "archivo": "signos/redondo.png",
+   "pagina": 79
+  },
+  "regalar-regalo": {
+   "etiqueta": "REGALAR, REGALO",
+   "archivo": "signos/regalar-regalo.png",
+   "pagina": 79
+  },
+  "reganyar": {
+   "etiqueta": "REGAÑAR",
+   "archivo": "signos/reganyar.png",
+   "pagina": 79
+  },
+  "regla": {
+   "etiqueta": "REGLA",
+   "archivo": "signos/regla.png",
+   "pagina": 79
+  },
+  "reir": {
+   "etiqueta": "REIR",
+   "archivo": "signos/reir.png",
+   "pagina": 79
+  },
+  "repisa": {
+   "etiqueta": "REPISA",
+   "archivo": "signos/repisa.png",
+   "pagina": 80
+  },
+  "reyes-magos": {
+   "etiqueta": "REYES MAGOS",
+   "archivo": "signos/reyes-magos.png",
+   "pagina": 80
+  },
+  "rio": {
+   "etiqueta": "RIO",
+   "archivo": "signos/rio.png",
+   "pagina": 80
+  },
+  "robar": {
+   "etiqueta": "ROBAR",
+   "archivo": "signos/robar.png",
+   "pagina": 80
+  },
+  "rodillo": {
+   "etiqueta": "RODILLO",
+   "archivo": "signos/rodillo.png",
+   "pagina": 80
+  },
+  "romper": {
+   "etiqueta": "ROMPER",
+   "archivo": "signos/romper.png",
+   "pagina": 80
+  },
+  "ropa-de-banyo": {
+   "etiqueta": "ROPA DE BAÑO",
+   "archivo": "signos/ropa-de-banyo.png",
+   "pagina": 80
+  },
+  "ropa": {
+   "etiqueta": "ROPA",
+   "archivo": "signos/ropa.png",
+   "pagina": 81
+  },
+  "rubio": {
+   "etiqueta": "RUBIO",
+   "archivo": "signos/rubio.png",
+   "pagina": 81
+  },
+  "ruedas": {
+   "etiqueta": "RUEDAS",
+   "archivo": "signos/ruedas.png",
+   "pagina": 81
+  },
+  "ruido": {
+   "etiqueta": "RUIDO",
+   "archivo": "signos/ruido.png",
+   "pagina": 81
+  },
+  "sabana": {
+   "etiqueta": "SABANA",
+   "archivo": "signos/sabana.png",
+   "pagina": 82
+  },
+  "sacapuntas": {
+   "etiqueta": "SACAPUNTAS",
+   "archivo": "signos/sacapuntas.png",
+   "pagina": 82
+  },
+  "sal": {
+   "etiqueta": "SAL",
+   "archivo": "signos/sal.png",
+   "pagina": 82
+  },
+  "saltar": {
+   "etiqueta": "SALTAR",
+   "archivo": "signos/saltar.png",
+   "pagina": 82
+  },
+  "salud": {
+   "etiqueta": "SALUD",
+   "archivo": "signos/salud.png",
+   "pagina": 82
+  },
+  "sandalia": {
+   "etiqueta": "SANDALIA",
+   "archivo": "signos/sandalia.png",
+   "pagina": 82
+  },
+  "sandia": {
+   "etiqueta": "SANDIA",
+   "archivo": "signos/sandia.png",
+   "pagina": 83
+  },
+  "sandwiches": {
+   "etiqueta": "SANDWICHES",
+   "archivo": "signos/sandwiches.png",
+   "pagina": 83
+  },
+  "sangre": {
+   "etiqueta": "SANGRE",
+   "archivo": "signos/sangre.png",
+   "pagina": 83
+  },
+  "sano": {
+   "etiqueta": "SANO",
+   "archivo": "signos/sano.png",
+   "pagina": 83
+  },
+  "sarten": {
+   "etiqueta": "SARTEN",
+   "archivo": "signos/sarten.png",
+   "pagina": 83
+  },
+  "secador": {
+   "etiqueta": "SECADOR",
+   "archivo": "signos/secador.png",
+   "pagina": 83
+  },
+  "secarse": {
+   "etiqueta": "SECARSE",
+   "archivo": "signos/secarse.png",
+   "pagina": 83
+  },
+  "seco": {
+   "etiqueta": "SECO",
+   "archivo": "signos/seco.png",
+   "pagina": 84
+  },
+  "sed": {
+   "etiqueta": "SED",
+   "archivo": "signos/sed.png",
+   "pagina": 84
+  },
+  "segundo": {
+   "etiqueta": "SEGUNDO",
+   "archivo": "signos/segundo.png",
+   "pagina": 84
+  },
+  "segundo-2": {
+   "etiqueta": "SEGUNDO",
+   "archivo": "signos/segundo-2.png",
+   "pagina": 84
+  },
+  "semana-santa": {
+   "etiqueta": "SEMANA SANTA",
+   "archivo": "signos/semana-santa.png",
+   "pagina": 84
+  },
+  "semana": {
+   "etiqueta": "SEMANA",
+   "archivo": "signos/semana.png",
+   "pagina": 84
+  },
+  "sentarse-silla": {
+   "etiqueta": "SENTARSE/SILLA",
+   "archivo": "signos/sentarse-silla.png",
+   "pagina": 84
+  },
+  "sequia": {
+   "etiqueta": "SEQUIA",
+   "archivo": "signos/sequia.png",
+   "pagina": 84
+  },
+  "ser": {
+   "etiqueta": "SER",
+   "archivo": "signos/ser.png",
+   "pagina": 85
+  },
+  "servilleta": {
+   "etiqueta": "SERVILLETA",
+   "archivo": "signos/servilleta.png",
+   "pagina": 85
+  },
+  "sexto": {
+   "etiqueta": "SEXTO",
+   "archivo": "signos/sexto.png",
+   "pagina": 85
+  },
+  "si": {
+   "etiqueta": "SI",
+   "archivo": "signos/si.png",
+   "pagina": 85
+  },
+  "simpatico": {
+   "etiqueta": "SIMPATICO",
+   "archivo": "signos/simpatico.png",
+   "pagina": 85
+  },
+  "sol": {
+   "etiqueta": "SOL",
+   "archivo": "signos/sol.png",
+   "pagina": 85
+  },
+  "sofa": {
+   "etiqueta": "SOFA",
+   "archivo": "signos/sofa.png",
+   "pagina": 85
+  },
+  "sopa": {
+   "etiqueta": "SOPA",
+   "archivo": "signos/sopa.png",
+   "pagina": 86
+  },
+  "spaguetti": {
+   "etiqueta": "SPAGUETTI",
+   "archivo": "signos/spaguetti.png",
+   "pagina": 86
+  },
+  "suave": {
+   "etiqueta": "SUAVE",
+   "archivo": "signos/suave.png",
+   "pagina": 86
+  },
+  "subir": {
+   "etiqueta": "SUBIR",
+   "archivo": "signos/subir.png",
+   "pagina": 86
+  },
+  "sucio": {
+   "etiqueta": "SUCIO",
+   "archivo": "signos/sucio.png",
+   "pagina": 86
+  },
+  "tambien": {
+   "etiqueta": "TAMBIEN",
+   "archivo": "signos/tambien.png",
+   "pagina": 87
+  },
+  "tapon": {
+   "etiqueta": "TAPON",
+   "archivo": "signos/tapon.png",
+   "pagina": 87
+  },
+  "tardar": {
+   "etiqueta": "TARDAR",
+   "archivo": "signos/tardar.png",
+   "pagina": 87
+  },
+  "tarde": {
+   "etiqueta": "TARDE",
+   "archivo": "signos/tarde.png",
+   "pagina": 87
+  },
+  "taxi": {
+   "etiqueta": "TAXI",
+   "archivo": "signos/taxi.png",
+   "pagina": 87
+  },
+  "taza": {
+   "etiqueta": "TAZA",
+   "archivo": "signos/taza.png",
+   "pagina": 87
+  },
+  "television": {
+   "etiqueta": "TELEVISION",
+   "archivo": "signos/television.png",
+   "pagina": 88
+  },
+  "tenedor": {
+   "etiqueta": "TENEDOR",
+   "archivo": "signos/tenedor.png",
+   "pagina": 88
+  },
+  "tener-cuidado": {
+   "etiqueta": "TENER CUIDADO",
+   "archivo": "signos/tener-cuidado.png",
+   "pagina": 88
+  },
+  "tener": {
+   "etiqueta": "TENER",
+   "archivo": "signos/tener.png",
+   "pagina": 88
+  },
+  "tenis": {
+   "etiqueta": "TENIS",
+   "archivo": "signos/tenis.png",
+   "pagina": 88
+  },
+  "tercero": {
+   "etiqueta": "TERCERO",
+   "archivo": "signos/tercero.png",
+   "pagina": 88
+  },
+  "terminado": {
+   "etiqueta": "TERMINADO",
+   "archivo": "signos/terminado.png",
+   "pagina": 88
+  },
+  "termometro": {
+   "etiqueta": "TERMOMETRO",
+   "archivo": "signos/termometro.png",
+   "pagina": 88
+  },
+  "terraza": {
+   "etiqueta": "TERRAZA",
+   "archivo": "signos/terraza.png",
+   "pagina": 89
+  },
+  "tiempo-atmosferico": {
+   "etiqueta": "TIEMPO ATMOSFERICO",
+   "archivo": "signos/tiempo-atmosferico.png",
+   "pagina": 89
+  },
+  "tiempo-cronologico": {
+   "etiqueta": "TIEMPO CRONOLOGICO",
+   "archivo": "signos/tiempo-cronologico.png",
+   "pagina": 89
+  },
+  "tierra": {
+   "etiqueta": "TIERRA",
+   "archivo": "signos/tierra.png",
+   "pagina": 89
+  },
+  "tiendas": {
+   "etiqueta": "TIENDAS",
+   "archivo": "signos/tiendas.png",
+   "pagina": 89
+  },
+  "tienda-de-ropa": {
+   "etiqueta": "TIENDA DE ROPA",
+   "archivo": "signos/tienda-de-ropa.png",
+   "pagina": 89
+  },
+  "timbre": {
+   "etiqueta": "TIMBRE",
+   "archivo": "signos/timbre.png",
+   "pagina": 90
+  },
+  "tirar": {
+   "etiqueta": "TIRAR",
+   "archivo": "signos/tirar.png",
+   "pagina": 90
+  },
+  "tirita": {
+   "etiqueta": "TIRITA",
+   "archivo": "signos/tirita.png",
+   "pagina": 90
+  },
+  "toalla": {
+   "etiqueta": "TOALLA",
+   "archivo": "signos/toalla.png",
+   "pagina": 90
+  },
+  "tobogan": {
+   "etiqueta": "TOBOGAN",
+   "archivo": "signos/tobogan.png",
+   "pagina": 90
+  },
+  "tocadiscos": {
+   "etiqueta": "TOCADISCOS",
+   "archivo": "signos/tocadiscos.png",
+   "pagina": 90
+  },
+  "tomate": {
+   "etiqueta": "TOMATE",
+   "archivo": "signos/tomate.png",
+   "pagina": 90
+  },
+  "torpe": {
+   "etiqueta": "TORPE",
+   "archivo": "signos/torpe.png",
+   "pagina": 90
+  },
+  "torre": {
+   "etiqueta": "TORRE",
+   "archivo": "signos/torre.png",
+   "pagina": 91
+  },
+  "torta": {
+   "etiqueta": "TORTA",
+   "archivo": "signos/torta.png",
+   "pagina": 91
+  },
+  "tortilla": {
+   "etiqueta": "TORTILLA",
+   "archivo": "signos/tortilla.png",
+   "pagina": 91
+  },
+  "trabajar": {
+   "etiqueta": "TRABAJAR",
+   "archivo": "signos/trabajar.png",
+   "pagina": 91
+  },
+  "tranquilo": {
+   "etiqueta": "TRANQUILO",
+   "archivo": "signos/tranquilo.png",
+   "pagina": 91
+  },
+  "tren": {
+   "etiqueta": "TREN",
+   "archivo": "signos/tren.png",
+   "pagina": 91
+  },
+  "trepar": {
+   "etiqueta": "TREPAR",
+   "archivo": "signos/trepar.png",
+   "pagina": 91
+  },
+  "triciclo": {
+   "etiqueta": "TRICICLO",
+   "archivo": "signos/triciclo.png",
+   "pagina": 91
+  },
+  "trineo": {
+   "etiqueta": "TRINEO",
+   "archivo": "signos/trineo.png",
+   "pagina": 92
+  },
+  "triste": {
+   "etiqueta": "TRISTE",
+   "archivo": "signos/triste.png",
+   "pagina": 92
+  },
+  "trueno": {
+   "etiqueta": "TRUENO",
+   "archivo": "signos/trueno.png",
+   "pagina": 92
+  },
+  "tu-te": {
+   "etiqueta": "TU, TE",
+   "archivo": "signos/tu-te.png",
+   "pagina": 92
+  },
+  "ultimo": {
+   "etiqueta": "ULTIMO",
+   "archivo": "signos/ultimo.png",
+   "pagina": 93
+  },
+  "uno": {
+   "etiqueta": "UNO",
+   "archivo": "signos/uno.png",
+   "pagina": 93
+  },
+  "uvas": {
+   "etiqueta": "UVAS",
+   "archivo": "signos/uvas.png",
+   "pagina": 93
+  },
+  "vacaciones": {
+   "etiqueta": "VACACIONES",
+   "archivo": "signos/vacaciones.png",
+   "pagina": 94
+  },
+  "vacio": {
+   "etiqueta": "VACIO",
+   "archivo": "signos/vacio.png",
+   "pagina": 94
+  },
+  "vaso": {
+   "etiqueta": "VASO",
+   "archivo": "signos/vaso.png",
+   "pagina": 94
+  },
+  "vecino": {
+   "etiqueta": "VECINO",
+   "archivo": "signos/vecino.png",
+   "pagina": 94
+  },
+  "venda": {
+   "etiqueta": "VENDA",
+   "archivo": "signos/venda.png",
+   "pagina": 94
+  },
+  "vender": {
+   "etiqueta": "VENDER",
+   "archivo": "signos/vender.png",
+   "pagina": 94
+  },
+  "vendedor": {
+   "etiqueta": "VENDEDOR",
+   "archivo": "signos/vendedor.png",
+   "pagina": 95
+  },
+  "ventana": {
+   "etiqueta": "VENTANA",
+   "archivo": "signos/ventana.png",
+   "pagina": 95
+  },
+  "ver": {
+   "etiqueta": "VER",
+   "archivo": "signos/ver.png",
+   "pagina": 95
+  },
+  "verdura": {
+   "etiqueta": "VERDURA",
+   "archivo": "signos/verdura.png",
+   "pagina": 95
+  },
+  "vestirse": {
+   "etiqueta": "VESTIRSE",
+   "archivo": "signos/vestirse.png",
+   "pagina": 95
+  },
+  "viajar": {
+   "etiqueta": "VIAJAR",
+   "archivo": "signos/viajar.png",
+   "pagina": 95
+  },
+  "video": {
+   "etiqueta": "VIDEO",
+   "archivo": "signos/video.png",
+   "pagina": 96
+  },
+  "viejo": {
+   "etiqueta": "VIEJO",
+   "archivo": "signos/viejo.png",
+   "pagina": 96
+  },
+  "viento": {
+   "etiqueta": "VIENTO",
+   "archivo": "signos/viento.png",
+   "pagina": 96
+  },
+  "vino": {
+   "etiqueta": "VINO",
+   "archivo": "signos/vino.png",
+   "pagina": 96
+  },
+  "visitar": {
+   "etiqueta": "VISITAR",
+   "archivo": "signos/visitar.png",
+   "pagina": 96
+  },
+  "vivir": {
+   "etiqueta": "VIVIR",
+   "archivo": "signos/vivir.png",
+   "pagina": 96
+  },
+  "ya": {
+   "etiqueta": "YA",
+   "archivo": "signos/ya.png",
+   "pagina": 97
+  },
+  "yogur": {
+   "etiqueta": "YOGUR",
+   "archivo": "signos/yogur.png",
+   "pagina": 97
+  },
+  "zanahoria": {
+   "etiqueta": "ZANAHORIA",
+   "archivo": "signos/zanahoria.png",
+   "pagina": 98
+  },
+  "zapatero": {
+   "etiqueta": "ZAPATERO",
+   "archivo": "signos/zapatero.png",
+   "pagina": 98
+  },
+  "zapatillas": {
+   "etiqueta": "ZAPATILLAS",
+   "archivo": "signos/zapatillas.png",
+   "pagina": 98
+  },
+  "zapato-calzado": {
+   "etiqueta": "ZAPATO (CALZADO)",
+   "archivo": "signos/zapato-calzado.png",
+   "pagina": 98
+  },
+  "zoo": {
+   "etiqueta": "ZOO",
+   "archivo": "signos/zoo.png",
+   "pagina": 98
+  },
+  "zumo": {
+   "etiqueta": "ZUMO",
+   "archivo": "signos/zumo.png",
+   "pagina": 98
+  },
+  "zumo-de-naranja": {
+   "etiqueta": "ZUMO DE NARANJA",
+   "archivo": "signos/zumo-de-naranja.png",
+   "pagina": 99
+  },
+  "buenos-dias": {
+   "etiqueta": "BUENOS DIAS",
+   "archivo": "signos/buenos-dias.png",
+   "pagina": 100
+  },
+  "buenas-tardes": {
+   "etiqueta": "BUENAS TARDES",
+   "archivo": "signos/buenas-tardes.png",
+   "pagina": 100
+  },
+  "buenas-noches": {
+   "etiqueta": "BUENAS NOCHES",
+   "archivo": "signos/buenas-noches.png",
+   "pagina": 100
+  },
+  "color-2": {
+   "etiqueta": "COLOR",
+   "archivo": "signos/color-2.png",
+   "pagina": 101
+  },
+  "amarillo": {
+   "etiqueta": "AMARILLO",
+   "archivo": "signos/amarillo.png",
+   "pagina": 101
+  },
+  "azul": {
+   "etiqueta": "AZUL",
+   "archivo": "signos/azul.png",
+   "pagina": 101
+  },
+  "blanco": {
+   "etiqueta": "BLANCO",
+   "archivo": "signos/blanco.png",
+   "pagina": 101
+  },
+  "gris": {
+   "etiqueta": "GRIS",
+   "archivo": "signos/gris.png",
+   "pagina": 101
+  },
+  "marron": {
+   "etiqueta": "MARRON",
+   "archivo": "signos/marron.png",
+   "pagina": 101
+  },
+  "naranja": {
+   "etiqueta": "NARANJA",
+   "archivo": "signos/naranja.png",
+   "pagina": 102
+  },
+  "negro": {
+   "etiqueta": "NEGRO",
+   "archivo": "signos/negro.png",
+   "pagina": 102
+  },
+  "rojo": {
+   "etiqueta": "ROJO",
+   "archivo": "signos/rojo.png",
+   "pagina": 102
+  },
+  "rosa": {
+   "etiqueta": "ROSA",
+   "archivo": "signos/rosa.png",
+   "pagina": 102
+  },
+  "verde": {
+   "etiqueta": "VERDE",
+   "archivo": "signos/verde.png",
+   "pagina": 102
+  },
+  "familia-2": {
+   "etiqueta": "FAMILIA",
+   "archivo": "signos/familia-2.png",
+   "pagina": 103
+  },
+  "abuelo": {
+   "etiqueta": "ABUELO",
+   "archivo": "signos/abuelo.png",
+   "pagina": 103
+  },
+  "abuela": {
+   "etiqueta": "ABUELA",
+   "archivo": "signos/abuela.png",
+   "pagina": 103
+  },
+  "papa": {
+   "etiqueta": "PAPA",
+   "archivo": "signos/papa.png",
+   "pagina": 103
+  },
+  "mama": {
+   "etiqueta": "MAMA",
+   "archivo": "signos/mama.png",
+   "pagina": 103
+  },
+  "hijo": {
+   "etiqueta": "HIJO",
+   "archivo": "signos/hijo.png",
+   "pagina": 104
+  },
+  "hija": {
+   "etiqueta": "HIJA",
+   "archivo": "signos/hija.png",
+   "pagina": 104
+  },
+  "hermano": {
+   "etiqueta": "HERMANO",
+   "archivo": "signos/hermano.png",
+   "pagina": 104
+  },
+  "hermana": {
+   "etiqueta": "HERMANA",
+   "archivo": "signos/hermana.png",
+   "pagina": 104
+  },
+  "tio": {
+   "etiqueta": "TIO",
+   "archivo": "signos/tio.png",
+   "pagina": 104
+  },
+  "tia": {
+   "etiqueta": "TIA",
+   "archivo": "signos/tia.png",
+   "pagina": 104
+  },
+  "primo": {
+   "etiqueta": "PRIMO",
+   "archivo": "signos/primo.png",
+   "pagina": 104
+  },
+  "prima": {
+   "etiqueta": "PRIMA",
+   "archivo": "signos/prima.png",
+   "pagina": 104
+  },
+  "semana-2": {
+   "etiqueta": "SEMANA",
+   "archivo": "signos/semana-2.png",
+   "pagina": 105
+  },
+  "dia-2": {
+   "etiqueta": "DIA",
+   "archivo": "signos/dia-2.png",
+   "pagina": 105
+  },
+  "lunes": {
+   "etiqueta": "LUNES",
+   "archivo": "signos/lunes.png",
+   "pagina": 105
+  },
+  "martes": {
+   "etiqueta": "MARTES",
+   "archivo": "signos/martes.png",
+   "pagina": 105
+  },
+  "miercoles": {
+   "etiqueta": "MIERCOLES",
+   "archivo": "signos/miercoles.png",
+   "pagina": 105
+  },
+  "jueves": {
+   "etiqueta": "JUEVES",
+   "archivo": "signos/jueves.png",
+   "pagina": 105
+  },
+  "viernes": {
+   "etiqueta": "VIERNES",
+   "archivo": "signos/viernes.png",
+   "pagina": 106
+  },
+  "sabado": {
+   "etiqueta": "SABADO",
+   "archivo": "signos/sabado.png",
+   "pagina": 106
+  },
+  "domingo": {
+   "etiqueta": "DOMINGO",
+   "archivo": "signos/domingo.png",
+   "pagina": 106
+  },
+  "anyo-2": {
+   "etiqueta": "AÑO",
+   "archivo": "signos/anyo-2.png",
+   "pagina": 107
+  },
+  "mes": {
+   "etiqueta": "MES",
+   "archivo": "signos/mes.png",
+   "pagina": 107
+  },
+  "enero": {
+   "etiqueta": "ENERO",
+   "archivo": "signos/enero.png",
+   "pagina": 107
+  },
+  "febrero": {
+   "etiqueta": "FEBRERO",
+   "archivo": "signos/febrero.png",
+   "pagina": 107
+  },
+  "marzo": {
+   "etiqueta": "MARZO",
+   "archivo": "signos/marzo.png",
+   "pagina": 107
+  },
+  "abril": {
+   "etiqueta": "ABRIL",
+   "archivo": "signos/abril.png",
+   "pagina": 108
+  },
+  "mayo": {
+   "etiqueta": "MAYO",
+   "archivo": "signos/mayo.png",
+   "pagina": 108
+  },
+  "junio": {
+   "etiqueta": "JUNIO",
+   "archivo": "signos/junio.png",
+   "pagina": 108
+  },
+  "julio": {
+   "etiqueta": "JULIO",
+   "archivo": "signos/julio.png",
+   "pagina": 108
+  },
+  "agosto": {
+   "etiqueta": "AGOSTO",
+   "archivo": "signos/agosto.png",
+   "pagina": 108
+  },
+  "septiembre": {
+   "etiqueta": "SEPTIEMBRE",
+   "archivo": "signos/septiembre.png",
+   "pagina": 109
+  },
+  "octubre": {
+   "etiqueta": "OCTUBRE",
+   "archivo": "signos/octubre.png",
+   "pagina": 109
+  },
+  "noviembre": {
+   "etiqueta": "NOVIEMBRE",
+   "archivo": "signos/noviembre.png",
+   "pagina": 109
+  },
+  "diciembre": {
+   "etiqueta": "DICIEMBRE",
+   "archivo": "signos/diciembre.png",
+   "pagina": 109
+  },
+  "profesiones": {
+   "etiqueta": "PROFESIONES",
+   "archivo": "signos/profesiones.png",
+   "pagina": 110
+  },
+  "abogado": {
+   "etiqueta": "ABOGADO",
+   "archivo": "signos/abogado.png",
+   "pagina": 110
+  },
+  "actor": {
+   "etiqueta": "ACTOR",
+   "archivo": "signos/actor.png",
+   "pagina": 110
+  },
+  "albanyil": {
+   "etiqueta": "ALBAÑIL",
+   "archivo": "signos/albanyil.png",
+   "pagina": 110
+  },
+  "arbitro": {
+   "etiqueta": "ARBITRO",
+   "archivo": "signos/arbitro.png",
+   "pagina": 110
+  },
+  "cantante": {
+   "etiqueta": "CANTANTE",
+   "archivo": "signos/cantante.png",
+   "pagina": 111
+  },
+  "carpintero": {
+   "etiqueta": "CARPINTERO",
+   "archivo": "signos/carpintero.png",
+   "pagina": 111
+  },
+  "conductor": {
+   "etiqueta": "CONDUCTOR",
+   "archivo": "signos/conductor.png",
+   "pagina": 111
+  },
+  "enfermera": {
+   "etiqueta": "ENFERMERA",
+   "archivo": "signos/enfermera.png",
+   "pagina": 111
+  },
+  "entrenador": {
+   "etiqueta": "ENTRENADOR",
+   "archivo": "signos/entrenador.png",
+   "pagina": 111
+  },
+  "mecanico": {
+   "etiqueta": "MECANICO",
+   "archivo": "signos/mecanico.png",
+   "pagina": 111
+  },
+  "medico": {
+   "etiqueta": "MEDICO",
+   "archivo": "signos/medico.png",
+   "pagina": 111
+  },
+  "militar": {
+   "etiqueta": "MILITAR",
+   "archivo": "signos/militar.png",
+   "pagina": 112
+  },
+  "peluquero": {
+   "etiqueta": "PELUQUERO",
+   "archivo": "signos/peluquero.png",
+   "pagina": 112
+  },
+  "pescador": {
+   "etiqueta": "PESCADOR",
+   "archivo": "signos/pescador.png",
+   "pagina": 112
+  },
+  "portero-futbol": {
+   "etiqueta": "PORTERO (FUTBOL)",
+   "archivo": "signos/portero-futbol.png",
+   "pagina": 112
+  },
+  "portero-2": {
+   "etiqueta": "PORTERO",
+   "archivo": "signos/portero-2.png",
+   "pagina": 112
+  },
+  "profesor": {
+   "etiqueta": "PROFESOR",
+   "archivo": "signos/profesor.png",
+   "pagina": 112
+  },
+  "secretario": {
+   "etiqueta": "SECRETARIO",
+   "archivo": "signos/secretario.png",
+   "pagina": 112
+  }
+ },
+ "claves": {
+  "A DIARIO": "diario-a",
+  "ABAJO": "abajo",
+  "ABOGADO": "abogado",
+  "ABRAZAR": "abrazar",
+  "ABRIGO": "abrigo",
+  "ABRIL": "abril",
+  "ABRIR": "abrir",
+  "ABRIR EL GRIFO": "abrir-los-grifos",
+  "ABRIR LOS GRIFOS": "abrir-los-grifos",
+  "ABUELA": "abuela",
+  "ABUELO": "abuelo",
+  "ACIDAR": "acido",
+  "ACIDO": "acido",
+  "ACONSEJAR": "aconsejar",
+  "ACTOR": "actor",
+  "AGOSTO": "agosto",
+  "AHORA": "ahora",
+  "AIRE": "aire",
+  "AJO": "ajo",
+  "ALBAÑIL": "albanyil",
+  "ALFOMBRA": "alfombra",
+  "ALGO": "algo",
+  "ALGUNO": "algunos",
+  "ALGUNOS": "algunos",
+  "ALIMENTO": "alimentos",
+  "ALIMENTOS": "alimentos",
+  "ALLI": "alli",
+  "ALMOHADA": "almohada",
+  "ALTO": "alto",
+  "AMARILLO": "amarillo",
+  "AMIGO": "amigo",
+  "AMOR": "amor",
+  "ANDAR": "andar",
+  "ANIMAL": "animal",
+  "ANTES": "antes",
+  "APOYAR": "apoyar",
+  "APRENDER": "aprender",
+  "AQUI": "aqui",
+  "ARBITRAR": "arbitro",
+  "ARBITRO": "arbitro",
+  "ARBOL": "arbol",
+  "ARCILLA": "arcilla",
+  "ARCO IRIS": "arco-iris",
+  "ARENA": "arena",
+  "ARMARIO": "armario",
+  "ARRASTRAR": "arrastrar",
+  "ARREGLAR": "arreglar",
+  "ARRIBA": "arriba",
+  "ASAR": "asar",
+  "ASCENSOR": "ascensor",
+  "ASCO": "asco",
+  "ASUSTAR": "asustar",
+  "ATENDER": "atender",
+  "ATLETISMO": "atletismo",
+  "AUTOBUS": "autobus",
+  "AUTOR": "autor",
+  "AVION": "avion",
+  "AVISAR": "avisar",
+  "AYER": "ayer",
+  "AYUDAR": "ayudar",
+  "AZUCAR": "azucar",
+  "AZUL": "azul",
+  "AÑO": "anyo",
+  "BABERO": "babero",
+  "BAJAR": "bajar",
+  "BAJO": "bajo",
+  "BALON DE FUTBOL": "balon-de-futbol",
+  "BALONCESTO": "baloncesto",
+  "BANCO": "bancos",
+  "BANCOS": "bancos",
+  "BAR": "bar",
+  "BARATO": "barato",
+  "BARCO": "barco",
+  "BARRO": "barro",
+  "BATA": "bata",
+  "BAÑADOR": "banyador",
+  "BAÑAR": "banyarse",
+  "BAÑARSE": "banyarse",
+  "BAÑO": "banyo-cuarto-de",
+  "BEBER": "beber",
+  "BIBERON": "biberon",
+  "BICICLETA": "bicicleta",
+  "BIEN": "bien",
+  "BLANCO": "blanco",
+  "BLANDO": "blando",
+  "BLOQUE": "bloques",
+  "BLOQUES": "bloques",
+  "BODA": "boda",
+  "BOLIGRAFO": "boligrafo",
+  "BOLSO": "bolso",
+  "BONITA": "bonita",
+  "BONITO": "bonita",
+  "BOSQUE": "bosque",
+  "BOTELLA": "botella",
+  "BRAGA": "braga",
+  "BRAZO": "brazos",
+  "BRAZOS": "brazos",
+  "BUEN TIEMPO": "buen-tiempo",
+  "BUENAS NOCHES": "buenas-noches",
+  "BUENAS TARDES": "buenas-tardes",
+  "BUENO": "bueno",
+  "BUENOS DIAS": "buenos-dias",
+  "BUFANDA": "bufanda",
+  "BURBUJA": "burbujas",
+  "BURBUJAS": "burbujas",
+  "CABALLO DE MADERA": "caballo-de-madera",
+  "CABEZA": "cabeza",
+  "CADA UNO": "cada-uno",
+  "CAER": "caerse",
+  "CAERSE": "caerse",
+  "CAFE": "cafe",
+  "CAJA": "caja",
+  "CALCETIN": "calcetines",
+  "CALCETINES": "calcetines",
+  "CALIENTE": "caliente",
+  "CALLE": "calle",
+  "CALOR": "calor",
+  "CALZADO": "calzado",
+  "CALZONCILLO": "calzoncillos",
+  "CALZONCILLOS": "calzoncillos",
+  "CAMA": "cama",
+  "CAMION": "camion",
+  "CAMISA": "camisa",
+  "CAMISETA": "camiseta",
+  "CANSADO": "cansado",
+  "CANSAR": "cansado",
+  "CANTANTE": "cantante",
+  "CAPITAN": "capitan",
+  "CARA": "cara",
+  "CARAMELO": "caramelo",
+  "CARNAVAL": "carnaval",
+  "CARNE": "carne",
+  "CARO": "caro",
+  "CARPINTERO": "carpintero",
+  "CARTERA": "cartera",
+  "CASA": "casa",
+  "CASI": "casi",
+  "CASTILLO": "castillo",
+  "CAZO": "cazo",
+  "CAZUELA": "cazuela",
+  "CAÑA DE PESCAR": "canya-de-pescar",
+  "CEBOLLA": "cebolla",
+  "CELEBRAR": "celebrar",
+  "CELOSO": "celoso",
+  "CENAR": "cenar",
+  "CEPILLARSE LOS DIENTES": "cepillarse-los-dientes",
+  "CEPILLO DE UÑAS": "cepillo-de-unyas",
+  "CEREZA": "cerezas",
+  "CEREZAS": "cerezas",
+  "CERRAR": "cerrar",
+  "CERVEZA": "cerveza",
+  "CESTO": "cesto",
+  "CHOCOLATE": "chocolate",
+  "CHORIZO": "chorizo",
+  "CHULETA": "chuletas",
+  "CHULETAS": "chuletas",
+  "CICLISMO": "ciclismo",
+  "CIELO": "cielo",
+  "CINE": "cine",
+  "CIRCO": "circo",
+  "CIUDAD": "ciudad",
+  "CLARO": "claro",
+  "CLASE": "clases",
+  "CLASES": "clases",
+  "COCHE": "coche",
+  "COCINA": "cocina",
+  "COCINAR": "cocinar",
+  "COGER": "coger",
+  "COLEGIO": "colegio",
+  "COLONIA": "colonia",
+  "COLOR": "color",
+  "COLUMPIAR": "columpiarse",
+  "COLUMPIARSE": "columpiarse",
+  "COMEDOR": "comedor",
+  "COMER": "comer",
+  "COMODO": "comodo",
+  "COMPAÑERO": "companyero",
+  "COMPETIR": "competir",
+  "COMPRAR": "comprar",
+  "COMUNICACION": "comunicacion",
+  "COMUNICAR": "comunicarse",
+  "COMUNICARSE": "comunicarse",
+  "CON": "con",
+  "CONDUCIR": "conducir",
+  "CONDUCTOR": "conductor",
+  "CONOCER": "conocer",
+  "CONSTIPADO": "constipado",
+  "CONSTRUIR": "construir",
+  "CONTAR": "contar",
+  "CONTENTO": "contento",
+  "CONTIGO": "contigo",
+  "COPIAR": "copiar",
+  "CORBATA": "corbata",
+  "CORRER": "correr",
+  "CORTINA": "cortina",
+  "COSA": "cosas",
+  "COSAS": "cosas",
+  "COSTA": "costa",
+  "COTILLEAR": "cotillear",
+  "CUADERNO": "cuaderno",
+  "CUADRADO": "cuadrado",
+  "CUADRO": "cuadro",
+  "CUAL": "cual",
+  "CUANTAS": "cuantas",
+  "CUANTO": "cuantas",
+  "CUARTO": "cuarto",
+  "CUARTO DE BAÑO": "banyo-cuarto-de",
+  "CUBO": "cubo",
+  "CUCHARA": "cuchara",
+  "CUCHILLO": "cuchillo",
+  "CUENTO": "cuento",
+  "CUERDA": "cuerda",
+  "CUERPO": "cuerpo",
+  "CUIDADO": "cuidado",
+  "CUIDAR": "atender-cuidar",
+  "CUMPLEAÑOS": "cumpleanyos",
+  "CUNA": "cuna",
+  "CURAR": "curar",
+  "DAR": "dar",
+  "DAR ASCO": "dar-asco",
+  "DAR PATADAS": "dar-patadas",
+  "DEBAJO": "debajo",
+  "DEBER": "debe",
+  "DECIR": "decir",
+  "DECORAR": "decorar",
+  "DEFENDER": "defender",
+  "DELGADO": "delgado",
+  "DENTRO": "dentro",
+  "DEPORTE": "deporte",
+  "DEPRISA": "deprisa",
+  "DESAYUNAR": "desayunar",
+  "DESCANSAR": "descansar",
+  "DESGRACIA": "desgracia",
+  "DESIERTO": "desierto",
+  "DESNUDAR": "desnudarse",
+  "DESNUDARSE": "desnudarse",
+  "DESOBEDECER": "desobedecer",
+  "DESPUES": "despues",
+  "DIA": "dia",
+  "DIARIO": "diario-a",
+  "DIBUJAR": "dibujar",
+  "DICIEMBRE": "diciembre",
+  "DIFICIL": "dificil",
+  "DIMINUTO": "diminuto",
+  "DISFRACES": "disfraces",
+  "DISFRAZAR": "disfraces",
+  "DISTINTO": "distinto",
+  "DIVERTIDO": "divertido",
+  "DOLER": "dolor-doler",
+  "DOLOR": "dolor-doler",
+  "DOMINGO": "domingo",
+  "DORMIR": "dormir",
+  "DORMITORIO": "dormitorio",
+  "DUCHA": "ducha",
+  "DURO": "duro",
+  "EDUCADO": "educado",
+  "EDUCAR": "educado",
+  "ELEGANTE": "elegante",
+  "EMPUJAR": "empujar",
+  "ENCIMA": "encima",
+  "ENERO": "enero",
+  "ENFADAR": "enfadarse",
+  "ENFADARSE": "enfadarse",
+  "ENFERMERA": "enfermera",
+  "ENFERMERO": "enfermera",
+  "ENFERMO": "enfermo",
+  "ENORME": "enorme",
+  "ENSALADA": "ensalada",
+  "ENSEÑAR": "ensenyar",
+  "ENSUCIAR": "ensuciarse",
+  "ENSUCIARSE": "ensuciarse",
+  "ENTRENADOR": "entrenador",
+  "EQUIPO DE FUTBOL": "equipo-de-futbol",
+  "ESCALERA": "escalera",
+  "ESCOBA": "escoba",
+  "ESCONDER": "esconder",
+  "ESCRIBIR": "escribir",
+  "ESCUCHAR": "escuchar",
+  "ESPAGUETI": "spaguetti",
+  "ESPAGUETIS": "spaguetti",
+  "ESPEJO": "espejo",
+  "ESPONJA": "esponja",
+  "ESPOSO": "esposo",
+  "ESQUIAR": "esquiar",
+  "ESTAR": "estar",
+  "ESTE": "esto",
+  "ESTIRAR": "estirarse",
+  "ESTIRARSE": "estirarse",
+  "ESTO": "esto",
+  "ESTOMAGAR": "estomago",
+  "ESTOMAGO": "estomago",
+  "ESTRELLA": "estrellas",
+  "ESTRELLAS": "estrellas",
+  "ESTUDIANTE": "estudiante",
+  "ESTUDIAR": "estudiar",
+  "EXAMEN": "examen",
+  "EXAMINAR": "examinar",
+  "EXPLICAR": "contar-explicar",
+  "FACIL": "facil",
+  "FAMILIA": "familia",
+  "FAMOSO": "famoso",
+  "FANTASMA": "fantasma",
+  "FEBRERO": "febrero",
+  "FEO": "feo",
+  "FIEBRE": "fiebre",
+  "FIESTA": "fiesta",
+  "FLAN": "flan",
+  "FLOR": "flor",
+  "FOGON": "fogon",
+  "FOTO": "foto",
+  "FRASCO": "frascos",
+  "FRASCOS": "frascos",
+  "FRASE": "frase",
+  "FREIR": "freir",
+  "FRESA": "fresas",
+  "FRESAS": "fresas",
+  "FRIGORIFICO": "frigorifico",
+  "FRIO": "frio",
+  "FRONTON": "fronton",
+  "FROTAR": "frotar",
+  "FRUTA": "fruta",
+  "FUEGO": "fuego",
+  "FUENTE": "fuente",
+  "FUERA": "fuera-de-la-casa",
+  "FUERA DE LA CASA": "fuera-de-la-casa",
+  "FUTBOL": "futbol",
+  "FUTBOLISTA": "futbolista",
+  "GALLETA": "galleta",
+  "GALLINA": "gallina",
+  "GANAR": "ganar",
+  "GATO": "gato",
+  "GEOGRAFIA": "geografia",
+  "GESTION": "gestion",
+  "GIMNASIA": "gimnasia",
+  "GOL": "gol",
+  "GOMA": "goma",
+  "GORDO": "gordo",
+  "GORRO": "gorro",
+  "GRANDE": "grande",
+  "GRIS": "gris",
+  "GRITAR": "gritar",
+  "GUANTE": "guantes",
+  "GUANTES": "guantes",
+  "GUAPO": "guapo",
+  "GUARDAR": "guardar",
+  "GUISAR": "guisar",
+  "GUSTAR": "gustar",
+  "HABER": "hay",
+  "HABIL": "habil",
+  "HABLAR": "hablar",
+  "HABLAR EN MIMICA": "hablar-en-mimica",
+  "HACER": "hacer",
+  "HAMBRE": "hambre",
+  "HAY": "hay",
+  "HELADO": "helado",
+  "HERMANA": "hermana",
+  "HERMANO": "hermano",
+  "HIJA": "hija",
+  "HIJO": "hijo",
+  "HOJA": "hojas-arbol",
+  "HOJAS": "hojas-arbol",
+  "HOMBRE": "hombre",
+  "HORA": "hora",
+  "HORA EXACTA": "hora-exacta",
+  "HORNO": "horno",
+  "HOSPITAL": "hospital",
+  "HOY": "hoy",
+  "HUESO": "huesos",
+  "HUESOS": "huesos",
+  "HUEVO": "huevo",
+  "HUMEDO": "humedo",
+  "IGUAL": "igual",
+  "IMAGINAR": "imaginar",
+  "IMITAR": "imitar",
+  "IMPERMEABLE": "impermeable",
+  "INCOMODO": "incomodo",
+  "INSISTIR": "insistir",
+  "INVITAR": "invitar",
+  "INYECCION": "inyeccion",
+  "IR": "ir",
+  "ISLA": "isla",
+  "JABON": "jabon",
+  "JAMON": "jamon",
+  "JARABE": "jarabe",
+  "JERSEY": "jersey",
+  "JOVEN": "joven",
+  "JUEVES": "jueves",
+  "JUGAR": "jugar",
+  "JUGUETE": "juguetes",
+  "JUGUETES": "juguetes",
+  "JULIO": "julio",
+  "JUNIO": "junio",
+  "JUNTO": "juntos",
+  "JUNTOS": "juntos",
+  "LAMPAR": "lampara",
+  "LAMPARA": "lampara",
+  "LAPICES DE COLORES": "lapices-de-colores",
+  "LAPIZ": "lapiz",
+  "LATA": "latas",
+  "LATAS": "latas",
+  "LAVAR": "lavarse",
+  "LAVARSE": "lavarse",
+  "LAZO": "lazo",
+  "LECHE": "leche",
+  "LEER": "leer",
+  "LEJOS": "lejos",
+  "LEVANTAR": "levantarse",
+  "LEVANTARSE": "levantarse",
+  "LIAR": "lio",
+  "LIBRERIA": "libreria",
+  "LIBRO": "libro",
+  "LIGERO": "ligero",
+  "LIMON": "limon",
+  "LIMPIO": "limpio",
+  "LIO": "lio",
+  "LISTO": "listo",
+  "LLENO": "lleno",
+  "LLORAR": "llorar",
+  "LLUVIA": "lluvia",
+  "LUNA": "luna",
+  "LUNES": "lunes",
+  "LUZ": "luz",
+  "MACARRON": "macarrones",
+  "MACARRONES": "macarrones",
+  "MADERA": "madera",
+  "MADRE": "mama",
+  "MAL TIEMPO": "mal-tiempo",
+  "MALEDUCADO": "maleducado",
+  "MALO": "malo",
+  "MAMA": "mama",
+  "MANCHADO": "manchado",
+  "MANCHAR": "manchado",
+  "MANO": "manos",
+  "MANOS": "manos",
+  "MANTA": "manta",
+  "MANTEL": "mantel",
+  "MANTEQUILLA": "mantequilla",
+  "MANZANA": "manzana",
+  "MAPA": "mapa",
+  "MAR": "mar",
+  "MARRON": "marron",
+  "MARTES": "martes",
+  "MARZO": "marzo",
+  "MASA": "masa",
+  "MAYO": "mayo",
+  "MAYOR": "mayor",
+  "MAÑANA": "manyana",
+  "MECANICO": "mecanico",
+  "MEDICAR": "medico",
+  "MEDICO": "medico",
+  "MELON": "melon",
+  "MENOS": "menos",
+  "MERENDAR": "merendar",
+  "MES": "mes",
+  "MESA": "mesa",
+  "MESILLA": "mesilla",
+  "METRO": "metro",
+  "MIERCOLAR": "miercoles",
+  "MIERCOLES": "miercoles",
+  "MIGA": "migas",
+  "MIGAS": "migas",
+  "MILITAR": "militar",
+  "MINUTO": "minuto",
+  "MODELAR": "modelar",
+  "MODERNO": "nuevo-moderno",
+  "MONOPATIN": "monopatin",
+  "MONTAR A CABALLO": "montar-a-caballo",
+  "MONTAÑA": "montanya",
+  "MORENO": "moreno",
+  "MORIR": "morir",
+  "MOTO": "moto",
+  "MUCHO": "mucho",
+  "MUJER": "mujer",
+  "MUNDO": "mundo",
+  "MUSICA": "musica",
+  "MUSICAR": "musica",
+  "MUÑECA": "munyeca",
+  "NACER": "nacer",
+  "NADA": "nada",
+  "NARANJA": "naranja",
+  "NAVIDAD": "navidad",
+  "NECESITAR": "necesitar",
+  "NEGRO": "negro",
+  "NERVIOSO": "nervioso",
+  "NIEBLA": "niebla",
+  "NIEVE": "nieve",
+  "NIÑA": "ninya",
+  "NIÑO": "ninyo",
+  "NO": "no",
+  "NO HACER CASO": "no-hacer-caso",
+  "NOCHE": "noche",
+  "NOCHE VIEJA": "noche-vieja",
+  "NOCHEVIEJA": "noche-vieja",
+  "NORMAL": "normal",
+  "NOVIEMBRE": "noviembre",
+  "NOVIO": "novio",
+  "NUBE": "nubes",
+  "NUBES": "nubes",
+  "NUEVO": "nuevo-moderno",
+  "NUNCA": "nunca",
+  "OBEDECER": "obedecer",
+  "OCTUBRE": "octubre",
+  "OLER": "oler",
+  "OLVIDAR": "olvidar",
+  "OPERAR": "operar",
+  "OSCURO": "oscuro",
+  "OTRO": "otro",
+  "PADRE": "papa",
+  "PAISES": "paises",
+  "PAJA": "paja",
+  "PALA": "pala",
+  "PALABRA": "palabras",
+  "PALABRAS": "palabras",
+  "PAN": "pan",
+  "PANTALON": "pantalon",
+  "PAPA": "papa",
+  "PAPEL": "papel",
+  "PAPEL HIGIENICO": "papel-higienico",
+  "PARQUE": "parque",
+  "PASTILLA": "pastilla",
+  "PATATA": "patata",
+  "PATINAR": "patinar",
+  "PATINES": "patines",
+  "PATIO": "patio",
+  "PATO": "pato",
+  "PAÑUELO": "panyuelo",
+  "PEDIR": "pedir",
+  "PEDIR PERDON": "pedir-perdon",
+  "PEINAR": "peinarse",
+  "PEINARSE": "peinarse",
+  "PEINE": "peine",
+  "PELEAR": "pelearse",
+  "PELEARSE": "pelearse",
+  "PELOTA": "pelota",
+  "PELUQUERO": "peluquero",
+  "PENSAR": "pensar",
+  "PEQUEÑA": "pequenya",
+  "PEQUEÑO": "pequenyo",
+  "PERA": "pera",
+  "PERDER": "perder",
+  "PERDONAR": "perdonar",
+  "PERO": "pero",
+  "PERRO": "perro",
+  "PERSONA": "persona",
+  "PERSONAS": "persona-s",
+  "PESADO": "pesado",
+  "PESCADOR": "pescador",
+  "PEZ": "pez",
+  "PICOTEAR": "picotear",
+  "PIE": "pies",
+  "PIEDRA": "piedras",
+  "PIEDRAS": "piedras",
+  "PIEL": "piel",
+  "PIENSA": "piensa",
+  "PIES": "pies",
+  "PIJAMA": "pijama",
+  "PING PONG": "ping-pong",
+  "PINGPONG": "ping-pong",
+  "PINTAR": "pintar",
+  "PIRATA": "pirata",
+  "PISCINA": "piscina",
+  "PISO": "piso",
+  "PISTOLA": "pistola",
+  "PIZARRA": "pizarra",
+  "PLASTICO": "plastico",
+  "PLATANO": "platano",
+  "PLATO": "plato",
+  "PLAYA": "playa",
+  "POCO": "poco",
+  "PODER": "poder",
+  "POR LA MAÑANA": "manyana-por-la",
+  "POR QUE": "por-que",
+  "PORQUE": "por-que",
+  "PORTAL": "portal",
+  "PORTERO": "portero",
+  "PORTERO DE FUTBOL": "portero-futbol",
+  "POSTRE": "postre",
+  "PRACTICAR": "practicar",
+  "PREGUNTAR": "preguntar",
+  "PREPARAR": "preparar",
+  "PRIMA": "prima",
+  "PRIMERO": "primero",
+  "PRIMO": "primo",
+  "PRINCESA": "princesa",
+  "PROBAR": "probar",
+  "PROFESION": "profesiones",
+  "PROFESIONES": "profesiones",
+  "PROFESOR": "profesor",
+  "PROHIBIR": "prohibir",
+  "PRONTO": "pronto",
+  "PROXIMA VEZ": "proxima-vez",
+  "PRUEBA": "prueba",
+  "PUEBLO": "pueblo",
+  "PUERTA": "puerta",
+  "PURE": "pure",
+  "QUERER": "querer",
+  "QUESO": "queso",
+  "QUIEN": "quien",
+  "QUINTO": "quinto",
+  "RABIA": "rabia",
+  "RADIO": "radio",
+  "RANA": "rana",
+  "RAPIDAMENTE": "rapidamente-rapido",
+  "RAPIDO": "rapidamente-rapido",
+  "RARO": "raro",
+  "RASTRILLO": "rastrillo",
+  "RAYO": "rayo",
+  "RECOGER": "recoger",
+  "RECORDAR": "recordar",
+  "REDONDO": "redondo",
+  "REGALAR": "regalar-regalo",
+  "REGALO": "regalar-regalo",
+  "REGAÑAR": "reganyar",
+  "REGLA": "regla",
+  "REIR": "reir",
+  "REPISA": "repisa",
+  "REYES MAGOS": "reyes-magos",
+  "RIO": "rio",
+  "ROBAR": "robar",
+  "RODILLO": "rodillo",
+  "ROJO": "rojo",
+  "ROMPER": "romper",
+  "ROPA": "ropa",
+  "ROPA DE BAÑO": "ropa-de-banyo",
+  "ROSA": "rosa",
+  "RUBIO": "rubio",
+  "RUEDA": "ruedas",
+  "RUEDAS": "ruedas",
+  "RUIDO": "ruido",
+  "SABADO": "sabado",
+  "SABANA": "sabana",
+  "SACAPUNTAS": "sacapuntas",
+  "SAL": "sal",
+  "SALTAR": "saltar",
+  "SALUD": "salud",
+  "SANDALIA": "sandalia",
+  "SANDIA": "sandia",
+  "SANDIO": "sandia",
+  "SANDWICH": "sandwiches",
+  "SANDWICHES": "sandwiches",
+  "SANGRE": "sangre",
+  "SANO": "sano",
+  "SARTEN": "sarten",
+  "SECADOR": "secador",
+  "SECAR": "secarse",
+  "SECARSE": "secarse",
+  "SECO": "seco",
+  "SECRETARIO": "secretario",
+  "SED": "sed",
+  "SEGUNDO": "segundo",
+  "SEMANA": "semana",
+  "SEMANA SANTA": "semana-santa",
+  "SENTAR": "sentarse-silla",
+  "SENTARSE": "sentarse-silla",
+  "SEPTIEMBRE": "septiembre",
+  "SEQUIA": "sequia",
+  "SER": "ser",
+  "SERVILLETA": "servilleta",
+  "SEXTO": "sexto",
+  "SILLA": "sentarse-silla",
+  "SIMPATICO": "simpatico",
+  "SOFA": "sofa",
+  "SOL": "sol",
+  "SOPA": "sopa",
+  "SPAGUETTI": "spaguetti",
+  "SUAVE": "suave",
+  "SUBIR": "subir",
+  "SUCIO": "sucio",
+  "TAMBIEN": "tambien",
+  "TAPON": "tapon",
+  "TARDAR": "tardar",
+  "TARDE": "tarde",
+  "TAXI": "taxi",
+  "TAZA": "taza",
+  "TE": "tu-te",
+  "TELEVISION": "television",
+  "TENEDOR": "tenedor",
+  "TENER": "tener",
+  "TENER CUIDADO": "tener-cuidado",
+  "TENIS": "tenis",
+  "TERCERO": "tercero",
+  "TERMINADO": "terminado",
+  "TERMINAR": "terminado",
+  "TERMOMETRO": "termometro",
+  "TERRAZA": "terraza",
+  "TIA": "tia",
+  "TIEMPO": "tiempo-cronologico",
+  "TIEMPO ATMOSFERICO": "tiempo-atmosferico",
+  "TIEMPO CRONOLOGICO": "tiempo-cronologico",
+  "TIENDA": "tiendas",
+  "TIENDA DE ROPA": "tienda-de-ropa",
+  "TIENDAS": "tiendas",
+  "TIERRA": "tierra",
+  "TIMBRE": "timbre",
+  "TIO": "tio",
+  "TIRAR": "tirar",
+  "TIRITA": "tirita",
+  "TOALLA": "toalla",
+  "TOBOGAN": "tobogan",
+  "TOCADISCOS": "tocadiscos",
+  "TOMATE": "tomate",
+  "TORPE": "torpe",
+  "TORRE": "torre",
+  "TORTA": "torta",
+  "TORTILLA": "tortilla",
+  "TRABAJAR": "trabajar",
+  "TRANQUILO": "tranquilo",
+  "TREN": "tren",
+  "TREPAR": "trepar",
+  "TRICICLO": "triciclo",
+  "TRINEO": "trineo",
+  "TRISTE": "triste",
+  "TRUENO": "trueno",
+  "TU": "tu-te",
+  "ULTIMAR": "ultimo",
+  "ULTIMO": "ultimo",
+  "UNO": "uno",
+  "UVA": "uvas",
+  "UVAS": "uvas",
+  "VACACIONES": "vacaciones",
+  "VACIAR": "vacio",
+  "VACIO": "vacio",
+  "VASO": "vaso",
+  "VECINO": "vecino",
+  "VENDA": "venda",
+  "VENDEDOR": "vendedor",
+  "VENDER": "vender",
+  "VENTANA": "ventana",
+  "VER": "ver",
+  "VERDE": "verde",
+  "VERDURA": "verdura",
+  "VESTIR": "vestirse",
+  "VESTIRSE": "vestirse",
+  "VIAJAR": "viajar",
+  "VIDEO": "video",
+  "VIEJO": "viejo",
+  "VIENTO": "viento",
+  "VIERNES": "viernes",
+  "VINO": "vino",
+  "VISITAR": "visitar",
+  "VIVIR": "vivir",
+  "YA": "ya",
+  "YOGUR": "yogur",
+  "ZANAHORIA": "zanahoria",
+  "ZAPATERO": "zapatero",
+  "ZAPATILLA": "zapatillas",
+  "ZAPATILLAS": "zapatillas",
+  "ZAPATO": "zapato-calzado",
+  "ZOO": "zoo",
+  "ZUMO": "zumo",
+  "ZUMO DE NARANJA": "zumo-de-naranja"
+ },
+ "claves_con_tilde": {
+  "bebé": "bebe",
+  "más": "mas",
+  "qué": "que",
+  "sí": "si"
+ },
+ "letras": {
+  "a": "dactilologico/a.png",
+  "b": "dactilologico/b.png",
+  "c": "dactilologico/c.png",
+  "d": "dactilologico/d.png",
+  "e": "dactilologico/e.png",
+  "f": "dactilologico/f.png",
+  "g": "dactilologico/g.png",
+  "h": "dactilologico/h.png",
+  "i": "dactilologico/i.png",
+  "j": "dactilologico/j.png",
+  "k": "dactilologico/k.png",
+  "l": "dactilologico/l.png",
+  "m": "dactilologico/m.png",
+  "n": "dactilologico/n.png",
+  "ñ": "dactilologico/ny.png",
+  "o": "dactilologico/o.png",
+  "p": "dactilologico/p.png",
+  "q": "dactilologico/q.png",
+  "r": "dactilologico/r.png",
+  "s": "dactilologico/s.png",
+  "t": "dactilologico/t.png",
+  "u": "dactilologico/u.png",
+  "v": "dactilologico/v.png",
+  "w": "dactilologico/w.png",
+  "x": "dactilologico/x.png",
+  "y": "dactilologico/y.png",
+  "z": "dactilologico/z.png"
+ }
+}

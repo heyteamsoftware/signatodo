@@ -1,0 +1,50 @@
+# Signatodo
+
+Prototipo que, a partir del audio de un vídeo, muestra en un recuadro la signación en
+lengua de signos española (LSE) sincronizada con subtítulos. Tiene dos modos:
+
+- **Tarjetas**: un dibujo por palabra, o deletreo dactilológico si no hay signo.
+- **Avatar (prueba)**: un personaje 2D de trazo de línea que enlaza los signos con
+  movimiento real, cara con expresiones básicas y boca que vocaliza.
+
+> Es un prototipo educativo sin ánimo de lucro. Signa palabra a palabra en el orden del
+> castellano, no con la gramática de la LSE, y no lo ha validado ninguna persona sorda ni
+> intérprete. No sustituye a la interpretación en LSE.
+
+## Requisitos
+
+- Windows con Python 3.13 (app) y Python 3.12 (solo para extraer poses con MediaPipe).
+- ffmpeg en el PATH.
+- `py -m pip install faster-whisper simplemma pymupdf pillow numpy`
+- `py -3.12 -m pip install mediapipe opencv-python numpy`
+
+## Uso
+
+```
+py servidor.py                      # abre http://localhost:8765
+py procesar.py videos\mi_video.mp4  # transcribe y prepara los signos (o botón en la web)
+py exportar.py videos\mi_video.mp4  # mp4 con recuadro y subtítulos pegados (o botón en la web)
+```
+
+En la web: elegir vídeo, marcar «Avatar (prueba)» y reproducir. El vídeo `prueba-lenta`
+tiene movimiento para todos sus signos.
+
+## Datos que no están en el repositorio
+
+| Qué | Cómo se obtiene |
+|---|---|
+| Dibujos de signos y alfabeto (`banco/signos`, `banco/dactilologico`) | `py herramientas\construir_banco.py` con los dos PDF de origen en la carpeta del proyecto. No se publican porque sus derechos son de terceros. Sin ellos el modo tarjetas sale vacío; el avatar funciona. |
+| Vídeos de referencia de ARASAAC (`referencia/arasaac`, ~900 MB) | `py herramientas\descargar_arasaac.py` |
+| Modelo de poses (`referencia/modelos/holistic_landmarker.task`) | Descarga del modelo Holistic Landmarker de MediaPipe |
+| Movimiento de más signos (`banco/poses`) | `py -3.12 herramientas\extraer_poses.py palabra1 palabra2` o `--todo` |
+
+## Créditos y licencias de los datos
+
+- **Movimiento de los signos (`banco/poses`)**: derivado de los vídeos de LSE de
+  [ARASAAC](https://arasaac.org) (Gobierno de Aragón), distribuidos con licencia Creative
+  Commons BY-NC-SA. Estos datos derivados se comparten bajo la misma licencia: uso sin ánimo
+  de lucro, citando la fuente y compartiendo igual.
+- **Dibujos de signos** (no incluidos): «Introducción a la comunicación bimodal. Diccionario
+  básico», Ministerio de Educación y Ciencia, 1989, ilustraciones de Lorenzo López Salcedo.
+- **Voz de los vídeos de prueba**: síntesis de voz de Microsoft (edge-tts).
+- El inventario de fuentes de LSE está en `reports/Fuentes de signos LSE.md`.

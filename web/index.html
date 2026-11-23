@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signos</title>
+  <link rel="stylesheet" href="/web/estilo.css">
+</head>
+<body>
+  <header class="cabecera">
+    <h1>Signos</h1>
+    <div class="selector">
+      <label for="lista-videos">Vídeo</label>
+      <select id="lista-videos"></select>
+      <button type="button" id="boton-procesar" class="boton-texto" hidden>Procesar vídeo</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="escena" id="escena">
+      <video id="video" playsinline preload="metadata"></video>
+
+      <p class="subtitulos" id="subtitulos" aria-live="off"></p>
+
+      <figure class="recuadro reposo" id="recuadro" aria-label="Signos">
+        <div class="tarjeta" id="tarjeta">
+          <canvas id="avatar" width="1200" height="1120"></canvas>
+          <span class="espera" aria-hidden="true">· · ·</span>
+        </div>
+        <figcaption class="rotulo" id="rotulo">&nbsp;</figcaption>
+      </figure>
+
+      <div class="aviso" id="aviso" hidden>
+        <p id="aviso-texto"></p>
+        <div class="progreso" id="progreso" hidden><div id="progreso-barra"></div></div>
+        <button type="button" id="aviso-boton" class="boton-texto principal" hidden>Procesar este vídeo</button>
+      </div>
+    </div>
+
+    <div class="controles">
+      <button type="button" id="boton-play" class="boton" aria-label="Reproducir">▶</button>
+      <input type="range" id="barra" min="0" max="1" step="0.01" value="0" aria-label="Posición del vídeo">
+      <span class="tiempo" id="tiempo">0:00 / 0:00</span>
+      <button type="button" id="boton-sonido" class="boton" aria-label="Silenciar">🔊</button>
+      <button type="button" id="boton-pantalla" class="boton" aria-label="Pantalla completa">⛶</button>
+    </div>
+
+    <div class="ajustes">
+      <label>Tamaño del recuadro
+        <input type="range" id="ajuste-ancho" min="16" max="60" step="1" value="26">
+      </label>
+      <label><input type="checkbox" id="ajuste-deletreo" checked> Deletrear las palabras sin signo</label>
+      <label><input type="checkbox" id="ajuste-subtitulos" checked> Subtítulos</label>
+      <label><input type="checkbox" id="ajuste-avatar"> Avatar (prueba)</label>
+      <label>Acercar avatar
+        <input type="range" id="ajuste-zoom" min="100" max="220" step="5" value="125">
+      </label>
+      <span class="exportar">
+        <a id="enlace-descarga" class="enlace-descarga" hidden></a>
+        <button type="button" id="boton-exportar" class="boton-texto" disabled
+                title="Genera un mp4 con el recuadro y los subtítulos pegados, con los ajustes de aquí al lado">Descargar vídeo con signos</button>
+      </span>
+    </div>
+
+    <p class="resumen" id="resumen"></p>
+
+    <p class="nota">
+      Prototipo: muestra una tarjeta por palabra (español signado), no lengua de signos española con su gramática.
+      Dibujos de signos: «Diccionario básico de lengua de signos española», recopilado por la Asociación Equitación como Terapia.
+      Alfabeto dactilológico: adaptado del «Manual básico. Curso de lengua de signos española» (academia-formacion.com).
+    </p>
+  </main>
+
+  <script src="/web/avatar.js"></script>
+  <script src="/web/app.js"></script>
+</body>
+</html>
