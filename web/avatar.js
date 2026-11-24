@@ -13,10 +13,14 @@ const Avatar = (() => {
   const TINTA = '#111', PAPEL = '#fff';
 
   let lienzo, ctx;
-  let indice = null;            // clave normalizada -> id de clip
+  const USAR_REFERENCIA = new URLSearchParams(location.search).has('referencia');
+  let indice = {};              // referencia (terceros): clave normalizada -> id de clip
+  let definiciones = {};        // signos propios: id -> definición
+  const propios = {};           // signos propios: palabra normalizada -> id
   const clips = {};             // id -> clip ya convertido a poses
   let pista = [];               // signos colocados en el tiempo
-  let escalaTiempo = 1;         // 1 / velocidad del vídeo: el avatar signa a ritmo real aunque se frene al orador
+  let esPropio = true;          // el signo que se está dibujando es de creación propia (manos más grandes)
+  let escalaTiempo = 1;        // 1 / velocidad del vídeo: el avatar signa a ritmo real aunque se frene al orador
 
   // ----- Poses -----
   // Una pose es una lista de 146 números:
@@ -98,11 +102,26 @@ const Avatar = (() => {
   async function iniciar(canvas) {
     lienzo = canvas;
     ctx = canvas.getContext('2d');
+    // Signos propios (nuestra notación): lo único que se usa por defecto.
     try {
-      const r = await fetch('/banco/poses/indice.json');
-      indice = r.ok ? await r.json() : {};
-    } catch { indice = {}; }
-    return Object.keys(indice).length;
+      const r = await fetch('/banco/propios/signos.json');
+      definiciones = r.ok ? (await r.json()).signos : {};
+    } catch { definiciones = {}; }
+    for (const [id, s] of Object.entries(definiciones)) for (const palabra of s.palabras) propios[normalizar(palabra)] = id;
+    // Movimiento extraído de vídeos de terceros: solo como referencia, con ?referencia=1 en la dirección.
+    if (USAR_REFERENCIA) {
+      try {
+        const r = await fetch('/banco/poses/indice.json');
+        indice = r.ok ? await r.json() : {};
+      } catch { indice = {}; }
+    }
+    return Object.keys(propios).length;
+  }
+
+  // Movimiento de un signo propio, ya como poses del avatar.
+  function crearPropio(id) {
+    const { fotogramas, dura } = Signos.generar(definiciones[id]);
+    return { poses: fotogramas.map((f) => pose(f.cuerpo, f.izq, f.der, f.zi, f.zd, f.zm)), dura, propio: true };
   }
 
   // unidades: las de <video>.signos.json; tarjetas: banco.tarjetas (para probar también con su etiqueta)
@@ -116,17 +135,20 @@ const Avatar = (() => {
     pista = [];
     const elegidas = [];
     unidades.forEach((u, i) => {
-      if (u.tipo !== 'signo') return;
+      // También se signan las palabras sin tarjeta (por ejemplo "yo", "hola") si tienen signo propio.
+      if (u.tipo !== 'signo' && !(u.tipo === 'deletreo' && propios[normalizar(u.texto)] !== undefined)) return;
       const etiqueta = tarjetas[u.tarjeta]?.etiqueta || '';
-      const candidatas = [normalizar(u.texto), normalizar(etiqueta), normalizar(u.tarjeta.replace(/ny/g, 'ñ').replace(/-/g, ' '))];
-      const clave = candidatas.find((c) => indice[c] !== undefined);
+      const candidatas = [normalizar(u.texto), normalizar(etiqueta), normalizar((u.tarjeta || '').replace(/ny/g, 'ñ').replace(/-/g, ' '))];
+      const propia = candidatas.find((c) => propios[c] !== undefined);
+      const clave = propia ?? candidatas.find((c) => indice[c] !== undefined);
       // "complemento" = viene tras una preposición ("en la cocina", "con mantequilla"): es lo primero
       // que se sacrifica, después del relleno, si hay que condensar.
       const anterior = unidades[i - 1];
       const complemento = !!anterior && anterior.tipo === 'omitir' && PREPOSICIONES.has(normalizar(anterior.texto));
-      if (clave) elegidas.push({ u, id: indice[clave], complemento });
+      if (clave !== undefined) elegidas.push({ u, id: propia !== undefined ? 'o:' + propios[propia] : indice[clave], complemento });
     });
     await Promise.all([...new Set(elegidas.map((e) => e.id))].filter((id) => !clips[id]).map(async (id) => {
+      if (String(id).startsWith('o:')) { clips[id] = crearPropio(id.slice(2)); return; }
       const r = await fetch(`/banco/poses/${id}.json`);
       if (r.ok) clips[id] = convertir(await r.json());
     }));
@@ -234,6 +256,7 @@ const Avatar = (() => {
     for (let k = 0; k < pista.length && pista[k].t0 <= t; k++) i = k;
     const actual = pista[i], siguiente = pista[i + 1];
     if (actual && t <= actual.t1) {
+      esPropio = !!actual.clip.propio;
       const k = (t - actual.t0) / (actual.t1 - actual.t0);
       return { pose: poseDeClip(actual.clip, k), texto: actual.texto, avance: k };
     }
@@ -341,9 +364,10 @@ const Avatar = (() => {
   const PALMA = [0, 1, 5, 9, 13, 17];
 
   // opciones: pregunta (cejas arriba) y zoom (1 = hasta las caderas, con las manos en reposo a la vista; más = más cerca)
-  function pintar(t, { pregunta = false, zoom = 1 } = {}) {
+  function pintar(t, { pregunta = false, zoom = 1, pose: poseDada = null, texto: textoDado = '', avance: avanceDado = 0 } = {}) {
     t *= escalaTiempo;
-    const { pose: p, texto, avance } = estadoEn(t);
+    const { pose: p, texto, avance } = poseDada ? { pose: poseDada, texto: textoDado, avance: avanceDado } : estadoEn(t);
+    const propia = poseDada ? true : esPropio;
     const W = lienzo.width, H = lienzo.height;
     const u = W * 0.245 * zoom, ox = W / 2;                      // unidad = ancho de hombros
     const oy = H * 0.1 / zoom + 1.3 * u;                        // la cabeza siempre queda arriba, a la vista
@@ -427,9 +451,9 @@ const Avatar = (() => {
       const z = (lista) => lista.reduce((s, k) => s + p[zMano + k], 0) / lista.length;
       const lista = [
         { z: Infinity, pinta: () => tubo([[X(hombro), Y(hombro)], [X(codo), Y(codo)], M(0)], 0.16 * u) },
-        { z: z(PALMA), pinta: () => tubo(PALMA.map(M), 0.055 * u, true) },
+        { z: z(PALMA), pinta: () => tubo(PALMA.map(M), (propia ? 0.085 : 0.055) * u, true) },
       ];
-      DEDOS.forEach((dedo, k) => lista.push({ z: z(dedo), pinta: () => tubo(dedo.map(M), (k ? 0.058 : 0.066) * u) }));
+      DEDOS.forEach((dedo, k) => lista.push({ z: z(dedo), pinta: () => tubo(dedo.map(M), (k ? 0.058 : 0.066) * (propia ? 1.55 : 1) * u) }));
       return { fondo: p[zMuneca], piezas: lista.sort((a, b) => b.z - a.z) };   // de lejos a cerca
     };
     const brazos = [piezas(4, 8, DER, Z_DER, Z_MUNECAS + 1), piezas(2, 6, IZQ, Z_IZQ, Z_MUNECAS)];
@@ -439,5 +463,5 @@ const Avatar = (() => {
     return texto;
   }
 
-  return { iniciar, preparar, pintar, visemas, boca, pista: () => pista };
+  return { iniciar, preparar, pintar, visemas, boca, pista: () => pista, propio: crearPropio, definiciones: () => definiciones };
 })();

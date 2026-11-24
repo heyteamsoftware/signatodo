@@ -68,3 +68,17 @@ la boca y el avatar. Esos archivos están fuera del repositorio (`banco/poses/`,
 `referencia/`, los PDF) y se sustituirán por signos propios.
 
 Fuentes consultadas y su situación de derechos: `reports/Fuentes de signos LSE.md`.
+
+## Signos propios
+
+El avatar usa por defecto **solo signos de creación propia** (`banco/propios/signos.json`), escritos
+en una notación por parámetros: forma de la mano, orientación de dedos y palma, lugar del cuerpo y
+movimiento en fotogramas clave. `web/signos.js` los convierte en movimiento: coloca la mano, calcula
+cada dedo y resuelve el brazo. No hay vídeos ni datos de terceros en el producto.
+
+Hay 19 signos de prueba (comer, beber, dormir, casa, jugar, niño, niña, ir, contento, noche, leer,
+correr, yo, tú, sí, no, hola, adiós, gracias). **Todos son borrador y ninguno ha sido validado por una
+persona sorda o un intérprete de LSE.** Las palabras sin signo propio dejan al avatar en reposo.
+
+Para comparar con material ajeno en local, abrir la web con `?referencia=1`: usa también el
+movimiento extraído de vídeos de terceros (que no está en el repositorio).
