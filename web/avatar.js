@@ -980,12 +980,12 @@ const Avatar = (() => {
   }
 
   // El esqueleto de una pose para el muñeco 3D, con la y hacia arriba y la z hacia quien mira.
-  function esqueletoDe(p, nm, t, propia) {
+  function esqueletoDe(p, nm, t, propia, cara) {
     const V = (i) => [p[i], -p[i + 1]];
     const mano = (base, zBase) => Array.from({ length: 21 }, (_, k) => [p[base + k * 2], -p[base + k * 2 + 1], -(p[zBase + k] - p[zBase])]);
     const esqueleto = {
       cabeza: V(0), hombros: [V(2), V(4)], codos: [V(6), V(8)], munecas: [V(10), V(12)], caderas: [V(14), V(16)],
-      manos: [mano(IZQ, Z_IZQ), mano(DER, Z_DER)], propia,
+      manos: [mano(IZQ, Z_IZQ), mano(DER, Z_DER)], propia, cara,
       // Un balanceo mínimo (menos de un grado) para que el muñeco respire y no parezca una estatua.
       gestos: {
         tronco: [nm[0] + 0.45 * Math.sin(t * 0.8), nm[1] + 0.4 * Math.sin(t * 0.53 + 1)],
@@ -1003,26 +1003,18 @@ const Avatar = (() => {
   }
 
   // Pinta el muñeco 3D sobre el lienzo. Devuelve false si no se puede (sin WebGL) para que se use el plano.
-  let LIENZO_CARA = null;
-  const TAM_CARA = 512;
+  // La cara no se dibuja aquí: se le pasa al motor su estado (forma de la boca, sonrisa, cejas, ojos) y él la modela.
   function pintar3D(p, nm, forma, sonrisa, t, propia, W, H, u, ox, oy) {
     if (!Avatar3D.disponible()) return false;
-    // 1. Los rasgos de la cara se dibujan en una textura que luego envuelve la cabeza.
-    if (!LIENZO_CARA) { LIENZO_CARA = document.createElement('canvas'); LIENZO_CARA.width = LIENZO_CARA.height = TAM_CARA; }
-    const principal = ctx;
-    ctx = LIENZO_CARA.getContext('2d');
-    try {
-      ctx.setTransform(1, 0, 0, 1, 0, 0);
-      ctx.clearRect(0, 0, TAM_CARA, TAM_CARA);
-      const uCara = (TAM_CARA / 2) / 0.46;                        // la cabeza (radio 0,46) ocupa toda la textura
-      const trazo = Math.max(2, uCara * 0.0135);                  // algo más firme que en el plano, para que se lea en pequeño
-      ctx.lineJoin = ctx.lineCap = 'round'; ctx.strokeStyle = TINTA; ctx.fillStyle = PAPEL; ctx.lineWidth = trazo;
-      ctx.save();
-      rasgosCara(TAM_CARA / 2, TAM_CARA / 2, TAM_CARA / 2, uCara, nm, forma, sonrisa, t, trazo, false);
-      ctx.restore();
-    } finally { ctx = principal; }
-    const esqueleto = esqueletoDe(p, nm, t, propia);
-    const imagen = Avatar3D.pintar(esqueleto, { ancho: W, alto: H, u, ox, oy, rostro: LIENZO_CARA });
+    const parpadeo = (t % 4.3) < 0.12;
+    const abierta = nm[11] > 0.15 ? nm[11] : 0;                   // boca abierta por sorpresa o miedo, sin palabra
+    const reposo = [0.15, abierta * 0.16, abierta * 0.5, abierta ? 0.4 : 0, 0, abierta ? 0.2 : 0, 0, abierta ? 0 : 0.5, 0];
+    const cara = {
+      forma: forma || reposo,
+      sonrisa: acota(sonrisa + 0.22, -1, 1),                      // de natural, una sonrisa leve: cara amable
+      cejas: nm[5], ceno: nm[6], ojos: parpadeo ? 0 : nm[7], mirada: [nm[8], nm[9]], mejillas: nm[12],
+    };
+    const imagen = Avatar3D.pintar(esqueletoDe(p, nm, t, propia, cara), { ancho: W, alto: H, u, ox, oy });
     if (!imagen) return false;
     ctx.drawImage(imagen, 0, 0, W, H);
     return true;

@@ -231,3 +231,18 @@ Las medidas de brazos y tronco siguen proporciones de persona, con el ancho de h
 guante acaba en un puño que lo une al antebrazo. El tronco tiene línea de hombros, pecho (0,45 de medio ancho) que se estrecha a
 la cintura (0,37) y caderas (0,43). Las longitudes de los brazos no se tocan: salen de la grabación, y cambiarlas movería las
 manos de su sitio. Las constantes están al principio de `construir()` en `web/avatar3d.js`.
+
+### Aspecto del muñeco 3D: dibujo cálido, con la cara modelada
+
+El muñeco blanco y gris con la cara pintada encima resultaba inquietante. Ahora (`ESTILO` y `LUZ_MATERIAL` en `web/avatar3d.js`):
+
+- **Colores**: piel, pelo castaño, jersey azul oscuro y liso y guantes blancos, como visten los intérpretes, para que las manos
+  destaquen sobre el cuerpo y sobre la cara. Contorno marrón oscuro. Ropa, pelo y guantes se sombrean en tonos planos; la piel,
+  con degradado suave (un corte de tono en la cara parece barba).
+- **La boca es parte del modelo**: la cabeza tiene un hueco de verdad donde se abre la boca (el sombreador descarta esa zona) y por
+  él se ven los dientes y la lengua, que son piezas de dentro; los labios son tubos que siguen la curva de la cara y se adelantan
+  al redondear (o, u); la barbilla baja al abrir. Con la cabeza girada la forma se sigue leyendo.
+- **Ojos y cejas en relieve**: globo blanco, pupila y brillo; las cejas son piezas que suben, bajan y se fruncen. Sobre la cabeza
+  solo queda pintado el flequillo, el rubor y la raya de los ojos cerrados.
+
+El muñeco plano (sin WebGL) sigue siendo el de línea en blanco y negro.
