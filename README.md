@@ -257,3 +257,35 @@ más ancho y con más fondo (pecho 0,47, cintura 0,41, caderas 0,45 de medio anc
 
 El zoom por defecto es 155 % en el modo vídeo («Acercar avatar») y 1,45 en el modo directo, con la cabeza cerca del borde de
 arriba del cuadro. A ese zoom la mano que no signa, en reposo a la altura de la cintura, puede quedar cortada por abajo.
+
+### Cabeza y cuerpo al unísono, y parpadeo
+
+Antes la cabeza del muñeco copiaba la posición de la nariz grabada y el tronco la de los hombros, cada uno por su lado, y además
+cada parte llevaba su propio balanceo. Como en las grabaciones la nariz está más baja que en el reposo del muñeco (0,62 de
+mediana sobre los hombros, frente a 0,72) y baja otros 0,07 al signar, la cabeza, que es bastante más grande que la de una
+persona, subía, bajaba y se hundía en los hombros.
+
+Ahora, al cargar cada grabación (`asentarCabeza()` en `web/avatar.js`):
+
+- **La cabeza va montada sobre los hombros**, siempre a la altura del reposo (0,72), así que el cuello mide lo mismo en todos los
+  signos. Solo sigue a medias a los hombros cuando suben (al levantar los brazos o encogerse), como en una persona.
+- **Lo que la cabeza se movía se convierte en gesto de todo el cuerpo**: si la nariz baja, la cabeza asiente (55 % del giro de la
+  persona, hasta unos 14°) y el tronco se inclina un poco hacia delante (20 %); si se va a un lado, la cabeza gira (60 %) y se
+  ladea un poco hacia ese lado (20 %). El cabeceo se mide a medias entre la altura de la nariz en la imagen y su altura sobre
+  los hombros, porque subir los hombros no es bajar la cabeza.
+- **Las manos junto a la cara siguen junto a la cara**: se corren lo mismo que se ha corrido la cabeza, con un peso que va de 1
+  (palma a menos de 0,4 de la nariz) a 0 (a más de 0,85), y el codo las acompaña para que el antebrazo no se estire.
+- Si la grabación tiene gestos definidos a mano que ya mueven la cabeza, mandan esos; si no, se suman a los grabados.
+
+El balanceo de reposo es uno solo para todo el cuerpo (`esqueletoDe()`): el tronco se mece y respira, y la cabeza lo acompaña con
+el mismo compás. El encuadre deja sitio para la cabeza entera (1,46 anchos de hombro por encima de los hombros).
+
+**Parpadeo** (`parpadeoEn()`): a intervalos irregulares de entre 1 y 6 segundos (unos 17 por minuto), con cierre rápido (0,07 s),
+un instante cerrado y apertura más lenta (0,17 s); uno de cada cinco es doble. Depende solo del instante, así que al rebobinar
+o exportar sale igual. Vale para el muñeco 3D y para el plano.
+
+### Aviso de captura de voz
+
+Al entrar en el modo directo (en la web y en la app) sale un aviso, una vez por sesión, y queda también en la «i»:
+para realizar una captura de voz correcta, no hablar varias personas a la vez, realizar una locución clara y hablar a un ritmo
+que ayude a la interpretación.

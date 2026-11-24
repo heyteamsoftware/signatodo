@@ -43,6 +43,10 @@ html, body { margin: 0; height: 100%; overflow: hidden; display: flex; flex-dire
 .info-caja { background: var(--papel); border-radius: 16px; padding: 22px; max-width: 560px; max-height: 90vh; overflow: auto; font-size: 16px; line-height: 1.45; user-select: text; }
 .info-caja h2 { margin: 0 0 10px; font-size: 20px; }
 .info-caja .grabar { margin-top: 8px; padding: 10px 24px; font-size: 18px; min-width: 0; }
+.consejos { margin: 0 0 12px; padding-left: 1.3em; }
+.consejos li { margin: 6px 0; }
+#aviso-voz .info-caja { border: 2px solid var(--tinta); font-size: 18px; }
+#aviso-voz .consejos li { margin: 10px 0; }
 @media (prefers-reduced-motion: reduce) { .grabar[aria-pressed="true"] .punto { animation: none; } }
 
 [hidden] { display: none !important; }

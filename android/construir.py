@@ -22,7 +22,7 @@ import zipfile
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 AND = os.path.join(RAIZ, "android")
 OBRA = os.path.join(AND, "build")
-VERSION_CODIGO, VERSION_NOMBRE = 2, "0.2"       # 0.2: avatar 3D y revisión del modo directo
+VERSION_CODIGO, VERSION_NOMBRE = 3, "0.3"       # 0.3: muñeco cálido, cabeza y cuerpo al unísono, parpadeo y aviso de voz
 
 
 def buscar_sdk():

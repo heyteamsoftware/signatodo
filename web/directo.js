@@ -187,6 +187,15 @@ $('boton-3d').addEventListener('click', () => { tresD = !tresD; localStorage.set
 $('boton-teclado').addEventListener('click', () => { $('escribir').hidden = !$('escribir').hidden; if (!$('escribir').hidden) $('texto-prueba').focus(); });
 $('boton-info').addEventListener('click', () => { $('info').hidden = false; });
 $('cerrar-info').addEventListener('click', () => { $('info').hidden = true; });
+
+// Aviso de cómo hablar para que la voz se capte bien: sale al entrar, una vez por sesión (cada vez que se abre la app).
+const AVISO_VOZ = 'signatodo-aviso-voz';
+const avisoVisto = () => { try { return sessionStorage.getItem(AVISO_VOZ) === 'visto'; } catch (e) { return false; } };
+if (!avisoVisto()) { $('aviso-voz').hidden = false; $('cerrar-aviso-voz').focus(); }
+$('cerrar-aviso-voz').addEventListener('click', () => {
+  $('aviso-voz').hidden = true;
+  try { sessionStorage.setItem(AVISO_VOZ, 'visto'); } catch (e) { /* sin almacenamiento: saldrá otra vez al volver a entrar */ }
+});
 window.addEventListener('resize', ajustar);
 // En el navegador se deja de escuchar al ocultar la pestaña. En la app lo decide Android (el diálogo del permiso del
 // micrófono puede ocultar la página un momento y no debe parar la escucha).

@@ -71,7 +71,67 @@ const Avatar = (() => {
       const escala = (lista) => lista && lista[f].map((v) => v / 1000);
       poses.push(pose(escala(clip.cuerpo), escala(clip.izq), escala(clip.der), escala(clip.zi), escala(clip.zd), escala(clip.zm)));
     }
+    asentarCabeza(poses);
     return nucleo(poses, clip.fps, clip.cara ? clip.cara.map((r) => r.map((v) => v / 1000)) : null);
+  }
+
+  // ----- La cabeza, asentada sobre los hombros -----
+  // En la grabación la cabeza de la persona sube, baja y se va a los lados, y cada grabación la tiene a una altura
+  // distinta (casi siempre más baja que la del muñeco en reposo). Si la cabeza del muñeco copiara esa posición, subiría y
+  // bajaría sola y, al ser bastante más grande que la de una persona, se hundiría en los hombros. Así que en cada
+  // grabación la cabeza se deja montada sobre los hombros, siempre a la misma altura que en reposo y en los signos
+  // propios, y lo que se movía se convierte en gesto de todo el cuerpo a la vez: si la nariz baja, la cabeza asiente y el
+  // tronco se inclina un poco hacia delante; si se va a un lado, la cabeza gira y se ladea un poco hacia ese lado.
+  // Las manos que estaban junto a la cara se corren lo mismo que la cabeza, para que sigan junto a la cara.
+  // (Medido en 919 grabaciones: la nariz está a 0,62 de mediana, baja 0,07 al signar y se va 0,05 a un lado.)
+  const ALTURA_CABEZA = 0.72;      // altura de la nariz sobre la línea de hombros (la del reposo)
+  const PALANCA_NARIZ = 0.3;       // lo que se desplaza la nariz de una persona por cada radián que gira la cabeza
+  function asentarCabeza(poses) {
+    const n = poses.length;
+    if (!n) return;
+    const media = (lista, f, margen) => {
+      const suma = lista[f].map(() => 0);
+      let k = 0;
+      for (let i = Math.max(f - margen, 0); i <= Math.min(f + margen, n - 1); i++, k++) lista[i].forEach((v, j) => { suma[j] += v; });
+      return suma.map((v) => v / k);
+    };
+    const centro = poses.map((p) => [(p[2] + p[4]) / 2, (p[3] + p[5]) / 2]);              // centro de los hombros
+    // La nariz respecto a él (con la y hacia arriba) y su altura en la imagen. Subir los brazos sube los hombros, y eso
+    // no es bajar la cabeza: por eso el cabeceo se mide a medias entre las dos alturas.
+    const nariz = poses.map((p, f) => [p[0] - centro[f][0], centro[f][1] - p[1], -p[1]]);
+    const fina = nariz.map((_, f) => media(nariz, f, 2));                                 // sin el temblor de la detección
+    // Postura habitual de la persona: la del principio y el final (el clip sale del reposo y vuelve a él), sin alejarse
+    // de la mediana por si el clip empieza o acaba ya en movimiento.
+    const habitual = (lista, k) => {
+      const mediana = lista.map((q) => q[k]).sort((a, b) => a - b)[Math.floor(n / 2)];
+      const extremos = [...lista.slice(0, 3), ...lista.slice(-3)];
+      return acota(extremos.reduce((suma, q) => suma + q[k], 0) / extremos.length, mediana - 0.08, mediana + 0.08);
+    };
+    const base = [0, 1, 2].map((k) => habitual(fina, k));
+    // Los hombros suben al levantar los brazos o al encogerse, pero el arranque del cuello sube bastante menos: la cabeza
+    // sigue a los hombros solo a medias en altura (el cuello se acorta un poco, como al encogerse de hombros).
+    const hombros = centro.map((_, f) => media(centro, f, 2)), alturaHombros = habitual(hombros, 1);
+    const corre = [-base[0], base[1] - ALTURA_CABEZA];                                    // lo que se corre la cabeza (y hacia abajo)
+    const GRADOS = 180 / Math.PI;
+    poses.forEach((p, f) => {
+      for (const [mano, muneca, codo] of [[IZQ, 10, 6], [DER, 12, 8]]) {
+        let mx = 0, my = 0;
+        for (const k of [0, 5, 9, 13, 17]) { mx += p[mano + k * 2] / 5; my += p[mano + k * 2 + 1] / 5; }     // centro de la palma
+        const cerca = suave(1 - acota((Math.hypot(mx - p[0], my - p[1]) - 0.4) / 0.45, 0, 1));
+        if (!cerca) continue;
+        for (let k = 0; k < 21; k++) { p[mano + k * 2] += corre[0] * cerca; p[mano + k * 2 + 1] += corre[1] * cerca; }
+        p[muneca] += corre[0] * cerca; p[muneca + 1] += corre[1] * cerca;
+        p[codo] += corre[0] * cerca * 0.65; p[codo + 1] += corre[1] * cerca * 0.65;       // el codo acompaña: el antebrazo no se estira
+      }
+      p[0] = hombros[f][0]; p[1] = alturaHombros + (hombros[f][1] - alturaHombros) * 0.5 - ALTURA_CABEZA;
+      const baja = (base[1] - fina[f][1] + base[2] - fina[f][2]) / 2;
+      const asiente = Math.asin(acota(baja / PALANCA_NARIZ, -0.34, 0.42)) * GRADOS;        // el giro de la persona, si todo fuera cabeceo
+      const gira = Math.asin(acota((fina[f][0] - base[0]) / PALANCA_NARIZ, -0.4, 0.4)) * GRADOS;
+      p[NM + 3] += asiente * 0.55;                     // la cabeza asiente (o levanta la cara)...
+      p[NM + 1] += Math.max(asiente, 0) * 0.2;         // ...y el tronco la acompaña hacia delante
+      p[NM + 4] += gira * 0.6;                         // la cabeza gira...
+      p[NM + 2] += gira * 0.2;                         // ...y se ladea un poco hacia el mismo lado
+    });
   }
 
   // Se queda con el núcleo del signo. El clip grabado es la forma "de diccionario": sale del
@@ -188,7 +248,13 @@ const Avatar = (() => {
     const nm = ref.startsWith('o:') ? definiciones[ref.slice(2)].nm : gestosPalabra[ref.slice(2)];
     const gestos = Signos.gestos({ nm });
     const n = clip.poses.length;
-    clip.poses.forEach((p, i) => p.splice(NM, NM_N, ...gestos(n > 1 ? i / (n - 1) : 0)));
+    const definidos = clip.poses.map((_, i) => gestos(n > 1 ? i / (n - 1) : 0));
+    const mueveCabeza = definidos.some((g) => Math.abs(g[3]) > 1 || Math.abs(g[4]) > 1);
+    clip.poses.forEach((p, i) => {
+      const grabado = p.slice(NM + 1, NM + 5);            // tronco hacia delante y cabeza (ladea, asiente, gira) de la grabación
+      p.splice(NM, NM_N, ...definidos[i]);
+      if (!mueveCabeza) grabado.forEach((v, k) => { p[NM + 1 + k] += v; });
+    });
     suavizarCeno(clip, nm);
   }
 
@@ -933,8 +999,7 @@ const Avatar = (() => {
     if (desplazar) ctx.translate(nm[4] * 0.0042 * u, nm[3] * 0.0035 * u);
 
     // Ojos y cejas
-    const parpadeo = (t % 4.3) < 0.12;
-    const abierto = parpadeo ? 0 : nm[7];
+    const abierto = nm[7] * (1 - parpadeoEn(t));
     const alza = nm[5] * 0.11 * u;   // cejas levantadas (+) o bajas (-)
     for (const lado of [-1, 1]) {
       const ex = cx + lado * 0.17 * u, ey = cy - 0.02 * u;
@@ -979,40 +1044,67 @@ const Avatar = (() => {
     ctx.restore();
   }
 
+  // ----- Parpadeo natural -----
+  // A intervalos irregulares (entre 1 y 6 segundos, unos 17 por minuto), con cierre rápido y apertura algo más lenta, y de
+  // vez en cuando doble. Depende solo del instante, así que al rebobinar o exportar sale igual.
+  const azar = (n) => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+  function parpadeoEn(t) {
+    const TRAMO = 3.6;
+    let cierre = 0;
+    for (const k of [Math.floor(t / TRAMO) - 1, Math.floor(t / TRAMO)]) {     // el parpadeo de este tramo y el del anterior
+      const inicio = k * TRAMO + 0.4 + azar(k) * (TRAMO - 1);
+      const veces = azar(k + 0.5) < 0.18 ? [inicio, inicio + 0.32] : [inicio];     // a veces, dos seguidos
+      for (const t0 of veces) {
+        const x = t - t0;
+        if (x < 0 || x > 0.27) continue;
+        cierre = Math.max(cierre, x < 0.07 ? suave(x / 0.07) : (x < 0.1 ? 1 : 1 - suave((x - 0.1) / 0.17)));
+      }
+    }
+    return cierre;                                                    // 0 = abiertos, 1 = cerrados
+  }
+
   // El esqueleto de una pose para el muñeco 3D, con la y hacia arriba y la z hacia quien mira.
   function esqueletoDe(p, nm, t, propia, cara) {
     const V = (i) => [p[i], -p[i + 1]];
     const mano = (base, zBase) => Array.from({ length: 21 }, (_, k) => [p[base + k * 2], -p[base + k * 2 + 1], -(p[zBase + k] - p[zBase])]);
-    const esqueleto = {
+    // Un solo vaivén para todo el cuerpo: el tronco se balancea y respira, y la cabeza lo acompaña con el mismo compás
+    // (compensando un poco el balanceo, como hace una persona para mantener la mirada). Antes cada parte llevaba su
+    // propio ritmo y la cabeza parecía suelta del cuerpo.
+    const fase = t * 1.05, vaiven = 0.5 * Math.sin(fase * 0.5), respira = 0.35 * Math.sin(fase);
+    return {
       cabeza: V(0), hombros: [V(2), V(4)], codos: [V(6), V(8)], munecas: [V(10), V(12)], caderas: [V(14), V(16)],
       manos: [mano(IZQ, Z_IZQ), mano(DER, Z_DER)], propia, cara,
-      // Un balanceo mínimo (menos de un grado) para que el muñeco respire y no parezca una estatua.
       gestos: {
-        tronco: [nm[0] + 0.45 * Math.sin(t * 0.8), nm[1] + 0.4 * Math.sin(t * 0.53 + 1)],
-        cabeza: [nm[2] + 0.6 * Math.sin(t * 0.7 + 2), nm[3] + 0.5 * Math.sin(t * 0.61), nm[4] + 0.9 * Math.sin(t * 0.37 + 0.5)],
+        tronco: [nm[0] + vaiven, nm[1] + respira],
+        cabeza: [acota(nm[2] - 0.4 * vaiven, -25, 25), acota(nm[3] + 0.4 * Math.sin(fase - 0.5), -24, 30), acota(nm[4], -32, 32)],
       },
     };
-    return esqueleto;
   }
 
   // Para las pruebas: cuánto atraviesa el cuerpo el brazo o la mano en el instante t (0 o menos = nada).
   function revisar3D(t) {
-    const e = estadoEn(t * escalaTiempo);
+    const tr = t * escalaTiempo, e = estadoEn(tr);
     const nm = e.pose.length > NM ? e.pose.slice(NM, NM + NM_N) : NM_NEUTRO;
-    return Avatar3D.penetracion(esqueletoDe(e.pose, nm, t, esPropio));
+    return Avatar3D.penetracion(esqueletoDe(e.pose, nm, tr, esPropio));
+  }
+
+  // Para las pruebas: dónde queda la cabeza sobre los hombros, cuánto gira y cuánto parpadea en el instante t.
+  function posturaEn(t) {
+    const tr = t * escalaTiempo, p = estadoEn(tr).pose;
+    const esq = esqueletoDe(p, p.slice(NM, NM + NM_N), tr, esPropio);
+    return { x: p[0] - (p[2] + p[4]) / 2, y: (p[3] + p[5]) / 2 - p[1], gestos: esq.gestos, munecas: esq.munecas, codos: esq.codos, hombros: esq.hombros, parpadeo: parpadeoEn(tr) };
   }
 
   // Pinta el muñeco 3D sobre el lienzo. Devuelve false si no se puede (sin WebGL) para que se use el plano.
   // La cara no se dibuja aquí: se le pasa al motor su estado (forma de la boca, sonrisa, cejas, ojos) y él la modela.
   function pintar3D(p, nm, forma, sonrisa, t, propia, W, H, u, ox, oy) {
     if (!Avatar3D.disponible()) return false;
-    const parpadeo = (t % 4.3) < 0.12;
     const abierta = nm[11] > 0.15 ? nm[11] : 0;                   // boca abierta por sorpresa o miedo, sin palabra
     const reposo = [0.15, abierta * 0.16, abierta * 0.5, abierta ? 0.4 : 0, 0, abierta ? 0.2 : 0, 0, abierta ? 0 : 0.5, 0];
     const cara = {
       forma: forma || reposo,
       sonrisa: acota(sonrisa + 0.22, -1, 1),                      // de natural, una sonrisa leve: cara amable
-      cejas: nm[5], ceno: nm[6], ojos: parpadeo ? 0 : nm[7], mirada: [nm[8], nm[9]], mejillas: nm[12],
+      cejas: nm[5], ceno: nm[6], ojos: nm[7] * (1 - parpadeoEn(t)), mirada: [nm[8], nm[9]], mejillas: nm[12],
     };
     const imagen = Avatar3D.pintar(esqueletoDe(p, nm, t, propia, cara), { ancho: W, alto: H, u, ox, oy });
     if (!imagen) return false;
@@ -1029,7 +1121,9 @@ const Avatar = (() => {
     const propia = poseDada ? true : esPropio;
     const W = lienzo.width, H = lienzo.height;
     const u = W * 0.245 * zoom, ox = W / 2;                      // unidad = ancho de hombros
-    const oy = (margen === null ? H * 0.06 / zoom : margen) + 1.3 * u;                        // la cabeza siempre queda arriba, a la vista
+    // La cabeza siempre queda arriba y entera: va a 0,72 sobre los hombros y, con el pelo, la perspectiva y el cabeceo,
+    // llega hasta 1,4 por encima de ellos.
+    const oy = (margen === null ? H * 0.06 / zoom : margen) + 1.46 * u;
     const X = (i) => ox + p[i] * u, Y = (i) => oy + p[i + 1] * u;
     const grosor = Math.max(2, W / 260) * Math.sqrt(zoom);
     ctx.clearRect(0, 0, W, H);
@@ -1242,5 +1336,5 @@ const Avatar = (() => {
     return texto;
   }
 
-  return { iniciar, preparar, pintar, visemas, boca, pista: () => pista, propio: crearPropio, letra: crearLetra, definiciones: () => definiciones, compuestos: () => compuestos, sinonimos: () => sinonimos, directoIniciar, directoPalabra, directoCerrarFrase, directoParar, directoTick, directoActivo, directoTexto, directoPalabras, directoSinSigno, ahoraDirecto, revisar3D, expresiones: () => expresiones, gestos: () => gestosPalabra };
+  return { iniciar, preparar, pintar, visemas, boca, pista: () => pista, propio: crearPropio, letra: crearLetra, definiciones: () => definiciones, compuestos: () => compuestos, sinonimos: () => sinonimos, directoIniciar, directoPalabra, directoCerrarFrase, directoParar, directoTick, directoActivo, directoTexto, directoPalabras, directoSinSigno, ahoraDirecto, revisar3D, posturaEn, expresiones: () => expresiones, gestos: () => gestosPalabra };
 })();

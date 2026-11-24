@@ -37,10 +37,29 @@
     </button>
   </div>
 
+  <!-- Aviso al entrar (una vez por sesión): cómo hablar para que la voz se capte bien. También está en la «i». -->
+  <section id="aviso-voz" class="info" hidden>
+    <div class="info-caja" role="dialog" aria-modal="true" aria-labelledby="aviso-voz-titulo">
+      <h2 id="aviso-voz-titulo">Para realizar una captura de voz correcta</h2>
+      <ul class="consejos">
+        <li>No hablar varias personas a la vez.</li>
+        <li>Realizar una locución clara.</li>
+        <li>Hablar a un ritmo que ayude a la interpretación.</li>
+      </ul>
+      <button type="button" id="cerrar-aviso-voz" class="grabar claro">Entendido</button>
+    </div>
+  </section>
+
   <section id="info" class="info" hidden>
     <div class="info-caja">
       <h2>Signatodo en directo</h2>
       <p>Un avatar signa en pantalla lo que se oye por el micrófono. Es un <strong>prototipo educativo</strong>: no es una interpretación profesional en lengua de signos española (LSE) y no sustituye a una persona intérprete.</p>
+      <p><strong>Para realizar una captura de voz correcta:</strong></p>
+      <ul class="consejos">
+        <li>No hablar varias personas a la vez.</li>
+        <li>Realizar una locución clara.</li>
+        <li>Hablar a un ritmo que ayude a la interpretación.</li>
+      </ul>
       <p><strong>Movimiento de los signos:</strong> vídeos de ARASAAC (Gobierno de Aragón), licencia CC BY-NC-SA, solo uso no comercial. Los signos y el alfabeto propios son borradores sin validar por una persona signante.</p>
       <p>El reconocimiento de voz lo hace el sistema del teléfono; según el dispositivo, puede enviar el audio al servicio de voz del fabricante.</p>
       <button type="button" id="cerrar-info" class="grabar claro">Cerrar</button>
