@@ -51,7 +51,8 @@ html, body { margin: 0; height: 100%; overflow: hidden; display: flex; flex-dire
 .oido .falta { color: #b3541e; font-weight: 600; }
 .redondo.pequeno { font-style: normal; font-size: 18px; }
 .superior .redondo + .redondo { margin-left: 8px; }
-#boton-teclado { margin-left: auto; margin-right: 8px; }
+#boton-3d { margin-left: auto; margin-right: 8px; }
+#boton-teclado { margin-right: 8px; }
 .superior .redondo + .redondo { margin-left: 0; }
 
 /* Conmutador de modo (solo en la web; la app no tiene modo vídeo) */
@@ -60,3 +61,6 @@ html, body { margin: 0; height: 100%; overflow: hidden; display: flex; flex-dire
 .modo.activo { background: var(--tinta); color: var(--papel); font-weight: 600; }
 .modo:focus-visible { outline: 2px solid var(--rojo); outline-offset: -2px; }
 .estado { min-width: 0; }
+
+.redondo.letras { font: 700 13px "Segoe UI", system-ui, sans-serif; }
+.redondo[aria-pressed="true"] { background: var(--tinta); color: var(--papel); }

@@ -12,6 +12,7 @@ let comprometidas = 0;          // palabras de la hipótesis actual que ya se ha
 let tentativo = '';             // última palabra aún no estable
 let reconocedorWeb = null;
 let motorListo = false;
+let tresD = localStorage.getItem('signatodo-3d') !== 'no';   // muñeco 3D salvo que se haya elegido el plano
 
 function ajustar() {
   // Cuadro de 600x560 (como el recuadro de la web). Es todo lo ancho que cabe, sin pasarse de alto.
@@ -168,7 +169,7 @@ function bucle() {
   // Un fallo al dibujar un fotograma no debe dejar el avatar parado para siempre: se avisa y se sigue.
   try {
     Avatar.directoTick();
-    const palabra = Avatar.pintar(Avatar.ahoraDirecto(), { zoom, margen, rotular: false }) || '';
+    const palabra = Avatar.pintar(Avatar.ahoraDirecto(), { zoom, margen, tresD, rotular: false }) || '';
     if ($('rotulo').dataset.p !== palabra) { $('rotulo').textContent = palabra || ' '; $('rotulo').dataset.p = palabra; }
     subtitulos();
     oido();
@@ -180,6 +181,9 @@ function bucle() {
 
 window.pararExterno = parar;       // la app de Android lo llama al pasar a segundo plano
 $('grabar').addEventListener('click', () => (escuchando ? parar() : empezar()));
+const marcar3D = () => $('boton-3d').setAttribute('aria-pressed', String(tresD));
+marcar3D();
+$('boton-3d').addEventListener('click', () => { tresD = !tresD; localStorage.setItem('signatodo-3d', tresD ? 'si' : 'no'); marcar3D(); });
 $('boton-teclado').addEventListener('click', () => { $('escribir').hidden = !$('escribir').hidden; if (!$('escribir').hidden) $('texto-prueba').focus(); });
 $('boton-info').addEventListener('click', () => { $('info').hidden = false; });
 $('cerrar-info').addEventListener('click', () => { $('info').hidden = true; });

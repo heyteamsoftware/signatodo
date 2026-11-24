@@ -120,9 +120,10 @@ const Avatar3D = (() => {
       float luz = mix(0.60, 1.0, directa * mix(0.25, 1.0, sombra));
       float canto = pow(1.0 - max(n.z, 0.0), 3.0);                     // se oscurece donde la superficie se aleja de la vista
       vec3 color = uColor * (luz - 0.10 * canto);
-      if (uCara > 0.5 && vLocal.z > 0.05) {
+      if (uCara > 0.5 && vLocal.z > 0.02) {
+        // Los rasgos se proyectan de frente sobre la esfera; cerca del borde se estirarían, así que ahí se desvanecen.
         vec4 rasgo = texture2D(uRostro, vec2(vLocal.x * 0.5 + 0.5, 0.5 - vLocal.y * 0.5));
-        color = mix(color, rasgo.rgb * (0.78 + 0.22 * luz), rasgo.a);
+        color = mix(color, rasgo.rgb * (0.78 + 0.22 * luz), rasgo.a * smoothstep(0.02, 0.24, vLocal.z));
       }
       gl_FragColor = vec4(color, 1.0);
     }`;
@@ -223,7 +224,7 @@ const Avatar3D = (() => {
     // Tronco: cápsula aplastada (ancha de hombros, poco fondo), con la parte de arriba redondeada.
     const ANCHO = 0.52, FONDO = 0.42, CUPULA = 0.45;
     const tronco = {
-      a: [medio[0], medio[1] - 0.13, 0], b: [medio[0], cadera - 1.2, 0], ra: ANCHO, rb: ANCHO * 0.9,
+      a: [medio[0], cadera - 1.2, 0], b: [medio[0], medio[1] - 0.13, 0], ra: ANCHO * 0.9, rb: ANCHO,
       m: escala3(1, CUPULA, FONDO), n: escala3(1, 1 / CUPULA, 1 / FONDO), color: ROPA,
     };
     piezas.push(tronco);
@@ -255,10 +256,14 @@ const Avatar3D = (() => {
       const c2 = esq.codos[lado], m2 = esq.munecas[lado];
       const zCodo = 0.7 * escorzo(L_BRAZO, Math.hypot(c2[0] - h[0], c2[1] - h[1]), 0.18);
       let zMuneca = zCodo + escorzo(L_ANTEBRAZO, Math.hypot(m2[0] - c2[0], m2[1] - c2[1]), 0.24);
-      const grosor = esq.propia ? 1.3 : 1.12;
-      const rDedo = 0.031 * grosor, rPalma = 0.046 * grosor;
+      const grosor = esq.propia ? 1.35 : 1.3;
+      const rDedo = 0.032 * grosor, rPalma = 0.047 * grosor;
       // La mano nunca queda dentro del cuerpo ni de la cabeza: si su sitio en la imagen cae sobre ellos, va por delante.
-      const mano = esq.manos[lado];
+      // Las manos grabadas son de tamaño real y a esta escala se leen mal: se agrandan un poco desde la muñeca (las del
+      // modelo propio ya vienen grandes).
+      const AMPLIA = esq.propia ? 1 : 1.22;
+      const origen = esq.manos[lado][0];
+      const mano = esq.manos[lado].map((q) => [origen[0] + (q[0] - origen[0]) * AMPLIA, origen[1] + (q[1] - origen[1]) * AMPLIA, q[2] * AMPLIA]);
       let empuje = 0;
       for (const q of mano) {
         const libre = Math.max(frenteTronco(q[0], q[1]), frenteCabeza(q[0], q[1])) + rPalma + 0.03;

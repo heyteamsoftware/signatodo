@@ -893,8 +893,108 @@ const Avatar = (() => {
     ctx.restore();
   }
 
+  // Rasgos de la cara (flequillo, ojos, cejas, boca y mejillas) sobre una cabeza de centro (cx, cy) y radio r.
+  // Sirve para el muñeco plano y para pintar la textura de la cabeza del muñeco 3D. `desplazar`: en plano, girar y
+  // asentir se fingen moviendo los rasgos; en 3D la cabeza gira de verdad y no hace falta.
+  function rasgosCara(cx, cy, r, u, nm, forma, sonrisa, t, grosor, desplazar) {
+    ctx.beginPath();                                            // flequillo, como el personaje de las tarjetas
+    for (let k = -3; k <= 3; k++) {
+      ctx.moveTo(cx + k * 0.035 * u, cy - r);
+      ctx.quadraticCurveTo(cx + k * 0.1 * u, cy - r * 0.8, cx + k * 0.115 * u, cy - r * (0.52 - Math.abs(k) * 0.03));
+    }
+    ctx.stroke();
+    // Girar y asentir desplazan los rasgos dentro de la cabeza.
+    if (desplazar) ctx.translate(nm[4] * 0.0042 * u, nm[3] * 0.0035 * u);
+
+    // Ojos y cejas
+    const parpadeo = (t % 4.3) < 0.12;
+    const abierto = parpadeo ? 0 : nm[7];
+    const alza = nm[5] * 0.11 * u;   // cejas levantadas (+) o bajas (-)
+    for (const lado of [-1, 1]) {
+      const ex = cx + lado * 0.17 * u, ey = cy - 0.02 * u;
+      ctx.beginPath();
+      if (abierto < 0.15) {                                       // cerrados
+        ctx.moveTo(ex - 0.045 * u, ey); ctx.quadraticCurveTo(ex, ey + 0.022 * u, ex + 0.045 * u, ey); ctx.stroke();
+      } else {
+        const rx = 0.03 * u * (abierto > 1 ? 1 + (abierto - 1) * 1.2 : 1);
+        const ry = Math.max(rx * Math.min(abierto, 1.35), 0.006 * u);   // entornados = más achatados
+        ctx.ellipse(ex + nm[8] * 0.03 * u, ey - nm[9] * 0.025 * u, rx, ry, 0, 0, Math.PI * 2);
+        ctx.fillStyle = TINTA; ctx.fill(); ctx.fillStyle = PAPEL;
+      }
+      const baseY = ey - 0.13 * u - alza;
+      const ceño = nm[6] * 0.085 * u;                              // + interior abajo (enfado), - interior arriba (tristeza)
+      const interior = [ex - lado * 0.07 * u, baseY + ceño];
+      const exterior = [ex + lado * 0.07 * u, baseY + 0.01 * u - ceño * 0.4];
+      ctx.beginPath();
+      ctx.moveTo(interior[0], interior[1]);
+      ctx.quadraticCurveTo(ex, (interior[1] + exterior[1]) / 2 - 0.035 * u, exterior[0], exterior[1]);
+      ctx.stroke();
+    }
+
+    // Boca: articula la palabra que se signa; sin palabra, muestra la expresión.
+    const by = cy + 0.22 * u;
+    ctx.beginPath();
+    if (!forma && nm[11] > 0.15) {                                // boca abierta (sorpresa, miedo)
+      ctx.ellipse(cx, by, (0.05 + 0.03 * nm[11]) * u, (0.03 + 0.07 * nm[11]) * u, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    } else if (!forma) {
+      const comisura = by - (0.01 + 0.012 * sonrisa) * u, curva = by + (0.03 + 0.06 * sonrisa) * u, ancho = (0.09 + 0.02 * sonrisa) * u;
+      ctx.moveTo(cx - ancho, comisura); ctx.quadraticCurveTo(cx, curva, cx + ancho, comisura); ctx.stroke();
+    } else {
+      dibujarBoca(cx, by, u, forma, sonrisa, grosor);
+    }
+    if (nm[12] > 0.3) {                                           // mejillas infladas
+      for (const lado of [-1, 1]) { ctx.beginPath(); ctx.arc(cx + lado * 0.27 * u, by - 0.02 * u, 0.075 * u * nm[12], 0, Math.PI * 2); ctx.stroke(); }
+    }
+  }
+
+  function rotularExpresion(rotular, capa, W, H) {
+    if (!rotular || !capa.nombre) return;                         // rótulo de la expresión que se marca
+    ctx.save();
+    ctx.font = `700 ${Math.round(W * 0.052)}px "Segoe UI", system-ui, sans-serif`;
+    ctx.fillStyle = TINTA; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+    ctx.fillText(capa.nombre, W * 0.04, H * 0.035, W * 0.92);
+    ctx.restore();
+  }
+
+  // Pinta el muñeco 3D sobre el lienzo. Devuelve false si no se puede (sin WebGL) para que se use el plano.
+  let LIENZO_CARA = null;
+  const TAM_CARA = 384;
+  function pintar3D(p, nm, forma, sonrisa, t, propia, W, H, u, ox, oy) {
+    if (!Avatar3D.disponible()) return false;
+    // 1. Los rasgos de la cara se dibujan en una textura que luego envuelve la cabeza.
+    if (!LIENZO_CARA) { LIENZO_CARA = document.createElement('canvas'); LIENZO_CARA.width = LIENZO_CARA.height = TAM_CARA; }
+    const principal = ctx;
+    ctx = LIENZO_CARA.getContext('2d');
+    try {
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, TAM_CARA, TAM_CARA);
+      const uCara = (TAM_CARA / 2) / 0.46;                        // la cabeza (radio 0,46) ocupa toda la textura
+      const trazo = Math.max(2, uCara * 0.018);
+      ctx.lineJoin = ctx.lineCap = 'round'; ctx.strokeStyle = TINTA; ctx.fillStyle = PAPEL; ctx.lineWidth = trazo;
+      ctx.save();
+      rasgosCara(TAM_CARA / 2, TAM_CARA / 2, TAM_CARA / 2, uCara, nm, forma, sonrisa, t, trazo, false);
+      ctx.restore();
+    } finally { ctx = principal; }
+    // 2. El esqueleto, con la y hacia arriba y la z hacia quien mira.
+    const V = (i) => [p[i], -p[i + 1]];
+    const mano = (base, zBase) => Array.from({ length: 21 }, (_, k) => [p[base + k * 2], -p[base + k * 2 + 1], -(p[zBase + k] - p[zBase])]);
+    const esqueleto = {
+      cabeza: V(0), hombros: [V(2), V(4)], codos: [V(6), V(8)], munecas: [V(10), V(12)], caderas: [V(14), V(16)],
+      manos: [mano(IZQ, Z_IZQ), mano(DER, Z_DER)], propia,
+      // Un balanceo mínimo (menos de un grado) para que el muñeco respire y no parezca una estatua.
+      gestos: {
+        tronco: [nm[0] + 0.45 * Math.sin(t * 0.8), nm[1] + 0.4 * Math.sin(t * 0.53 + 1)],
+        cabeza: [nm[2] + 0.6 * Math.sin(t * 0.7 + 2), nm[3] + 0.5 * Math.sin(t * 0.61), nm[4] + 0.9 * Math.sin(t * 0.37 + 0.5)],
+      },
+    };
+    const imagen = Avatar3D.pintar(esqueleto, { ancho: W, alto: H, u, ox, oy, rostro: LIENZO_CARA });
+    if (!imagen) return false;
+    ctx.drawImage(imagen, 0, 0, W, H);
+    return true;
+  }
+
   // opciones: pregunta (cejas arriba) y zoom (1 = hasta las caderas, con las manos en reposo a la vista; más = más cerca)
-  function pintar(t, { pregunta = false, rotular = false, zoom = 1, margen = null, pose: poseDada = null, texto: textoDado = '', avance: avanceDado = 0 } = {}) {
+  function pintar(t, { pregunta = false, rotular = false, zoom = 1, margen = null, tresD = false, pose: poseDada = null, texto: textoDado = '', avance: avanceDado = 0 } = {}) {
     t *= escalaTiempo;
     const { pose: p, texto, avance, cara = null } = poseDada ? { pose: poseDada, texto: textoDado, avance: avanceDado } : estadoEn(t);
     const propia = poseDada ? true : esPropio;
@@ -917,6 +1017,15 @@ const Avatar = (() => {
     nm[5] = Math.max(-1, Math.min(1.2, nm[5])); nm[6] = Math.max(-1, Math.min(1.1, nm[6]));
     nm[7] = Math.max(0, Math.min(1.4, nm[7])); nm[10] = Math.max(-1, Math.min(1, nm[10])); nm[11] = Math.max(0, Math.min(1, nm[11]));
     const RAD = Math.PI / 180;
+    // Forma de la boca y sonrisa de este instante.
+    const forma = texto ? (cara ? formaConCara(boca(texto, avance), cara) : boca(texto, avance)) : null;
+    const sonrisa = acota(nm[10] + (cara ? acota(cara[3] / 0.05, -1, 1) * 0.5 : 0), -1, 1);
+
+    // Muñeco 3D: el mismo esqueleto con volumen, sombreado y sombras. Si no hay WebGL, sigue el plano de abajo.
+    if (tresD && typeof Avatar3D !== 'undefined' && pintar3D(p, nm, forma, sonrisa, t, propia, W, H, u, ox, oy)) {
+      rotularExpresion(rotular, capa, W, H);
+      return texto;
+    }
 
     // Inclinación del cuerpo: todo el personaje gira alrededor de la cintura (y se acerca un poco al inclinarse adelante).
     ctx.save();
@@ -950,55 +1059,7 @@ const Avatar = (() => {
     ctx.save();                                                 // la cabeza se inclina sobre el cuello
     ctx.translate(cx, cuelloY); ctx.rotate(nm[2] * RAD); ctx.translate(-cx, -cuelloY);
     ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-    ctx.beginPath();                                            // flequillo, como el personaje de las tarjetas
-    for (let k = -3; k <= 3; k++) {
-      ctx.moveTo(cx + k * 0.035 * u, cy - r);
-      ctx.quadraticCurveTo(cx + k * 0.1 * u, cy - r * 0.8, cx + k * 0.115 * u, cy - r * (0.52 - Math.abs(k) * 0.03));
-    }
-    ctx.stroke();
-    // Girar y asentir desplazan los rasgos dentro de la cabeza.
-    ctx.translate(nm[4] * 0.0042 * u, nm[3] * 0.0035 * u);
-
-    // Ojos y cejas
-    const parpadeo = (t % 4.3) < 0.12;
-    const abierto = parpadeo ? 0 : nm[7];
-    const alza = nm[5] * 0.11 * u;   // cejas levantadas (+) o bajas (-)
-    for (const lado of [-1, 1]) {
-      const ex = cx + lado * 0.17 * u, ey = cy - 0.02 * u;
-      ctx.beginPath();
-      if (abierto < 0.15) {                                       // cerrados
-        ctx.moveTo(ex - 0.045 * u, ey); ctx.quadraticCurveTo(ex, ey + 0.022 * u, ex + 0.045 * u, ey); ctx.stroke();
-      } else {
-        const rx = 0.03 * u * (abierto > 1 ? 1 + (abierto - 1) * 1.2 : 1);
-        const ry = Math.max(rx * Math.min(abierto, 1.35), 0.006 * u);   // entornados = más achatados
-        ctx.ellipse(ex + nm[8] * 0.03 * u, ey - nm[9] * 0.025 * u, rx, ry, 0, 0, Math.PI * 2);
-        ctx.fillStyle = TINTA; ctx.fill(); ctx.fillStyle = PAPEL;
-      }
-      const baseY = ey - 0.13 * u - alza;
-      const ceño = nm[6] * 0.085 * u;                              // + interior abajo (enfado), - interior arriba (tristeza)
-      const interior = [ex - lado * 0.07 * u, baseY + ceño];
-      const exterior = [ex + lado * 0.07 * u, baseY + 0.01 * u - ceño * 0.4];
-      ctx.beginPath();
-      ctx.moveTo(interior[0], interior[1]);
-      ctx.quadraticCurveTo(ex, (interior[1] + exterior[1]) / 2 - 0.035 * u, exterior[0], exterior[1]);
-      ctx.stroke();
-    }
-
-    // Boca: articula la palabra que se signa; sin palabra, muestra la expresión.
-    const forma = texto ? (cara ? formaConCara(boca(texto, avance), cara) : boca(texto, avance)) : null, by = cy + 0.22 * u;
-    const sonrisa = acota(nm[10] + (cara ? acota(cara[3] / 0.05, -1, 1) * 0.5 : 0), -1, 1);
-    ctx.beginPath();
-    if (!forma && nm[11] > 0.15) {                                // boca abierta (sorpresa, miedo)
-      ctx.ellipse(cx, by, (0.05 + 0.03 * nm[11]) * u, (0.03 + 0.07 * nm[11]) * u, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-    } else if (!forma) {
-      const comisura = by - (0.01 + 0.012 * sonrisa) * u, curva = by + (0.03 + 0.06 * sonrisa) * u, ancho = (0.09 + 0.02 * sonrisa) * u;
-      ctx.moveTo(cx - ancho, comisura); ctx.quadraticCurveTo(cx, curva, cx + ancho, comisura); ctx.stroke();
-    } else {
-      dibujarBoca(cx, by, u, forma, sonrisa, grosor);
-    }
-    if (nm[12] > 0.3) {                                           // mejillas infladas
-      for (const lado of [-1, 1]) { ctx.beginPath(); ctx.arc(cx + lado * 0.27 * u, by - 0.02 * u, 0.075 * u * nm[12], 0, Math.PI * 2); ctx.stroke(); }
-    }
+    rasgosCara(cx, cy, r, u, nm, forma, sonrisa, t, grosor, true);
     ctx.restore();                                                // fin de la cabeza
 
     // Brazos y manos, encima de todo. Cada pieza es un "tubo": trazo negro y, por dentro, blanco.
@@ -1147,13 +1208,7 @@ const Avatar = (() => {
     for (const brazo of brazos) for (const pieza of brazo.piezas) pieza.pinta();
     ctx.restore();                                              // fin de la inclinación del cuerpo
     ctx.strokeStyle = TINTA; ctx.lineWidth = grosor; ctx.fillStyle = PAPEL;
-    if (rotular && capa.nombre) {                                 // rótulo de la expresión que se marca
-      ctx.save();
-      ctx.font = `700 ${Math.round(W * 0.052)}px "Segoe UI", system-ui, sans-serif`;
-      ctx.fillStyle = TINTA; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
-      ctx.fillText(capa.nombre, W * 0.04, H * 0.035, W * 0.92);
-      ctx.restore();
-    }
+    rotularExpresion(rotular, capa, W, H);
     return texto;
   }
 

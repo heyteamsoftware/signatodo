@@ -191,3 +191,22 @@ sale un cuadro para escribir frases) y se empaqueta como APK en `android/`.
   Sin ese servicio, la app avisa de que no hay reconocimiento disponible.
 - **Licencia**: el APK lleva dentro los movimientos de ARASAAC (CC BY-NC-SA, solo uso no comercial); la pantalla de información
   de la app lo indica. No lo repartas sin cumplirla.
+
+## Avatar en 3D
+
+`web/avatar3d.js` dibuja el mismo muñeco con volumen. Es un motor propio sobre WebGL, sin bibliotecas ni descargas, para que
+funcione sin internet y dentro de la app. Se activa con «Avatar en 3D» (modo vídeo) o con el botón «3D» (modo directo); si el
+navegador no tiene WebGL, se dibuja el muñeco plano de siempre.
+
+- **Piezas independientes**: todo se construye con una única pieza, una cápsula, que con distintas medidas hace de falange (tres
+  por dedo), palma, antebrazo, brazo, hombro, cuello, tronco y cabeza. Cada una se coloca por su cuenta en cada fotograma.
+- **De la pose al esqueleto 3D**: las manos usan la profundidad real de cada punto que ya se guardaba. La de los brazos se deduce
+  del escorzo (un hueso mide siempre lo mismo; si se ve más corto es que apunta hacia quien mira), con una zona muerta para que
+  no tiemblen. La mano nunca queda dentro del cuerpo o de la cabeza: si su sitio en la imagen cae sobre ellos, va por delante.
+- **Cabeza y cuerpo**: la cabeza gira, asiente y se ladea de verdad sobre el cuello, y el cuerpo se inclina alrededor de la
+  cintura. Los rasgos de la cara (ojos, cejas, boca con labios, dientes y lengua) son los mismos del muñeco plano, pintados en una
+  textura que envuelve la cabeza.
+- **Profundidad**: sombreado suave, contorno de tinta y **sombras proyectadas** (la mano y el brazo dan sombra sobre el pecho y la
+  cara). La vista no tiene perspectiva, para que cada signo quede donde se grabó.
+- **Límites**: la imagen sola no dice si un brazo va hacia delante o hacia atrás; se supone que va por delante, que es lo normal al
+  signar. El tronco es una forma simple y no hay piernas.

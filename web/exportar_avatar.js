@@ -53,7 +53,7 @@ function dibujarCuadro(g, W, H, t) {
   let n = -1;
   for (let i = 0; i < segs.length; i++) if (t >= segs[i].t0 - 0.15 && t <= segs[i].t1 + 0.6) n = i;
   const pregunta = n >= 0 && segs[n].texto.includes('?');
-  const palabra = Avatar.pintar(t, { rotular: $('ajuste-rotular').checked, zoom: $('ajuste-zoom').value / 100 }) || '';
+  const palabra = Avatar.pintar(t, { rotular: $('ajuste-rotular').checked, tresD: $('ajuste-3d').checked, zoom: $('ajuste-zoom').value / 100 }) || '';
   const lienzoAvatar = $('avatar');
 
   const fw = W * Number($('ajuste-ancho').value) / 100;
