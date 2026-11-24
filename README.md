@@ -207,6 +207,19 @@ navegador no tiene WebGL, se dibuja el muñeco plano de siempre.
   cintura. Los rasgos de la cara (ojos, cejas, boca con labios, dientes y lengua) son los mismos del muñeco plano, pintados en una
   textura que envuelve la cabeza.
 - **Profundidad**: sombreado suave, contorno de tinta y **sombras proyectadas** (la mano y el brazo dan sombra sobre el pecho y la
-  cara). La vista no tiene perspectiva, para que cada signo quede donde se grabó.
+  cara) y una perspectiva suave (lo que se acerca a quien mira se ve algo mayor).
 - **Límites**: la imagen sola no dice si un brazo va hacia delante o hacia atrás; se supone que va por delante, que es lo normal al
   signar. El tronco es una forma simple y no hay piernas.
+
+### Revisión del avatar 3D (boca, brazos y expresiones)
+
+- **La boca dice la palabra que se signa**, no la del audio. Mandan los sonidos de la palabra (la boca grabada solo matiza, 25 %).
+  En reposo se usan los mismos labios, cerrados, en vez de una raya distinta. Al deletrear o en un signo compuesto, los labios
+  dicen la palabra entera repartida entre las letras o las partes («Laura», no «ele, a, u…»). Al abrirse baja la mandíbula más de
+  lo que sube el labio de arriba, y la nariz va más alta, para que la boca no la pise.
+- **Brazos**: en la grabación el brazo se veía entero, así que nunca estaba dentro del cuerpo. Si un tramo de brazo, antebrazo o
+  mano cae sobre el tronco o la cabeza, se adelanta lo justo para pasar por delante. `Avatar.revisar3D(t)` mide cuánto atraviesa
+  (0 o menos = nada); en los dos vídeos de prueba, 1.855 fotogramas, no atraviesa ninguno.
+- **Expresiones**: el ceño fruncido se leía como enfado. Ahora solo se frunce del todo en los signos y palabras de enfado o asco.
+  Las preguntas con qué/quién/dónde llevan las cejas algo bajas y la cabeza ladeada; la negación, solo la cabeza que niega; las
+  palabras de enfermedad o agobio, cara de malestar. Las cejas grabadas se miden respecto al reposo de su propio clip.

@@ -87,7 +87,12 @@ const Avatar = (() => {
     a = Math.max(a - 1, 0); b = Math.min(b + 1, poses.length - 1);
     if (b - a < 6) { a = Math.max(a - 3, 0); b = Math.min(b + 3, poses.length - 1); }   // nunca menos de ~0,25 s
     const recorte = poses.slice(a, b + 1);
-    return { poses: recorte, dura: (recorte.length - 1) / fps, cara: cara ? cara.slice(a, b + 1) : null };
+    let rostro = cara ? cara.slice(a, b + 1).map((f) => f.slice()) : null;
+    if (rostro && rostro.length) {
+      const cejas = rostro.map((f) => f[6]).sort((x, y) => x - y), base = cejas[Math.floor(cejas.length / 2)];
+      for (const f of rostro) f[6] -= base;                       // cejas: diferencia respecto a su altura habitual en el clip
+    }
+    return { poses: recorte, dura: (recorte.length - 1) / fps, cara: rostro };
   }
 
   // El enlace entre dos signos dura según lo que tengan que viajar las manos.
@@ -157,10 +162,19 @@ const Avatar = (() => {
     return Object.keys(propios).length;
   }
 
+  // El ceño fruncido se lee como enfado. Solo se deja entero en los signos que de verdad son de enfado o de asco; en los
+  // demás (duda, concentración, esfuerzo, pregunta) se queda en un fruncido leve.
+  const EXPR_ENFADO = new Set(['enfado', 'asco']);
+  function suavizarCeno(clip, nm) {
+    clip.enfado = !!(nm && nm.claves && nm.claves.some((c) => EXPR_ENFADO.has(c.expr)));
+    if (!clip.enfado) for (const p of clip.poses) if (p[NM + 6] > 0) p[NM + 6] = Math.min(p[NM + 6] * 0.4, 0.2);
+    return clip;
+  }
+
   // Movimiento de un signo propio, ya como poses del avatar.
   function crearPropio(id) {
     const { fotogramas, dura } = Signos.generar(definiciones[id]);
-    return { poses: fotogramas.map((f) => pose(f.cuerpo, f.izq, f.der, f.zi, f.zd, f.zm, f.nm)), dura, propio: true };
+    return suavizarCeno({ poses: fotogramas.map((f) => pose(f.cuerpo, f.izq, f.der, f.zi, f.zd, f.zm, f.nm)), dura, propio: true }, definiciones[id].nm);
   }
 
   // Una letra del alfabeto dactilológico, ya como poses del avatar.
@@ -175,6 +189,7 @@ const Avatar = (() => {
     const gestos = Signos.gestos({ nm });
     const n = clip.poses.length;
     clip.poses.forEach((p, i) => p.splice(NM, NM_N, ...gestos(n > 1 ? i / (n - 1) : 0)));
+    suavizarCeno(clip, nm);
   }
 
   // Une las palabras seguidas que forman una expresión con signo ("por favor", "de nada", "fin de semana").
@@ -235,7 +250,7 @@ const Avatar = (() => {
         const partes = compuestos[compuesto], parte = (u.t1 - u.t0) / partes.length;
         partes.forEach((p, k) => {
           const idParte = resolverId([normalizar(p)]);
-          if (idParte !== undefined) elegidas.push({ u: { ...u, t0: u.t0 + k * parte, t1: u.t0 + (k + 1) * parte, texto: p }, id: idParte, complemento });
+          if (idParte !== undefined) elegidas.push({ u: { ...u, t0: u.t0 + k * parte, t1: u.t0 + (k + 1) * parte, texto: p }, id: idParte, complemento, voz: { texto: u.texto.replace(/[¿?¡!.,;:"«»()]/g, '').trim(), k, n: partes.length } });
         });
       } else if (deletreable) {
         // Sin signo: se deletrea. Un nombre propio (con mayúscula, no a principio de frase) no se recorta nunca.
@@ -250,6 +265,7 @@ const Avatar = (() => {
           letras.forEach((l, k) => elegidas.push({
             u: { ...u, t0: u.t0 + k * parte, t1: u.t0 + (k + 1) * parte, texto: l.toUpperCase() },
             id: 'l:' + l, complemento, deletreo: true, nombre: nombre || sigla, grupo: 'd' + i,
+            voz: { texto: u.texto.replace(/[¿?¡!.,;:"«»()]/g, '').trim(), k, n: letras.length },
           }));
         } else sinSigno.push(u.texto.replace(/[.,;:!?¡¿]/g, ''));
       } else if (u.tipo === 'signo') sinSigno.push(u.texto.replace(/[.,;:!?¡¿]/g, ''));
@@ -410,7 +426,7 @@ const Avatar = (() => {
       const t = desdeReposo ? ahora + 0.4 : Math.max(ahora, d.cursor + enlace(d.ultimo.poses.at(-1), clip.poses[0]));
       const t1 = t + clip.dura / vel;
       const texto = e.u.texto.replace(/[¿?¡!.,;:"«»()]/g, '').trim();
-      pista.push({ t0: t, t1, habla: Math.max(t1 - t, 0.3 + 0.07 * texto.replace(/[^\p{L}]/gu, '').length), idx: i, clip, texto });
+      pista.push({ t0: t, t1, habla: Math.max(t1 - t, 0.3 + 0.07 * texto.replace(/[^\p{L}]/gu, '').length), idx: i, clip, voz: e.voz, texto });
       d.cursor = t1; d.ultimo = clip;
     }
     while (pista.length > 3 && pista[0].t1 < ahora - 20) pista.shift();      // no crece sin límite
@@ -496,7 +512,7 @@ const Avatar = (() => {
       let lista = frases.get(seg).filter((e, k, todas) => {
         const palabra = normalizar(e.u.texto);
         const muletilla = MULETILLAS.has(palabra) && (k === 0 || /,\s*$/.test(e.u.texto)) && todas.length > 1;
-        const repetida = k > 0 && todas[k - 1].id === e.id;
+        const repetida = k > 0 && todas[k - 1].id === e.id && !e.deletreo;
         return !muletilla && !repetida;
       });
       const inicio = Math.max(inicioIdeal(seg), cursor + TRANSICION);
@@ -528,12 +544,12 @@ const Avatar = (() => {
       const velocidad = Math.min(Math.max(necesario(lista, 1) / disponible, 1), tope);
       if (velocidad > 1.01) cuenta.frasesAceleradas++;
       let t = inicio;
-      lista.forEach(({ u, id }, k) => {
+      lista.forEach(({ u, id, voz }, k) => {
         if (k) t += enlace(clips[lista[k - 1].id].poses.at(-1), clips[id].poses[0]);
         // Si hay hueco, espera a su palabra (menos un pequeño anticipo): así sigue el ritmo del orador.
         t = Math.max(t, u.t0 - (k ? ANTICIPO_PALABRA : ANTICIPO_FRASE));
         const t1 = t + clips[id].dura / velocidad;
-        pista.push({ t0: t, t1, habla: Math.max(t1 - t, 0.3 + 0.07 * u.texto.replace(/[^\p{L}]/gu, '').length), idx: u.idx, clip: clips[id], texto: u.texto.replace(/[¿?¡!.,;:"«»()]/g, '').trim() });
+        pista.push({ t0: t, t1, habla: Math.max(t1 - t, 0.3 + 0.07 * u.texto.replace(/[^\p{L}]/gu, '').length), idx: u.idx, clip: clips[id], voz, texto: u.texto.replace(/[¿?¡!.,;:"«»()]/g, '').trim() });
         cuenta.retrasoMaximo = Math.max(cuenta.retrasoMaximo, t - u.t0);
         cuenta.sumaRetraso += t - u.t0; cuenta.nSignos++; if (t <= u.t0) cuenta.adelantadas++;
         t = t1;
@@ -564,7 +580,7 @@ const Avatar = (() => {
     enfado: { escala: 1, palabras: ['enfadado', 'enfadada', 'enfadar', 'rabia', 'odiar', 'furioso', 'furiosa', 'molesto'] },
     sorpresa: { escala: 1, palabras: ['sorpresa', 'sorprender', 'increible', 'guau'] },
     miedo: { escala: 1, palabras: ['miedo', 'asustar', 'susto', 'peligro', 'peligroso'] },
-    dolor: { escala: 0.8, palabras: ['dolor', 'doler', 'enfermo', 'enferma', 'herida'] },
+    dolor: { escala: 0.8, palabras: ['dolor', 'doler', 'enfermo', 'enferma', 'herida', 'fiebre', 'alergia', 'mal', 'malo', 'mala', 'preocupado', 'preocupada', 'agobiado', 'agobiada', 'nervioso', 'nerviosa'] },
     duda: { escala: 1, palabras: ['quizas', 'dudar', 'duda', 'probablemente'] },
   };
   const EMOCION_DE = {};
@@ -613,7 +629,7 @@ const Avatar = (() => {
         const parte = trozo.slice(iIni, iFin + 1);
         const conPalabra = parte.some((u) => limpia(u.texto).toLowerCase().split(/\s+/).some((w) => INTERROGATIVAS.test(w)));
         poner(a + iIni, a + iFin, conPalabra
-          ? { nombre: 'pregunta (qué, quién, dónde…): ceño', d: { 5: -0.15, 6: 0.85, 7: -0.12, 2: 0.0 }, nod: null, lado: 6 }
+          ? { nombre: 'pregunta (qué, quién, dónde…)', d: { 5: -0.22, 6: 0.1, 7: 0.05, 1: 3 }, nod: null, lado: 8 }
           : { nombre: 'pregunta sí/no: cejas arriba', d: { 5: 1, 7: 0.22, 1: 4, 3: -5 } });
       } else if (trozo.some((u) => u.texto.includes('!'))) {
         let iIni = trozo.findIndex((u) => u.texto.includes('¡'));
@@ -625,7 +641,7 @@ const Avatar = (() => {
         const u = unidades[i], crudo = limpia(u.texto).toLowerCase(), norm = normalizar(u.texto).toLowerCase(), lema = normalizar(u.lema || '').toLowerCase();
         if (NEGACIONES.has(norm) && conSigno(i, b) >= 0) {
           const k = conSigno(i, b);
-          poner(k, Math.min(k + 1, b), { nombre: 'negación: cabeza', d: { 6: 0.4, 10: -0.2 }, shake: { amp: 16, f: 2.6 } }, 0.9);
+          poner(k, Math.min(k + 1, b), { nombre: 'negación: cabeza', d: { 6: 0.12, 10: -0.05 }, shake: { amp: 16, f: 2.6 } }, 0.9);
         } else if (norm === 'si' && crudo === 'sí') {
           const k = conSigno(i, b);
           if (k >= 0) poner(k, k, { nombre: 'afirmación: asentir', d: { 10: 0.25 }, nod: { amp: 9, f: 2.4 } }, 0.8);
@@ -635,7 +651,7 @@ const Avatar = (() => {
         }
         const emo = EMOCION_DE[norm] || (lema && EMOCION_DE[lema]) || norm.split(/\s+/).map((w) => EMOCION_DE[w]).find(Boolean);
         if (emo && conSigno(i, i) >= 0) {
-          poner(i, i, { nombre: NOMBRE_EXPR[emo.nombre] || emo.nombre, d: deltasDeExpresion(emo.expr, emo.escala) }, 0.7);
+          poner(i, i, { nombre: NOMBRE_EXPR[emo.nombre] || emo.nombre, d: deltasDeExpresion(emo.expr, emo.escala), enfado: emo.expr === 'enfado' }, 0.7);
         }
       }
       a = b + 1;
@@ -646,7 +662,7 @@ const Avatar = (() => {
   // Desviaciones de la cara en el instante t (reloj) y nombre de la expresión que domina.
   function superposicion(t) {
     const d = new Array(NM_N).fill(0);
-    let nombre = '', mayor = 0;
+    let nombre = '', mayor = 0, enfado = false;
     for (const ev of expresiones) {
       if (t < ev.t0 - ENTRADA_EXPR || t > ev.t1 + SALIDA_EXPR) continue;
       const w = t < ev.t0 ? suave((t - (ev.t0 - ENTRADA_EXPR)) / ENTRADA_EXPR)
@@ -656,8 +672,9 @@ const Avatar = (() => {
       if (ev.nod) d[3] += ev.nod.amp * w * Math.sin(2 * Math.PI * ev.nod.f * (t - ev.t0));
       if (ev.lado) d[2] += ev.lado * w;
       if (ev.nombre && w > mayor) { mayor = w; nombre = ev.nombre; }
+      if (ev.enfado && w > 0.3) enfado = true;
     }
-    return { d, nombre: mayor > 0.35 ? nombre : '' };
+    return { d, nombre: mayor > 0.35 ? nombre : '', enfado };
   }
 
   // Cuánto dura la articulación de la palabra de un signo: lo que tarda en decirse, sin pisar al siguiente.
@@ -665,6 +682,14 @@ const Avatar = (() => {
     const tope = siguiente ? Math.max(siguiente.t0 + 0.15 - actual.t0, actual.t1 - actual.t0) : Infinity;
     return Math.min(actual.habla, tope);
   }
+
+  // Lo que dicen los labios durante un signo: su palabra, o la palabra entera repartida entre sus letras o sus partes.
+  const dichoDe = (e, local) => (e.voz
+    ? { dicho: e.voz.texto, avanceDicho: (e.voz.k + Math.min(Math.max(local, 0), 1)) / e.voz.n }
+    : { dicho: e.texto, avanceDicho: local });
+  // Entre dos letras (o partes) de la misma palabra, los labios se quedan donde iban.
+  const entreLetras = (actual, siguiente) => (actual && actual.voz && siguiente && siguiente.voz && siguiente.voz.texto === actual.voz.texto && siguiente.voz.k > actual.voz.k
+    ? { dicho: actual.voz.texto, avanceDicho: (actual.voz.k + 1) / actual.voz.n } : {});
 
   // Pose y palabra en el instante t.
   function estadoEn(t) {
@@ -674,12 +699,13 @@ const Avatar = (() => {
     if (actual && t <= actual.t1) {
       esPropio = !!actual.clip.propio;
       const k = (t - actual.t0) / (actual.t1 - actual.t0);
-      return { pose: poseDeClip(actual.clip, k), texto: actual.texto, avance: Math.min((t - actual.t0) / bocaDe(actual, siguiente), 1), cara: caraDeClip(actual.clip, k) };
+      const local = Math.min((t - actual.t0) / bocaDe(actual, siguiente), 1);
+      return { pose: poseDeClip(actual.clip, k), texto: actual.texto, avance: local, ...dichoDe(actual, local), cara: caraDeClip(actual.clip, k), enfado: !!actual.clip.enfado };
     }
     // En directo no se sabe si vendrá otra palabra: las manos esperan un momento donde están antes de bajar.
     if (directo && actual && !siguiente && t > actual.t1) {
       const ultimo = actual.clip.poses.at(-1), tras = t - actual.t1;
-      const resto = tras < bocaDe(actual, null) ? { texto: actual.texto, avance: Math.min((t - actual.t0) / bocaDe(actual, null), 1) } : { texto: '', avance: 0 };
+      const resto = tras < bocaDe(actual, null) ? { texto: actual.texto, avance: 0, ...dichoDe(actual, Math.min((t - actual.t0) / bocaDe(actual, null), 1)) } : { texto: '', avance: 0 };
       if (tras < ESPERA_DIRECTO) return { pose: ultimo, ...resto };
       if (tras - ESPERA_DIRECTO < A_REPOSO) return { pose: mezclar(ultimo, REPOSO, suave((tras - ESPERA_DIRECTO) / A_REPOSO)), texto: '', avance: 0 };
       return { pose: REPOSO, texto: '', avance: 0 };
@@ -689,7 +715,7 @@ const Avatar = (() => {
     const inicio = actual ? actual.t1 : -Infinity, fin = siguiente ? siguiente.t0 : Infinity;
     // Si la palabra tarda más en decirse que el signo, los labios la terminan mientras las manos pasan al siguiente.
     const sigueHablando = actual && t - actual.t0 < bocaDe(actual, siguiente);
-    const resto = sigueHablando ? { texto: actual.texto, avance: (t - actual.t0) / bocaDe(actual, siguiente) } : { texto: '', avance: 0 };
+    const resto = sigueHablando ? { texto: actual.texto, avance: 0, ...dichoDe(actual, (t - actual.t0) / bocaDe(actual, siguiente)) } : { texto: '', avance: 0, ...entreLetras(actual, siguiente) };
     if (fin - inicio <= PAUSA_LARGA) {                        // enlace directo de un signo al siguiente
       return { pose: mezclar(desde, hasta, suave((t - inicio) / (fin - inicio))), ...resto };
     }
@@ -797,7 +823,7 @@ const Avatar = (() => {
 
   // La signante de los vídeos articula cada palabra mientras signa. De su cara (anchura de la boca, abertura interior,
   // sonrisa) sale la forma real; la lengua y la f vienen de los sonidos de la palabra, que la cámara no distingue.
-  // Se mezcla con los sonidos (65 % grabada) para que la boca siga leyéndose con claridad.
+  // Mandan los sonidos de la palabra (la boca tiene que decirla y poder leerse); la grabada solo matiza (25 %).
   const acota = (x, a, b) => Math.min(Math.max(x, a), b);
   function formaConCara(fonemas, cara) {
     const [ancho, abre] = cara;
@@ -812,7 +838,7 @@ const Avatar = (() => {
       abre < 0.025 ? 1 : 0,                                       // labios apretados
       fonemas[8],
     ];
-    const peso = 0.65;
+    const peso = 0.25;
     return fonemas.map((v, i) => (i === 5 || i === 6 || i === 8 ? v : v + (grabada[i] - v) * peso));
   }
 
@@ -854,7 +880,7 @@ const Avatar = (() => {
       ctx.restore();
       return;
     }
-    const arriba = by - abre * 0.38, abajo = by + abre * 0.62;                          // la mandíbula baja más que el labio de arriba
+    const arriba = by - abre * 0.3, abajo = by + abre * 0.7;                          // la mandíbula baja más que el labio de arriba
     // Contorno exterior de los labios y abertura interior
     ctx.beginPath();
     ctx.moveTo(cx - mw - lt * (0.6 + 0.6 * r), yc);
@@ -933,14 +959,11 @@ const Avatar = (() => {
 
     // Boca: articula la palabra que se signa; sin palabra, muestra la expresión.
     const by = cy + 0.22 * u;
-    ctx.beginPath();
-    if (!forma && nm[11] > 0.15) {                                // boca abierta (sorpresa, miedo)
-      ctx.ellipse(cx, by, (0.05 + 0.03 * nm[11]) * u, (0.03 + 0.07 * nm[11]) * u, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-    } else if (!forma) {
-      const comisura = by - (0.01 + 0.012 * sonrisa) * u, curva = by + (0.03 + 0.06 * sonrisa) * u, ancho = (0.09 + 0.02 * sonrisa) * u;
-      ctx.moveTo(cx - ancho, comisura); ctx.quadraticCurveTo(cx, curva, cx + ancho, comisura); ctx.stroke();
-    } else {
-      dibujarBoca(cx, by, u, forma, sonrisa, grosor);
+    if (forma) dibujarBoca(cx, by, u, forma, sonrisa, grosor);
+    else {
+      // Sin palabra: los mismos labios en reposo (cerrados y con su sonrisa) o abiertos por sorpresa o miedo.
+      const abierta = nm[11] > 0.15 ? nm[11] : 0;
+      dibujarBoca(cx, by, u, [0.15 + 0.02 * Math.max(sonrisa, 0), abierta * 0.16, abierta * 0.5, abierta ? 0.4 : 0, 0, abierta ? 0.2 : 0, 0, abierta ? 0 : 0.5, 0], sonrisa, grosor);
     }
     if (nm[12] > 0.3) {                                           // mejillas infladas
       for (const lado of [-1, 1]) { ctx.beginPath(); ctx.arc(cx + lado * 0.27 * u, by - 0.02 * u, 0.075 * u * nm[12], 0, Math.PI * 2); ctx.stroke(); }
@@ -956,26 +979,8 @@ const Avatar = (() => {
     ctx.restore();
   }
 
-  // Pinta el muñeco 3D sobre el lienzo. Devuelve false si no se puede (sin WebGL) para que se use el plano.
-  let LIENZO_CARA = null;
-  const TAM_CARA = 384;
-  function pintar3D(p, nm, forma, sonrisa, t, propia, W, H, u, ox, oy) {
-    if (!Avatar3D.disponible()) return false;
-    // 1. Los rasgos de la cara se dibujan en una textura que luego envuelve la cabeza.
-    if (!LIENZO_CARA) { LIENZO_CARA = document.createElement('canvas'); LIENZO_CARA.width = LIENZO_CARA.height = TAM_CARA; }
-    const principal = ctx;
-    ctx = LIENZO_CARA.getContext('2d');
-    try {
-      ctx.setTransform(1, 0, 0, 1, 0, 0);
-      ctx.clearRect(0, 0, TAM_CARA, TAM_CARA);
-      const uCara = (TAM_CARA / 2) / 0.46;                        // la cabeza (radio 0,46) ocupa toda la textura
-      const trazo = Math.max(2, uCara * 0.018);
-      ctx.lineJoin = ctx.lineCap = 'round'; ctx.strokeStyle = TINTA; ctx.fillStyle = PAPEL; ctx.lineWidth = trazo;
-      ctx.save();
-      rasgosCara(TAM_CARA / 2, TAM_CARA / 2, TAM_CARA / 2, uCara, nm, forma, sonrisa, t, trazo, false);
-      ctx.restore();
-    } finally { ctx = principal; }
-    // 2. El esqueleto, con la y hacia arriba y la z hacia quien mira.
+  // El esqueleto de una pose para el muñeco 3D, con la y hacia arriba y la z hacia quien mira.
+  function esqueletoDe(p, nm, t, propia) {
     const V = (i) => [p[i], -p[i + 1]];
     const mano = (base, zBase) => Array.from({ length: 21 }, (_, k) => [p[base + k * 2], -p[base + k * 2 + 1], -(p[zBase + k] - p[zBase])]);
     const esqueleto = {
@@ -987,6 +992,36 @@ const Avatar = (() => {
         cabeza: [nm[2] + 0.6 * Math.sin(t * 0.7 + 2), nm[3] + 0.5 * Math.sin(t * 0.61), nm[4] + 0.9 * Math.sin(t * 0.37 + 0.5)],
       },
     };
+    return esqueleto;
+  }
+
+  // Para las pruebas: cuánto atraviesa el cuerpo el brazo o la mano en el instante t (0 o menos = nada).
+  function revisar3D(t) {
+    const e = estadoEn(t * escalaTiempo);
+    const nm = e.pose.length > NM ? e.pose.slice(NM, NM + NM_N) : NM_NEUTRO;
+    return Avatar3D.penetracion(esqueletoDe(e.pose, nm, t, esPropio));
+  }
+
+  // Pinta el muñeco 3D sobre el lienzo. Devuelve false si no se puede (sin WebGL) para que se use el plano.
+  let LIENZO_CARA = null;
+  const TAM_CARA = 512;
+  function pintar3D(p, nm, forma, sonrisa, t, propia, W, H, u, ox, oy) {
+    if (!Avatar3D.disponible()) return false;
+    // 1. Los rasgos de la cara se dibujan en una textura que luego envuelve la cabeza.
+    if (!LIENZO_CARA) { LIENZO_CARA = document.createElement('canvas'); LIENZO_CARA.width = LIENZO_CARA.height = TAM_CARA; }
+    const principal = ctx;
+    ctx = LIENZO_CARA.getContext('2d');
+    try {
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, TAM_CARA, TAM_CARA);
+      const uCara = (TAM_CARA / 2) / 0.46;                        // la cabeza (radio 0,46) ocupa toda la textura
+      const trazo = Math.max(2, uCara * 0.0135);                  // algo más firme que en el plano, para que se lea en pequeño
+      ctx.lineJoin = ctx.lineCap = 'round'; ctx.strokeStyle = TINTA; ctx.fillStyle = PAPEL; ctx.lineWidth = trazo;
+      ctx.save();
+      rasgosCara(TAM_CARA / 2, TAM_CARA / 2, TAM_CARA / 2, uCara, nm, forma, sonrisa, t, trazo, false);
+      ctx.restore();
+    } finally { ctx = principal; }
+    const esqueleto = esqueletoDe(p, nm, t, propia);
     const imagen = Avatar3D.pintar(esqueleto, { ancho: W, alto: H, u, ox, oy, rostro: LIENZO_CARA });
     if (!imagen) return false;
     ctx.drawImage(imagen, 0, 0, W, H);
@@ -996,7 +1031,9 @@ const Avatar = (() => {
   // opciones: pregunta (cejas arriba) y zoom (1 = hasta las caderas, con las manos en reposo a la vista; más = más cerca)
   function pintar(t, { pregunta = false, rotular = false, zoom = 1, margen = null, tresD = false, pose: poseDada = null, texto: textoDado = '', avance: avanceDado = 0 } = {}) {
     t *= escalaTiempo;
-    const { pose: p, texto, avance, cara = null } = poseDada ? { pose: poseDada, texto: textoDado, avance: avanceDado } : estadoEn(t);
+    const estado = poseDada ? { pose: poseDada, texto: textoDado, avance: avanceDado } : estadoEn(t);
+    const { pose: p, texto, avance, cara = null, enfado: enfadoClip = false } = estado;
+    const dicho = estado.dicho === undefined ? texto : estado.dicho, avanceDicho = estado.avanceDicho === undefined ? avance : estado.avanceDicho;
     const propia = poseDada ? true : esPropio;
     const W = lienzo.width, H = lienzo.height;
     const u = W * 0.245 * zoom, ox = W / 2;                      // unidad = ancho de hombros
@@ -1013,12 +1050,13 @@ const Avatar = (() => {
     const nm = (p.length > NM ? p.slice(NM, NM + NM_N) : NM_NEUTRO).slice();
     const capa = superposicion(t);
     for (let k = 0; k < NM_N; k++) nm[k] += capa.d[k];
-    if (cara) nm[5] += acota((cara[6] - 0.23) / 0.06, -1, 1) * 0.5;   // cejas de la signante, suavizadas
+    if (cara) nm[5] += acota(cara[6] / 0.06, -0.4, 1) * 0.4;          // cejas de la signante respecto a su reposo, suavizadas
+    if (!capa.enfado && !enfadoClip) nm[6] = Math.min(nm[6], 0.25);    // sin un enfado de verdad, el ceño nunca pasa de leve
     nm[5] = Math.max(-1, Math.min(1.2, nm[5])); nm[6] = Math.max(-1, Math.min(1.1, nm[6]));
     nm[7] = Math.max(0, Math.min(1.4, nm[7])); nm[10] = Math.max(-1, Math.min(1, nm[10])); nm[11] = Math.max(0, Math.min(1, nm[11]));
     const RAD = Math.PI / 180;
     // Forma de la boca y sonrisa de este instante.
-    const forma = texto ? (cara ? formaConCara(boca(texto, avance), cara) : boca(texto, avance)) : null;
+    const forma = dicho ? (cara ? formaConCara(boca(dicho, avanceDicho), cara) : boca(dicho, avanceDicho)) : null;
     const sonrisa = acota(nm[10] + (cara ? acota(cara[3] / 0.05, -1, 1) * 0.5 : 0), -1, 1);
 
     // Muñeco 3D: el mismo esqueleto con volumen, sombreado y sombras. Si no hay WebGL, sigue el plano de abajo.
@@ -1212,5 +1250,5 @@ const Avatar = (() => {
     return texto;
   }
 
-  return { iniciar, preparar, pintar, visemas, boca, pista: () => pista, propio: crearPropio, letra: crearLetra, definiciones: () => definiciones, compuestos: () => compuestos, sinonimos: () => sinonimos, directoIniciar, directoPalabra, directoCerrarFrase, directoParar, directoTick, directoActivo, directoTexto, directoPalabras, directoSinSigno, ahoraDirecto, expresiones: () => expresiones, gestos: () => gestosPalabra };
+  return { iniciar, preparar, pintar, visemas, boca, pista: () => pista, propio: crearPropio, letra: crearLetra, definiciones: () => definiciones, compuestos: () => compuestos, sinonimos: () => sinonimos, directoIniciar, directoPalabra, directoCerrarFrase, directoParar, directoTick, directoActivo, directoTexto, directoPalabras, directoSinSigno, ahoraDirecto, revisar3D, expresiones: () => expresiones, gestos: () => gestosPalabra };
 })();

@@ -11,14 +11,15 @@
 //   3. color: blanco con sombreado suave según la luz y con las sombras de la pasada 1.
 //
 // Coordenadas: x a la derecha de la pantalla, y hacia arriba, z hacia quien mira. Unidad = ancho de hombros.
-// La vista es ortográfica (sin perspectiva): los signos están grabados de frente y así quedan donde se grabaron;
-// la profundidad se lee por el sombreado y las sombras.
+// La vista tiene una perspectiva suave: los signos quedan casi donde se grabaron y lo que se acerca a quien mira se ve
+// algo mayor. La profundidad se lee además por el sombreado y las sombras.
 
 const Avatar3D = (() => {
   let lienzo = null, gl = null, listo = null;
   let prog = null, progSombra = null, malla = null, fbo = null, texSombra = null, texCara = null;
   const TAM_SOMBRA = 1024;
   const LUZ = normalizar([-0.42, 0.62, 0.66]);          // de arriba a la izquierda y de frente
+  const CAMARA = [0, -0.35, 9];                          // eje a la altura del pecho; cámara a 9 anchos de hombro
   const ALCANCE_LUZ = 2.9, CENTRO_LUZ = [0, -0.75, 0.2], FONDO_LUZ = 4.5;
 
   // ---------- Álgebra mínima ----------
@@ -78,6 +79,7 @@ const Avatar3D = (() => {
     uniform mat3 uGiro; uniform vec3 uPivote;        // inclinación de todo el cuerpo alrededor de la cintura
     uniform vec4 uVista;                             // escala x, escala y, origen x, origen y (a coordenadas de recorte)
     uniform float uContorno;
+    uniform vec3 uCamara;                            // eje de la perspectiva (x, y) y distancia de la cámara
     uniform vec3 uLuzX, uLuzY, uLuzZ, uLuzCentro; uniform vec3 uLuzEscala;
     uniform float uPase;                             // 0 color y contorno, 1 sombras (vista desde la luz)
     varying vec3 vN, vLocal, vLuz;
@@ -91,7 +93,12 @@ const Avatar3D = (() => {
       vec3 q = w - uLuzCentro;
       vLuz = vec3(dot(q, uLuzX), dot(q, uLuzY), dot(q, uLuzZ)) * uLuzEscala;      // -1..1 en la vista de la luz
       if (uPase > 0.5) gl_Position = vec4(vLuz.xy, -vLuz.z, 1.0);
-      else gl_Position = vec4(w.x * uVista.x + uVista.z, w.y * uVista.y + uVista.w, -w.z * 0.18, 1.0);
+      else {
+        // Perspectiva suave: lo que está más cerca de quien mira se ve algo mayor (se abre desde el eje del pecho).
+        float k = uCamara.z / (uCamara.z - w.z);
+        vec2 q2 = uCamara.xy + (w.xy - uCamara.xy) * k;
+        gl_Position = vec4(q2.x * uVista.x + uVista.z, q2.y * uVista.y + uVista.w, -w.z * 0.18, 1.0);
+      }
     }`;
   const FRAGMENTOS = `
     #ifdef GL_FRAGMENT_PRECISION_HIGH
@@ -215,7 +222,7 @@ const Avatar3D = (() => {
   //            manos: [izq, der], cada una 21 puntos [x, y, zRelativa] (z relativa a la muñeca, + = hacia quien mira),
   //            propia: manos del modelo propio (más grandes), gestos: { tronco:[lateral, adelante], cabeza:[lado, asiente, gira] } en grados.
   function construir(esq) {
-    const piezas = [];
+    const piezas = [], tramos = [];
     const [hI, hD] = esq.hombros;
     const medio = [(hI[0] + hD[0]) / 2, (hI[1] + hD[1]) / 2, 0];
     const cadera = (esq.caderas[0][1] + esq.caderas[1][1]) / 2;
@@ -244,18 +251,33 @@ const Avatar3D = (() => {
     const centroCabeza = enCabeza(centroCabeza0);
     piezas.push(capsula(baseCuello, suma(centroCabeza, mat3xVec(giroCabeza, [0, -R_CABEZA * 0.75, -0.03])), 0.14, 0.13, BLANCO));
     piezas.push({ a: centroCabeza, b: centroCabeza, ra: R_CABEZA, rb: R_CABEZA, m: giroCabeza, n: giroCabeza, color: BLANCO, cara: 1 });
-    piezas.push(esfera(enCabeza(suma(centroCabeza0, [0, -0.085, R_CABEZA * 0.985])), 0.04, BLANCO));        // nariz
+    piezas.push(esfera(enCabeza(suma(centroCabeza0, [0, -0.04, R_CABEZA * 0.99])), 0.034, BLANCO));         // nariz
     const frenteCabeza = (x, y) => {
       const d2 = (x - centroCabeza[0]) ** 2 + (y - centroCabeza[1]) ** 2;
       return d2 < R_CABEZA * R_CABEZA ? centroCabeza[2] + Math.sqrt(R_CABEZA * R_CABEZA - d2) : -Infinity;
+    };
+
+    // Lo que hay que adelantar el extremo b de un tramo (a queda fijo) para que no atraviese el tronco ni la cabeza.
+    const frente = (x, y) => Math.max(frenteTronco(x, y), frenteCabeza(x, y));
+    const librar = (a, b, ra, rb, muestras) => {
+      let zb = b[2];
+      for (const k of muestras) {
+        const libre = frente(a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k) + ra + (rb - ra) * k + 0.015;
+        if (libre > -Infinity) zb = Math.max(zb, a[2] + (libre - a[2]) / k);
+      }
+      return zb;
     };
 
     // Brazos y manos.
     for (const lado of [0, 1]) {
       const h = [esq.hombros[lado][0], esq.hombros[lado][1], 0];
       const c2 = esq.codos[lado], m2 = esq.munecas[lado];
-      const zCodo = 0.7 * escorzo(L_BRAZO, Math.hypot(c2[0] - h[0], c2[1] - h[1]), 0.18);
+      // En la grabación el brazo se veía entero, así que nunca estaba dentro del cuerpo: si un tramo cae sobre el tronco o la
+      // cabeza, se adelanta lo justo para pasar por delante.
+      let zCodo = 0.7 * escorzo(L_BRAZO, Math.hypot(c2[0] - h[0], c2[1] - h[1]), 0.18);
+      zCodo = Math.min(librar(h, [c2[0], c2[1], zCodo], 0.092, 0.08, [0.5, 0.75, 1]), Math.max(zCodo, 0.75));
       let zMuneca = zCodo + escorzo(L_ANTEBRAZO, Math.hypot(m2[0] - c2[0], m2[1] - c2[1]), 0.24);
+      zMuneca = librar([c2[0], c2[1], zCodo], [m2[0], m2[1], zMuneca], 0.08, 0.06, [0.25, 0.5, 0.75, 1]);
       const grosor = esq.propia ? 1.35 : 1.3;
       const rDedo = 0.032 * grosor, rPalma = 0.047 * grosor;
       // La mano nunca queda dentro del cuerpo ni de la cabeza: si su sitio en la imagen cae sobre ellos, va por delante.
@@ -275,6 +297,8 @@ const Avatar3D = (() => {
       piezas.push(esfera(h, 0.105, ROPA));
       piezas.push(capsula(h, codo, 0.092, 0.08, ROPA));
       piezas.push(capsula(codo, P[0], 0.08, 0.06, ROPA));
+      tramos.push({ a: h, b: codo, r: 0.085, desde: 0.5 }, { a: codo, b: P[0], r: 0.07, desde: 0 });
+      for (const base of [1, 5, 9, 13, 17]) for (let k = 0; k < 3; k++) tramos.push({ a: P[base + k], b: P[base + k + 1], r: rDedo, desde: 0 });
       // Palma: los cuatro huesos hacia los nudillos, la línea de nudillos y la base del pulgar; juntos hacen una pieza continua.
       for (const k of [5, 9, 13, 17]) piezas.push(capsula(P[0], P[k], rPalma * 1.05, rPalma, BLANCO));
       for (const [i, j] of [[5, 9], [9, 13], [13, 17], [1, 5]]) piezas.push(capsula(P[i], P[j], rPalma * 0.95, rPalma * 0.95, BLANCO));
@@ -291,7 +315,7 @@ const Avatar3D = (() => {
     // Inclinación de todo el cuerpo alrededor de la cintura.
     const t = esq.gestos.tronco;
     const giro = mat3xMat3(rotZ(-t[0] * RAD), rotX(t[1] * RAD));
-    return { piezas, giro, pivote: [medio[0], cadera, 0] };
+    return { piezas, giro, pivote: [medio[0], cadera, 0], tramos, frente };
   }
 
   // ---------- Dibujo ----------
@@ -308,6 +332,7 @@ const Avatar3D = (() => {
   function comunes(u, escena, vista, pase) {
     gl.uniformMatrix3fv(u.uGiro, false, escena.giro); gl.uniform3fv(u.uPivote, escena.pivote);
     gl.uniform4fv(u.uVista, vista);
+    gl.uniform3fv(u.uCamara, CAMARA);
     gl.uniform1f(u.uPase, pase);
     const ejeX = normalizar(cruz([0, 1, 0], LUZ)), ejeY = cruz(LUZ, ejeX);
     gl.uniform3fv(u.uLuzX, ejeX); gl.uniform3fv(u.uLuzY, ejeY); gl.uniform3fv(u.uLuzZ, LUZ); gl.uniform3fv(u.uLuzCentro, CENTRO_LUZ);
@@ -341,7 +366,14 @@ const Avatar3D = (() => {
     gl.uniform1f(prog.u.uTexel, 1 / TAM_SOMBRA);
     gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, texSombra); gl.uniform1i(prog.u.uSombra, 0);
     gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, texCara);
-    if (rostro) gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, rostro);
+    if (rostro) {
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, rostro);
+      // La cara se ve mucho más pequeña que su textura: con niveles reducidos no parpadean las líneas finas.
+      if ((rostro.width & (rostro.width - 1)) === 0 && rostro.width === rostro.height) {
+        gl.generateMipmap(gl.TEXTURE_2D);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+      }
+    }
     gl.uniform1i(prog.u.uRostro, 1);
     const trazo = Math.max(0.013, 2.1 / u);                              // grosor del contorno, en anchos de hombro
     gl.cullFace(gl.FRONT);
@@ -353,5 +385,21 @@ const Avatar3D = (() => {
     return lienzo;
   }
 
-  return { pintar, disponible: iniciar };
+  // Para las pruebas: cuánto se mete en el cuerpo o en la cabeza el eje del tramo de brazo o de dedo que más se mete
+  // (en anchos de hombro; 0 o menos = ninguno atraviesa).
+  function penetracion(esqueleto) {
+    const escena = construir(esqueleto);
+    let peor = -Infinity;
+    for (const tr of escena.tramos) {
+      for (let i = 0; i <= 10; i++) {
+        const k = tr.desde + (1 - tr.desde) * i / 10;
+        const x = tr.a[0] + (tr.b[0] - tr.a[0]) * k, y = tr.a[1] + (tr.b[1] - tr.a[1]) * k, z = tr.a[2] + (tr.b[2] - tr.a[2]) * k;
+        const superficie = escena.frente(x, y);
+        if (superficie > -Infinity) peor = Math.max(peor, superficie - z);
+      }
+    }
+    return peor;
+  }
+
+  return { pintar, disponible: iniciar, penetracion };
 })();
