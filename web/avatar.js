@@ -134,6 +134,7 @@ const Avatar = (() => {
       const r = await fetch('/banco/propios/gestos.json');
       if (r.ok) for (const [palabra, nm] of Object.entries((await r.json()).gestos)) { const clave = normalizar(palabra); if (clave) gestosPalabra[clave] = nm; }
     } catch { /* sin gestos de la lista */ }
+    await cargarLemas();
     try {
       const r = await fetch('/banco/propios/sinonimos.json');
       if (r.ok) for (const [clave, s] of Object.entries((await r.json()).sinonimos)) { const k = normalizar(clave); if (k) sinonimos[k] = { ...s, a: normalizar(s.a) }; }
@@ -196,23 +197,9 @@ const Avatar = (() => {
     return salida;
   }
 
-  // unidades: las de <video>.signos.json; tarjetas: banco.tarjetas (para probar también con su etiqueta)
-  async function preparar(unidades, tarjetas, segmentos, velocidadVideo = 1) {
-    // Si el vídeo se reproduce más despacio, el orador dura más pero las manos no: se planifica en
-    // tiempo real (segundos de reloj), no en tiempo del vídeo. Por eso se reescalan los tiempos.
-    escalaTiempo = 1 / velocidadVideo;
-    const aReloj = (x) => ({ ...x, t0: x.t0 * escalaTiempo, t1: x.t1 * escalaTiempo });
-    unidades = unidades.map(aReloj);
-    segmentos = segmentos.map(aReloj);
-    pista = [];
-    expresiones = [];
-    // Expresiones de varias palabras ("por favor", "de nada", "fin de semana"): se fusionan en una sola unidad.
-    unidades = fusionarFrases(unidades).map((u, idx) => ({ ...u, idx }));
-    const elegidas = [];
-    const porSinonimo = [], sinSigno = [], deletreadas = [];
     // Qué clip se usa para unas palabras candidatas: movimiento extraído (con gestos propios o de la lista
     // de 500 encima) si existe; si no, el signo propio.
-    const resolverId = (cands) => {
+  function resolverId(cands) {
       const propia = cands.find((c) => propios[c] !== undefined);
       const extraida = cands.find((c) => indice[c] !== undefined);
       if (extraida !== undefined) {
@@ -221,8 +208,10 @@ const Avatar = (() => {
         return String(indice[extraida]) + ref;
       }
       return propia !== undefined ? 'o:' + propios[propia] : undefined;
-    };
-    unidades.forEach((u, i) => {
+    }
+
+  // Qué clips corresponden a una unidad (una palabra): uno o varios (compuestos, deletreo).
+  function elegirUnidad(u, i, unidades, tarjetas, elegidas, { porSinonimo, sinSigno, deletreadas }) {
       const etiqueta = tarjetas[u.tarjeta]?.etiqueta || '';
       const candidatas = [normalizar(u.texto), normalizar(u.lema || ''), normalizar(etiqueta), normalizar((u.tarjeta || '').replace(/ny/g, 'ñ').replace(/-/g, ' '))].filter(Boolean);
       let id = resolverId(candidatas);
@@ -264,7 +253,10 @@ const Avatar = (() => {
           }));
         } else sinSigno.push(u.texto.replace(/[.,;:!?¡¿]/g, ''));
       } else if (u.tipo === 'signo') sinSigno.push(u.texto.replace(/[.,;:!?¡¿]/g, ''));
-    });
+  }
+
+  // Descarga (o crea) los clips que faltan.
+  async function cargarClips(elegidas) {
     await Promise.all([...new Set(elegidas.map((e) => e.id))].filter((id) => !clips[id]).map(async (id) => {
       if (String(id).startsWith('o:')) { clips[id] = crearPropio(id.slice(2)); return; }
       if (String(id).startsWith('l:')) { clips[id] = crearLetra(id.slice(2)); return; }
@@ -275,11 +267,170 @@ const Avatar = (() => {
       if (idPropio) aplicarGestos(clip, idPropio);
       clips[id] = clip;
     }));
+  }
+
+  // unidades: las de <video>.signos.json; tarjetas: banco.tarjetas (para probar también con su etiqueta)
+  async function preparar(unidades, tarjetas, segmentos, velocidadVideo = 1) {
+    // Si el vídeo se reproduce más despacio, el orador dura más pero las manos no: se planifica en
+    // tiempo real (segundos de reloj), no en tiempo del vídeo. Por eso se reescalan los tiempos.
+    escalaTiempo = 1 / velocidadVideo;
+    const aReloj = (x) => ({ ...x, t0: x.t0 * escalaTiempo, t1: x.t1 * escalaTiempo });
+    unidades = unidades.map(aReloj);
+    segmentos = segmentos.map(aReloj);
+    pista = [];
+    expresiones = [];
+    // Expresiones de varias palabras ("por favor", "de nada", "fin de semana"): se fusionan en una sola unidad.
+    unidades = fusionarFrases(unidades).map((u, idx) => ({ ...u, idx }));
+    const elegidas = [];
+    const porSinonimo = [], sinSigno = [], deletreadas = [];
+    unidades.forEach((u, i) => elegirUnidad(u, i, unidades, tarjetas, elegidas, { porSinonimo, sinSigno, deletreadas }));
+    await cargarClips(elegidas);
     const validas = elegidas.filter((e) => clips[e.id]);
     const resumen = planificar(validas, segmentos);
     expresiones = construirExpresiones(unidades);
     return { ...resumen, signos: unidades.filter((u) => u.tipo === 'signo').length, porSinonimo, sinSigno, deletreadas };
   }
+
+
+  // ----- Modo directo: signar lo que se oye mientras se oye -----
+  //
+  // El texto llega palabra a palabra desde el reconocedor de voz y no se conoce lo que vendrá, así que no hay
+  // anticipo ni planificación por frases: cada palabra se signa en cuanto llega, detrás de la anterior. Si se
+  // acumula retraso, se acelera un poco (hasta 1,35x) y se saltan las palabras de relleno. La cara marca la
+  // frase cuando esta se cierra (pausa o resultado final del reconocedor).
+  let directo = null;
+  let lemas = {};
+  const ESPERA_DIRECTO = 1.2;       // las manos esperan este tiempo al siguiente signo antes de bajar
+  const PAUSA_FRASE = 1.4;          // un silencio así de largo cierra la frase
+  const ESPERA_FRASE_COMPUESTA = 1.0; // una palabra que puede abrir una expresión ("por" de "por favor") espera tanto
+  const OMITIR_DIRECTO = new Set(('EL LA LOS LAS LO UN UNA UNOS UNAS AL DEL A ANTE BAJO CABE DE DESDE EN ENTRE HACIA HASTA PARA POR SEGUN SIN SO SOBRE TRAS DURANTE MEDIANTE '
+    + 'Y E O U NI QUE SI COMO PUES AUNQUE SINO PORQUE MAS ME SE NOS OS LE LES MI MIS SU SUS ES SON ERA ERAN FUE FUERON SOY ERES SOMOS SOIS SEA SEAN SIDO SIENDO '
+    + 'HE HAS HA HEMOS HABEIS HAN HABIA HABIAN HABER HABIDO MUY TAN ASI').split(' '));
+  const CIFRAS = 'cero uno dos tres cuatro cinco seis siete ocho nueve diez once doce trece catorce quince dieciséis diecisiete dieciocho diecinueve veinte'.split(' ');
+  const numeroAPalabras = (n) => (n <= 20 ? [CIFRAS[n]] : n === 30 ? ['treinta'] : String(n).split('').map((c) => CIFRAS[+c]));
+  const hayClave = (c) => propios[c] !== undefined || indice[c] !== undefined || compuestos[c] !== undefined;
+  let prefijosFrase = null;
+  function esPrefijoDeFrase(norm) {
+    if (!prefijosFrase) {
+      prefijosFrase = new Set();
+      for (const clave of [...Object.keys(propios), ...Object.keys(indice), ...Object.keys(compuestos)]) {
+        const w = clave.split(' ');
+        for (let k = 1; k < w.length; k++) prefijosFrase.add(w.slice(0, k).join(' '));
+      }
+    }
+    return prefijosFrase.has(norm);
+  }
+
+  async function cargarLemas() {
+    try { const r = await fetch('/banco/lemas.json'); if (r.ok) lemas = await r.json(); } catch { /* sin lemas */ }
+  }
+
+  function directoIniciar() {
+    directo = { t0: performance.now(), unidades: [], espera: null, cursor: 0, seg: 0, ultimaPalabra: -99, cola: Promise.resolve(), cerradas: 0, ultimo: null, fin: false };
+    pista = []; expresiones = []; escalaTiempo = 1;
+    return directo;
+  }
+  const ahoraDirecto = () => (directo ? (performance.now() - directo.t0) / 1000 : 0);
+  function directoParar() { if (directo) { directoCerrarFrase(); directo.fin = true; } }
+  const directoActivo = () => !!directo && !directo.fin;
+
+  // Una palabra reconocida (ya estable).
+  function directoPalabra(texto) {
+    if (!directo) return;
+    const ahora = ahoraDirecto();
+    const limpio = texto.toLowerCase().replace(/[^0-9a-záéíóúüñ]+/g, '');
+    if (!limpio) return;
+    if (ahora - directo.ultimaPalabra > PAUSA_FRASE && directo.unidades.length > directo.cerradas) directoCerrarFrase();
+    directo.ultimaPalabra = ahora;
+    const esNumero = /^\d+$/.test(limpio);
+    const partes = esNumero ? numeroAPalabras(parseInt(limpio, 10)) : [limpio];
+    partes.forEach((p, k) => {
+      const norm = normalizar(p);
+      const lema = esNumero ? p : (lemas[p] || p);
+      const letras = [...normalizar(p).toLowerCase()].filter((c) => letrasDef[c]);
+      const u = {
+        texto: esNumero ? p : texto.trim(), lema: normalizar(lema).toLowerCase(), tarjeta: '', seg: directo.seg,
+        tipo: OMITIR_DIRECTO.has(norm) ? 'omitir' : 'deletreo', letras, t0: ahora + k * 0.3, t1: ahora + 0.45 + k * 0.3,
+      };
+      directoEncolar(u);
+    });
+  }
+
+  function directoEncolar(u) {
+    const d = directo;
+    if (d.espera) {
+      const previa = d.espera;
+      d.espera = null;
+      const unido = { ...previa, texto: previa.texto + ' ' + u.texto, t1: u.t1, lema: '', tarjeta: '', tipo: 'deletreo' };
+      const clave = normalizar(unido.texto);
+      if (hayClave(clave)) {
+        if (esPrefijoDeFrase(clave)) { d.espera = unido; return; }
+        return directoEmitir(unido);
+      }
+      if (esPrefijoDeFrase(clave)) { d.espera = unido; return; }
+      directoEmitir(previa);
+    }
+    if (esPrefijoDeFrase(normalizar(u.texto))) { d.espera = u; return; }
+    directoEmitir(u);
+  }
+
+  // Llamar en cada fotograma: suelta la palabra que esperaba una expresión que no llegó.
+  function directoTick() {
+    const d = directo;
+    if (!d || !d.espera) return;
+    if (ahoraDirecto() - d.espera.t0 > ESPERA_FRASE_COMPUESTA) { const u = d.espera; d.espera = null; directoEmitir(u); }
+  }
+
+  function directoEmitir(u) {
+    const d = directo;
+    u.idx = d.unidades.length;
+    d.unidades.push(u);
+    d.cola = d.cola.then(() => programarDirecto(u, u.idx)).catch(() => {});
+  }
+
+  async function programarDirecto(u, i) {
+    const d = directo;
+    if (!d) return;
+    const elegidas = [];
+    elegirUnidad(u, i, d.unidades, {}, elegidas, { porSinonimo: [], sinSigno: [], deletreadas: [] });
+    await cargarClips(elegidas);
+    const ahora = ahoraDirecto();
+    for (const e of elegidas) {
+      const clip = clips[e.id];
+      if (!clip) continue;
+      const atraso = Math.max(d.cursor - ahora, 0);
+      if (atraso > 3 && nivelDeCorte(e) >= 3) continue;                      // muy atrasado: se salta el relleno
+      const vel = Math.min(1 + Math.max(atraso - 1, 0) / 6, 1.35);
+      const desdeReposo = !d.ultimo || d.cursor < ahora - 0.6;
+      const t = desdeReposo ? ahora + 0.4 : Math.max(ahora, d.cursor + enlace(d.ultimo.poses.at(-1), clip.poses[0]));
+      const t1 = t + clip.dura / vel;
+      const texto = e.u.texto.replace(/[¿?¡!.,;:"«»()]/g, '').trim();
+      pista.push({ t0: t, t1, habla: Math.max(t1 - t, 0.3 + 0.07 * texto.replace(/[^\p{L}]/gu, '').length), idx: i, clip, texto });
+      d.cursor = t1; d.ultimo = clip;
+    }
+    while (pista.length > 3 && pista[0].t1 < ahora - 20) pista.shift();      // no crece sin límite
+    expresiones = construirExpresiones(d.unidades);
+  }
+
+  // Cierra la frase en curso: le pone puntuación (¿? si empieza por una palabra interrogativa) para que la cara la marque.
+  function directoCerrarFrase() {
+    const d = directo;
+    if (!d) return;
+    if (d.espera) { const u = d.espera; d.espera = null; directoEmitir(u); }
+    const frase = d.unidades.slice(d.cerradas);
+    if (!frase.length) return;
+    d.cerradas = d.unidades.length;
+    d.seg++;
+    if (frase.some((u) => /[.!?]/.test(u.texto))) return;
+    if (frase.some((u) => u.texto.includes('¿'))) { frase.at(-1).texto += '?'; d.cola = d.cola.then(() => { expresiones = construirExpresiones(d.unidades); }); return; }
+    const primera = frase[0].texto.toLowerCase().replace(/[^a-záéíóúüñ ]/g, '');
+    const pregunta = /^(qué|quién|quiénes|cuál|cuáles|dónde|cuándo|cómo|cuánto|cuánta|cuántos|cuántas|adónde|por qué)$/.test(primera);
+    if (pregunta) { frase[0].texto = '¿' + frase[0].texto; frase.at(-1).texto += '?'; } else frase.at(-1).texto += '.';
+    d.cola = d.cola.then(() => { expresiones = construirExpresiones(d.unidades); });
+  }
+
+  // Lo último que se ha dicho, para los subtítulos del modo directo.
+  const directoTexto = () => (directo ? directo.unidades.slice(-14).map((u) => u.texto.replace(/[¿?¡!.]/g, '')).join(' ') : '');
 
   // ----- Planificación por frases (criterios de interpretación con habla rápida) -----
   //
@@ -518,6 +669,14 @@ const Avatar = (() => {
       const k = (t - actual.t0) / (actual.t1 - actual.t0);
       return { pose: poseDeClip(actual.clip, k), texto: actual.texto, avance: Math.min((t - actual.t0) / bocaDe(actual, siguiente), 1), cara: caraDeClip(actual.clip, k) };
     }
+    // En directo no se sabe si vendrá otra palabra: las manos esperan un momento donde están antes de bajar.
+    if (directo && actual && !siguiente && t > actual.t1) {
+      const ultimo = actual.clip.poses.at(-1), tras = t - actual.t1;
+      const resto = tras < bocaDe(actual, null) ? { texto: actual.texto, avance: Math.min((t - actual.t0) / bocaDe(actual, null), 1) } : { texto: '', avance: 0 };
+      if (tras < ESPERA_DIRECTO) return { pose: ultimo, ...resto };
+      if (tras - ESPERA_DIRECTO < A_REPOSO) return { pose: mezclar(ultimo, REPOSO, suave((tras - ESPERA_DIRECTO) / A_REPOSO)), texto: '', avance: 0 };
+      return { pose: REPOSO, texto: '', avance: 0 };
+    }
     const desde = actual ? actual.clip.poses.at(-1) : REPOSO;
     const hasta = siguiente ? siguiente.clip.poses[0] : REPOSO;
     const inicio = actual ? actual.t1 : -Infinity, fin = siguiente ? siguiente.t0 : Infinity;
@@ -728,13 +887,13 @@ const Avatar = (() => {
   }
 
   // opciones: pregunta (cejas arriba) y zoom (1 = hasta las caderas, con las manos en reposo a la vista; más = más cerca)
-  function pintar(t, { pregunta = false, rotular = false, zoom = 1, pose: poseDada = null, texto: textoDado = '', avance: avanceDado = 0 } = {}) {
+  function pintar(t, { pregunta = false, rotular = false, zoom = 1, margen = null, pose: poseDada = null, texto: textoDado = '', avance: avanceDado = 0 } = {}) {
     t *= escalaTiempo;
     const { pose: p, texto, avance, cara = null } = poseDada ? { pose: poseDada, texto: textoDado, avance: avanceDado } : estadoEn(t);
     const propia = poseDada ? true : esPropio;
     const W = lienzo.width, H = lienzo.height;
     const u = W * 0.245 * zoom, ox = W / 2;                      // unidad = ancho de hombros
-    const oy = H * 0.1 / zoom + 1.3 * u;                        // la cabeza siempre queda arriba, a la vista
+    const oy = (margen === null ? H * 0.1 / zoom : margen) + 1.3 * u;                        // la cabeza siempre queda arriba, a la vista
     const X = (i) => ox + p[i] * u, Y = (i) => oy + p[i + 1] * u;
     const grosor = Math.max(2, W / 260) * Math.sqrt(zoom);
     ctx.clearRect(0, 0, W, H);
@@ -991,5 +1150,5 @@ const Avatar = (() => {
     return texto;
   }
 
-  return { iniciar, preparar, pintar, visemas, boca, pista: () => pista, propio: crearPropio, letra: crearLetra, definiciones: () => definiciones, compuestos: () => compuestos, sinonimos: () => sinonimos, expresiones: () => expresiones, gestos: () => gestosPalabra };
+  return { iniciar, preparar, pintar, visemas, boca, pista: () => pista, propio: crearPropio, letra: crearLetra, definiciones: () => definiciones, compuestos: () => compuestos, sinonimos: () => sinonimos, directoIniciar, directoPalabra, directoCerrarFrase, directoParar, directoTick, directoActivo, directoTexto, ahoraDirecto, expresiones: () => expresiones, gestos: () => gestosPalabra };
 })();

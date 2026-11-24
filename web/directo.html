@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#ffffff">
+  <title>Signatodo en directo</title>
+  <link rel="stylesheet" href="/web/directo.css">
+</head>
+<body>
+  <canvas id="avatar" aria-label="Avatar que signa lo que se oye"></canvas>
+
+  <div class="superior">
+    <span id="estado" class="estado" role="status">Cargando…</span>
+    <button type="button" id="boton-info" class="redondo pequeno" aria-label="Fuentes y avisos">i</button>
+  </div>
+
+  <div class="inferior">
+    <p id="subtitulos" class="subtitulos" aria-live="polite"></p>
+    <form id="escribir" class="escribir" hidden>
+      <input id="texto-prueba" type="text" autocomplete="off" placeholder="Escribe una frase para probar" aria-label="Frase de prueba">
+      <button type="submit">Signar</button>
+    </form>
+    <button type="button" id="grabar" class="grabar" aria-pressed="false">
+      <span class="punto"></span><span id="grabar-texto">Grabar</span>
+    </button>
+  </div>
+
+  <section id="info" class="info" hidden>
+    <div class="info-caja">
+      <h2>Signatodo en directo</h2>
+      <p>Un avatar signa en pantalla lo que se oye por el micrófono. Es un <strong>prototipo educativo</strong>: no es una interpretación profesional en lengua de signos española (LSE) y no sustituye a una persona intérprete.</p>
+      <p><strong>Movimiento de los signos:</strong> vídeos de ARASAAC (Gobierno de Aragón), licencia CC BY-NC-SA, solo uso no comercial. Los signos y el alfabeto propios son borradores sin validar por una persona signante.</p>
+      <p>El reconocimiento de voz lo hace el sistema del teléfono; según el dispositivo, puede enviar el audio al servicio de voz del fabricante.</p>
+      <button type="button" id="cerrar-info" class="grabar claro">Cerrar</button>
+    </div>
+  </section>
+
+  <script src="/web/signos.js"></script>
+  <script src="/web/avatar.js"></script>
+  <script src="/web/directo.js"></script>
+</body>
+</html>
