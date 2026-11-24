@@ -1,0 +1,352 @@
+// Avatar en 3D: el mismo muñeco, con volumen, sombreado y sombras proyectadas.
+//
+// Motor propio sobre WebGL (sin bibliotecas, para que funcione sin internet y dentro de la app). Todo el cuerpo se
+// construye con una sola pieza básica, una "cápsula" (dos semiesferas unidas por un tronco de cono), que con distintas
+// medidas hace de falange, antebrazo, tronco o cabeza. Cada pieza se mueve por separado: 3 por dedo, palma, antebrazo,
+// brazo, hombro, cuello, tronco y cabeza.
+//
+// Se dibuja en tres pasadas:
+//   1. sombras: la escena vista desde la luz, para saber qué tapa a qué (la mano da sombra sobre el pecho y la cara);
+//   2. contorno: cada pieza un poco inflada y en negro, vista por detrás (el trazo de tinta del muñeco);
+//   3. color: blanco con sombreado suave según la luz y con las sombras de la pasada 1.
+//
+// Coordenadas: x a la derecha de la pantalla, y hacia arriba, z hacia quien mira. Unidad = ancho de hombros.
+// La vista es ortográfica (sin perspectiva): los signos están grabados de frente y así quedan donde se grabaron;
+// la profundidad se lee por el sombreado y las sombras.
+
+const Avatar3D = (() => {
+  let lienzo = null, gl = null, listo = null;
+  let prog = null, progSombra = null, malla = null, fbo = null, texSombra = null, texCara = null;
+  const TAM_SOMBRA = 1024;
+  const LUZ = normalizar([-0.42, 0.62, 0.66]);          // de arriba a la izquierda y de frente
+  const ALCANCE_LUZ = 2.9, CENTRO_LUZ = [0, -0.75, 0.2], FONDO_LUZ = 4.5;
+
+  // ---------- Álgebra mínima ----------
+  function normalizar(v) { const l = Math.hypot(v[0], v[1], v[2]) || 1; return [v[0] / l, v[1] / l, v[2] / l]; }
+  const resta = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+  const suma = (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
+  const por = (a, k) => [a[0] * k, a[1] * k, a[2] * k];
+  const cruz = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+  const punto = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+  const IDENTIDAD3 = [1, 0, 0, 0, 1, 0, 0, 0, 1];                      // matrices 3x3 por columnas
+  const mat3xVec = (m, v) => [m[0] * v[0] + m[3] * v[1] + m[6] * v[2], m[1] * v[0] + m[4] * v[1] + m[7] * v[2], m[2] * v[0] + m[5] * v[1] + m[8] * v[2]];
+  const mat3xMat3 = (a, b) => { const c = new Array(9); for (let j = 0; j < 3; j++) { const col = mat3xVec(a, [b[j * 3], b[j * 3 + 1], b[j * 3 + 2]]); c[j * 3] = col[0]; c[j * 3 + 1] = col[1]; c[j * 3 + 2] = col[2]; } return c; };
+  const escala3 = (x, y, z) => [x, 0, 0, 0, y, 0, 0, 0, z];
+  const rotX = (a) => { const c = Math.cos(a), s = Math.sin(a); return [1, 0, 0, 0, c, s, 0, -s, c]; };
+  const rotY = (a) => { const c = Math.cos(a), s = Math.sin(a); return [c, 0, -s, 0, 1, 0, s, 0, c]; };
+  const rotZ = (a) => { const c = Math.cos(a), s = Math.sin(a); return [c, s, 0, -s, c, 0, 0, 0, 1]; };
+  // Base ortonormal cuyo eje "y" local apunta de a hacia b.
+  function baseHacia(a, b) {
+    const eje = normalizar(resta(b, a));
+    const apoyo = Math.abs(eje[2]) < 0.9 ? [0, 0, 1] : [1, 0, 0];
+    const e1 = normalizar(cruz(eje, apoyo));
+    const e2 = cruz(e1, eje);
+    return [e1[0], e1[1], e1[2], eje[0], eje[1], eje[2], e2[0], e2[1], e2[2]];
+  }
+
+  // ---------- Malla: esfera partida por el ecuador (las dos mitades se separan para hacer la cápsula) ----------
+  function crearMalla() {
+    const PARALELOS = 7, MERIDIANOS = 20;                               // por semiesfera
+    const dir = [], lado = [], indices = [];
+    const anillos = [];
+    for (const mitad of [0, 1]) {
+      for (let i = 0; i <= PARALELOS; i++) {
+        const lat = mitad === 0 ? -Math.PI / 2 + (Math.PI / 2) * (i / PARALELOS) : (Math.PI / 2) * (i / PARALELOS);
+        const anillo = [];
+        for (let j = 0; j <= MERIDIANOS; j++) {
+          const lon = 2 * Math.PI * j / MERIDIANOS;
+          anillo.push(dir.length / 3);
+          dir.push(Math.cos(lat) * Math.cos(lon), Math.sin(lat), Math.cos(lat) * Math.sin(lon));
+          lado.push(mitad);
+        }
+        anillos.push(anillo);
+      }
+    }
+    for (let a = 0; a + 1 < anillos.length; a++) {
+      for (let j = 0; j < MERIDIANOS; j++) {
+        const p0 = anillos[a][j], p1 = anillos[a][j + 1], q0 = anillos[a + 1][j], q1 = anillos[a + 1][j + 1];
+        indices.push(p0, q0, p1, p1, q0, q1);                           // caras hacia fuera en sentido antihorario
+      }
+    }
+    return { dir: new Float32Array(dir), lado: new Float32Array(lado), indices: new Uint16Array(indices) };
+  }
+
+  // ---------- Sombreadores ----------
+  const VERTICES = `
+    attribute vec3 aDir; attribute float aLado;
+    uniform vec3 uA, uB; uniform float uRA, uRB; uniform mat3 uM, uN;
+    uniform mat3 uGiro; uniform vec3 uPivote;        // inclinación de todo el cuerpo alrededor de la cintura
+    uniform vec4 uVista;                             // escala x, escala y, origen x, origen y (a coordenadas de recorte)
+    uniform float uContorno;
+    uniform vec3 uLuzX, uLuzY, uLuzZ, uLuzCentro; uniform vec3 uLuzEscala;
+    uniform float uPase;                             // 0 color y contorno, 1 sombras (vista desde la luz)
+    varying vec3 vN, vLocal, vLuz;
+    void main() {
+      vec3 centro = mix(uA, uB, aLado);
+      float r = mix(uRA, uRB, aLado);
+      vec3 n = normalize(uN * aDir);
+      vec3 p = centro + r * (uM * aDir) + n * uContorno;
+      vec3 w = uPivote + uGiro * (p - uPivote);
+      vN = uGiro * n; vLocal = aDir;
+      vec3 q = w - uLuzCentro;
+      vLuz = vec3(dot(q, uLuzX), dot(q, uLuzY), dot(q, uLuzZ)) * uLuzEscala;      // -1..1 en la vista de la luz
+      if (uPase > 0.5) gl_Position = vec4(vLuz.xy, -vLuz.z, 1.0);
+      else gl_Position = vec4(w.x * uVista.x + uVista.z, w.y * uVista.y + uVista.w, -w.z * 0.18, 1.0);
+    }`;
+  const FRAGMENTOS = `
+    #ifdef GL_FRAGMENT_PRECISION_HIGH
+    precision highp float;
+    #else
+    precision mediump float;
+    #endif
+    uniform vec3 uColor, uLuz; uniform float uTinta, uCara, uTexel;
+    uniform sampler2D uSombra, uRostro;
+    varying vec3 vN, vLocal, vLuz;
+    float profundidad(vec2 uv) { vec4 c = texture2D(uSombra, uv); return dot(c, vec4(1.0, 1.0 / 255.0, 1.0 / 65025.0, 1.0 / 16581375.0)); }
+    float enLuz(vec3 pos, float sesgo) {
+      vec2 uv = pos.xy * 0.5 + 0.5;
+      if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0) return 1.0;
+      float mia = pos.z * 0.5 + 0.5 + sesgo, suma = 0.0;
+      for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++)
+        suma += step(profundidad(uv + vec2(float(i), float(j)) * uTexel * 1.6), mia);
+      return suma / 9.0;
+    }
+    void main() {
+      if (uTinta > 0.5) { gl_FragColor = vec4(uColor, 1.0); return; }
+      vec3 n = normalize(vN);
+      float incide = dot(n, uLuz);
+      float directa = smoothstep(-0.08, 0.5, incide);
+      float sombra = enLuz(vLuz, 0.0035 + 0.008 * (1.0 - max(incide, 0.0)));
+      float luz = mix(0.60, 1.0, directa * mix(0.25, 1.0, sombra));
+      float canto = pow(1.0 - max(n.z, 0.0), 3.0);                     // se oscurece donde la superficie se aleja de la vista
+      vec3 color = uColor * (luz - 0.10 * canto);
+      if (uCara > 0.5 && vLocal.z > 0.05) {
+        vec4 rasgo = texture2D(uRostro, vec2(vLocal.x * 0.5 + 0.5, 0.5 - vLocal.y * 0.5));
+        color = mix(color, rasgo.rgb * (0.78 + 0.22 * luz), rasgo.a);
+      }
+      gl_FragColor = vec4(color, 1.0);
+    }`;
+  const FRAGMENTOS_SOMBRA = `
+    #ifdef GL_FRAGMENT_PRECISION_HIGH
+    precision highp float;
+    #else
+    precision mediump float;
+    #endif
+    varying vec3 vN, vLocal, vLuz;
+    void main() {
+      float z = clamp(vLuz.z * 0.5 + 0.5, 0.0, 0.9999);
+      vec4 c = fract(z * vec4(1.0, 255.0, 65025.0, 16581375.0));
+      c -= c.yzww * vec4(1.0 / 255.0, 1.0 / 255.0, 1.0 / 255.0, 0.0);
+      gl_FragColor = c;
+    }`;
+
+  function compilar(fuenteV, fuenteF) {
+    const hacer = (tipo, fuente) => {
+      const s = gl.createShader(tipo);
+      gl.shaderSource(s, fuente); gl.compileShader(s);
+      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s));
+      return s;
+    };
+    const p = gl.createProgram();
+    gl.attachShader(p, hacer(gl.VERTEX_SHADER, fuenteV)); gl.attachShader(p, hacer(gl.FRAGMENT_SHADER, fuenteF));
+    gl.bindAttribLocation(p, 0, 'aDir'); gl.bindAttribLocation(p, 1, 'aLado');
+    gl.linkProgram(p);
+    if (!gl.getProgramParameter(p, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(p));
+    const u = {};
+    const n = gl.getProgramParameter(p, gl.ACTIVE_UNIFORMS);
+    for (let i = 0; i < n; i++) { const info = gl.getActiveUniform(p, i); u[info.name] = gl.getUniformLocation(p, info.name); }
+    return { p, u };
+  }
+
+  function iniciar() {
+    if (listo !== null) return listo;
+    try {
+      lienzo = document.createElement('canvas');
+      gl = lienzo.getContext('webgl', { alpha: true, antialias: true, premultipliedAlpha: true, preserveDrawingBuffer: true });
+      if (!gl) throw new Error('sin WebGL');
+      prog = compilar(VERTICES, FRAGMENTOS);
+      progSombra = compilar(VERTICES, FRAGMENTOS_SOMBRA);
+      const m = crearMalla();
+      malla = { n: m.indices.length };
+      const bDir = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, bDir); gl.bufferData(gl.ARRAY_BUFFER, m.dir, gl.STATIC_DRAW);
+      gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, 0);
+      const bLado = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, bLado); gl.bufferData(gl.ARRAY_BUFFER, m.lado, gl.STATIC_DRAW);
+      gl.enableVertexAttribArray(1); gl.vertexAttribPointer(1, 1, gl.FLOAT, false, 0, 0);
+      const bInd = gl.createBuffer(); gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, bInd); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, m.indices, gl.STATIC_DRAW);
+      // Mapa de sombras: una textura donde se guarda la profundidad vista desde la luz.
+      texSombra = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, texSombra);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, TAM_SOMBRA, TAM_SOMBRA, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+      for (const [k, v] of [[gl.TEXTURE_MIN_FILTER, gl.NEAREST], [gl.TEXTURE_MAG_FILTER, gl.NEAREST], [gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE], [gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE]]) gl.texParameteri(gl.TEXTURE_2D, k, v);
+      const fondo = gl.createRenderbuffer();
+      gl.bindRenderbuffer(gl.RENDERBUFFER, fondo);
+      gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, TAM_SOMBRA, TAM_SOMBRA);
+      fbo = gl.createFramebuffer();
+      gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
+      gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, texSombra, 0);
+      gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.RENDERBUFFER, fondo);
+      if (gl.checkFramebufferStatus(gl.FRAMEBUFFER) !== gl.FRAMEBUFFER_COMPLETE) throw new Error('sin lienzo de sombras');
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      texCara = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, texCara);
+      for (const [k, v] of [[gl.TEXTURE_MIN_FILTER, gl.LINEAR], [gl.TEXTURE_MAG_FILTER, gl.LINEAR], [gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE], [gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE]]) gl.texParameteri(gl.TEXTURE_2D, k, v);
+      gl.enable(gl.DEPTH_TEST); gl.enable(gl.CULL_FACE);
+      listo = true;
+    } catch (error) {
+      console.warn('Avatar 3D no disponible:', error.message);
+      listo = false;
+    }
+    return listo;
+  }
+
+  // ---------- Del esqueleto a las piezas ----------
+  // Una pieza: { a, b, ra, rb, m, n, color, cara }.  a = b para una esfera o un elipsoide.
+  const BLANCO = [1, 1, 1], ROPA = [0.84, 0.87, 0.92];
+  const capsula = (a, b, ra, rb, color) => { const m = baseHacia(a, b); return { a, b, ra, rb, m, n: m, color }; };
+  const esfera = (c, r, color) => ({ a: c, b: c, ra: r, rb: r, m: IDENTIDAD3, n: IDENTIDAD3, color });
+
+  // Profundidad de un brazo a partir del escorzo: un hueso mide siempre lo mismo, así que si se ve más corto es que apunta
+  // hacia quien mira. Con una zona muerta para que un brazo casi de perfil no "flote" por el ruido de la medida.
+  const L_BRAZO = 0.95, L_ANTEBRAZO = 0.85;
+  const escorzo = (largo, visto, muerta) => Math.max(Math.sqrt(Math.max(largo * largo - visto * visto, 0)) - muerta, 0);
+
+  // esqueleto: { cabeza, hombros:[i,d], codos:[i,d], munecas:[i,d], caderas:[i,d] } en (x, y) con y hacia arriba,
+  //            manos: [izq, der], cada una 21 puntos [x, y, zRelativa] (z relativa a la muñeca, + = hacia quien mira),
+  //            propia: manos del modelo propio (más grandes), gestos: { tronco:[lateral, adelante], cabeza:[lado, asiente, gira] } en grados.
+  function construir(esq) {
+    const piezas = [];
+    const [hI, hD] = esq.hombros;
+    const medio = [(hI[0] + hD[0]) / 2, (hI[1] + hD[1]) / 2, 0];
+    const cadera = (esq.caderas[0][1] + esq.caderas[1][1]) / 2;
+    const RAD = Math.PI / 180;
+
+    // Tronco: cápsula aplastada (ancha de hombros, poco fondo), con la parte de arriba redondeada.
+    const ANCHO = 0.52, FONDO = 0.42, CUPULA = 0.45;
+    const tronco = {
+      a: [medio[0], medio[1] - 0.13, 0], b: [medio[0], cadera - 1.2, 0], ra: ANCHO, rb: ANCHO * 0.9,
+      m: escala3(1, CUPULA, FONDO), n: escala3(1, 1 / CUPULA, 1 / FONDO), color: ROPA,
+    };
+    piezas.push(tronco);
+    const frenteTronco = (x, y) => {
+      if (y > medio[1] + 0.12) return -Infinity;
+      const k = (x - medio[0]) / ANCHO;
+      return Math.abs(k) < 1 ? ANCHO * FONDO * Math.sqrt(1 - k * k) : -Infinity;
+    };
+
+    // Cabeza: gira de verdad sobre la base del cuello (ladea, asiente, gira).
+    const R_CABEZA = 0.46;
+    const baseCuello = [medio[0], medio[1] + 0.06, 0.02];
+    const centroCabeza0 = [esq.cabeza[0], esq.cabeza[1] + 0.1, 0.08];
+    const g = esq.gestos.cabeza;
+    const giroCabeza = mat3xMat3(rotZ(-g[0] * RAD), mat3xMat3(rotY(g[2] * RAD), rotX(g[1] * RAD)));
+    const enCabeza = (v) => suma(baseCuello, mat3xVec(giroCabeza, resta(v, baseCuello)));
+    const centroCabeza = enCabeza(centroCabeza0);
+    piezas.push(capsula(baseCuello, suma(centroCabeza, mat3xVec(giroCabeza, [0, -R_CABEZA * 0.75, -0.03])), 0.14, 0.13, BLANCO));
+    piezas.push({ a: centroCabeza, b: centroCabeza, ra: R_CABEZA, rb: R_CABEZA, m: giroCabeza, n: giroCabeza, color: BLANCO, cara: 1 });
+    piezas.push(esfera(enCabeza(suma(centroCabeza0, [0, -0.085, R_CABEZA * 0.985])), 0.04, BLANCO));        // nariz
+    const frenteCabeza = (x, y) => {
+      const d2 = (x - centroCabeza[0]) ** 2 + (y - centroCabeza[1]) ** 2;
+      return d2 < R_CABEZA * R_CABEZA ? centroCabeza[2] + Math.sqrt(R_CABEZA * R_CABEZA - d2) : -Infinity;
+    };
+
+    // Brazos y manos.
+    for (const lado of [0, 1]) {
+      const h = [esq.hombros[lado][0], esq.hombros[lado][1], 0];
+      const c2 = esq.codos[lado], m2 = esq.munecas[lado];
+      const zCodo = 0.7 * escorzo(L_BRAZO, Math.hypot(c2[0] - h[0], c2[1] - h[1]), 0.18);
+      let zMuneca = zCodo + escorzo(L_ANTEBRAZO, Math.hypot(m2[0] - c2[0], m2[1] - c2[1]), 0.24);
+      const grosor = esq.propia ? 1.3 : 1.12;
+      const rDedo = 0.031 * grosor, rPalma = 0.046 * grosor;
+      // La mano nunca queda dentro del cuerpo ni de la cabeza: si su sitio en la imagen cae sobre ellos, va por delante.
+      const mano = esq.manos[lado];
+      let empuje = 0;
+      for (const q of mano) {
+        const libre = Math.max(frenteTronco(q[0], q[1]), frenteCabeza(q[0], q[1])) + rPalma + 0.03;
+        empuje = Math.max(empuje, libre - (zMuneca + q[2]));
+      }
+      zMuneca += empuje;
+      const codo = [c2[0], c2[1], zCodo + empuje * 0.35];
+      const P = mano.map((q) => [q[0], q[1], zMuneca + q[2]]);
+      piezas.push(esfera(h, 0.105, ROPA));
+      piezas.push(capsula(h, codo, 0.092, 0.08, ROPA));
+      piezas.push(capsula(codo, P[0], 0.08, 0.06, ROPA));
+      // Palma: los cuatro huesos hacia los nudillos, la línea de nudillos y la base del pulgar; juntos hacen una pieza continua.
+      for (const k of [5, 9, 13, 17]) piezas.push(capsula(P[0], P[k], rPalma * 1.05, rPalma, BLANCO));
+      for (const [i, j] of [[5, 9], [9, 13], [13, 17], [1, 5]]) piezas.push(capsula(P[i], P[j], rPalma * 0.95, rPalma * 0.95, BLANCO));
+      piezas.push(capsula(P[0], P[1], rPalma * 1.05, rDedo * 1.25, BLANCO));
+      // Dedos: tres falanges cada uno, cada una se mueve por su cuenta.
+      for (const base of [1, 5, 9, 13, 17]) {
+        const pulgar = base === 1;
+        for (let k = 0; k < 3; k++) {
+          const r0 = rDedo * (pulgar ? 1.2 : 1) * (1 - 0.07 * k), r1 = rDedo * (pulgar ? 1.2 : 1) * (1 - 0.07 * (k + 1));
+          piezas.push(capsula(P[base + k], P[base + k + 1], r0, r1, BLANCO));
+        }
+      }
+    }
+    // Inclinación de todo el cuerpo alrededor de la cintura.
+    const t = esq.gestos.tronco;
+    const giro = mat3xMat3(rotZ(-t[0] * RAD), rotX(t[1] * RAD));
+    return { piezas, giro, pivote: [medio[0], cadera, 0] };
+  }
+
+  // ---------- Dibujo ----------
+  function ponerPieza(u, pz, contorno) {
+    gl.uniform3fv(u.uA, pz.a); gl.uniform3fv(u.uB, pz.b);
+    gl.uniform1f(u.uRA, pz.ra); gl.uniform1f(u.uRB, pz.rb);
+    gl.uniformMatrix3fv(u.uM, false, pz.m); gl.uniformMatrix3fv(u.uN, false, pz.n);
+    gl.uniform1f(u.uContorno, contorno);
+    if (u.uColor) gl.uniform3fv(u.uColor, pz.color);
+    if (u.uCara) gl.uniform1f(u.uCara, pz.cara ? 1 : 0);
+    gl.drawElements(gl.TRIANGLES, malla.n, gl.UNSIGNED_SHORT, 0);
+  }
+
+  function comunes(u, escena, vista, pase) {
+    gl.uniformMatrix3fv(u.uGiro, false, escena.giro); gl.uniform3fv(u.uPivote, escena.pivote);
+    gl.uniform4fv(u.uVista, vista);
+    gl.uniform1f(u.uPase, pase);
+    const ejeX = normalizar(cruz([0, 1, 0], LUZ)), ejeY = cruz(LUZ, ejeX);
+    gl.uniform3fv(u.uLuzX, ejeX); gl.uniform3fv(u.uLuzY, ejeY); gl.uniform3fv(u.uLuzZ, LUZ); gl.uniform3fv(u.uLuzCentro, CENTRO_LUZ);
+    gl.uniform3fv(u.uLuzEscala, [1 / ALCANCE_LUZ, 1 / ALCANCE_LUZ, 1 / FONDO_LUZ]);
+  }
+
+  // opciones: { ancho, alto (píxeles), u (píxeles por ancho de hombros), ox, oy (píxeles del origen: centro de los hombros), rostro (canvas con los rasgos) }
+  // Devuelve el lienzo WebGL ya pintado (o null si no hay WebGL).
+  function pintar(esqueleto, { ancho, alto, u, ox, oy, rostro }) {
+    if (!iniciar()) return null;
+    if (lienzo.width !== ancho || lienzo.height !== alto) { lienzo.width = ancho; lienzo.height = alto; }
+    const escena = construir(esqueleto);
+    const vista = [2 * u / ancho, 2 * u / alto, 2 * ox / ancho - 1, 1 - 2 * oy / alto];
+
+    // 1. Sombras: la escena vista desde la luz.
+    gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
+    gl.viewport(0, 0, TAM_SOMBRA, TAM_SOMBRA);
+    gl.clearColor(0, 0, 0, 0); gl.clearDepth(1); gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+    gl.useProgram(progSombra.p);
+    comunes(progSombra.u, escena, vista, 1);
+    gl.cullFace(gl.BACK);
+    for (const pz of escena.piezas) ponerPieza(progSombra.u, pz, 0);
+
+    // 2 y 3. Contorno y color, en el lienzo.
+    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+    gl.viewport(0, 0, ancho, alto);
+    gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+    gl.useProgram(prog.p);
+    comunes(prog.u, escena, vista, 0);
+    gl.uniform3fv(prog.u.uLuz, LUZ);
+    gl.uniform1f(prog.u.uTexel, 1 / TAM_SOMBRA);
+    gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, texSombra); gl.uniform1i(prog.u.uSombra, 0);
+    gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, texCara);
+    if (rostro) gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, rostro);
+    gl.uniform1i(prog.u.uRostro, 1);
+    const trazo = Math.max(0.013, 2.1 / u);                              // grosor del contorno, en anchos de hombro
+    gl.cullFace(gl.FRONT);
+    gl.uniform1f(prog.u.uTinta, 1);
+    for (const pz of escena.piezas) { const c = pz.color; pz.color = [0.07, 0.07, 0.07]; ponerPieza(prog.u, pz, trazo); pz.color = c; }
+    gl.cullFace(gl.BACK);
+    gl.uniform1f(prog.u.uTinta, 0);
+    for (const pz of escena.piezas) ponerPieza(prog.u, pz, 0);
+    return lienzo;
+  }
+
+  return { pintar, disponible: iniciar };
+})();

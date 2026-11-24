@@ -326,7 +326,7 @@ const Avatar = (() => {
   }
 
   function directoIniciar() {
-    directo = { t0: performance.now(), unidades: [], espera: null, cursor: 0, seg: 0, ultimaPalabra: -99, cola: Promise.resolve(), cerradas: 0, ultimo: null, fin: false };
+    directo = { t0: performance.now(), sinSigno: [], unidades: [], espera: null, cursor: 0, seg: 0, ultimaPalabra: -99, cola: Promise.resolve(), cerradas: 0, ultimo: null, fin: false };
     pista = []; expresiones = []; escalaTiempo = 1;
     return directo;
   }
@@ -392,8 +392,13 @@ const Avatar = (() => {
     const d = directo;
     if (!d) return;
     const elegidas = [];
-    elegirUnidad(u, i, d.unidades, {}, elegidas, { porSinonimo: [], sinSigno: [], deletreadas: [] });
+    const informe = { porSinonimo: [], sinSigno: [], deletreadas: [] };
+    elegirUnidad(u, i, d.unidades, {}, elegidas, informe);
+    for (const p of informe.sinSigno) if (!d.sinSigno.includes(p)) d.sinSigno.push(p);
+    if (d.sinSigno.length > 8) d.sinSigno.shift();
     await cargarClips(elegidas);
+    // Una palabra que debía signarse y no tiene ningún clip se marca (sale en rojo en los subtítulos).
+    if (u.tipo !== 'omitir' && !elegidas.some((e) => clips[e.id])) u.sinSigno = true;
     const ahora = ahoraDirecto();
     for (const e of elegidas) {
       const clip = clips[e.id];
@@ -430,6 +435,8 @@ const Avatar = (() => {
   }
 
   // Lo último que se ha dicho, para los subtítulos del modo directo.
+  const directoPalabras = () => (directo ? directo.unidades.slice(-14).map((u) => ({ texto: u.texto.replace(/[¿?¡!.]/g, ''), sinSigno: !!u.sinSigno })) : []);
+  const directoSinSigno = () => (directo ? directo.sinSigno.slice() : []);
   const directoTexto = () => (directo ? directo.unidades.slice(-14).map((u) => u.texto.replace(/[¿?¡!.]/g, '')).join(' ') : '');
 
   // ----- Planificación por frases (criterios de interpretación con habla rápida) -----
@@ -1150,5 +1157,5 @@ const Avatar = (() => {
     return texto;
   }
 
-  return { iniciar, preparar, pintar, visemas, boca, pista: () => pista, propio: crearPropio, letra: crearLetra, definiciones: () => definiciones, compuestos: () => compuestos, sinonimos: () => sinonimos, directoIniciar, directoPalabra, directoCerrarFrase, directoParar, directoTick, directoActivo, directoTexto, ahoraDirecto, expresiones: () => expresiones, gestos: () => gestosPalabra };
+  return { iniciar, preparar, pintar, visemas, boca, pista: () => pista, propio: crearPropio, letra: crearLetra, definiciones: () => definiciones, compuestos: () => compuestos, sinonimos: () => sinonimos, directoIniciar, directoPalabra, directoCerrarFrase, directoParar, directoTick, directoActivo, directoTexto, directoPalabras, directoSinSigno, ahoraDirecto, expresiones: () => expresiones, gestos: () => gestosPalabra };
 })();

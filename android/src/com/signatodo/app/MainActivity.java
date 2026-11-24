@@ -200,12 +200,15 @@ public class MainActivity extends Activity {
                     detenerVoz();
                 } else if (error == SpeechRecognizer.ERROR_NETWORK || error == SpeechRecognizer.ERROR_NETWORK_TIMEOUT
                         || error == SpeechRecognizer.ERROR_SERVER) {
+                    js("window.vozCorte && window.vozCorte()");
                     aJs("vozEstado", "Sin conexión con el servicio de voz");
                     reiniciar(1500);
                 } else if (error == SpeechRecognizer.ERROR_RECOGNIZER_BUSY || error == SpeechRecognizer.ERROR_CLIENT) {
+                    js("window.vozCorte && window.vozCorte()");
                     crearReconocedor();
                     reiniciar(400);
                 } else {
+                    js("window.vozCorte && window.vozCorte()");                                 // lo que se estaba diciendo no se pierde
                     reiniciar(150);                                                                // sin voz o sin coincidencias: se sigue
                 }
             }

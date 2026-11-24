@@ -1,24 +1,30 @@
 /* Signatodo en directo: el avatar ocupa toda la pantalla; encima, solo el estado, los subtítulos y el botón de grabar. */
 :root { --tinta: #111; --papel: #fff; --rojo: #d93025; --gris: #5f6368; }
 * { box-sizing: border-box; }
-html, body { margin: 0; height: 100%; overflow: hidden; background: var(--papel); color: var(--tinta);
+html, body { margin: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column; align-items: center; background: var(--papel); color: var(--tinta);
   font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; -webkit-tap-highlight-color: transparent; user-select: none; }
-#avatar { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; }
+/* El avatar va en un cuadro, como en la web: lienzo de 600x560 y debajo la barra negra con la palabra que se signa. */
+.tarjeta { position: relative; flex: none; margin: auto; background: var(--papel); border: 2px solid var(--tinta);
+  border-radius: 16px; overflow: hidden; box-shadow: 0 6px 22px rgba(0,0,0,.16); }
+#avatar { display: block; }
+.rotulo { background: #111; color: #fff; text-align: center; padding: 9px 8px; min-height: 2.4em; letter-spacing: .08em;
+  font: 700 clamp(16px, 4.6vw, 24px) "Times New Roman", Times, serif; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-.superior { position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center;
+.superior { position: static; width: 100%; flex: none; display: flex; justify-content: space-between; align-items: center;
   padding: max(10px, env(safe-area-inset-top)) 14px 0; pointer-events: none; }
 .superior > * { pointer-events: auto; }
 .estado { font-size: 14px; color: var(--gris); background: rgba(255,255,255,.85); border-radius: 999px; padding: 6px 12px; }
 .redondo { border: 1.5px solid var(--tinta); background: var(--papel); color: var(--tinta); border-radius: 50%; width: 38px; height: 38px;
   font: italic 700 20px "Times New Roman", Times, serif; cursor: pointer; }
 
-.inferior { position: fixed; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; gap: 12px;
+.inferior { position: static; width: 100%; flex: none; display: flex; flex-direction: column; align-items: center; gap: 12px;
   padding: 0 14px max(18px, env(safe-area-inset-bottom)); }
 .subtitulos { margin: 0; max-width: 960px; min-height: 1.4em; text-align: center; font-size: clamp(20px, 5vw, 30px); line-height: 1.3;
   color: #fff; background: rgba(0,0,0,.78); border-radius: 12px; padding: 8px 16px; }
 .subtitulos:empty { visibility: hidden; }
 .subtitulos .nuevo { color: #f2b84b; }
 .subtitulos .tentativo { color: #bbb; }
+.subtitulos .sin { color: #ff5a4d; font-weight: 700; }
 
 .grabar { display: inline-flex; align-items: center; gap: 12px; border: 2px solid var(--tinta); background: var(--papel); color: var(--tinta);
   border-radius: 999px; padding: 16px 34px; font-size: 22px; font-weight: 600; cursor: pointer; min-width: 190px; justify-content: center; }
@@ -40,3 +46,17 @@ html, body { margin: 0; height: 100%; overflow: hidden; background: var(--papel)
 @media (prefers-reduced-motion: reduce) { .grabar[aria-pressed="true"] .punto { animation: none; } }
 
 [hidden] { display: none !important; }
+
+.oido { position: static; width: 100%; flex: none; padding: 6px 14px 0; min-height: 3.1em; margin: 0; font-size: 14px; line-height: 1.35; color: var(--gris); pointer-events: none; }
+.oido .falta { color: #b3541e; font-weight: 600; }
+.redondo.pequeno { font-style: normal; font-size: 18px; }
+.superior .redondo + .redondo { margin-left: 8px; }
+#boton-teclado { margin-left: auto; margin-right: 8px; }
+.superior .redondo + .redondo { margin-left: 0; }
+
+/* Conmutador de modo (solo en la web; la app no tiene modo vídeo) */
+.modos { display: inline-flex; flex: none; border: 1.5px solid var(--tinta); border-radius: 999px; overflow: hidden; margin-right: 10px; }
+.modo { padding: 7px 14px; color: var(--tinta); text-decoration: none; font-size: 14px; white-space: nowrap; }
+.modo.activo { background: var(--tinta); color: var(--papel); font-weight: 600; }
+.modo:focus-visible { outline: 2px solid var(--rojo); outline-offset: -2px; }
+.estado { min-width: 0; }

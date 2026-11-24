@@ -247,3 +247,10 @@ main { max-width: 1100px; margin: 0 auto; padding: 0 16px 32px; }
 .fuentes a { color: var(--acento); }
 .fuentes code { background: var(--fondo); padding: 1px 5px; border-radius: 4px; font-size: 12px; }
 .aviso-legal { color: var(--texto-suave); font-size: 12px; margin: 12px 0 0; }
+
+/* ---------- Conmutador de modo: vídeo / en directo ---------- */
+.modos { display: inline-flex; border: 1px solid var(--borde); border-radius: 999px; overflow: hidden; background: var(--panel); }
+.modo { padding: 6px 16px; color: var(--texto-suave); text-decoration: none; font-size: 14px; white-space: nowrap; }
+.modo:hover { color: var(--texto); }
+.modo.activo { background: var(--acento); color: #1b1404; font-weight: 600; }
+.modo:focus-visible { outline: 2px solid var(--acento); outline-offset: -2px; }

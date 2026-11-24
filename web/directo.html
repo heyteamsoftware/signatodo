@@ -8,11 +8,21 @@
   <link rel="stylesheet" href="/web/directo.css">
 </head>
 <body>
-  <canvas id="avatar" aria-label="Avatar que signa lo que se oye"></canvas>
-
   <div class="superior">
+    <nav id="modos" class="modos" aria-label="Modo de uso">
+      <a class="modo" href="/">Vídeo</a>
+      <a class="modo activo" href="/web/directo.html" aria-current="page">En directo</a>
+    </nav>
     <span id="estado" class="estado" role="status">Cargando…</span>
+    <button type="button" id="boton-teclado" class="redondo pequeno" aria-label="Escribir una frase">⌨</button>
     <button type="button" id="boton-info" class="redondo pequeno" aria-label="Fuentes y avisos">i</button>
+  </div>
+
+  <p id="oido" class="oido" aria-live="polite"></p>
+
+  <div id="tarjeta" class="tarjeta">
+    <canvas id="avatar" aria-label="Avatar que signa lo que se oye"></canvas>
+    <div id="rotulo" class="rotulo" aria-hidden="true">&nbsp;</div>
   </div>
 
   <div class="inferior">
