@@ -63,7 +63,7 @@ labios, con interpolación entre ellas.
 | Dibujos de signos y alfabeto (`banco/signos`, `banco/dactilologico`) | `py herramientas\construir_banco.py` con los dos PDF de origen en la carpeta del proyecto. No se publican porque sus derechos son de terceros. Sin ellos el modo tarjetas sale vacío; el avatar funciona. |
 | Vídeos de referencia de ARASAAC (`referencia/arasaac`, ~900 MB) | `py herramientas\descargar_arasaac.py` |
 | Modelo de poses (`referencia/modelos/holistic_landmarker.task`) | Descarga del modelo Holistic Landmarker de MediaPipe |
-| Movimiento de más signos (`banco/poses`) | `py -3.12 herramientas\extraer_poses.py palabra1 palabra2` o `--todo` |
+| Movimiento de más signos (`banco/poses`) | Solo hay una muestra de ~50 signos; `indice.json` lista los ~3.700 posibles. `py -3.12 herramientas\extraer_poses.py --todo` genera el resto (~108 MB, unas 8-12 horas; se puede cortar y reanudar). Antes hay que ejecutar `descargar_arasaac.py`. |
 
 ## Créditos y licencias de los datos
 

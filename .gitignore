@@ -6,6 +6,12 @@ banco/dactilologico/
 # Vídeos de referencia de ARASAAC (900 MB) y modelo de poses: se descargan con los scripts.
 referencia/
 
+# Movimiento de los signos: en el repositorio solo hay una muestra (los clips ya añadidos).
+# El resto (~108 MB) se genera con herramientas/extraer_poses.py --todo. El índice sí se sube:
+# los clips que no estén se ignoran sin error.
+banco/poses/*.json
+!banco/poses/indice.json
+
 # Vídeos propios y resultados
 videos/*
 !videos/prueba.mp4
