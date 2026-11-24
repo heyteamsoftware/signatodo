@@ -1,0 +1,14 @@
+{
+  "nota": "Signos compuestos de la lista de 500 (texto de la lista, sin verificar): se forman encadenando otros signos.",
+  "compuestos": {
+    "creer": ["pensar", "verdad"],
+    "casi siempre": ["casi", "siempre"],
+    "fin de semana": ["sábado", "domingo"],
+    "contraseña": ["secreto"],
+    "almuerzo": ["mediodía", "comer"],
+    "centro comercial": ["tienda", "grande"],
+    "centro de salud": ["médico", "casa"],
+    "seguridad social": ["médico", "tarjeta"],
+    "urgencias": ["hospital", "rápido"]
+  }
+}

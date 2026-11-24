@@ -109,3 +109,17 @@ no se suben al repositorio (están en `.gitignore`).
 
 El botón **Descargar vídeo con signos** graba la reproducción (vídeo + avatar + subtítulos) y la une con el
 audio original. Dura lo que dura el vídeo y la pestaña debe quedar a la vista hasta que termine.
+
+## Lista de 500 signos básicos, números y deletreo
+
+- `Documentacion/500_signos_LSE_parametros_querologicos (Gemini).docx`: lista de 500 signos básicos con parámetros
+  querológicos, **generada con IA y sin verificar**. `herramientas/lista500.py` la cruza con lo que tenemos:
+  327 con movimiento real, 164 con signo propio descrito desde su texto (lotes 101-106) y 9 compuestos
+  (`banco/propios/compuestos.json`). `herramientas/cnm_a_nm.py` convierte su «componente no manual» en gestos
+  (`banco/propios/gestos.json`). En una comprobación con vídeos reales acertó en comer, dormir, casa y leer,
+  falló a medias en agua y hoy, y no coincidió en café.
+- **Números**: del 0 al 20 y el 30, con su signo; los demás, cifra a cifra (25 = 2, 5). Suposición pendiente de validar.
+- **Deletreo** (`banco/propios/alfabeto.json`, generado por `herramientas/generar_alfabeto.py`): 27 letras. Se deletrean
+  nombres propios, siglas y palabras de hasta 4 letras; una palabra deletreada se quita entera o no se quita.
+  Discrepancia sin resolver: el manual dibuja la I con el índice y su texto dice meñique (se usó el meñique).
+- La app muestra un panel de **fuentes y créditos**, y el vídeo exportado lleva la atribución a ARASAAC.

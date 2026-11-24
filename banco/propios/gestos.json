@@ -1,0 +1,1534 @@
+{
+ "nota": "Gestos no manuales de las palabras de la lista de 500 que tienen movimiento extraído. Proceden del texto de la lista (IA, sin verificar).",
+ "gestos": {
+  "hola": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.9,
+     "cejas": 0.35
+    }
+   ],
+   "nota": "Sonrisa abierta, elevación ligera de cejas y contacto visual.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 1: componente no manual"
+  },
+  "adios": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55
+    }
+   ],
+   "nota": "Expresión afable de despedida y contacto visual sostenido.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 2: componente no manual"
+  },
+  "buenos dias": {
+   "necesita": {
+    "cuerpo": true,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55,
+     "cabeza": {
+      "adelante": 0
+     }
+    },
+    {
+     "t": 0.5,
+     "cabeza": {
+      "adelante": 9
+     }
+    },
+    {
+     "t": 1,
+     "cabeza": {
+      "adelante": 0
+     }
+    }
+   ],
+   "nota": "Sonrisa y leve asentimiento de cabeza.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 3: componente no manual"
+  },
+  "buenas tardes": {
+   "necesita": {
+    "cuerpo": true,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55,
+     "cabeza": {
+      "adelante": 0
+     }
+    },
+    {
+     "t": 0.5,
+     "cabeza": {
+      "adelante": 9
+     }
+    },
+    {
+     "t": 1,
+     "cabeza": {
+      "adelante": 0
+     }
+    }
+   ],
+   "nota": "Expresión cordial y asentimiento suave.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 4: componente no manual"
+  },
+  "buenas noches": {
+   "necesita": {
+    "cuerpo": true,
+    "cara": false,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "cabeza": {
+      "lado": 10
+     }
+    }
+   ],
+   "nota": "Expresión serena y leve inclinación de cabeza.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 5: componente no manual"
+  },
+  "si": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "cejas": 0.7
+    }
+   ],
+   "nota": "Cejas elevadas e inclinación leve de cabeza (prótasis condicional).",
+   "fuente": "Lista de 500 signos (Gemini), n.º 296: componente no manual"
+  },
+  "no": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "negacion"
+    }
+   ],
+   "nota": "Giro lateral de cabeza (negación) y ceño levemente fruncido.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 15: componente no manual"
+  },
+  "bien": {
+   "necesita": {
+    "cuerpo": true,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55,
+     "cabeza": {
+      "adelante": 0
+     }
+    },
+    {
+     "t": 0.5,
+     "cabeza": {
+      "adelante": 9
+     }
+    },
+    {
+     "t": 1,
+     "cabeza": {
+      "adelante": 0
+     }
+    }
+   ],
+   "nota": "Sonrisa y asentimiento.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 17: componente no manual"
+  },
+  "mal": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "asco",
+     "ceño": 0.5
+    }
+   ],
+   "nota": "Ceño fruncido y gesto labial de desagrado.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 18: componente no manual"
+  },
+  "claro": {
+   "necesita": {
+    "cuerpo": true,
+    "cara": false,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "cabeza": {
+      "adelante": 0
+     }
+    },
+    {
+     "t": 0.5,
+     "cabeza": {
+      "adelante": 9
+     }
+    },
+    {
+     "t": 1,
+     "cabeza": {
+      "adelante": 0
+     }
+    }
+   ],
+   "nota": "Asentimiento enérgico y mirada directa.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 21: componente no manual"
+  },
+  "atencion": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": false,
+    "ojos": true
+   },
+   "claves": [
+    {
+     "t": 0,
+     "ojos": 1.25
+    }
+   ],
+   "nota": "Ojos muy abiertos y expresión de alerta.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 23: componente no manual"
+  },
+  "bienvenido": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55
+    }
+   ],
+   "nota": "Sonrisa acogedora e inclinación cordial.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 25: componente no manual"
+  },
+  "no querer": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "negacion",
+     "ceño": 0.5
+    }
+   ],
+   "nota": "Ceño fruncido, labios tensos y negación cefálica.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 33: componente no manual"
+  },
+  "mio": {
+   "necesita": {
+    "cuerpo": true,
+    "cara": false,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "cabeza": {
+      "adelante": 0
+     }
+    },
+    {
+     "t": 0.5,
+     "cabeza": {
+      "adelante": 9
+     }
+    },
+    {
+     "t": 1,
+     "cabeza": {
+      "adelante": 0
+     }
+    }
+   ],
+   "nota": "Asentimiento leve y mirada directa.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 57: componente no manual"
+  },
+  "otro": {
+   "necesita": {
+    "cuerpo": true,
+    "cara": false,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "cabeza": {
+      "lado": 10
+     }
+    }
+   ],
+   "nota": "Ligera inclinación de cabeza hacia el lado.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 64: componente no manual"
+  },
+  "niño": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": true
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55,
+     "mirada": [
+      0,
+      -0.8
+     ]
+    }
+   ],
+   "nota": "Sonrisa suave y mirada hacia abajo.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 70: componente no manual"
+  },
+  "bebe": {
+   "necesita": {
+    "cuerpo": true,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55,
+     "cabeza": {
+      "lado": 10
+     }
+    }
+   ],
+   "nota": "Sonrisa tierna e inclinación de cabeza.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 71: componente no manual"
+  },
+  "familia": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55
+    }
+   ],
+   "nota": "Sonrisa cálida.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 75: componente no manual"
+  },
+  "nieto": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55
+    }
+   ],
+   "nota": "Sonrisa suave.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 84: componente no manual"
+  },
+  "novio": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55
+    }
+   ],
+   "nota": "Sonrisa.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 85: componente no manual"
+  },
+  "amigo": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55
+    }
+   ],
+   "nota": "Sonrisa cordial.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 87: componente no manual"
+  },
+  "tener": {
+   "necesita": {
+    "cuerpo": true,
+    "cara": false,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "cabeza": {
+      "adelante": 0
+     }
+    },
+    {
+     "t": 0.5,
+     "cabeza": {
+      "adelante": 9
+     }
+    },
+    {
+     "t": 1,
+     "cabeza": {
+      "adelante": 0
+     }
+    }
+   ],
+   "nota": "Asentimiento suave.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 101: componente no manual"
+  },
+  "haber": {
+   "necesita": {
+    "cuerpo": true,
+    "cara": false,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "cabeza": {
+      "adelante": 0
+     }
+    },
+    {
+     "t": 0.5,
+     "cabeza": {
+      "adelante": 9
+     }
+    },
+    {
+     "t": 1,
+     "cabeza": {
+      "adelante": 0
+     }
+    }
+   ],
+   "nota": "Asentimiento de cabeza.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 102: componente no manual"
+  },
+  "subir": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": false,
+    "ojos": true
+   },
+   "claves": [
+    {
+     "t": 0,
+     "mirada": [
+      0,
+      0.8
+     ]
+    }
+   ],
+   "nota": "Mirada ascendente acompañando el movimiento.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 110: componente no manual"
+  },
+  "bajar": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": false,
+    "ojos": true
+   },
+   "claves": [
+    {
+     "t": 0,
+     "mirada": [
+      0,
+      -0.8
+     ]
+    }
+   ],
+   "nota": "Mirada descendente.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 111: componente no manual"
+  },
+  "querer": {
+   "necesita": {
+    "cuerpo": true,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55,
+     "cabeza": {
+      "lado": 10
+     }
+    }
+   ],
+   "nota": "Sonrisa afectuosa e inclinación de cabeza.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 119: componente no manual"
+  },
+  "gustar": {
+   "necesita": {
+    "cuerpo": true,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55,
+     "cabeza": {
+      "adelante": 0
+     }
+    },
+    {
+     "t": 0.5,
+     "cabeza": {
+      "adelante": 9
+     }
+    },
+    {
+     "t": 1,
+     "cabeza": {
+      "adelante": 0
+     }
+    }
+   ],
+   "nota": "Sonrisa y asentimiento.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 120: componente no manual"
+  },
+  "beber": {
+   "necesita": {
+    "cuerpo": true,
+    "cara": false,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "cabeza": {
+      "adelante": -10
+     }
+    }
+   ],
+   "nota": "Inclinación leve de cabeza hacia atrás.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 128: componente no manual"
+  },
+  "dormir": {
+   "necesita": {
+    "cuerpo": true,
+    "cara": false,
+    "ojos": true
+   },
+   "claves": [
+    {
+     "t": 0,
+     "ojos": 0,
+     "cabeza": {
+      "lado": 10
+     }
+    }
+   ],
+   "nota": "Ojos cerrados e inclinación lateral de cabeza.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 130: componente no manual"
+  },
+  "jugar": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55
+    }
+   ],
+   "nota": "Sonrisa y expresión lúdica.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 142: componente no manual"
+  },
+  "buscar": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "ceño": 0.5
+    }
+   ],
+   "nota": "Cejas fruncidas y mirada rastreadora.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 171: componente no manual"
+  },
+  "encontrar": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "cejas": 0.7
+    }
+   ],
+   "nota": "Elevación de cejas y expresión de hallazgo.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 172: componente no manual"
+  },
+  "ganar": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55
+    }
+   ],
+   "nota": "Sonrisa de triunfo.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 174: componente no manual"
+  },
+  "romper": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "ceño": 0.5
+    }
+   ],
+   "nota": "Ceño fruncido y tensión labial.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 177: componente no manual"
+  },
+  "saber": {
+   "necesita": {
+    "cuerpo": true,
+    "cara": false,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "cabeza": {
+      "adelante": 0
+     }
+    },
+    {
+     "t": 0.5,
+     "cabeza": {
+      "adelante": 9
+     }
+    },
+    {
+     "t": 1,
+     "cabeza": {
+      "adelante": 0
+     }
+    }
+   ],
+   "nota": "Asentimiento ligero.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 181: componente no manual"
+  },
+  "conocer": {
+   "necesita": {
+    "cuerpo": true,
+    "cara": false,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "cabeza": {
+      "adelante": 0
+     }
+    },
+    {
+     "t": 0.5,
+     "cabeza": {
+      "adelante": 9
+     }
+    },
+    {
+     "t": 1,
+     "cabeza": {
+      "adelante": 0
+     }
+    }
+   ],
+   "nota": "Asentimiento leve.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 182: componente no manual"
+  },
+  "preguntar": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "pregunta",
+     "cejas": 0.7
+    }
+   ],
+   "nota": "Cejas arqueadas/fruncidas (marca interrogativa).",
+   "fuente": "Lista de 500 signos (Gemini), n.º 200: componente no manual"
+  },
+  "ofrecer": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55
+    }
+   ],
+   "nota": "Sonrisa amable.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 207: componente no manual"
+  },
+  "elegir": {
+   "necesita": {
+    "cuerpo": true,
+    "cara": false,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "cabeza": {
+      "adelante": 0
+     }
+    },
+    {
+     "t": 0.5,
+     "cabeza": {
+      "adelante": 9
+     }
+    },
+    {
+     "t": 1,
+     "cabeza": {
+      "adelante": 0
+     }
+    }
+   ],
+   "nota": "Asentimiento breve.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 219: componente no manual"
+  },
+  "escuchar": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "concentracion"
+    }
+   ],
+   "nota": "Inclinación leve de cabeza y atención.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 227: componente no manual"
+  },
+  "hora": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "pregunta",
+     "cejas": 0.7
+    }
+   ],
+   "nota": "Cejas elevadas si es pregunta.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 232: componente no manual"
+  },
+  "hoy": {
+   "necesita": {
+    "cuerpo": true,
+    "cara": false,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "cabeza": {
+      "adelante": 0
+     }
+    },
+    {
+     "t": 0.5,
+     "cabeza": {
+      "adelante": 9
+     }
+    },
+    {
+     "t": 1,
+     "cabeza": {
+      "adelante": 0
+     }
+    }
+   ],
+   "nota": "Asentimiento breve.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 235: componente no manual"
+  },
+  "ayer": {
+   "necesita": {
+    "cuerpo": true,
+    "cara": false,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "cabeza": {
+      "adelante": -10
+     }
+    }
+   ],
+   "nota": "Inclinación leve de cabeza hacia atrás.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 236: componente no manual"
+  },
+  "nunca": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "negacion",
+     "ceño": 0.5
+    }
+   ],
+   "nota": "Negación firme de cabeza y ceño fruncido.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 247: componente no manual"
+  },
+  "cumpleaños": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55
+    }
+   ],
+   "nota": "Sonrisa festiva.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 272: componente no manual"
+  },
+  "vacaciones": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.9
+    }
+   ],
+   "nota": "Sonrisa amplia y expresión relajada.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 273: componente no manual"
+  },
+  "fiesta": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria"
+    }
+   ],
+   "nota": "Sonrisa y alegría.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 274: componente no manual"
+  },
+  "primavera": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55
+    }
+   ],
+   "nota": "Sonrisa suave.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 275: componente no manual"
+  },
+  "navidad": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55
+    }
+   ],
+   "nota": "Sonrisa festiva.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 279: componente no manual"
+  },
+  "porque": {
+   "necesita": {
+    "cuerpo": true,
+    "cara": false,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "cabeza": {
+      "adelante": 0
+     }
+    },
+    {
+     "t": 0.5,
+     "cabeza": {
+      "adelante": 9
+     }
+    },
+    {
+     "t": 1,
+     "cabeza": {
+      "adelante": 0
+     }
+    }
+   ],
+   "nota": "Asentimiento explicativo.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 291: componente no manual"
+  },
+  "arriba": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": false,
+    "ojos": true
+   },
+   "claves": [
+    {
+     "t": 0,
+     "mirada": [
+      0,
+      0.8
+     ]
+    }
+   ],
+   "nota": "Mirada hacia arriba.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 306: componente no manual"
+  },
+  "abajo": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": false,
+    "ojos": true
+   },
+   "claves": [
+    {
+     "t": 0,
+     "mirada": [
+      0,
+      -0.8
+     ]
+    }
+   ],
+   "nota": "Mirada hacia abajo.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 307: componente no manual"
+  },
+  "mucho": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "cejas": 0.35
+    }
+   ],
+   "nota": "Mejillas ligeramente infladas y cejas altas.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 318: componente no manual"
+  },
+  "nada": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "negacion"
+    }
+   ],
+   "nota": "Negación lateral de cabeza y labios apretados.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 320: componente no manual"
+  },
+  "lampara": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": false,
+    "ojos": true
+   },
+   "claves": [
+    {
+     "t": 0,
+     "ojos": 1.25
+    }
+   ],
+   "nota": "Ojos abiertos.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 348: componente no manual"
+  },
+  "paraguas": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": false,
+    "ojos": true
+   },
+   "claves": [
+    {
+     "t": 0,
+     "mirada": [
+      0,
+      0.8
+     ]
+    }
+   ],
+   "nota": "Mirada hacia arriba.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 362: componente no manual"
+  },
+  "cerveza": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55
+    }
+   ],
+   "nota": "Expresión afable.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 394: componente no manual"
+  },
+  "jamon": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria"
+    }
+   ],
+   "nota": "Expresión de agrado.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 405: componente no manual"
+  },
+  "postre": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55
+    }
+   ],
+   "nota": "Sonrisa.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 417: componente no manual"
+  },
+  "chocolate": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria"
+    }
+   ],
+   "nota": "Sonrisa de agrado.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 418: componente no manual"
+  },
+  "tarta": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55
+    }
+   ],
+   "nota": "Sonrisa.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 420: componente no manual"
+  },
+  "bar": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55
+    }
+   ],
+   "nota": "Expresión cordial.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 423: componente no manual"
+  },
+  "montaña": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": false,
+    "ojos": true
+   },
+   "claves": [
+    {
+     "t": 0,
+     "mirada": [
+      0,
+      0.8
+     ]
+    }
+   ],
+   "nota": "Mirada hacia arriba.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 443: componente no manual"
+  },
+  "enfermo": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "ceño": 0.5
+    }
+   ],
+   "nota": "Ceño fruncido y expresión decaída.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 463: componente no manual"
+  },
+  "dolor": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "dolor"
+    }
+   ],
+   "nota": "Ceño muy fruncido y mueca de dolor.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 464: componente no manual"
+  },
+  "fiebre": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "dolor"
+    }
+   ],
+   "nota": "Ojos semicerrados y expresión de malestar.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 465: componente no manual"
+  },
+  "alergia": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "ceño": 0.5
+    }
+   ],
+   "nota": "Ceño fruncido.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 467: componente no manual"
+  },
+  "peligro": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": true
+   },
+   "claves": [
+    {
+     "t": 0,
+     "cejas": 0.7,
+     "ojos": 1.25
+    }
+   ],
+   "nota": "Ojos muy abiertos y cejas altas.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 472: componente no manual"
+  },
+  "garganta": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "enfado"
+    }
+   ],
+   "nota": "Expresión neutra o de molestia.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 474: componente no manual"
+  },
+  "contento": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.9
+    }
+   ],
+   "nota": "Sonrisa amplia y ojos brillantes.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 477: componente no manual"
+  },
+  "triste": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": false,
+    "ojos": true
+   },
+   "claves": [
+    {
+     "t": 0,
+     "mirada": [
+      0,
+      -0.8
+     ]
+    }
+   ],
+   "nota": "Comisuras hacia abajo, cejas caídas y mirada baja.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 478: componente no manual"
+  },
+  "miedo": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": true
+   },
+   "claves": [
+    {
+     "t": 0,
+     "cejas": 0.7,
+     "ojos": 1.25
+    }
+   ],
+   "nota": "Ojos muy abiertos, cejas altas y boca tensa.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 483: componente no manual"
+  },
+  "bueno": {
+   "necesita": {
+    "cuerpo": true,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55,
+     "cabeza": {
+      "adelante": 0
+     }
+    },
+    {
+     "t": 0.5,
+     "cabeza": {
+      "adelante": 9
+     }
+    },
+    {
+     "t": 1,
+     "cabeza": {
+      "adelante": 0
+     }
+    }
+   ],
+   "nota": "Sonrisa y asentimiento.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 486: componente no manual"
+  },
+  "malo": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "ceño": 0.5
+    }
+   ],
+   "nota": "Ceño fruncido.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 487: componente no manual"
+  },
+  "grande": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": true
+   },
+   "claves": [
+    {
+     "t": 0,
+     "ojos": 1.25,
+     "mejillas": 0.9
+    }
+   ],
+   "nota": "Mejillas infladas y ojos abiertos.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 488: componente no manual"
+  },
+  "nuevo": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55,
+     "cejas": 0.7
+    }
+   ],
+   "nota": "Sonrisa y cejas elevadas.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 490: componente no manual"
+  },
+  "facil": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55
+    }
+   ],
+   "nota": "Sonrisa relajada y elevación leve de cejas.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 492: componente no manual"
+  },
+  "dificil": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "ceño": 0.5
+    }
+   ],
+   "nota": "Ceño fruncido y labios apretados.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 493: componente no manual"
+  },
+  "barato": {
+   "necesita": {
+    "cuerpo": true,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55,
+     "cabeza": {
+      "adelante": 0
+     }
+    },
+    {
+     "t": 0.5,
+     "cabeza": {
+      "adelante": 9
+     }
+    },
+    {
+     "t": 1,
+     "cabeza": {
+      "adelante": 0
+     }
+    }
+   ],
+   "nota": "Sonrisa y asentimiento leve.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 497: componente no manual"
+  },
+  "problema": {
+   "necesita": {
+    "cuerpo": false,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "ceño": 0.5
+    }
+   ],
+   "nota": "Ceño fruncido.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 499: componente no manual"
+  },
+  "solucion": {
+   "necesita": {
+    "cuerpo": true,
+    "cara": true,
+    "ojos": false
+   },
+   "claves": [
+    {
+     "t": 0,
+     "expr": "alegria",
+     "sonrisa": 0.55,
+     "cabeza": {
+      "adelante": 0
+     }
+    },
+    {
+     "t": 0.5,
+     "cabeza": {
+      "adelante": 9
+     }
+    },
+    {
+     "t": 1,
+     "cabeza": {
+      "adelante": 0
+     }
+    }
+   ],
+   "nota": "Sonrisa de alivio y asentimiento.",
+   "fuente": "Lista de 500 signos (Gemini), n.º 500: componente no manual"
+  }
+ }
+}

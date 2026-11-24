@@ -1,0 +1,1243 @@
+{
+ "nota": "Alfabeto dactilológico propio. Letras descritas con el modelo de mano a partir del manual básico de LSE (referencia). Borrador sin validar.",
+ "letras": {
+  "a": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "arriba",
+     "pal": "adelante",
+     "forma": "a",
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "b": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "adentro",
+     "pal": "abajo",
+     "forma": {
+      "d": [
+       0,
+       0,
+       0,
+       0
+      ],
+      "ab": [
+       0,
+       0,
+       0,
+       0
+      ],
+      "p": {
+       "a": -40,
+       "f": [
+        25,
+        40,
+        25
+       ]
+      }
+     },
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "c": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "arriba+adelante",
+     "pal": "adentro",
+     "forma": "c",
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "d": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "arriba",
+     "pal": "adelante",
+     "forma": {
+      "d": [
+       0,
+       [
+        55,
+        60,
+        40
+       ],
+       [
+        55,
+        60,
+        40
+       ],
+       [
+        55,
+        60,
+        40
+       ]
+      ],
+      "ab": [
+       0,
+       0,
+       0,
+       0
+      ],
+      "p": {
+       "a": 32,
+       "f": [
+        22,
+        38,
+        26
+       ]
+      }
+     },
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "e": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "arriba",
+     "pal": "adelante",
+     "forma": "pulgar",
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "f": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "arriba",
+     "pal": "adelante",
+     "forma": "f",
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "g": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "adentro",
+     "pal": "abajo",
+     "forma": {
+      "d": [
+       0,
+       1,
+       1,
+       1
+      ],
+      "ab": [
+       0,
+       0,
+       0,
+       0
+      ],
+      "p": {
+       "a": 12,
+       "f": [
+        0,
+        0,
+        0
+       ]
+      }
+     },
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "h": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "adentro",
+     "pal": "abajo",
+     "forma": {
+      "d": [
+       0,
+       0,
+       1,
+       1
+      ],
+      "ab": [
+       0,
+       0,
+       0,
+       0
+      ],
+      "p": {
+       "a": -30,
+       "f": [
+        25,
+        40,
+        25
+       ]
+      }
+     },
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "i": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "arriba",
+     "pal": "adelante",
+     "forma": {
+      "d": [
+       1,
+       1,
+       1,
+       0
+      ],
+      "ab": [
+       0,
+       0,
+       0,
+       0
+      ],
+      "p": {
+       "a": -30,
+       "f": [
+        25,
+        40,
+        25
+       ]
+      }
+     },
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "k": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "arriba",
+     "pal": "adelante",
+     "forma": "k",
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "l": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "arriba",
+     "pal": "adelante",
+     "forma": "l",
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "m": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "abajo",
+     "pal": "atras",
+     "forma": {
+      "d": [
+       [
+        10,
+        12,
+        6
+       ],
+       [
+        10,
+        12,
+        6
+       ],
+       [
+        10,
+        12,
+        6
+       ],
+       1
+      ],
+      "ab": [
+       0,
+       0,
+       0,
+       0
+      ],
+      "p": {
+       "a": -40,
+       "f": [
+        30,
+        40,
+        25
+       ]
+      }
+     },
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "n": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "abajo",
+     "pal": "atras",
+     "forma": {
+      "d": [
+       [
+        10,
+        12,
+        6
+       ],
+       [
+        10,
+        12,
+        6
+       ],
+       1,
+       1
+      ],
+      "ab": [
+       0,
+       0,
+       0,
+       0
+      ],
+      "p": {
+       "a": -40,
+       "f": [
+        30,
+        40,
+        25
+       ]
+      }
+     },
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "o": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "arriba+adelante",
+     "pal": "adentro",
+     "forma": "o",
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "p": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "arriba",
+     "pal": "adelante",
+     "forma": {
+      "d": [
+       0,
+       0,
+       0,
+       1
+      ],
+      "ab": [
+       0,
+       0,
+       0,
+       0
+      ],
+      "p": {
+       "a": -40,
+       "f": [
+        25,
+        40,
+        25
+       ]
+      }
+     },
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "q": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "abajo+adentro",
+     "pal": "atras",
+     "forma": "piña",
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "r": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "arriba",
+     "pal": "adelante",
+     "forma": {
+      "d": [
+       0,
+       0,
+       1,
+       1
+      ],
+      "ab": [
+       -10,
+       10,
+       0,
+       0
+      ],
+      "p": {
+       "a": -30,
+       "f": [
+        25,
+        40,
+        25
+       ]
+      }
+     },
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "s": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "arriba",
+     "pal": "adelante",
+     "forma": "puño",
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "t": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "arriba",
+     "pal": "adelante",
+     "forma": {
+      "d": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "ab": [
+       0,
+       0,
+       0,
+       0
+      ],
+      "p": {
+       "a": -12,
+       "f": [
+        20,
+        32,
+        16
+       ]
+      }
+     },
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "u": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "arriba",
+     "pal": "adelante",
+     "forma": {
+      "d": [
+       0,
+       0,
+       1,
+       1
+      ],
+      "ab": [
+       0,
+       0,
+       0,
+       0
+      ],
+      "p": {
+       "a": -30,
+       "f": [
+        25,
+        40,
+        25
+       ]
+      }
+     },
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "v": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "arriba",
+     "pal": "adelante",
+     "forma": "v",
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "w": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "arriba",
+     "pal": "adelante",
+     "forma": "w",
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "x": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "arriba",
+     "pal": "adelante",
+     "forma": "gancho",
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "y": {
+   "dur": 0.5,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ],
+     "dir": "arriba",
+     "pal": "adelante",
+     "forma": "y",
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.82,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "j": {
+   "dur": 0.6,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.82,
+      0.28,
+      0.55
+     ],
+     "dir": "arriba",
+     "pal": "adelante",
+     "forma": {
+      "d": [
+       1,
+       1,
+       1,
+       0
+      ],
+      "ab": [
+       0,
+       0,
+       0,
+       0
+      ],
+      "p": {
+       "a": -30,
+       "f": [
+        25,
+        40,
+        25
+       ]
+      }
+     },
+     "punto": "palma"
+    },
+    {
+     "t": 0.5,
+     "pos": [
+      0.82,
+      0.12,
+      0.55
+     ],
+     "dir": "abajo+adelante"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.74,
+      0.1,
+      0.55
+     ],
+     "dir": "arriba+adentro"
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "ñ": {
+   "dur": 0.6,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.77,
+      0.22,
+      0.55
+     ],
+     "dir": "abajo",
+     "pal": "atras",
+     "forma": {
+      "d": [
+       [
+        10,
+        12,
+        6
+       ],
+       [
+        10,
+        12,
+        6
+       ],
+       1,
+       1
+      ],
+      "ab": [
+       0,
+       0,
+       0,
+       0
+      ],
+      "p": {
+       "a": -40,
+       "f": [
+        30,
+        40,
+        25
+       ]
+      }
+     },
+     "punto": "palma"
+    },
+    {
+     "t": 0.5,
+     "pos": [
+      0.8899999999999999,
+      0.22,
+      0.55
+     ]
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.7699999999999999,
+      0.22,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  },
+  "z": {
+   "dur": 0.7,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.75,
+      0.29,
+      0.55
+     ],
+     "dir": "adelante+arriba",
+     "pal": "abajo",
+     "forma": "indice",
+     "punto": "palma"
+    },
+    {
+     "t": 0.3,
+     "pos": [
+      0.8899999999999999,
+      0.29000000000000004,
+      0.55
+     ]
+    },
+    {
+     "t": 0.65,
+     "pos": [
+      0.75,
+      0.15,
+      0.55
+     ]
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.8899999999999999,
+      0.15,
+      0.55
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Letra del alfabeto dactilológico."
+   }
+  }
+ }
+}

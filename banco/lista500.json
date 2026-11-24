@@ -1,0 +1,4502 @@
+[
+ {
+  "n": 1,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "HOLA",
+  "configuracion": "Unimanual: mano plana abierta (B), dedos juntos.",
+  "ubicacion": "Lateral derecho de la frente / sien.",
+  "movimiento": "Palma hacia fuera; desplazamiento corto lateral hacia fuera o leve vaivén de muñeca.",
+  "cnm": "Sonrisa abierta, elevación ligera de cejas y contacto visual."
+ },
+ {
+  "n": 2,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "ADIÓS",
+  "configuracion": "Unimanual: mano plana abierta (B).",
+  "ubicacion": "Espacio neutro alto a la altura del hombro.",
+  "movimiento": "Palma hacia fuera; oscilación lateral de muñeca o flexión repetida de dedos.",
+  "cnm": "Expresión afable de despedida y contacto visual sostenido."
+ },
+ {
+  "n": 3,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "BUENOS-DÍAS",
+  "configuracion": "Compuesto: pinza cerrada (O) + mano plana (B) o índice (G).",
+  "ubicacion": "De barbilla/mejilla a espacio neutro alto.",
+  "movimiento": "Palma dentro luego fuera; toque en barbilla y desplazamiento en arco ascendente.",
+  "cnm": "Sonrisa y leve asentimiento de cabeza."
+ },
+ {
+  "n": 4,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "BUENAS-TARDES",
+  "configuracion": "Compuesto: pinza cerrada (O) + mano plana (B).",
+  "ubicacion": "De barbilla a espacio neutro medio.",
+  "movimiento": "Palma dentro luego abajo; toque en barbilla y descenso suave de la mano frente al pecho.",
+  "cnm": "Expresión cordial y asentimiento suave."
+ },
+ {
+  "n": 5,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "BUENAS-NOCHES",
+  "configuracion": "Compuesto: pinza (O) + bimanual manos planas (B).",
+  "ubicacion": "De barbilla a espacio neutro frente al rostro/pecho.",
+  "movimiento": "Palmas hacia dentro; manos planas se cruzan o descienden cerrando el campo frontal.",
+  "cnm": "Expresión serena y leve inclinación de cabeza."
+ },
+ {
+  "n": 6,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "QUÉ-TAL",
+  "configuracion": "Bimanual simétrico: manos abiertas con dedos separados (5).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia arriba; ligero giro alterno de muñecas o elevación corta.",
+  "cnm": "Cejas fruncidas/elevadas (interrogativa) e inclinación leve de cabeza."
+ },
+ {
+  "n": 7,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "POR-FAVOR",
+  "configuracion": "Unimanual (o bimanual): mano plana (B) abierta.",
+  "ubicacion": "Centro del pecho.",
+  "movimiento": "Palma hacia dentro; movimiento circular suave sobre el pecho (o frote de palmas).",
+  "cnm": "Expresión amable, mirada directa y leve inclinación del tronco."
+ },
+ {
+  "n": 8,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "GRACIAS",
+  "configuracion": "Unimanual: mano plana (B), dedos juntos.",
+  "ubicacion": "Barbilla / labios.",
+  "movimiento": "Palma hacia dentro; desplazamiento recto hacia delante y abajo hacia el interlocutor.",
+  "cnm": "Sonrisa y leve inclinación afirmativa de cabeza."
+ },
+ {
+  "n": 9,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "MUCHAS-GRACIAS",
+  "configuracion": "Bimanual simétrico: ambas manos planas (B).",
+  "ubicacion": "De la barbilla hacia el espacio neutro frontal.",
+  "movimiento": "Palmas hacia dentro/arriba; desplazamiento amplio simultáneo hacia delante.",
+  "cnm": "Sonrisa amplia e inclinación marcada de cabeza."
+ },
+ {
+  "n": 10,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "DE-NADA",
+  "configuracion": "Unimanual: mano plana (B) o pinza abierta.",
+  "ubicacion": "Debajo de la barbilla hacia espacio neutro.",
+  "movimiento": "Palma hacia fuera/abajo; movimiento corto de rechazo suave hacia delante.",
+  "cnm": "Sonrisa, leve encogimiento de hombros y negación suave."
+ },
+ {
+  "n": 11,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "PERDÓN / DISCULPA",
+  "configuracion": "Unimanual: puño con pulgar extendido (A) o mano curva.",
+  "ubicacion": "Barbilla o centro del pecho.",
+  "movimiento": "Palma hacia dentro/lateral; roce circular suave en la barbilla o pecho.",
+  "cnm": "Cejas arqueadas hacia dentro y expresión de disculpa."
+ },
+ {
+  "n": 12,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "LO-SIENTO",
+  "configuracion": "Unimanual: mano plana (B) o puño cerrado (A).",
+  "ubicacion": "Centro del pecho (zona del corazón).",
+  "movimiento": "Palma hacia dentro; movimiento circular continuo y pausado sobre el pecho.",
+  "cnm": "Expresión de pesar, cejas juntas y comisuras labiales bajas."
+ },
+ {
+  "n": 13,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "PERMISO (pasar)",
+  "configuracion": "Bimanual asimétrico: mano plana (B) dominante y pasiva.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma dominante de canto hacia abajo; atraviesa hacia delante sobre la palma pasiva.",
+  "cnm": "Expresión cortés y mirada hacia quien cede el paso."
+ },
+ {
+  "n": 14,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "SÍ",
+  "configuracion": "Unimanual: puño cerrado (S/A) o índice flexionado.",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera/abajo; flexión repetida de muñeca de arriba abajo.",
+  "cnm": "Asentimiento firme de cabeza."
+ },
+ {
+  "n": 15,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "NO",
+  "configuracion": "Unimanual: índice y corazón extendidos juntos al pulgar (pico).",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; cierre repetido de dedos contra el pulgar (o vaivén del índice).",
+  "cnm": "Giro lateral de cabeza (negación) y ceño levemente fruncido."
+ },
+ {
+  "n": 16,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "VALE / DE-ACUERDO",
+  "configuracion": "Unimanual: índice y pulgar en círculo (F/O).",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; desplazamiento corto y firme hacia delante y abajo.",
+  "cnm": "Asentimiento de cabeza y sonrisa de conformidad."
+ },
+ {
+  "n": 17,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "BIEN",
+  "configuracion": "Unimanual: pinza cerrada (O) que se abre o pulgar arriba.",
+  "ubicacion": "De la barbilla al espacio neutro.",
+  "movimiento": "Palma hacia dentro/lateral; movimiento recto hacia delante.",
+  "cnm": "Sonrisa y asentimiento."
+ },
+ {
+  "n": 18,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "MAL",
+  "configuracion": "Unimanual: dorso de mano plana (B) o garra.",
+  "ubicacion": "Debajo de la barbilla.",
+  "movimiento": "Palma hacia abajo; desplazamiento brusco hacia fuera y abajo.",
+  "cnm": "Ceño fruncido y gesto labial de desagrado."
+ },
+ {
+  "n": 19,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "REGULAR",
+  "configuracion": "Unimanual: mano abierta con dedos separados (5).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia abajo; rotación alterna de muñeca (balanceo lateral).",
+  "cnm": "Labios apretados/ladeados e inclinación leve de cabeza."
+ },
+ {
+  "n": 20,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "QUIZÁS / A-LO-MEJOR",
+  "configuracion": "Bimanual alterno: manos abiertas (5) o planas (B).",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas hacia arriba; ascenso y descenso alterno (efecto balanza).",
+  "cnm": "Cejas elevadas, labios fruncidos y balanceo lateral de cabeza."
+ },
+ {
+  "n": 21,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "SEGURO / CLARO",
+  "configuracion": "Unimanual (o bimanual): puño (S) o índice (G) firme.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia abajo/dentro; golpe descendente corto y decidido.",
+  "cnm": "Asentimiento enérgico y mirada directa."
+ },
+ {
+  "n": 22,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "POR-SUPUESTO",
+  "configuracion": "Unimanual: índice (G) o mano en pinza (F).",
+  "ubicacion": "Sien / frente hacia espacio neutro.",
+  "movimiento": "Palma lateral; desplazamiento hacia delante con énfasis.",
+  "cnm": "Elevación de cejas, sonrisa y asentimiento claro."
+ },
+ {
+  "n": 23,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "CUIDADO / ATENCIÓN",
+  "configuracion": "Unimanual (o bimanual): índice (G) o mano plana (B).",
+  "ubicacion": "Debajo del ojo / pómulo hacia espacio neutro.",
+  "movimiento": "Palma hacia dentro/abajo; toque bajo el ojo y proyección hacia el interlocutor.",
+  "cnm": "Ojos muy abiertos y expresión de alerta."
+ },
+ {
+  "n": 24,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "FELICIDADES",
+  "configuracion": "Bimanual simétrico: manos abiertas (5) agitándose.",
+  "ubicacion": "Espacio neutro alto a ambos lados de la cabeza.",
+  "movimiento": "Palmas hacia delante/enfrentadas; vibración o giro rápido de manos en alto.",
+  "cnm": "Sonrisa amplia y expresión de alegría."
+ },
+ {
+  "n": 25,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "BIENVENIDO",
+  "configuracion": "Bimanual simétrico: manos planas (B) abiertas.",
+  "ubicacion": "De espacio neutro frontal hacia el propio pecho.",
+  "movimiento": "Palmas hacia dentro/arriba; movimiento amplio envolvente hacia el cuerpo.",
+  "cnm": "Sonrisa acogedora e inclinación cordial."
+ },
+ {
+  "n": 26,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "SUERTE",
+  "configuracion": "Unimanual: dedos índice y corazón cruzados (R).",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; giro rápido de muñeca o elevación corta.",
+  "cnm": "Sonrisa expectante y cejas ligeramente elevadas."
+ },
+ {
+  "n": 27,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "ÁNIMO",
+  "configuracion": "Bimanual simétrico: puños cerrados (S) o manos en garra.",
+  "ubicacion": "Frente al pecho / hombros.",
+  "movimiento": "Palmas hacia dentro/enfrentadas; movimiento ascendente firme de impulso.",
+  "cnm": "Expresión de fuerza, sonrisa y asentimiento."
+ },
+ {
+  "n": 28,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "DA-IGUAL / NO-IMPORTA",
+  "configuracion": "Bimanual alterno: manos abiertas (5) o planas.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia arriba/fuera; movimiento alterno de desinterés hacia los lados.",
+  "cnm": "Encogimiento de hombros y labios hacia abajo."
+ },
+ {
+  "n": 29,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "REPETIR / OTRA-VEZ",
+  "configuracion": "Unimanual: mano curva (C) o índice (G).",
+  "ubicacion": "Espacio neutro (o sobre palma pasiva).",
+  "movimiento": "Palma hacia abajo; movimiento semicircular ascendente que vuelve a caer.",
+  "cnm": "Cejas ligeramente elevadas si es petición."
+ },
+ {
+  "n": 30,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "DESPACIO",
+  "configuracion": "Bimanual: mano plana (B) dominante sobre antebrazo/mano pasiva.",
+  "ubicacion": "Antebrazo pasivo frente al pecho.",
+  "movimiento": "Palma hacia abajo; deslizamiento lento y continuo desde la muñeca hacia el codo.",
+  "cnm": "Labios ligeramente fruncidos y ritmo pausado."
+ },
+ {
+  "n": 31,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "NO-ENTENDER",
+  "configuracion": "Unimanual: mano en garra (5 flexionada).",
+  "ubicacion": "Frente / sien derecha.",
+  "movimiento": "Palma hacia dentro; giro rápido de muñeca hacia fuera con cierre parcial.",
+  "cnm": "Ceño fruncido y negación lateral de cabeza."
+ },
+ {
+  "n": 32,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "NO-SABER",
+  "configuracion": "Unimanual: mano plana (B).",
+  "ubicacion": "Debajo de la barbilla.",
+  "movimiento": "Palma hacia abajo; deslizamiento rápido hacia fuera con giro de rechazo.",
+  "cnm": "Negación cefálica y encogimiento leve de hombros."
+ },
+ {
+  "n": 33,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "NO-QUERER",
+  "configuracion": "Unimanual: mano en garra abierta (5).",
+  "ubicacion": "Frente al pecho / garganta.",
+  "movimiento": "Palma hacia dentro; desplazamiento brusco hacia fuera cerrando dedos.",
+  "cnm": "Ceño fruncido, labios tensos y negación cefálica."
+ },
+ {
+  "n": 34,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "NO-PODER",
+  "configuracion": "Unimanual: puño cerrado (S) o índice flexionado.",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; movimiento descendente corto con rebote de bloqueo.",
+  "cnm": "Expresión de frustración y negación de cabeza."
+ },
+ {
+  "n": 35,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "NO-TENER",
+  "configuracion": "Unimanual: pulgar e índice extendidos (L) o mano abierta.",
+  "ubicacion": "Pecho hacia espacio neutro lateral.",
+  "movimiento": "Palma hacia dentro; desplazamiento lateral cerrando la pinza.",
+  "cnm": "Negación lateral de cabeza."
+ },
+ {
+  "n": 36,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "NO-HAY",
+  "configuracion": "Unimanual: mano abierta (5) con dedos separados.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia arriba; oscilación lateral rápida de muñeca.",
+  "cnm": "Labios estirados hacia abajo y negación cefálica."
+ },
+ {
+  "n": 37,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "TODAVÍA-NO",
+  "configuracion": "Unimanual: mano plana (B) o índice (G).",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palma hacia abajo; oscilación horizontal corta de lado a lado.",
+  "cnm": "Negación cefálica suave y labios fruncidos."
+ },
+ {
+  "n": 38,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "YA",
+  "configuracion": "Unimanual: mano plana (B) o índice (G).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia abajo/dentro; movimiento descendente seco y único.",
+  "cnm": "Asentimiento breve y cierre labial firme."
+ },
+ {
+  "n": 39,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "POR-FIN",
+  "configuracion": "Bimanual simétrico: manos abiertas (5) o puños que abren.",
+  "ubicacion": "De los hombros/pecho hacia abajo y fuera.",
+  "movimiento": "Palmas hacia abajo; descenso amplio con relajación de tensión.",
+  "cnm": "Suspiro visible (exhalación) y expresión de alivio."
+ },
+ {
+  "n": 40,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "DE-REPENTE",
+  "configuracion": "Bimanual: puños cerrados (S) que abren bruscamente en (5).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia fuera; apertura explosiva y simultánea de todos los dedos.",
+  "cnm": "Ojos muy abiertos y elevación brusca de cejas."
+ },
+ {
+  "n": 41,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "POCO-A-POCO",
+  "configuracion": "Unimanual: pinza de pulgar e índice (F/G).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia abajo; pequeños avances horizontales escalonados hacia un lado.",
+  "cnm": "Ojos entrecerrados y labios ligeramente fruncidos."
+ },
+ {
+  "n": 42,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "DEPENDE",
+  "configuracion": "Bimanual alterno: índices (G) o manos planas.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas/abajo; movimiento alterno de oscilación.",
+  "cnm": "Inclinación lateral de cabeza y expresión dubitativa."
+ },
+ {
+  "n": 43,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "POR-EJEMPLO",
+  "configuracion": "Unimanual: índice y pulgar en pinza (F).",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; pequeños arcos hacia delante como enumerando.",
+  "cnm": "Expresión neutra/explicativa y contacto visual."
+ },
+ {
+  "n": 44,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "O-SEA / ES-DECIR",
+  "configuracion": "Bimanual: manos en pinza (F) o planas.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; giro simultáneo de muñecas hacia delante.",
+  "cnm": "Inclinación leve de cabeza hacia el interlocutor."
+ },
+ {
+  "n": 45,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "MENTIRA",
+  "configuracion": "Unimanual: índice (G) o canto de mano plana (B).",
+  "ubicacion": "Debajo de la nariz / labio superior.",
+  "movimiento": "Palma hacia abajo; deslizamiento rápido horizontal hacia un lado.",
+  "cnm": "Ceño fruncido o sonrisa pícara según contexto."
+ },
+ {
+  "n": 46,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "VERDAD",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "Labios / barbilla hacia espacio neutro.",
+  "movimiento": "Palma lateral; desplazamiento recto y firme hacia delante.",
+  "cnm": "Asentimiento firme y mirada directa."
+ },
+ {
+  "n": 47,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "BROMA",
+  "configuracion": "Unimanual: índice y pulgar en pinza o garra suave.",
+  "ubicacion": "Debajo de la barbilla.",
+  "movimiento": "Palma hacia arriba; pequeño toque o giro rápido bajo el mentón.",
+  "cnm": "Sonrisa pícara y guiño o elevación de cejas."
+ },
+ {
+  "n": 48,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "SECRETO",
+  "configuracion": "Unimanual: pulgar extendido (A) o mano ahuecada.",
+  "ubicacion": "Sobre los labios cerrados.",
+  "movimiento": "Palma lateral; contacto firme vertical del pulgar sobre la boca.",
+  "cnm": "Labios sellados y mirada cómplice."
+ },
+ {
+  "n": 49,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "SORPRESA",
+  "configuracion": "Bimanual simétrico: manos cerradas que abren en (5).",
+  "ubicacion": "A ambos lados del rostro.",
+  "movimiento": "Palmas enfrentadas; apertura rápida de dedos junto a las mejillas.",
+  "cnm": "Ojos muy abiertos, boca en 'O' y cejas altas."
+ },
+ {
+  "n": 50,
+  "categoria": "1. Saludos, cortesía y expresiones comunicativas",
+  "glosa": "CULPA",
+  "configuracion": "Unimanual: mano plana (B) o índice (G).",
+  "ubicacion": "Hombro o pecho (propio o señalando al otro).",
+  "movimiento": "Palma hacia abajo; golpe seco con las yemas sobre el hombro/pecho.",
+  "cnm": "Ceño fruncido y expresión de reproche o asunción."
+ },
+ {
+  "n": 51,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "YO",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "Centro del pecho.",
+  "movimiento": "Palma hacia dentro; contacto directo con la yema del índice en el esternón.",
+  "cnm": "Mirada directa al interlocutor."
+ },
+ {
+  "n": 52,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "TÚ",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "Espacio neutro en dirección al interlocutor.",
+  "movimiento": "Palma hacia abajo/lateral; proyección recta señalando al receptor.",
+  "cnm": "Contacto visual directo con el interlocutor."
+ },
+ {
+  "n": 53,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "ÉL / ELLA",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "Espacio neutro lateral (locus asignado).",
+  "movimiento": "Palma hacia abajo; señalamiento hacia el punto espacial del referente.",
+  "cnm": "Mirada breve hacia el locus espacial."
+ },
+ {
+  "n": 54,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "NOSOTROS",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "Del pecho propio al espacio del interlocutor/grupo.",
+  "movimiento": "Palma hacia dentro; movimiento circular horizontal que engloba al emisor y al grupo.",
+  "cnm": "Expresión inclusiva y recorrido visual."
+ },
+ {
+  "n": 55,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "VOSOTROS",
+  "configuracion": "Unimanual: dedo índice (G) o mano abierta (B).",
+  "ubicacion": "Espacio neutro frente a los interlocutores.",
+  "movimiento": "Palma hacia abajo/arriba; barrido horizontal en arco frente a los receptores.",
+  "cnm": "Contacto visual barriendo a los interlocutores."
+ },
+ {
+  "n": 56,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "ELLOS / ELLAS",
+  "configuracion": "Unimanual: dedo índice (G) o mano plana (B).",
+  "ubicacion": "Espacio neutro lateral.",
+  "movimiento": "Palma hacia abajo; arco horizontal en la zona espacial de los terceros.",
+  "cnm": "Mirada hacia el locus lateral."
+ },
+ {
+  "n": 57,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "MÍO / PROPIO",
+  "configuracion": "Unimanual: mano plana abierta (B).",
+  "ubicacion": "Centro del pecho.",
+  "movimiento": "Palma hacia dentro; contacto firme de toda la palma sobre el pecho.",
+  "cnm": "Asentimiento leve y mirada directa."
+ },
+ {
+  "n": 58,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "TUYO",
+  "configuracion": "Unimanual: mano plana abierta (B).",
+  "ubicacion": "Espacio neutro hacia el interlocutor.",
+  "movimiento": "Palma hacia fuera; proyección frontal de la palma abierta hacia el receptor.",
+  "cnm": "Contacto visual directo."
+ },
+ {
+  "n": 59,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "SUYO",
+  "configuracion": "Unimanual: mano plana abierta (B).",
+  "ubicacion": "Espacio neutro lateral.",
+  "movimiento": "Palma orientada hacia el referente; desplazamiento corto lateral.",
+  "cnm": "Mirada hacia el locus del poseedor."
+ },
+ {
+  "n": 60,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "NUESTRO",
+  "configuracion": "Unimanual: mano plana abierta (B).",
+  "ubicacion": "De hombro derecho a hombro izquierdo sobre el pecho.",
+  "movimiento": "Palma hacia dentro; arco horizontal tocando ambos lados del pecho.",
+  "cnm": "Expresión inclusiva."
+ },
+ {
+  "n": 61,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "ALGUIEN",
+  "configuracion": "Unimanual: dedo índice extendido (G) vertical.",
+  "ubicacion": "Espacio neutro alto a la altura del hombro.",
+  "movimiento": "Palma hacia fuera/dentro; ligero movimiento circular o de oscilación vertical.",
+  "cnm": "Cejas ligeramente elevadas (indeterminación)."
+ },
+ {
+  "n": 62,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "NADIE",
+  "configuracion": "Unimanual: mano abierta (5) o puño con índice.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia fuera; barrido horizontal con negación.",
+  "cnm": "Negación cefálica y labios apretados."
+ },
+ {
+  "n": 63,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "TODOS",
+  "configuracion": "Bimanual (o unimanual): manos abiertas (5) en círculo.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas enfrentadas/abajo; movimiento circular amplio que abarca todo el espacio.",
+  "cnm": "Recorrido visual amplio."
+ },
+ {
+  "n": 64,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "OTRO",
+  "configuracion": "Unimanual: pulgar extendido (A) o índice (G).",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia dentro; giro rápido de muñeca hacia el exterior.",
+  "cnm": "Ligera inclinación de cabeza hacia el lado."
+ },
+ {
+  "n": 65,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "MISMO",
+  "configuracion": "Bimanual simétrico: dedos índices extendidos (G).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia abajo; ambos índices paralelos se juntan en el centro.",
+  "cnm": "Asentimiento leve."
+ },
+ {
+  "n": 66,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "PERSONA",
+  "configuracion": "Unimanual: mano plana (B) o configuración en P.",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera/lateral; desplazamiento vertical descendente (silueta).",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 67,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "GENTE",
+  "configuracion": "Bimanual simétrico: manos abiertas con dedos separados (5).",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas hacia abajo; movimientos circulares alternos o barrido amplio.",
+  "cnm": "Mirada panorámica."
+ },
+ {
+  "n": 68,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "HOMBRE",
+  "configuracion": "Unimanual: mano en garra / pinza abierta (5 flexionada).",
+  "ubicacion": "Mentón / barbilla.",
+  "movimiento": "Palma hacia dentro; cierre de dedos sobre la barbilla (simulando barba).",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 69,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "MUJER",
+  "configuracion": "Unimanual: pulgar e índice en pinza (F/G).",
+  "ubicacion": "Lóbulo de la oreja / mejilla.",
+  "movimiento": "Palma lateral; toque suave en el lóbulo (simulando pendiente).",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 70,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "NIÑO / NIÑA",
+  "configuracion": "Unimanual: mano plana (B).",
+  "ubicacion": "Espacio neutro bajo (a la altura de la cintura).",
+  "movimiento": "Palma hacia abajo; ligeros toques descendentes indicando estatura.",
+  "cnm": "Sonrisa suave y mirada hacia abajo."
+ },
+ {
+  "n": 71,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "BEBÉ",
+  "configuracion": "Bimanual: brazos cruzados acunando.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia arriba; balanceo suave lateral de ambos brazos.",
+  "cnm": "Sonrisa tierna e inclinación de cabeza."
+ },
+ {
+  "n": 72,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "JOVEN",
+  "configuracion": "Bimanual (o unimanual): manos planas (B) o yemas.",
+  "ubicacion": "Hombros / pecho hacia arriba.",
+  "movimiento": "Palmas hacia dentro; movimiento ascendente ligero y enérgico.",
+  "cnm": "Expresión vivaz."
+ },
+ {
+  "n": 73,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "ADULTO",
+  "configuracion": "Unimanual: mano plana (B).",
+  "ubicacion": "Espacio neutro alto (por encima del hombro).",
+  "movimiento": "Palma hacia abajo; desplazamiento horizontal marcando altura elevada.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 74,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "MAYOR / ANCIANO",
+  "configuracion": "Unimanual: puño cerrado (S) o mano curva.",
+  "ubicacion": "Debajo de la barbilla / espacio frontal.",
+  "movimiento": "Palma hacia abajo; movimiento descendente ondulante (barba/bastón).",
+  "cnm": "Expresión respetuosa."
+ },
+ {
+  "n": 75,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "FAMILIA",
+  "configuracion": "Bimanual simétrico: manos en pinza (F) o en C.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; trazan un círculo horizontal hasta juntarse por delante.",
+  "cnm": "Sonrisa cálida."
+ },
+ {
+  "n": 76,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "MADRE / MAMÁ",
+  "configuracion": "Unimanual: mano plana (B) o índice (G).",
+  "ubicacion": "Mejilla.",
+  "movimiento": "Palma hacia dentro; toque suave doble sobre la mejilla.",
+  "cnm": "Expresión afectuosa."
+ },
+ {
+  "n": 77,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "PADRE / PAPÁ",
+  "configuracion": "Unimanual: mano plana (B) o índice (G).",
+  "ubicacion": "Frente / sien o sobre el labio superior.",
+  "movimiento": "Palma hacia dentro; toque suave doble en la frente/bigote.",
+  "cnm": "Expresión afectuosa."
+ },
+ {
+  "n": 78,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "HIJO / HIJA",
+  "configuracion": "Unimanual: mano plana (B) desde el pecho/vientre.",
+  "ubicacion": "De pecho/abdomen hacia espacio neutro bajo.",
+  "movimiento": "Palma hacia dentro/abajo; desplazamiento hacia delante y abajo.",
+  "cnm": "Expresión afectuosa."
+ },
+ {
+  "n": 79,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "HERMANO / HERMANA",
+  "configuracion": "Bimanual simétrico: dedos índices extendidos (G).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia abajo; ambos índices paralelos se acercan hasta tocarse.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 80,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "ABUELO / ABUELA",
+  "configuracion": "Unimanual: puño cerrado (S) sobre otro o solo.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palma hacia abajo; ligero movimiento hacia delante (apoyo en bastón).",
+  "cnm": "Expresión cálida."
+ },
+ {
+  "n": 81,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "TÍO / TÍA",
+  "configuracion": "Unimanual: configuración en T o índice/pulgar.",
+  "ubicacion": "Sien o mejilla.",
+  "movimiento": "Palma lateral; giro corto de muñeca junto a la sien.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 82,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "PRIMO / PRIMA",
+  "configuracion": "Unimanual (o bimanual): índices (G) o configuración P.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; roce lateral entre ambos dedos índices.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 83,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "SOBRINO / SOBRINA",
+  "configuracion": "Unimanual: mano plana (B) o pinza.",
+  "ubicacion": "Hombro / brazo hacia espacio neutro bajo.",
+  "movimiento": "Palma hacia abajo; desplazamiento corto desde el costado hacia abajo.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 84,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "NIETO / NIETA",
+  "configuracion": "Compuesto: HIJO + NIÑO / extensión hacia abajo.",
+  "ubicacion": "De pecho a espacio neutro bajo.",
+  "movimiento": "Palma hacia abajo; doble escalón descendente hacia delante.",
+  "cnm": "Sonrisa suave."
+ },
+ {
+  "n": 85,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "PAREJA / NOVIO",
+  "configuracion": "Bimanual simétrico: índices (G) o manos entrelazadas.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; unión paralela de ambos índices/manos.",
+  "cnm": "Sonrisa."
+ },
+ {
+  "n": 86,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "MARIDO / ESPOSA",
+  "configuracion": "Unimanual: pinza de pulgar e índice (F) sobre dedo anular pasivo.",
+  "ubicacion": "Dedo anular de la mano pasiva.",
+  "movimiento": "Palma hacia abajo; deslizamiento sobre el anular (colocación de anillo).",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 87,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "AMIGO",
+  "configuracion": "Bimanual simétrico: manos abiertas entrelazándose.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; apretón suave y repetido de ambas manos.",
+  "cnm": "Sonrisa cordial."
+ },
+ {
+  "n": 88,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "CONOCIDO",
+  "configuracion": "Unimanual: mano plana (B) o índice (G).",
+  "ubicacion": "Frente / sien hacia espacio neutro.",
+  "movimiento": "Palma hacia dentro; toque en frente y proyección suave hacia el interlocutor.",
+  "cnm": "Asentimiento leve."
+ },
+ {
+  "n": 89,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "VECINO",
+  "configuracion": "Bimanual: mano plana (B) junto a signo CASA.",
+  "ubicacion": "Espacio neutro lateral.",
+  "movimiento": "Palmas enfrentadas; desplazamiento lateral paralelo (al lado).",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 90,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "COMPAÑERO",
+  "configuracion": "Bimanual simétrico: manos planas (B) paralelas.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; avance paralelo simultáneo hacia delante.",
+  "cnm": "Expresión cordial."
+ },
+ {
+  "n": 91,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "JEFE",
+  "configuracion": "Unimanual: puño cerrado (S) o pulgar arriba.",
+  "ubicacion": "Encima de la cabeza / espacio neutro alto.",
+  "movimiento": "Palma hacia abajo; movimiento firme descendente de autoridad.",
+  "cnm": "Expresión seria."
+ },
+ {
+  "n": 92,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "PROFESOR",
+  "configuracion": "Bimanual simétrico: manos en pinza (F) o abiertas (5).",
+  "ubicacion": "Sienes / frente hacia espacio neutro.",
+  "movimiento": "Palmas enfrentadas; proyección repetida desde la cabeza hacia delante.",
+  "cnm": "Expresión atenta y comunicativa."
+ },
+ {
+  "n": 93,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "ALUMNO / ESTUDIANTE",
+  "configuracion": "Compuesto: ESTUDIAR + PERSONA.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma abierta mirando y desplazamiento vertical de persona.",
+  "cnm": "Expresión atenta."
+ },
+ {
+  "n": 94,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "SORDO",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "De la oreja a la boca (o de boca a oreja).",
+  "movimiento": "Palma hacia dentro; toque en el oído seguido de toque en la comisura labial.",
+  "cnm": "Expresión identitaria neutra/afirmativa."
+ },
+ {
+  "n": 95,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "OYENTE",
+  "configuracion": "Unimanual: dedo índice (G) o mano en C.",
+  "ubicacion": "Junto al oído / oreja.",
+  "movimiento": "Palma hacia delante; pequeño movimiento circular junto al pabellón auditivo.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 96,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "ILSE (Intérprete LSE)",
+  "configuracion": "Bimanual alterno: manos en pinza (F) / abiertas.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; rotación alterna rápida de ambas manos (traducción).",
+  "cnm": "Contacto visual y concentración."
+ },
+ {
+  "n": 97,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "LSE",
+  "configuracion": "Unimanual: deletreo L-S-E o bimanual SIGNAR.",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; articulación fluida de L, S y E.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 98,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "SIGNO-PERSONAL",
+  "configuracion": "Unimanual: configuración en I / índice (G).",
+  "ubicacion": "Sobre el pecho izquierdo (como insignia).",
+  "movimiento": "Palma hacia dentro; contacto rápido en la zona superior del pecho.",
+  "cnm": "Sonrisa y curiosidad."
+ },
+ {
+  "n": 99,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "DACTILOLÓGICO",
+  "configuracion": "Unimanual: mano abierta con dedos separados (5).",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; vibración/movimiento rápido de dedos desplazándose lateralmente.",
+  "cnm": "Mirada atenta a la mano."
+ },
+ {
+  "n": 100,
+  "categoria": "2. Personas, familia y comunidad sorda",
+  "glosa": "ASOCIACIÓN",
+  "configuracion": "Bimanual simétrico: manos en garra / pinza (F).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; trazan un círculo conectando varios puntos.",
+  "cnm": "Expresión cordial."
+ },
+ {
+  "n": 101,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "TENER",
+  "configuracion": "Unimanual: mano plana (B) o en L.",
+  "ubicacion": "Centro del pecho.",
+  "movimiento": "Palma hacia dentro; contacto firme sobre el pecho.",
+  "cnm": "Asentimiento suave."
+ },
+ {
+  "n": 102,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "HABER / EXISTIR",
+  "configuracion": "Unimanual: mano plana (B) con palma arriba.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia arriba; movimiento corto descendente de afirmación.",
+  "cnm": "Asentimiento de cabeza."
+ },
+ {
+  "n": 103,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "HACER",
+  "configuracion": "Bimanual simétrico: puños cerrados (S) o pinzas.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas hacia abajo; golpes o giros alternos/simultáneos de manos.",
+  "cnm": "Expresión activa."
+ },
+ {
+  "n": 104,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "IR",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "De pecho/hombro hacia espacio neutro frontal.",
+  "movimiento": "Palma hacia abajo; desplazamiento recto hacia delante.",
+  "cnm": "Mirada hacia el destino."
+ },
+ {
+  "n": 105,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "VENIR",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "De espacio neutro frontal hacia el pecho.",
+  "movimiento": "Palma hacia dentro; desplazamiento recto hacia el cuerpo.",
+  "cnm": "Contacto visual con quien viene."
+ },
+ {
+  "n": 106,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "VOLVER / REGRESAR",
+  "configuracion": "Unimanual: índice (G) o mano plana (B).",
+  "ubicacion": "Espacio neutro frontal.",
+  "movimiento": "Palma hacia abajo; trayectoria curva de ida y vuelta hacia el cuerpo.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 107,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "LLEGAR",
+  "configuracion": "Bimanual asimétrico: mano plana (B) dominante hacia pasiva.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palma dominante hacia abajo/dentro; toca con los dedos la palma pasiva.",
+  "cnm": "Asentimiento breve."
+ },
+ {
+  "n": 108,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "SALIR",
+  "configuracion": "Bimanual asimétrico: mano plana (B) saliendo bajo/entre la pasiva.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia abajo; deslizamiento recto hacia fuera.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 109,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "ENTRAR",
+  "configuracion": "Bimanual asimétrico: mano plana (B) entrando bajo la mano pasiva curva.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia abajo; deslizamiento recto hacia dentro bajo la mano pasiva.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 110,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "SUBIR",
+  "configuracion": "Unimanual: índice (G) o dedos índice-corazón (V).",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palma hacia abajo/adelante; desplazamiento vertical ascendente.",
+  "cnm": "Mirada ascendente acompañando el movimiento."
+ },
+ {
+  "n": 111,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "BAJAR",
+  "configuracion": "Unimanual: índice (G) o dedos en V.",
+  "ubicacion": "Espacio neutro alto hacia bajo.",
+  "movimiento": "Palma hacia abajo; desplazamiento vertical descendente.",
+  "cnm": "Mirada descendente."
+ },
+ {
+  "n": 112,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "QUEDAR (citarse)",
+  "configuracion": "Bimanual simétrico: índices (G) o pulgares.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; ambos dedos se acercan y se tocan en el centro.",
+  "cnm": "Sonrisa y asentimiento."
+ },
+ {
+  "n": 113,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "QUEDARSE (permanecer)",
+  "configuracion": "Bimanual simétrico: manos planas (B) o puños.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas hacia abajo; movimiento descendente firme de fijación en el sitio.",
+  "cnm": "Expresión firme."
+ },
+ {
+  "n": 114,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "VIVIR",
+  "configuracion": "Bimanual simétrico: manos planas (B) o en L.",
+  "ubicacion": "Costados del pecho / cintura.",
+  "movimiento": "Palmas hacia dentro; desplazamiento ascendente paralelo por el torso.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 115,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "MORIR",
+  "configuracion": "Bimanual simétrico: manos planas (B).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia abajo que giran simultáneamente hacia arriba/lateral.",
+  "cnm": "Expresión seria y ojos semicerrados."
+ },
+ {
+  "n": 116,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "NACER",
+  "configuracion": "Bimanual asimétrico: mano emergiendo bajo la otra.",
+  "ubicacion": "Abdomen / espacio neutro bajo.",
+  "movimiento": "Palmas hacia dentro/arriba; salida suave hacia delante.",
+  "cnm": "Sonrisa suave."
+ },
+ {
+  "n": 117,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "CRECER",
+  "configuracion": "Unimanual: mano plana (B).",
+  "ubicacion": "De cintura hacia cabeza.",
+  "movimiento": "Palma hacia abajo; ascenso progresivo por etapas.",
+  "cnm": "Mirada acompañando el ascenso."
+ },
+ {
+  "n": 118,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "QUERER (desear)",
+  "configuracion": "Bimanual simétrico (o unimanual): manos abiertas (5) que se cierran.",
+  "ubicacion": "Espacio neutro frontal hacia el pecho.",
+  "movimiento": "Palmas hacia arriba/dentro; atracción hacia el pecho cerrando los dedos.",
+  "cnm": "Expresión de deseo e inclinación leve."
+ },
+ {
+  "n": 119,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "QUERER (amar)",
+  "configuracion": "Bimanual simétrico: manos planas (B) cruzadas.",
+  "ubicacion": "Sobre el pecho.",
+  "movimiento": "Palmas hacia dentro; abrazo cruzado sobre el propio pecho.",
+  "cnm": "Sonrisa afectuosa e inclinación de cabeza."
+ },
+ {
+  "n": 120,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "GUSTAR",
+  "configuracion": "Unimanual: mano plana abierta (B).",
+  "ubicacion": "Centro del pecho.",
+  "movimiento": "Palma hacia dentro; movimiento circular suave con presión ligera.",
+  "cnm": "Sonrisa y asentimiento."
+ },
+ {
+  "n": 121,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "ENCANTAR",
+  "configuracion": "Unimanual (o bimanual): mano abierta (5) que se cierra en pinza.",
+  "ubicacion": "Del pecho hacia fuera y arriba.",
+  "movimiento": "Palma hacia dentro; movimiento expresivo ascendente.",
+  "cnm": "Sonrisa amplia y ojos expresivos."
+ },
+ {
+  "n": 122,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "ODIAR",
+  "configuracion": "Bimanual simétrico: manos en garra (5 flexionada).",
+  "ubicacion": "Del pecho hacia fuera.",
+  "movimiento": "Palmas hacia fuera; lanzamiento brusco de rechazo hacia delante.",
+  "cnm": "Ceño muy fruncido y labios tensos."
+ },
+ {
+  "n": 123,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "APETECER",
+  "configuracion": "Unimanual: mano plana (B) o yemas.",
+  "ubicacion": "Garganta / parte superior del pecho.",
+  "movimiento": "Palma hacia dentro; deslizamiento suave descendente por el cuello/pecho.",
+  "cnm": "Expresión de agrado."
+ },
+ {
+  "n": 124,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "NECESITAR",
+  "configuracion": "Unimanual: índice flexionado (X) o mano en garra.",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia abajo/fuera; movimiento descendente repetido con firmeza.",
+  "cnm": "Cejas ligeramente fruncidas (urgencia/necesidad)."
+ },
+ {
+  "n": 125,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "PODER",
+  "configuracion": "Bimanual simétrico (o unimanual): puños cerrados (S).",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas hacia abajo; movimiento descendente corto y decidido.",
+  "cnm": "Asentimiento firme."
+ },
+ {
+  "n": 126,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "DEBER / OBLIGACIÓN",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; golpe vertical descendente tajante.",
+  "cnm": "Expresión seria y cejas fruncidas."
+ },
+ {
+  "n": 127,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "COMER",
+  "configuracion": "Unimanual: dedos agrupados en pinza cerrada (O).",
+  "ubicacion": "Frente a la boca.",
+  "movimiento": "Palma hacia dentro; movimiento repetido acercando las yemas a los labios.",
+  "cnm": "Movimiento masticatorio leve."
+ },
+ {
+  "n": 128,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "BEBER",
+  "configuracion": "Unimanual: mano en C (vaso) o pulgar extendido.",
+  "ubicacion": "Junto a la boca.",
+  "movimiento": "Palma lateral; inclinación de la mano hacia los labios.",
+  "cnm": "Inclinación leve de cabeza hacia atrás."
+ },
+ {
+  "n": 129,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "COCINAR",
+  "configuracion": "Bimanual: mano plana (B) volteando sobre palma pasiva.",
+  "ubicacion": "Espacio neutro frente al abdomen.",
+  "movimiento": "Palma hacia abajo/arriba; rotación de muñeca (dar la vuelta en sartén).",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 130,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "DORMIR",
+  "configuracion": "Unimanual: mano plana (B).",
+  "ubicacion": "Mejilla / sien.",
+  "movimiento": "Palma hacia dentro; apoyo de la mejilla sobre la palma inclinada.",
+  "cnm": "Ojos cerrados e inclinación lateral de cabeza."
+ },
+ {
+  "n": 131,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "DESPERTAR",
+  "configuracion": "Bimanual simétrico: dedos índice y pulgar cerrados que abren.",
+  "ubicacion": "Junto a los ojos.",
+  "movimiento": "Palmas hacia delante; apertura rápida de pinza simultánea a los ojos.",
+  "cnm": "Apertura repentina de párpados."
+ },
+ {
+  "n": 132,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "LEVANTARSE",
+  "configuracion": "Bimanual asimétrico: dedos índice y corazón (V) de pie sobre palma.",
+  "ubicacion": "Sobre palma pasiva abierta frente al torso.",
+  "movimiento": "Palma hacia abajo; los dedos en V pasan de tumbados a verticales.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 133,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "ACOSTARSE",
+  "configuracion": "Bimanual asimétrico: dedos en V pasan de pie a tumbados.",
+  "ubicacion": "Sobre palma pasiva abierta frente al torso.",
+  "movimiento": "Palma hacia arriba/lado; apoyo horizontal de los dedos sobre la palma.",
+  "cnm": "Expresión relajada."
+ },
+ {
+  "n": 134,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "DUCHARSE",
+  "configuracion": "Unimanual: mano abierta (5) o puño que abre sobre cabeza.",
+  "ubicacion": "Encima de la cabeza.",
+  "movimiento": "Palma hacia abajo; apertura repetida de dedos simulando caída de agua.",
+  "cnm": "Ojos ligeramente cerrados."
+ },
+ {
+  "n": 135,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "LAVARSE",
+  "configuracion": "Bimanual simétrico: manos planas (B) frotándose.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; frote circular mutuo de palmas y dorsos.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 136,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "VESTIRSE",
+  "configuracion": "Bimanual simétrico: manos planas (B) o en garra.",
+  "ubicacion": "De hombros hacia cintura.",
+  "movimiento": "Palmas hacia dentro; deslizamiento descendente por el torso.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 137,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "PEINARSE",
+  "configuracion": "Unimanual: mano en garra (5 flexionada).",
+  "ubicacion": "Lateral y parte superior de la cabeza.",
+  "movimiento": "Palma hacia dentro; deslizamiento de arriba abajo pasando por el cabello.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 138,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "LIMPIAR",
+  "configuracion": "Bimanual asimétrico: mano plana (B) sobre palma pasiva.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma dominante hacia abajo; barrido amplio sobre la palma pasiva.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 139,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "ORDENAR",
+  "configuracion": "Bimanual simétrico: manos planas (B) paralelas.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas enfrentadas; desplazamientos cortos colocando elementos en fila.",
+  "cnm": "Expresión concentrada."
+ },
+ {
+  "n": 140,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "TRABAJAR",
+  "configuracion": "Bimanual simétrico: puños cerrados (S) o manos en canto.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia abajo; golpes rítmicos de muñeca/puño dominante sobre pasivo.",
+  "cnm": "Expresión concentrada."
+ },
+ {
+  "n": 141,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "DESCANSAR",
+  "configuracion": "Bimanual simétrico: manos planas (B) cruzadas sobre pecho.",
+  "ubicacion": "Sobre el pecho / hombros.",
+  "movimiento": "Palmas hacia dentro; apoyo relajado con descenso de hombros.",
+  "cnm": "Exhalación suave y expresión relajada."
+ },
+ {
+  "n": 142,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "JUGAR",
+  "configuracion": "Bimanual simétrico: pulgar y meñique extendidos (Y).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia dentro/arriba; rotación alterna rápida de ambas muñecas.",
+  "cnm": "Sonrisa y expresión lúdica."
+ },
+ {
+  "n": 143,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "PASEAR",
+  "configuracion": "Bimanual alterno: manos planas (B) o índices.",
+  "ubicacion": "Espacio neutro frente al abdomen.",
+  "movimiento": "Palmas hacia abajo; balanceo alterno suave hacia delante.",
+  "cnm": "Expresión relajada."
+ },
+ {
+  "n": 144,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "CAMINAR / ANDAR",
+  "configuracion": "Bimanual alterno: manos planas (B) o dedos en V.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas hacia abajo; movimiento alterno simulando pasos.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 145,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "CORRER",
+  "configuracion": "Bimanual alterno: puños cerrados (S) o índices.",
+  "ubicacion": "A ambos lados del torso.",
+  "movimiento": "Palmas enfrentadas; movimiento rápido alterno de brazos flexionados.",
+  "cnm": "Expresión dinámica."
+ },
+ {
+  "n": 146,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "CONDUCIR",
+  "configuracion": "Bimanual simétrico: puños cerrados (S) sujetando volante.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; giro alterno suave como manejando un volante.",
+  "cnm": "Mirada al frente."
+ },
+ {
+  "n": 147,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "VIAJAR",
+  "configuracion": "Unimanual: dedos índice y corazón flexionados (V curva).",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia abajo; desplazamiento en arco amplio hacia delante.",
+  "cnm": "Expresión abierta."
+ },
+ {
+  "n": 148,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "COMPRAR",
+  "configuracion": "Bimanual asimétrico: pinza (O) sobre palma pasiva.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma dominante hacia arriba; toque en palma pasiva y salida hacia fuera.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 149,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "VENDER",
+  "configuracion": "Bimanual simétrico: pinzas cerradas (O) que abren hacia fuera.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia abajo; lanzamiento corto hacia delante abriendo dedos.",
+  "cnm": "Expresión comunicativa."
+ },
+ {
+  "n": 150,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "PAGAR",
+  "configuracion": "Unimanual: pulgar frotando índice o mano entregando.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palma hacia arriba/fuera; proyección corta hacia el interlocutor.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 151,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "COSTAR (precio)",
+  "configuracion": "Unimanual: índice flexionado (X) o pinza.",
+  "ubicacion": "Barbilla / espacio neutro.",
+  "movimiento": "Palma lateral; golpe corto descendente.",
+  "cnm": "Cejas ligeramente fruncidas si es pregunta."
+ },
+ {
+  "n": 152,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "AHORRAR",
+  "configuracion": "Unimanual: pinza (F/O) introduciendo en puño/mano pasiva.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma lateral; movimiento repetido de meter monedas en hucha.",
+  "cnm": "Expresión prudente."
+ },
+ {
+  "n": 153,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "GASTAR",
+  "configuracion": "Bimanual: mano abierta (5) deslizando monedas fuera de palma.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palma hacia arriba/fuera; barrido hacia fuera vaciando la palma.",
+  "cnm": "Expresión de desembolso."
+ },
+ {
+  "n": 154,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "DAR",
+  "configuracion": "Unimanual (direccional): pinza cerrada (O) que abre.",
+  "ubicacion": "De sujeto a receptor en espacio neutro.",
+  "movimiento": "Palma hacia arriba/fuera; desplazamiento recto hacia el receptor.",
+  "cnm": "Mirada hacia el destinatario."
+ },
+ {
+  "n": 155,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "RECIBIR",
+  "configuracion": "Bimanual (o unimanual): manos abiertas (5) que se cierran.",
+  "ubicacion": "De espacio frontal hacia el pecho.",
+  "movimiento": "Palmas hacia arriba; atracción hacia el cuerpo cerrando dedos.",
+  "cnm": "Expresión receptiva."
+ },
+ {
+  "n": 156,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "COGER / TOMAR",
+  "configuracion": "Unimanual: mano abierta (5) que se cierra en puño (S).",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palma hacia abajo; cierre firme de dedos atrapando un objeto.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 157,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "DEJAR",
+  "configuracion": "Bimanual simétrico: manos planas (B) o en pinza que abren.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas hacia abajo; descenso corto y apertura de manos.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 158,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "PONER",
+  "configuracion": "Unimanual: pinza cerrada (O) o mano plana.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia abajo; desplazamiento corto hacia delante y apoyo.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 159,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "QUITAR",
+  "configuracion": "Unimanual: mano abierta (5) que cierra y retira.",
+  "ubicacion": "Espacio neutro / sobre palma pasiva.",
+  "movimiento": "Palma hacia abajo; agarre y desplazamiento rápido hacia un lado.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 160,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "METER",
+  "configuracion": "Bimanual asimétrico: mano en pinza entrando en mano pasiva en C.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palma lateral; introducción de los dedos dentro del hueco pasivo.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 161,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "SACAR",
+  "configuracion": "Bimanual asimétrico: pinza saliendo de mano pasiva en C.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palma lateral; extracción hacia arriba/fuera.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 162,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "TRAER",
+  "configuracion": "Bimanual simétrico: manos planas (B) con palmas arriba.",
+  "ubicacion": "De espacio neutro lateral/frontal hacia el cuerpo.",
+  "movimiento": "Palmas hacia arriba; desplazamiento continuo hacia el signante.",
+  "cnm": "Contacto visual."
+ },
+ {
+  "n": 163,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "LLEVAR",
+  "configuracion": "Bimanual simétrico: manos planas (B) con palmas arriba.",
+  "ubicacion": "Del cuerpo hacia espacio neutro lateral/frontal.",
+  "movimiento": "Palmas hacia arriba; desplazamiento continuo hacia el destino.",
+  "cnm": "Mirada hacia el destino."
+ },
+ {
+  "n": 164,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "ABRIR",
+  "configuracion": "Bimanual simétrico: manos planas (B) juntas por el canto.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia dentro que giran abriéndose como hojas de puerta.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 165,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "CERRAR",
+  "configuracion": "Bimanual simétrico: manos planas (B) separadas que se juntan.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia fuera que giran cerrándose hasta tocarse.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 166,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "EMPEZAR",
+  "configuracion": "Bimanual asimétrico: índice (G) gira entre índice y corazón pasivos.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; rotación de llave del índice dominante.",
+  "cnm": "Expresión atenta."
+ },
+ {
+  "n": 167,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "TERMINAR / ACABAR",
+  "configuracion": "Bimanual simétrico: manos planas (B) o abiertas (5).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; movimiento brusco descendente y lateral (corte).",
+  "cnm": "Cierre firme de labios."
+ },
+ {
+  "n": 168,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "SEGUIR / CONTINUAR",
+  "configuracion": "Bimanual: manos planas (B) o índices avanzando.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas enfrentadas; desplazamiento recto continuo hacia delante.",
+  "cnm": "Asentimiento leve."
+ },
+ {
+  "n": 169,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "PARAR / DETENER",
+  "configuracion": "Bimanual asimétrico: canto de mano plana (B) sobre palma pasiva.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma dominante lateral; golpe seco perpendicular sobre la palma pasiva.",
+  "cnm": "Cejas ligeramente fruncidas y cierre labial."
+ },
+ {
+  "n": 170,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "ESPERAR",
+  "configuracion": "Bimanual simétrico: manos abiertas (5) con dedos levemente curvados.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas hacia arriba; leve movimiento vibratorio o quietud sostenida.",
+  "cnm": "Expresión paciente y mirada sostenida."
+ },
+ {
+  "n": 171,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "BUSCAR",
+  "configuracion": "Unimanual: mano en garra o C abierta.",
+  "ubicacion": "Espacio neutro frente al rostro/pecho.",
+  "movimiento": "Palma hacia fuera; movimientos circulares exploratorios.",
+  "cnm": "Cejas fruncidas y mirada rastreadora."
+ },
+ {
+  "n": 172,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "ENCONTRAR",
+  "configuracion": "Unimanual: mano abierta (5) que cierra en pinza (F).",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia abajo; descenso rápido atrapando un punto.",
+  "cnm": "Elevación de cejas y expresión de hallazgo."
+ },
+ {
+  "n": 173,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "PERDER",
+  "configuracion": "Bimanual simétrico: manos abiertas (5) girando hacia abajo.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas hacia arriba que giran bruscamente hacia abajo abriendo dedos.",
+  "cnm": "Expresión de contrariedad."
+ },
+ {
+  "n": 174,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "GANAR",
+  "configuracion": "Unimanual: puño cerrado (S) que se eleva.",
+  "ubicacion": "Espacio neutro alto frente al hombro.",
+  "movimiento": "Palma hacia dentro/adelante; movimiento ascendente enérgico.",
+  "cnm": "Sonrisa de triunfo."
+ },
+ {
+  "n": 175,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "CAMBIAR",
+  "configuracion": "Bimanual simétrico: manos en pinza (F) o puños (A).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; intercambio semicircular de posición entre ambas manos.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 176,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "ARREGLAR",
+  "configuracion": "Bimanual: yemas o pinzas ajustando un punto central.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas enfrentadas; pequeños giros precisos de ajuste.",
+  "cnm": "Expresión concentrada."
+ },
+ {
+  "n": 177,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "ROMPER / ESTROPEAR",
+  "configuracion": "Bimanual simétrico: puños cerrados (S) juntos que giran.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia abajo; torsión brusca hacia fuera separando los puños.",
+  "cnm": "Ceño fruncido y tensión labial."
+ },
+ {
+  "n": 178,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "GUARDAR",
+  "configuracion": "Bimanual asimétrico: mano plana (B) bajo la otra.",
+  "ubicacion": "Espacio neutro frente al abdomen.",
+  "movimiento": "Palma hacia abajo; deslizamiento ocultando la mano dominante.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 179,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "TIRAR",
+  "configuracion": "Unimanual: puño cerrado (S) que abre bruscamente en (5).",
+  "ubicacion": "Espacio neutro lateral.",
+  "movimiento": "Palma hacia abajo/fuera; lanzamiento corto hacia un lado.",
+  "cnm": "Expresión de desecho."
+ },
+ {
+  "n": 180,
+  "categoria": "3. Verbos de acción, movimiento y rutina diaria",
+  "glosa": "USAR / UTILIZAR",
+  "configuracion": "Unimanual: configuración en U o pinza.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia fuera; pequeño movimiento circular hacia delante.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 181,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "SABER",
+  "configuracion": "Unimanual: mano plana (B) con yemas en contacto.",
+  "ubicacion": "Barbilla (o sien/frente).",
+  "movimiento": "Palma hacia dentro; toque suave de los dedos.",
+  "cnm": "Asentimiento ligero."
+ },
+ {
+  "n": 182,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "CONOCER",
+  "configuracion": "Unimanual: mano plana (B) o yemas.",
+  "ubicacion": "Frente / sien.",
+  "movimiento": "Palma hacia dentro; contacto suave de las yemas en la sien.",
+  "cnm": "Asentimiento leve."
+ },
+ {
+  "n": 183,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "ENTENDER",
+  "configuracion": "Unimanual: índice (G) o mano en garra.",
+  "ubicacion": "Sien derecha.",
+  "movimiento": "Palma hacia dentro; giro corto de muñeca hacia la sien.",
+  "cnm": "Asentimiento y elevación leve de cejas."
+ },
+ {
+  "n": 184,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "PENSAR",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "Sien derecha.",
+  "movimiento": "Palma hacia dentro; pequeño movimiento circular con la yema en la sien.",
+  "cnm": "Mirada ligeramente desenfocada (reflexión)."
+ },
+ {
+  "n": 185,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "CREER",
+  "configuracion": "Compuesto: PENSAR (índice en sien) + mano plana (B) sobre palma.",
+  "ubicacion": "De sien a espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia abajo; toque en sien y descenso firme sobre mano pasiva.",
+  "cnm": "Asentimiento convencido."
+ },
+ {
+  "n": 186,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "RECORDAR / ACORDARSE",
+  "configuracion": "Unimanual: pulgar o índice en contacto.",
+  "ubicacion": "Frente / sien.",
+  "movimiento": "Palma hacia dentro; presión firme del dedo sobre la frente.",
+  "cnm": "Apertura ocular de memoria recuperada."
+ },
+ {
+  "n": 187,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "OLVIDAR",
+  "configuracion": "Unimanual: mano abierta (5) que se cierra en puño (S).",
+  "ubicacion": "Frente.",
+  "movimiento": "Palma hacia dentro; barrido horizontal por la frente cerrando la mano.",
+  "cnm": "Ceño levemente fruncido."
+ },
+ {
+  "n": 188,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "DARSE-CUENTA",
+  "configuracion": "Unimanual: índice (G) o pinza que se abre.",
+  "ubicacion": "Frente / sien.",
+  "movimiento": "Palma hacia dentro; movimiento rápido hacia fuera desde la sien.",
+  "cnm": "Ojos abiertos y elevación rápida de cejas."
+ },
+ {
+  "n": 189,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "EQUIVOCARSE",
+  "configuracion": "Unimanual: pulgar y meñique extendidos (Y).",
+  "ubicacion": "Barbilla / espacio neutro.",
+  "movimiento": "Palma hacia dentro; giro rápido de muñeca de lado a lado.",
+  "cnm": "Labios apretados y leve mueca."
+ },
+ {
+  "n": 190,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "CONFUNDIRSE",
+  "configuracion": "Bimanual simétrico: manos en garra (5 flexionada).",
+  "ubicacion": "Frente a la cabeza / rostro.",
+  "movimiento": "Palmas enfrentadas; movimientos circulares cruzados frente a la frente.",
+  "cnm": "Ceño fruncido."
+ },
+ {
+  "n": 191,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "APRENDER",
+  "configuracion": "Unimanual: mano abierta (5) que se cierra en pinza (O).",
+  "ubicacion": "De espacio neutro (o palma pasiva) hacia la frente.",
+  "movimiento": "Palma hacia dentro; movimiento ascendente cerrando dedos hacia la sien.",
+  "cnm": "Expresión atenta."
+ },
+ {
+  "n": 192,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "ENSEÑAR",
+  "configuracion": "Bimanual simétrico: manos en pinza (O) que se abren en (5).",
+  "ubicacion": "De las sienes hacia el espacio neutro frontal.",
+  "movimiento": "Palmas hacia delante; proyección repetida abriendo los dedos.",
+  "cnm": "Contacto visual y expresión didáctica."
+ },
+ {
+  "n": 193,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "ESTUDIAR",
+  "configuracion": "Bimanual asimétrico: mano dominante (5) frente a palma pasiva (B).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; movimiento vibratorio de dedos mirando la palma pasiva.",
+  "cnm": "Mirada dirigida a la palma pasiva."
+ },
+ {
+  "n": 194,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "LEER",
+  "configuracion": "Bimanual asimétrico: dedos índice y corazón (V) frente a palma pasiva.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma dominante hacia abajo; barrido horizontal/vertical de los ojos (V) sobre la palma.",
+  "cnm": "Mirada siguiendo el recorrido de los dedos."
+ },
+ {
+  "n": 195,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "ESCRIBIR",
+  "configuracion": "Bimanual asimétrico: pinza (F/O) sobre palma pasiva abierta (B).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma dominante hacia abajo; movimiento continuo de escritura sobre la palma.",
+  "cnm": "Mirada hacia la mano."
+ },
+ {
+  "n": 196,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "SIGNAR",
+  "configuracion": "Bimanual simétrico: manos abiertas (5) con dedos separados.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia dentro/enfrentadas; giros circulares alternos hacia delante.",
+  "cnm": "Expresión comunicativa y contacto visual."
+ },
+ {
+  "n": 197,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "HABLAR (oral)",
+  "configuracion": "Unimanual: mano abierta (5) o pinza (O) que abre y cierra.",
+  "ubicacion": "Frente a la boca.",
+  "movimiento": "Palma lateral/dentro; apertura y cierre repetido frente a los labios.",
+  "cnm": "Movimiento labial."
+ },
+ {
+  "n": 198,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "DECIR",
+  "configuracion": "Unimanual (direccional): dedo índice extendido (G).",
+  "ubicacion": "De la barbilla/boca hacia el receptor.",
+  "movimiento": "Palma hacia abajo/lateral; proyección recta desde los labios.",
+  "cnm": "Contacto visual con el receptor."
+ },
+ {
+  "n": 199,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "CONTAR (relatar)",
+  "configuracion": "Bimanual alterno: manos abiertas (5) o pinzas.",
+  "ubicacion": "De la boca/pecho hacia espacio neutro.",
+  "movimiento": "Palmas hacia arriba/dentro; movimientos circulares fluidos hacia delante.",
+  "cnm": "Expresión narrativa dinámica."
+ },
+ {
+  "n": 200,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "PREGUNTAR",
+  "configuracion": "Unimanual (direccional): dedo índice extendido (G).",
+  "ubicacion": "Espacio neutro frente al pecho hacia el receptor.",
+  "movimiento": "Palma hacia fuera; trayectoria curva (gancho) hacia el interlocutor.",
+  "cnm": "Cejas arqueadas/fruncidas (marca interrogativa)."
+ },
+ {
+  "n": 201,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "RESPONDER / CONTESTAR",
+  "configuracion": "Bimanual (o unimanual): índices (G) desde los labios.",
+  "ubicacion": "De la boca hacia el interlocutor.",
+  "movimiento": "Palmas hacia dentro/abajo; proyección recta hacia delante.",
+  "cnm": "Expresión afirmativa."
+ },
+ {
+  "n": 202,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "EXPLICAR",
+  "configuracion": "Bimanual alterno: manos en pinza (F) o abiertas (5).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; movimientos alternos hacia delante detallando.",
+  "cnm": "Contacto visual y expresión didáctica."
+ },
+ {
+  "n": 203,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "COMUNICAR",
+  "configuracion": "Bimanual alterno: manos en C o pinzas entre emisor y receptor.",
+  "ubicacion": "Espacio neutro entre pecho e interlocutor.",
+  "movimiento": "Palmas enfrentadas; movimiento alterno de ida y vuelta.",
+  "cnm": "Contacto visual sostenido."
+ },
+ {
+  "n": 204,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "LLAMAR",
+  "configuracion": "Unimanual: mano abierta (5) que cierra o toque en hombro.",
+  "ubicacion": "Espacio neutro alto / hombro.",
+  "movimiento": "Palma hacia fuera; movimiento de atracción con los dedos.",
+  "cnm": "Mirada dirigida a la persona llamada."
+ },
+ {
+  "n": 205,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "AVISAR",
+  "configuracion": "Unimanual (direccional): índice (G) o mano plana.",
+  "ubicacion": "De frente/pecho hacia el interlocutor.",
+  "movimiento": "Palma hacia abajo; proyección rápida y puntual hacia el receptor.",
+  "cnm": "Elevación de cejas (alerta)."
+ },
+ {
+  "n": 206,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "PEDIR",
+  "configuracion": "Bimanual simétrico: manos planas (B) juntas o palma arriba.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas juntas/arriba; ligero desplazamiento hacia delante.",
+  "cnm": "Expresión de solicitud y cejas levemente elevadas."
+ },
+ {
+  "n": 207,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "OFRECER",
+  "configuracion": "Bimanual simétrico: manos planas (B) con palmas arriba.",
+  "ubicacion": "Del pecho hacia el interlocutor.",
+  "movimiento": "Palmas hacia arriba; avance suave hacia delante.",
+  "cnm": "Sonrisa amable."
+ },
+ {
+  "n": 208,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "AYUDAR",
+  "configuracion": "Bimanual asimétrico: mano plana (B) bajo puño pasivo (A).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma dominante hacia arriba; empuja hacia delante/arriba la mano pasiva.",
+  "cnm": "Expresión colaborativa."
+ },
+ {
+  "n": 209,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "MOLESTAR",
+  "configuracion": "Bimanual asimétrico: mano dominante golpea/empuja antebrazo pasivo.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palma lateral; toques repetidos incómodos sobre el brazo pasivo.",
+  "cnm": "Ceño fruncido y expresión de fastidio."
+ },
+ {
+  "n": 210,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "RESPETAR",
+  "configuracion": "Bimanual simétrico: manos planas (B) o en R.",
+  "ubicacion": "De frente/pecho hacia delante.",
+  "movimiento": "Palmas enfrentadas; leve inclinación simultánea hacia delante.",
+  "cnm": "Expresión serena y asentimiento."
+ },
+ {
+  "n": 211,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "CONFIAR",
+  "configuracion": "Bimanual asimétrico: mano dominante agarra/apoya sobre brazo pasivo.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia abajo; contacto firme y estable.",
+  "cnm": "Asentimiento y mirada tranquila."
+ },
+ {
+  "n": 212,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "ENGAÑAR",
+  "configuracion": "Unimanual: índice y meñique extendidos (cuernos) o pinza.",
+  "ubicacion": "Frente al rostro / nariz.",
+  "movimiento": "Palma hacia dentro; movimiento lateral engañoso.",
+  "cnm": "Mirada de reojo o ceño fruncido."
+ },
+ {
+  "n": 213,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "PROMETER",
+  "configuracion": "Unimanual: mano plana (B) o dedos índice-corazón.",
+  "ubicacion": "De los labios hacia palma pasiva.",
+  "movimiento": "Palma hacia dentro/abajo; toque en labios y apoyo firme sobre palma pasiva.",
+  "cnm": "Expresión seria y asentimiento."
+ },
+ {
+  "n": 214,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "CUMPLIR",
+  "configuracion": "Bimanual asimétrico: mano plana (B) cae sobre puño pasivo.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia abajo; golpe firme vertical.",
+  "cnm": "Asentimiento decidido."
+ },
+ {
+  "n": 215,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "DISCUTIR / PELEAR",
+  "configuracion": "Bimanual alterno: dedos índices extendidos (G) enfrentados.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; movimientos rápidos alternos de choque entre índices.",
+  "cnm": "Ceño muy fruncido y tensión facial."
+ },
+ {
+  "n": 216,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "PERDONAR",
+  "configuracion": "Bimanual asimétrico: mano plana (B) deslizando sobre palma pasiva.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma dominante hacia abajo; caricia suave limpiando la palma pasiva.",
+  "cnm": "Expresión empática y asentimiento."
+ },
+ {
+  "n": 217,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "ACEPTAR",
+  "configuracion": "Bimanual simétrico: manos abiertas (5) que se cierran hacia el pecho.",
+  "ubicacion": "De espacio frontal hacia el pecho.",
+  "movimiento": "Palmas hacia dentro; atracción cerrando dedos en el pecho.",
+  "cnm": "Asentimiento de cabeza."
+ },
+ {
+  "n": 218,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "RECHAZAR / NEGARSE",
+  "configuracion": "Bimanual simétrico: manos planas (B) empujando hacia fuera.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia fuera; empuje brusco lateral/frontal.",
+  "cnm": "Negación cefálica y ceño fruncido."
+ },
+ {
+  "n": 219,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "ELEGIR / DECIDIR",
+  "configuracion": "Unimanual: índice y pulgar en pinza (F).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia fuera; cierre rápido de pinza como tomando una opción.",
+  "cnm": "Asentimiento breve."
+ },
+ {
+  "n": 220,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "PREPARAR",
+  "configuracion": "Bimanual alterno: manos planas (B) o abiertas (5).",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas hacia abajo/enfrentadas; movimientos rítmicos de organización.",
+  "cnm": "Expresión atenta."
+ },
+ {
+  "n": 221,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "PROBAR / INTENTAR",
+  "configuracion": "Bimanual simétrico: puños (S) o índices avanzando.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; pequeño impulso hacia delante.",
+  "cnm": "Labios ligeramente apretados (esfuerzo)."
+ },
+ {
+  "n": 222,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "CONSEGUIR / LOGRAR",
+  "configuracion": "Unimanual: mano abierta (5) que cierra con fuerza en puño (S).",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia dentro; cierre enérgico con ligera atracción.",
+  "cnm": "Sonrisa y asentimiento firme."
+ },
+ {
+  "n": 223,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "VER",
+  "configuracion": "Unimanual: dedos índice y corazón extendidos (V).",
+  "ubicacion": "Junto a los ojos hacia el espacio neutro.",
+  "movimiento": "Palma hacia abajo/dentro; proyección recta desde los ojos hacia el objeto.",
+  "cnm": "Mirada dirigida hacia el referente."
+ },
+ {
+  "n": 224,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "MIRAR",
+  "configuracion": "Unimanual: dedos en V orientados hacia un punto.",
+  "ubicacion": "Espacio neutro frente al rostro.",
+  "movimiento": "Palma hacia abajo; sostenimiento fijo o desplazamiento lento de los dedos en V.",
+  "cnm": "Mirada fija acompañando la dirección."
+ },
+ {
+  "n": 225,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "OBSERVAR / FIJARSE",
+  "configuracion": "Unimanual: dedos en V con movimiento sostenido.",
+  "ubicacion": "Frente al rostro hacia un punto concreto.",
+  "movimiento": "Palma hacia abajo; avance lento y concentrado.",
+  "cnm": "Ojos entrecerrados (atención detallada)."
+ },
+ {
+  "n": 226,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "OÍR",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "Pabellón auditivo / oreja.",
+  "movimiento": "Palma hacia dentro; toque directo con la yema en la oreja.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 227,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "ESCUCHAR (atender)",
+  "configuracion": "Unimanual: mano ahuecada en C.",
+  "ubicacion": "Detrás de la oreja.",
+  "movimiento": "Palma hacia delante; colocación de la mano tras el oído.",
+  "cnm": "Inclinación leve de cabeza y atención."
+ },
+ {
+  "n": 228,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "SENTIR",
+  "configuracion": "Unimanual: dedo corazón flexionado (o mano plana).",
+  "ubicacion": "Centro del pecho.",
+  "movimiento": "Palma hacia dentro; roce ascendente con la yema del corazón en el pecho.",
+  "cnm": "Expresión emotiva según contexto."
+ },
+ {
+  "n": 229,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "TOCAR",
+  "configuracion": "Unimanual: dedo corazón flexionado o mano plana.",
+  "ubicacion": "Sobre el dorso de la mano pasiva.",
+  "movimiento": "Palma hacia abajo; contacto puntual sobre el dorso pasivo.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 230,
+  "categoria": "4. Verbos cognitivos, comunicación y relación social",
+  "glosa": "OLER",
+  "configuracion": "Unimanual: mano plana (B) o abierta (5).",
+  "ubicacion": "Debajo de la nariz.",
+  "movimiento": "Palma hacia arriba/dentro; movimiento ascendente hacia las fosas nasales.",
+  "cnm": "Inhalación visible por la nariz."
+ },
+ {
+  "n": 231,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "TIEMPO",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "Muñeca / dorso del brazo pasivo (zona del reloj).",
+  "movimiento": "Palma hacia abajo; doble toque sobre la muñeca.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 232,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "HORA",
+  "configuracion": "Unimanual: índice (G) o mano en L.",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; pequeño movimiento circular (esfera de reloj).",
+  "cnm": "Cejas elevadas si es pregunta."
+ },
+ {
+  "n": 233,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "MINUTO",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; desplazamiento lateral muy corto (un tic de reloj).",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 234,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "SEGUNDO",
+  "configuracion": "Unimanual: dedo índice (G) con movimiento mínimo.",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; vibración/avance instantáneo.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 235,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "HOY",
+  "configuracion": "Bimanual simétrico: manos planas (B) o abiertas (5).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia abajo; movimiento corto y firme descendente (aquí y ahora).",
+  "cnm": "Asentimiento breve."
+ },
+ {
+  "n": 236,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "AYER",
+  "configuracion": "Unimanual: dedo índice (G) o mano en L.",
+  "ubicacion": "Sobre el hombro derecho hacia atrás.",
+  "movimiento": "Palma hacia atrás; movimiento en arco hacia la espalda (línea del pasado).",
+  "cnm": "Inclinación leve de cabeza hacia atrás."
+ },
+ {
+  "n": 237,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "ANTEAYER",
+  "configuracion": "Unimanual: dedos índice y corazón (V) o doble impulso.",
+  "ubicacion": "Sobre el hombro derecho hacia atrás.",
+  "movimiento": "Palma hacia atrás; doble toque o arco más amplio hacia atrás.",
+  "cnm": "Ojos ligeramente entrecerrados."
+ },
+ {
+  "n": 238,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "MAÑANA (día siguiente)",
+  "configuracion": "Unimanual: dedo índice (G) o mano en L.",
+  "ubicacion": "De la mejilla/hombro hacia delante.",
+  "movimiento": "Palma hacia fuera/abajo; arco hacia delante (línea del futuro).",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 239,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "PASADO-MAÑANA",
+  "configuracion": "Unimanual: dedos índice y corazón (V).",
+  "ubicacion": "De la mejilla hacia delante.",
+  "movimiento": "Palma hacia fuera; doble impulso o arco largo hacia delante.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 240,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "AHORA",
+  "configuracion": "Bimanual simétrico: manos abiertas (5) o planas (B).",
+  "ubicacion": "Espacio neutro frente al abdomen.",
+  "movimiento": "Palmas hacia arriba/abajo; caída corta simultánea.",
+  "cnm": "Cierre firme de labios."
+ },
+ {
+  "n": 241,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "LUEGO / DESPUÉS",
+  "configuracion": "Unimanual: mano en L o índice (G).",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma lateral; giro de muñeca hacia delante.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 242,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "ANTES",
+  "configuracion": "Unimanual: mano plana (B) o pulgar.",
+  "ubicacion": "Espacio neutro frente al hombro hacia atrás.",
+  "movimiento": "Palma hacia dentro; desplazamiento corto hacia el hombro/espalda.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 243,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "PRONTO",
+  "configuracion": "Unimanual: índice flexionado (X) o pinza.",
+  "ubicacion": "Barbilla / espacio neutro.",
+  "movimiento": "Palma lateral; movimiento rápido y corto hacia delante.",
+  "cnm": "Elevación leve de cejas."
+ },
+ {
+  "n": 244,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "TARDE (retraso)",
+  "configuracion": "Unimanual: mano plana (B) o índice.",
+  "ubicacion": "Espacio neutro lateral.",
+  "movimiento": "Palma hacia abajo; movimiento repetido hacia atrás/lado.",
+  "cnm": "Ceño ligeramente fruncido."
+ },
+ {
+  "n": 245,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "TEMPRANO",
+  "configuracion": "Unimanual: dedo corazón o índice.",
+  "ubicacion": "Dorso de la mano pasiva / espacio neutro.",
+  "movimiento": "Palma hacia abajo; toque rápido matinal.",
+  "cnm": "Expresión despejada."
+ },
+ {
+  "n": 246,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "SIEMPRE",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; movimiento circular continuo vertical.",
+  "cnm": "Asentimiento sostenido."
+ },
+ {
+  "n": 247,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "NUNCA",
+  "configuracion": "Unimanual: mano plana (B) o índice (G).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia fuera; corte horizontal o en Z amplio.",
+  "cnm": "Negación firme de cabeza y ceño fruncido."
+ },
+ {
+  "n": 248,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "A-VECES",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; toques puntuales espaciados en el aire.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 249,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "MUCHAS-VECES / A-MENUDO",
+  "configuracion": "Bimanual (o unimanual): manos planas (B) o dedos.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia abajo; repetición rápida y continua hacia delante.",
+  "cnm": "Cejas ligeramente elevadas."
+ },
+ {
+  "n": 250,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "CASI-SIEMPRE",
+  "configuracion": "Compuesto: CASI + SIEMPRE (círculo con índice).",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; aproximación y giro circular.",
+  "cnm": "Asentimiento suave."
+ },
+ {
+  "n": 251,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "CADA-DÍA / DIARIO",
+  "configuracion": "Unimanual: mano plana (B) o puño con pulgar.",
+  "ubicacion": "Mejilla / espacio neutro.",
+  "movimiento": "Palma lateral; desplazamiento repetido hacia delante.",
+  "cnm": "Asentimiento rítmico."
+ },
+ {
+  "n": 252,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "DÍA",
+  "configuracion": "Unimanual: mano plana (B) o índice (G).",
+  "ubicacion": "De hombro/mejilla hacia espacio neutro.",
+  "movimiento": "Palma hacia fuera; arco semicircular descendente.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 253,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "MAÑANA (parte del día)",
+  "configuracion": "Unimanual: mano plana (B) ascendente.",
+  "ubicacion": "De espacio neutro bajo hacia altura del hombro.",
+  "movimiento": "Palma hacia fuera/arriba; ascenso suave (salida del sol).",
+  "cnm": "Expresión despejada."
+ },
+ {
+  "n": 254,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "MEDIODÍA",
+  "configuracion": "Unimanual: mano plana (B) vertical.",
+  "ubicacion": "Encima de la cabeza / frente.",
+  "movimiento": "Palma lateral; posición vertical cenital.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 255,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "TARDE (parte del día)",
+  "configuracion": "Unimanual: mano plana (B) descendente.",
+  "ubicacion": "De altura del hombro hacia cintura.",
+  "movimiento": "Palma hacia abajo; descenso diagonal suave (caída del sol).",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 256,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "NOCHE",
+  "configuracion": "Bimanual simétrico: manos planas (B).",
+  "ubicacion": "Frente al rostro / pecho.",
+  "movimiento": "Palmas hacia dentro; las manos se cruzan o descienden cerrando el espacio.",
+  "cnm": "Ojos ligeramente entrecerrados."
+ },
+ {
+  "n": 257,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "MADRUGADA",
+  "configuracion": "Compuesto: NOCHE + TEMPRANO / ascenso bajo.",
+  "ubicacion": "Espacio neutro bajo frente al torso.",
+  "movimiento": "Palmas hacia abajo; ligero ascenso desde abajo.",
+  "cnm": "Expresión de sueño leve."
+ },
+ {
+  "n": 258,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "SEMANA",
+  "configuracion": "Unimanual: mano plana (B) o número 7.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia abajo; barrido horizontal de izquierda a derecha.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 259,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "FIN-DE-SEMANA",
+  "configuracion": "Compuesto: SEMANA + TERMINAR / SÁBADO-DOMINGO.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia abajo; barrido lateral y cierre.",
+  "cnm": "Sonrisa relajada."
+ },
+ {
+  "n": 260,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "LUNES",
+  "configuracion": "Unimanual: configuración en L (pulgar e índice).",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; pequeño movimiento circular o lateral.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 261,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "MARTES",
+  "configuracion": "Unimanual: configuración en M (tres dedos hacia abajo).",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia dentro/abajo; pequeño movimiento circular.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 262,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "MIÉRCOLES",
+  "configuracion": "Unimanual: configuración en M o X.",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; ligero vaivén o círculo.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 263,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "JUEVES",
+  "configuracion": "Unimanual: configuración en J (meñique traza J).",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia dentro; trazado curvo descendente del meñique.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 264,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "VIERNES",
+  "configuracion": "Unimanual: configuración en V (índice y corazón).",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; pequeño movimiento circular.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 265,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "SÁBADO",
+  "configuracion": "Unimanual: puño cerrado (S).",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; pequeño círculo o toque.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 266,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "DOMINGO",
+  "configuracion": "Unimanual: configuración en D o manos juntas.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas/fuera; movimiento corto.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 267,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "MES",
+  "configuracion": "Bimanual asimétrico: índice (G) desciende sobre palma pasiva.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma dominante hacia dentro; deslizamiento vertical descendente.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 268,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "AÑO",
+  "configuracion": "Bimanual asimétrico: puño (S) gira alrededor de puño pasivo.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia abajo; órbita circular completa y toque final.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 269,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "PASADO",
+  "configuracion": "Unimanual: mano plana (B).",
+  "ubicacion": "Sobre el hombro hacia atrás.",
+  "movimiento": "Palma hacia atrás; desplazamiento amplio hacia la espalda.",
+  "cnm": "Inclinación leve hacia atrás."
+ },
+ {
+  "n": 270,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "PRESENTE",
+  "configuracion": "Bimanual simétrico: manos planas (B).",
+  "ubicacion": "Espacio neutro inmediato frente al cuerpo.",
+  "movimiento": "Palmas hacia abajo; descenso corto doble.",
+  "cnm": "Asentimiento breve."
+ },
+ {
+  "n": 271,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "FUTURO",
+  "configuracion": "Unimanual: mano plana (B).",
+  "ubicacion": "De la sien/hombro hacia delante.",
+  "movimiento": "Palma lateral; desplazamiento amplio hacia el frente.",
+  "cnm": "Mirada hacia delante."
+ },
+ {
+  "n": 272,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "CUMPLEAÑOS",
+  "configuracion": "Unimanual: mano abierta (5) soplando vela o toque en oreja.",
+  "ubicacion": "Frente a la boca / lóbulo de la oreja.",
+  "movimiento": "Palma hacia dentro; movimiento de soplar o tirón suave de oreja.",
+  "cnm": "Sonrisa festiva."
+ },
+ {
+  "n": 273,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "VACACIONES",
+  "configuracion": "Bimanual simétrico: pulgares en axilas/pecho con dedos abiertos (5).",
+  "ubicacion": "A ambos lados del pecho.",
+  "movimiento": "Palmas enfrentadas; aleteo suave de los dedos.",
+  "cnm": "Sonrisa amplia y expresión relajada."
+ },
+ {
+  "n": 274,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "FESTIVO / FIESTA",
+  "configuracion": "Bimanual simétrico: manos abiertas (5) girando en alto.",
+  "ubicacion": "Espacio neutro alto.",
+  "movimiento": "Palmas hacia delante; giros alternos festivos.",
+  "cnm": "Sonrisa y alegría."
+ },
+ {
+  "n": 275,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "PRIMAVERA",
+  "configuracion": "Bimanual: pinza (O) que se abre en (5) (flor abriendo).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia arriba; apertura progresiva de dedos hacia arriba.",
+  "cnm": "Sonrisa suave."
+ },
+ {
+  "n": 276,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "VERANO",
+  "configuracion": "Unimanual: índice flexionado (X) limpiando la frente.",
+  "ubicacion": "Frente.",
+  "movimiento": "Palma hacia abajo; deslizamiento horizontal (secar sudor).",
+  "cnm": "Expresión de calor."
+ },
+ {
+  "n": 277,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "OTOÑO",
+  "configuracion": "Bimanual: mano plana (B) descendente oscilando (hoja cayendo).",
+  "ubicacion": "De espacio alto a bajo frente al torso.",
+  "movimiento": "Palma hacia abajo; caída en zigzag suave.",
+  "cnm": "Expresión serena."
+ },
+ {
+  "n": 278,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "INVIERNO",
+  "configuracion": "Bimanual simétrico: puños cerrados (S) temblando.",
+  "ubicacion": "Frente al pecho (brazos pegados).",
+  "movimiento": "Palmas enfrentadas; vibración rápida (tiritar de frío).",
+  "cnm": "Hombros encogidos y dientes apretados."
+ },
+ {
+  "n": 279,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "NAVIDAD",
+  "configuracion": "Bimanual simétrico: manos en garra trazando barba larga.",
+  "ubicacion": "De mejillas hacia el pecho.",
+  "movimiento": "Palmas enfrentadas; descenso curvo formando barba de Papá Noel.",
+  "cnm": "Sonrisa festiva."
+ },
+ {
+  "n": 280,
+  "categoria": "5. Tiempo, frecuencia y calendario",
+  "glosa": "SEMANA-SANTA",
+  "configuracion": "Compuesto: SEMANA + capirote/procesión.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas enfrentadas; barrido y cono ascendente sobre cabeza.",
+  "cnm": "Expresión seria/solemne."
+ },
+ {
+  "n": 281,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "QUÉ",
+  "configuracion": "Unimanual (o bimanual): dedo índice (G) o mano abierta (5).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia arriba/fuera; ligero vaivén horizontal.",
+  "cnm": "Cejas fruncidas/arqueadas (interrogativa directa)."
+ },
+ {
+  "n": 282,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "QUIÉN",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "Frente a la barbilla / boca.",
+  "movimiento": "Palma hacia dentro; pequeño movimiento circular vertical.",
+  "cnm": "Cejas fruncidas e inclinación de cabeza."
+ },
+ {
+  "n": 283,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "CUÁNDO",
+  "configuracion": "Unimanual: dedo índice (G) o mano en pinza.",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; giro rápido de muñeca.",
+  "cnm": "Cejas fruncidas/elevadas."
+ },
+ {
+  "n": 284,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "DÓNDE",
+  "configuracion": "Bimanual simétrico (o unimanual): manos abiertas (5) o índices.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas hacia arriba; oscilación horizontal corta.",
+  "cnm": "Cejas fruncidas y mirada interrogativa."
+ },
+ {
+  "n": 285,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "POR-QUÉ",
+  "configuracion": "Unimanual: dedo índice (G) o mano plana.",
+  "ubicacion": "Frente / sien hacia espacio neutro.",
+  "movimiento": "Palma hacia dentro/fuera; toque en sien y proyección hacia delante.",
+  "cnm": "Cejas muy fruncidas."
+ },
+ {
+  "n": 286,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "PARA-QUÉ",
+  "configuracion": "Unimanual: índice (G) desde la frente hacia el interlocutor.",
+  "ubicacion": "Sien hacia espacio neutro.",
+  "movimiento": "Palma lateral; desplazamiento recto hacia delante.",
+  "cnm": "Cejas fruncidas."
+ },
+ {
+  "n": 287,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "CÓMO",
+  "configuracion": "Bimanual simétrico: manos en garra o pinza (F).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas/arriba; giro simultáneo de muñecas.",
+  "cnm": "Cejas fruncidas e inclinación de cabeza."
+ },
+ {
+  "n": 288,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "CUÁNTO",
+  "configuracion": "Unimanual: mano cerrada que abre progresivamente dedos (5).",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia arriba; apertura sucesiva de dedos.",
+  "cnm": "Cejas fruncidas."
+ },
+ {
+  "n": 289,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "CUÁL",
+  "configuracion": "Bimanual alterno: dedos índices (G) o pulgares.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia fuera; ascenso y descenso alterno.",
+  "cnm": "Cejas fruncidas."
+ },
+ {
+  "n": 290,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "PERO",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia fuera; movimiento rápido lateral de corte.",
+  "cnm": "Cejas ligeramente elevadas (contraste)."
+ },
+ {
+  "n": 291,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "PORQUE",
+  "configuracion": "Unimanual: índice (G) o mano plana desde la frente.",
+  "ubicacion": "Sien hacia espacio neutro.",
+  "movimiento": "Palma lateral; desplazamiento firme hacia delante.",
+  "cnm": "Asentimiento explicativo."
+ },
+ {
+  "n": 292,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "TAMBIÉN",
+  "configuracion": "Bimanual simétrico: dedos índices extendidos (G).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia abajo; ambos índices paralelos avanzan juntos.",
+  "cnm": "Asentimiento."
+ },
+ {
+  "n": 293,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "TAMPOCO",
+  "configuracion": "Bimanual simétrico: dedos índices (G) con negación.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia abajo; giro hacia fuera separándose.",
+  "cnm": "Negación lateral de cabeza."
+ },
+ {
+  "n": 294,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "ADEMÁS",
+  "configuracion": "Bimanual asimétrico: índice (G) tocando dedos de mano pasiva.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia abajo; adición sobre la mano pasiva.",
+  "cnm": "Elevación leve de cejas."
+ },
+ {
+  "n": 295,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "ENTONCES",
+  "configuracion": "Unimanual: mano plana (B) o índice (G).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma lateral; movimiento semicircular hacia delante.",
+  "cnm": "Cejas ligeramente elevadas."
+ },
+ {
+  "n": 296,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "SI (condicional)",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "Mejilla / sien.",
+  "movimiento": "Palma hacia dentro; ligero toque o giro en la sien.",
+  "cnm": "Cejas elevadas e inclinación leve de cabeza (prótasis condicional)."
+ },
+ {
+  "n": 297,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "AUNQUE",
+  "configuracion": "Unimanual: mano plana (B) pasando por encima.",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia abajo; arco suave hacia delante.",
+  "cnm": "Cejas elevadas y leve inclinación."
+ },
+ {
+  "n": 298,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "SEGÚN",
+  "configuracion": "Bimanual: manos planas (B) inclinándose.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; balanceo lateral.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 299,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "EXCEPTO / MENOS",
+  "configuracion": "Bimanual asimétrico: índice (G) aparta un dedo de mano pasiva.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia abajo; separación de un elemento.",
+  "cnm": "Expresión restrictiva."
+ },
+ {
+  "n": 300,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "AQUÍ",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "Espacio neutro inmediato frente al cuerpo.",
+  "movimiento": "Palma hacia abajo; señalamiento vertical descendente doble.",
+  "cnm": "Mirada hacia el suelo inmediato."
+ },
+ {
+  "n": 301,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "ALLÍ / AHÍ",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "Espacio neutro medio o lejano.",
+  "movimiento": "Palma hacia abajo; proyección recta hacia el punto distante.",
+  "cnm": "Mirada dirigida hacia el punto lejano."
+ },
+ {
+  "n": 302,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "CERCA",
+  "configuracion": "Bimanual asimétrico: mano plana (B) próxima a mano pasiva.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; pequeña aproximación sin llegar a tocar.",
+  "cnm": "Ojos ligeramente entrecerrados."
+ },
+ {
+  "n": 303,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "LEJOS",
+  "configuracion": "Unimanual: mano plana (B) o índice (G).",
+  "ubicacion": "De espacio medio hacia el horizonte.",
+  "movimiento": "Palma lateral/abajo; desplazamiento largo y sostenido hacia delante.",
+  "cnm": "Ojos entrecerrados mirando a lo lejos."
+ },
+ {
+  "n": 304,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "DENTRO",
+  "configuracion": "Bimanual asimétrico: pinza (O) dentro de mano pasiva en C.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palma lateral; introducción hacia el interior de la mano pasiva.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 305,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "FUERA",
+  "configuracion": "Bimanual asimétrico: mano plana saliendo de mano pasiva en C.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palma hacia abajo; salida hacia el exterior.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 306,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "ARRIBA",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "Espacio neutro alto.",
+  "movimiento": "Palma hacia fuera/arriba; señalamiento vertical ascendente.",
+  "cnm": "Mirada hacia arriba."
+ },
+ {
+  "n": 307,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "ABAJO",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "Espacio neutro bajo.",
+  "movimiento": "Palma hacia abajo; señalamiento vertical descendente.",
+  "cnm": "Mirada hacia abajo."
+ },
+ {
+  "n": 308,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "DELANTE",
+  "configuracion": "Bimanual asimétrico: mano plana (B) frente a mano pasiva.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia dentro; mano dominante se sitúa por delante de la pasiva.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 309,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "DETRÁS",
+  "configuracion": "Bimanual asimétrico: mano plana (B) tras mano pasiva.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia dentro; mano dominante pasa por detrás de la pasiva.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 310,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "ENCIMA",
+  "configuracion": "Bimanual asimétrico: mano plana (B) sobre dorso de mano pasiva.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palma hacia abajo; apoyo directo sobre el dorso de la mano pasiva.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 311,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "DEBAJO",
+  "configuracion": "Bimanual asimétrico: mano plana (B) bajo palma pasiva.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palma hacia abajo; colocación debajo de la mano pasiva.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 312,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "AL-LADO",
+  "configuracion": "Bimanual asimétrico: mano plana (B) junto a mano pasiva.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas hacia dentro; colocación lateral contigua.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 313,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "ENFRENTE",
+  "configuracion": "Bimanual simétrico: manos planas (B) cara a cara.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; ligera aproximación frontal.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 314,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "ENTRE / EN-MEDIO",
+  "configuracion": "Bimanual asimétrico: mano plana (B) entre dedos pasivos.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma lateral; inserción en el espacio central.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 315,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "IZQUIERDA",
+  "configuracion": "Unimanual: mano plana (B) o configuración I/L.",
+  "ubicacion": "Espacio neutro izquierdo.",
+  "movimiento": "Palma hacia fuera; desplazamiento hacia el lado izquierdo.",
+  "cnm": "Mirada hacia la izquierda."
+ },
+ {
+  "n": 316,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "DERECHA",
+  "configuracion": "Unimanual: mano plana (B) o configuración D.",
+  "ubicacion": "Espacio neutro derecho.",
+  "movimiento": "Palma hacia fuera; desplazamiento hacia el lado derecho.",
+  "cnm": "Mirada hacia la derecha."
+ },
+ {
+  "n": 317,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "RECTO / DERECHO",
+  "configuracion": "Unimanual (o bimanual): mano plana (B).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma lateral; desplazamiento recto continuo hacia delante.",
+  "cnm": "Mirada fija al frente."
+ },
+ {
+  "n": 318,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "MUCHO",
+  "configuracion": "Bimanual simétrico: manos en garra o abiertas (5).",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas enfrentadas; separación amplia de ambas manos.",
+  "cnm": "Mejillas ligeramente infladas y cejas altas."
+ },
+ {
+  "n": 319,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "POCO",
+  "configuracion": "Unimanual: pulgar e índice muy próximos (pinza mínima).",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma lateral; ligera presión entre yemas.",
+  "cnm": "Ojos entrecerrados y labios fruncidos."
+ },
+ {
+  "n": 320,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "NADA",
+  "configuracion": "Unimanual: pulgar e índice en círculo (F/O) o mano abierta.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia fuera; giro rápido de negación.",
+  "cnm": "Negación lateral de cabeza y labios apretados."
+ },
+ {
+  "n": 321,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "TODO",
+  "configuracion": "Bimanual simétrico: manos abiertas (5) trazando esfera.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas enfrentadas; movimiento envolvente completo.",
+  "cnm": "Expresión abarcadora."
+ },
+ {
+  "n": 322,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "ALGO",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia abajo; ligero movimiento lateral indefinido.",
+  "cnm": "Cejas levemente elevadas."
+ },
+ {
+  "n": 323,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "BASTANTE / SUFICIENTE",
+  "configuracion": "Unimanual: mano plana (B) horizontal.",
+  "ubicacion": "Debajo de la barbilla / cuello.",
+  "movimiento": "Palma hacia abajo; desplazamiento corto hacia fuera (tope).",
+  "cnm": "Asentimiento firme y labios cerrados."
+ },
+ {
+  "n": 324,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "DEMASIADO",
+  "configuracion": "Bimanual simétrico: manos planas (B) superando nivel alto.",
+  "ubicacion": "Espacio neutro alto.",
+  "movimiento": "Palmas hacia abajo; elevación por encima del límite.",
+  "cnm": "Cejas muy elevadas y exhalación."
+ },
+ {
+  "n": 325,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "CASI",
+  "configuracion": "Unimanual: mano plana (B) o índice.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma lateral; movimiento corto que se detiene justo antes de tocar.",
+  "cnm": "Ojos entrecerrados."
+ },
+ {
+  "n": 326,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "MÁS",
+  "configuracion": "Bimanual simétrico: manos en pinza cerrada (O) tocándose.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; toques repetidos juntando las yemas.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 327,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "MENOS",
+  "configuracion": "Bimanual asimétrico: mano plana (B) desciende bajo la pasiva.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palma hacia abajo; movimiento descendente de reducción.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 328,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "MITAD",
+  "configuracion": "Bimanual asimétrico: mano plana (B) corta palma pasiva por el centro.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma lateral; corte transversal en el medio.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 329,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "DOBLE",
+  "configuracion": "Unimanual: dedos índice y corazón extendidos (V).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia fuera; desplazamiento en dos tiempos.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 330,
+  "categoria": "6. Interrogativos, nexos, espacio y cantidad",
+  "glosa": "VEZ",
+  "configuracion": "Bimanual asimétrico: índice (G) toca palma pasiva.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia abajo; contacto puntual único.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 331,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "CASA / HOGAR",
+  "configuracion": "Bimanual simétrico: manos planas (B) formando tejado.",
+  "ubicacion": "Espacio neutro frente al rostro/pecho.",
+  "movimiento": "Palmas inclinadas enfrentadas; unión de las puntas de los dedos en ángulo.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 332,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "PISO / APARTAMENTO",
+  "configuracion": "Bimanual asimétrico: mano plana (B) horizontal sobre la otra.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas hacia abajo; niveles paralelos.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 333,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "PUERTA",
+  "configuracion": "Bimanual simétrico: manos planas (B) verticales.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia dentro; una mano gira abriéndose como bisagra.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 334,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "VENTANA",
+  "configuracion": "Bimanual simétrico: manos planas (B) paralelas.",
+  "ubicacion": "Espacio neutro frente al rostro.",
+  "movimiento": "Palmas hacia dentro; una mano sube y baja sobre la otra (corredera).",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 335,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "LLAVE",
+  "configuracion": "Unimanual: índice flexionado (X) o pinza.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma lateral; giro rápido de muñeca (girar cerradura).",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 336,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "SALÓN",
+  "configuracion": "Bimanual: manos abiertas (5) trazando espacio amplio.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas enfrentadas; arco horizontal amplio.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 337,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "COCINA",
+  "configuracion": "Compuesto: COCINAR + espacio/habitación.",
+  "ubicacion": "Espacio neutro frente al abdomen.",
+  "movimiento": "Palma hacia abajo; volteo y delimitación espacial.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 338,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "BAÑO / ASEO",
+  "configuracion": "Unimanual: configuración en B o puño con pulgar agitándose.",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; leve sacudida lateral.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 339,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "DORMITORIO / HABITACIÓN",
+  "configuracion": "Compuesto: DORMIR + espacio delimitado (manos en B).",
+  "ubicacion": "Mejilla y espacio neutro.",
+  "movimiento": "Palmas enfrentadas; apoyo en mejilla y paredes paralelas.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 340,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "CAMA",
+  "configuracion": "Bimanual: mano plana en mejilla + manos planas horizontales.",
+  "ubicacion": "Mejilla y espacio neutro bajo.",
+  "movimiento": "Palmas hacia abajo; superficie rectangular horizontal.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 341,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "ALMOHADA",
+  "configuracion": "Bimanual simétrico: manos planas (B) mullendo detrás de cabeza.",
+  "ubicacion": "Junto a la cabeza.",
+  "movimiento": "Palmas enfrentadas; ligera presión suave.",
+  "cnm": "Inclinación leve de cabeza."
+ },
+ {
+  "n": 342,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "SÁBANA / MANTA",
+  "configuracion": "Bimanual simétrico: pinzas (F/O) tirando hacia arriba.",
+  "ubicacion": "De cintura hacia pecho.",
+  "movimiento": "Palmas hacia dentro; movimiento ascendente (arroparse).",
+  "cnm": "Expresión de abrigo."
+ },
+ {
+  "n": 343,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "MESA",
+  "configuracion": "Bimanual simétrico: manos planas (B).",
+  "ubicacion": "Espacio neutro frente al abdomen.",
+  "movimiento": "Palmas hacia abajo; separación horizontal dibujando tablero.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 344,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "SILLA",
+  "configuracion": "Bimanual asimétrico: dedos en V sentados sobre dedos pasivos.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas hacia abajo; apoyo en ángulo recto.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 345,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "SOFÁ",
+  "configuracion": "Bimanual simétrico: manos planas (B) trazando asiento ancho.",
+  "ubicacion": "Espacio neutro frente al abdomen.",
+  "movimiento": "Palmas hacia abajo; barrido largo y respaldo.",
+  "cnm": "Expresión cómoda."
+ },
+ {
+  "n": 346,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "ARMARIO",
+  "configuracion": "Bimanual simétrico: manos planas (B) verticales altas.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas hacia dentro; apertura de doble puerta.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 347,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "ESPEJO",
+  "configuracion": "Unimanual: mano plana (B) frente al rostro.",
+  "ubicacion": "Frente a la cara.",
+  "movimiento": "Palma hacia dentro; ligero giro de muñeca mirándose.",
+  "cnm": "Mirada hacia la palma."
+ },
+ {
+  "n": 348,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "LUZ / LÁMPARA",
+  "configuracion": "Unimanual: puño cerrado (S) que abre bruscamente en (5).",
+  "ubicacion": "Espacio neutro alto.",
+  "movimiento": "Palma hacia abajo; apertura explosiva de dedos (destello).",
+  "cnm": "Ojos abiertos."
+ },
+ {
+  "n": 349,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "GRIFO",
+  "configuracion": "Unimanual: mano en garra girando sobre dedos abiertos.",
+  "ubicacion": "Espacio neutro frente al abdomen.",
+  "movimiento": "Palma hacia abajo; giro de llave de paso y caída de dedos.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 350,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "JABÓN",
+  "configuracion": "Bimanual simétrico: manos planas (B) frotándose.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; frote circular enjabonando.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 351,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "TOALLA",
+  "configuracion": "Bimanual simétrico: puños cerrados (S) secando espalda/cara.",
+  "ubicacion": "Detrás del cuello o frente al rostro.",
+  "movimiento": "Palmas hacia dentro; movimiento alterno de secado.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 352,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "PAPEL-HIGIÉNICO",
+  "configuracion": "Bimanual asimétrico: mano plana tira de rollo imaginario.",
+  "ubicacion": "Espacio neutro lateral bajo.",
+  "movimiento": "Palma hacia abajo; giro y tirón corto.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 353,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "CEPILLO-DIENTES",
+  "configuracion": "Unimanual: dedo índice extendido (G).",
+  "ubicacion": "Frente a los dientes/boca.",
+  "movimiento": "Palma hacia dentro; movimiento horizontal rápido de cepillado.",
+  "cnm": "Labios entreabiertos mostrando dientes."
+ },
+ {
+  "n": 354,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "ROPA",
+  "configuracion": "Bimanual simétrico: manos planas (B) o en garra.",
+  "ubicacion": "Sobre el pecho.",
+  "movimiento": "Palmas hacia dentro; roce descendente sobre la prenda.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 355,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "CAMISETA / CAMISA",
+  "configuracion": "Bimanual simétrico: pinzas (F) en cuello/solapas.",
+  "ubicacion": "Parte superior del pecho.",
+  "movimiento": "Palmas hacia dentro; trazado de cuello o botones.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 356,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "PANTALÓN",
+  "configuracion": "Bimanual simétrico: manos planas (B).",
+  "ubicacion": "Muslos / caderas.",
+  "movimiento": "Palmas hacia dentro; ascenso por ambas piernas.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 357,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "ABRIGO / CHAQUETA",
+  "configuracion": "Bimanual simétrico: puños cerrados (S).",
+  "ubicacion": "Hombros hacia pecho.",
+  "movimiento": "Palmas enfrentadas; movimiento de ponerse las mangas y cerrar.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 358,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "ZAPATOS",
+  "configuracion": "Bimanual simétrico: puños cerrados (S) chocando.",
+  "ubicacion": "Espacio neutro bajo.",
+  "movimiento": "Palmas hacia abajo; golpe lateral mutuo de ambos puños.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 359,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "BOLSO / MOCHILA",
+  "configuracion": "Unimanual (o bimanual): puño cerrado (S) sobre el hombro.",
+  "ubicacion": "Hombro.",
+  "movimiento": "Palma hacia dentro; sujeción de correa/asa en el hombro.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 360,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "GAFAS",
+  "configuracion": "Bimanual simétrico: índices y pulgares en círculo (F).",
+  "ubicacion": "Alrededor de los ojos.",
+  "movimiento": "Palmas hacia dentro/adelante; colocación frente a los ojos.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 361,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "RELOJ",
+  "configuracion": "Unimanual: pinza (F) o índice sobre muñeca pasiva.",
+  "ubicacion": "Muñeca del brazo pasivo.",
+  "movimiento": "Palma hacia abajo; contorno circular sobre la muñeca.",
+  "cnm": "Mirada a la muñeca."
+ },
+ {
+  "n": 362,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "PARAGUAS",
+  "configuracion": "Bimanual: puño cerrado sube sobre puño pasivo.",
+  "ubicacion": "De pecho hacia encima de la cabeza.",
+  "movimiento": "Palmas enfrentadas; ascenso vertical (abrir paraguas).",
+  "cnm": "Mirada hacia arriba."
+ },
+ {
+  "n": 363,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "MÓVIL (teléfono)",
+  "configuracion": "Unimanual: pulgar y meñique extendidos (Y) o mano en C.",
+  "ubicacion": "Junto a la mejilla/oreja (o frente al pecho).",
+  "movimiento": "Palma hacia dentro; sujeción junto al rostro o tecleo con pulgar.",
+  "cnm": "Expresión comunicativa."
+ },
+ {
+  "n": 364,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "MENSAJE",
+  "configuracion": "Bimanual: pulgares tecleando sobre manos en C.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia arriba/dentro; movimiento rápido de ambos pulgares.",
+  "cnm": "Mirada hacia las manos."
+ },
+ {
+  "n": 365,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "WHATSAPP",
+  "configuracion": "Bimanual: tecleo rápido de pulgares + envío hacia delante.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia dentro; tecleo y proyección corta.",
+  "cnm": "Expresión cotidiana."
+ },
+ {
+  "n": 366,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "VIDEOLLAMADA",
+  "configuracion": "Bimanual: mano en C (móvil) + dedos en V mirando.",
+  "ubicacion": "Espacio neutro frente al rostro.",
+  "movimiento": "Palma hacia dentro; contacto visual directo hacia la pantalla.",
+  "cnm": "Sonrisa y saludo visual."
+ },
+ {
+  "n": 367,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "INTERNET / WIFI",
+  "configuracion": "Bimanual simétrico: manos abiertas (5) con dedos entrelazados/vibrando.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia abajo; ondas expansivas hacia delante.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 368,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "ORDENADOR / PORTÁTIL",
+  "configuracion": "Bimanual simétrico: manos abiertas (5) tecleando.",
+  "ubicacion": "Espacio neutro frente al abdomen.",
+  "movimiento": "Palmas hacia abajo; movimiento rápido de dedos sobre teclado.",
+  "cnm": "Mirada al frente (pantalla)."
+ },
+ {
+  "n": 369,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "TELEVISOR",
+  "configuracion": "Bimanual simétrico: índices (G) dibujan rectángulo.",
+  "ubicacion": "Espacio neutro frente al rostro.",
+  "movimiento": "Palmas hacia fuera; trazado horizontal y vertical de pantalla.",
+  "cnm": "Mirada hacia el frente."
+ },
+ {
+  "n": 370,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "CARGADOR",
+  "configuracion": "Bimanual asimétrico: índice/pinza encaja en mano pasiva.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palma lateral; inserción recta de enchufe.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 371,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "BATERÍA",
+  "configuracion": "Bimanual: índice marca nivel ascendente o descendente en mano en C.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma lateral; medición de carga.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 372,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "FOTO / CÁMARA",
+  "configuracion": "Bimanual simétrico: manos en L formando encuadre.",
+  "ubicacion": "Frente al rostro.",
+  "movimiento": "Palmas enfrentadas; flexión del índice derecho (disparo).",
+  "cnm": "Cierre breve de un ojo."
+ },
+ {
+  "n": 373,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "VÍDEO",
+  "configuracion": "Bimanual asimétrico: mano abierta gira manivela/graba.",
+  "ubicacion": "Junto al rostro.",
+  "movimiento": "Palma lateral; movimiento circular o encuadre sostenido.",
+  "cnm": "Mirada atenta."
+ },
+ {
+  "n": 374,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "CORREO-ELECTRÓNICO",
+  "configuracion": "Compuesto: CARTA (sello) + ORDENADOR / envío digital.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia abajo; envío rápido hacia delante.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 375,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "CONTRASEÑA",
+  "configuracion": "Compuesto: SECRETO (pulgar en labios) + tecleo.",
+  "ubicacion": "Boca y espacio neutro.",
+  "movimiento": "Palma hacia abajo; bloqueo y pulsación.",
+  "cnm": "Expresión reservada."
+ },
+ {
+  "n": 376,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "LIBRO",
+  "configuracion": "Bimanual simétrico: manos planas (B) juntas que se abren.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia arriba; apertura como páginas de un libro.",
+  "cnm": "Mirada hacia las palmas."
+ },
+ {
+  "n": 377,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "CUADERNO / PAPEL",
+  "configuracion": "Bimanual asimétrico: mano plana golpea suavemente palma pasiva.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma dominante hacia abajo; doble toque sobre palma pasiva.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 378,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "BOLÍGRAFO",
+  "configuracion": "Unimanual: pinza de índice y pulgar (F).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia abajo; movimiento rápido de escritura en el aire.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 379,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "BOLSA",
+  "configuracion": "Unimanual: puño cerrado (S) colgando.",
+  "ubicacion": "Espacio neutro lateral bajo.",
+  "movimiento": "Palma hacia dentro; ligero balanceo como cargando asas.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 380,
+  "categoria": "7. Casa, objetos personales y tecnología",
+  "glosa": "BASURA",
+  "configuracion": "Unimanual: mano abierta (5) lanzando hacia recipiente lateral.",
+  "ubicacion": "Espacio neutro lateral bajo.",
+  "movimiento": "Palma hacia abajo; apertura rápida hacia el suelo.",
+  "cnm": "Ligero gesto de desagrado."
+ },
+ {
+  "n": 381,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "COMIDA",
+  "configuracion": "Unimanual: dedos agrupados en pinza cerrada (O).",
+  "ubicacion": "Frente a la boca.",
+  "movimiento": "Palma hacia dentro; toque repetido en los labios.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 382,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "DESAYUNO",
+  "configuracion": "Compuesto: MAÑANA + COMER / CAFÉ.",
+  "ubicacion": "Boca y espacio neutro.",
+  "movimiento": "Palma hacia dentro; movimiento de beber/comer matinal.",
+  "cnm": "Expresión despejada."
+ },
+ {
+  "n": 383,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "ALMUERZO",
+  "configuracion": "Compuesto: MEDIODÍA + COMER.",
+  "ubicacion": "Frente y boca.",
+  "movimiento": "Palma hacia dentro; toque vertical y movimiento a boca.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 384,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "MERIENDA",
+  "configuracion": "Compuesto: TARDE + COMER.",
+  "ubicacion": "Boca y espacio neutro.",
+  "movimiento": "Palma hacia dentro; movimiento de comer y descenso.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 385,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "CENA",
+  "configuracion": "Compuesto: NOCHE + COMER.",
+  "ubicacion": "Boca y espacio neutro.",
+  "movimiento": "Palma hacia dentro; movimiento de comer y cruce nocturno.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 386,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "HAMBRE",
+  "configuracion": "Unimanual: mano curva (C) o garra.",
+  "ubicacion": "Boca del estómago / abdomen.",
+  "movimiento": "Palma hacia dentro; movimiento descendente o roce circular en estómago.",
+  "cnm": "Expresión de apetito/necesidad."
+ },
+ {
+  "n": 387,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "SED",
+  "configuracion": "Unimanual: índice (G) o mano en C.",
+  "ubicacion": "Garganta / cuello.",
+  "movimiento": "Palma hacia dentro; deslizamiento vertical por la garganta.",
+  "cnm": "Deglución o labios secos."
+ },
+ {
+  "n": 388,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "AGUA",
+  "configuracion": "Unimanual: dedo índice (G) o configuración W.",
+  "ubicacion": "Barbilla / labios.",
+  "movimiento": "Palma lateral/dentro; doble toque en la barbilla.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 389,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "CAFÉ",
+  "configuracion": "Bimanual asimétrico: puño (S) gira sobre puño pasivo (molinillo).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia abajo; movimiento circular horizontal.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 390,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "LECHE",
+  "configuracion": "Unimanual (o bimanual): puño cerrado (S) abriendo y cerrando.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma lateral; movimiento vertical de ordeño.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 391,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "TÉ / INFUSIÓN",
+  "configuracion": "Unimanual: pinza de pulgar e índice (F).",
+  "ubicacion": "Sobre mano pasiva en C (taza).",
+  "movimiento": "Palma hacia abajo; movimiento vertical introduciendo bolsita.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 392,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "ZUMO",
+  "configuracion": "Unimanual: puño (S) exprimiendo sobre mano pasiva.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia abajo; torsión apretando fruta.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 393,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "REFRESCO",
+  "configuracion": "Bimanual: mano plana golpea puño pasivo (abrir chapa) + beber.",
+  "ubicacion": "Espacio neutro y boca.",
+  "movimiento": "Palma hacia abajo; golpe corto y elevación a boca.",
+  "cnm": "Expresión refrescante."
+ },
+ {
+  "n": 394,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "CERVEZA",
+  "configuracion": "Unimanual: pulgar en mejilla o jarra inclinada.",
+  "ubicacion": "Mejilla / boca.",
+  "movimiento": "Palma lateral; movimiento de jarra hacia boca.",
+  "cnm": "Expresión afable."
+ },
+ {
+  "n": 395,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "VINO",
+  "configuracion": "Unimanual: índice (G) o pinza en mejilla.",
+  "ubicacion": "Mejilla derecha.",
+  "movimiento": "Palma lateral; pequeño círculo en la mejilla.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 396,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "PAN",
+  "configuracion": "Bimanual asimétrico: canto de mano plana (B) corta antebrazo/mano pasiva.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma lateral; movimiento de sierra cortando rebanadas.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 397,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "ARROZ",
+  "configuracion": "Unimanual: pinza (F/O) o dedos picoteando.",
+  "ubicacion": "Frente a la boca / palma pasiva.",
+  "movimiento": "Palma hacia dentro; pequeños movimientos hacia la boca.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 398,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "PASTA",
+  "configuracion": "Bimanual simétrico: índices (G) o pinzas enrollando.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; giro enrollando espaguetis.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 399,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "PATATA",
+  "configuracion": "Bimanual asimétrico: dedos pelando puño pasivo (S).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia abajo; deslizamiento curvo pelando.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 400,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "CARNE",
+  "configuracion": "Bimanual asimétrico: pinza (F) pellizca dorso de mano pasiva.",
+  "ubicacion": "Dorso de mano pasiva frente al pecho.",
+  "movimiento": "Palma hacia abajo; agarre suave de la piel del dorso.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 401,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "POLLO",
+  "configuracion": "Unimanual: índice y pulgar en pico frente a boca + alas.",
+  "ubicacion": "Boca / costados.",
+  "movimiento": "Palma hacia fuera; apertura y cierre de pico.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 402,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "PESCADO",
+  "configuracion": "Unimanual: mano plana (B) ondulando hacia delante.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma lateral; movimiento serpenteante horizontal.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 403,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "HUEVO",
+  "configuracion": "Bimanual simétrico: manos en pinza/garra cascando.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; golpe central y apertura hacia abajo.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 404,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "QUESO",
+  "configuracion": "Bimanual simétrico: palmas unidas presionando.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; ligera presión mutua.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 405,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "JAMÓN",
+  "configuracion": "Bimanual asimétrico: mano plana desliza larga sobre brazo pasivo.",
+  "ubicacion": "Antebrazo pasivo.",
+  "movimiento": "Palma hacia abajo; corte longitudinal fino.",
+  "cnm": "Expresión de agrado."
+ },
+ {
+  "n": 406,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "ENSALADA",
+  "configuracion": "Bimanual simétrico: manos en garra mezclando.",
+  "ubicacion": "Espacio neutro frente al abdomen.",
+  "movimiento": "Palmas enfrentadas/arriba; movimiento envolvente de remover.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 407,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "VERDURA",
+  "configuracion": "Unimanual: configuración en V o mano abierta.",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; pequeño movimiento circular.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 408,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "TOMATE",
+  "configuracion": "Unimanual: índice (G) en labios + mano en garra.",
+  "ubicacion": "Boca y espacio neutro.",
+  "movimiento": "Palma hacia dentro; toque en labio (rojo) y forma redonda.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 409,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "CEBOLLA",
+  "configuracion": "Unimanual: puño (S) o índice junto al ojo.",
+  "ubicacion": "Junto al ojo.",
+  "movimiento": "Palma lateral; giro corto (picor en los ojos).",
+  "cnm": "Ojos entrecerrados."
+ },
+ {
+  "n": 410,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "FRUTA",
+  "configuracion": "Unimanual: mano en garra / pinza.",
+  "ubicacion": "Mejilla.",
+  "movimiento": "Palma hacia dentro; giro corto sobre la mejilla.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 411,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "MANZANA",
+  "configuracion": "Unimanual: mano en garra (5 flexionada).",
+  "ubicacion": "Junto a la boca.",
+  "movimiento": "Palma hacia dentro; movimiento de morder.",
+  "cnm": "Apertura bucal de mordisco."
+ },
+ {
+  "n": 412,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "PLÁTANO",
+  "configuracion": "Bimanual asimétrico: pinza pela dedo índice pasivo vertical.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia dentro; deslizamiento descendente pelando.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 413,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "NARANJA",
+  "configuracion": "Unimanual: mano en garra (5 flexionada) apretando.",
+  "ubicacion": "Frente a la boca / mejilla.",
+  "movimiento": "Palma hacia dentro; cierre repetido exprimiendo.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 414,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "ACEITE",
+  "configuracion": "Unimanual: pulgar extendido inclinado (aceitera).",
+  "ubicacion": "Sobre palma pasiva abierta.",
+  "movimiento": "Palma lateral; movimiento en zigzag vertiendo.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 415,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "SAL",
+  "configuracion": "Unimanual: pinza de dedos (F/O) espolvoreando.",
+  "ubicacion": "Espacio neutro frente al abdomen.",
+  "movimiento": "Palma hacia abajo; frote rápido de yemas.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 416,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "AZÚCAR",
+  "configuracion": "Unimanual: dedos índice y corazón deslizan en barbilla.",
+  "ubicacion": "Barbilla.",
+  "movimiento": "Palma hacia dentro; roce descendente suave.",
+  "cnm": "Expresión dulce."
+ },
+ {
+  "n": 417,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "POSTRE / DULCE",
+  "configuracion": "Unimanual: yemas en comisura labial.",
+  "ubicacion": "Comisura de la boca.",
+  "movimiento": "Palma hacia dentro; pequeño giro dulce.",
+  "cnm": "Sonrisa."
+ },
+ {
+  "n": 418,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "CHOCOLATE",
+  "configuracion": "Unimanual: configuración en C o dedo rozando labios.",
+  "ubicacion": "Boca / espacio neutro.",
+  "movimiento": "Palma hacia dentro; movimiento suave.",
+  "cnm": "Sonrisa de agrado."
+ },
+ {
+  "n": 419,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "HELADO",
+  "configuracion": "Unimanual: puño cerrado (S) acercándose a la lengua.",
+  "ubicacion": "Frente a la boca.",
+  "movimiento": "Palma hacia dentro; movimiento ascendente de lamer.",
+  "cnm": "Movimiento lingual leve."
+ },
+ {
+  "n": 420,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "TARTA",
+  "configuracion": "Bimanual: manos planas dibujan cilindro + velas.",
+  "ubicacion": "Espacio neutro frente al abdomen.",
+  "movimiento": "Palmas enfrentadas; contorno redondo.",
+  "cnm": "Sonrisa."
+ },
+ {
+  "n": 421,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "BOCADILLO",
+  "configuracion": "Bimanual simétrico: manos en C sujetando barra larga.",
+  "ubicacion": "Frente a la boca.",
+  "movimiento": "Palmas enfrentadas; acercamiento a la boca.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 422,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "RESTAURANTE",
+  "configuracion": "Bimanual: mano en R o movimiento de cubiertos.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia dentro; acción de comer con cubiertos.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 423,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "BAR / CAFETERÍA",
+  "configuracion": "Compuesto: CAFÉ / BEBER + lugar.",
+  "ubicacion": "Boca y espacio neutro.",
+  "movimiento": "Palma lateral; movimiento de taza y delimitación.",
+  "cnm": "Expresión cordial."
+ },
+ {
+  "n": 424,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "MENÚ / CARTA",
+  "configuracion": "Bimanual simétrico: manos planas (B) abiertas como carta.",
+  "ubicacion": "Espacio neutro frente al rostro.",
+  "movimiento": "Palmas hacia dentro; mirada recorriendo lista.",
+  "cnm": "Mirada de lectura."
+ },
+ {
+  "n": 425,
+  "categoria": "8. Alimentación, hostelería y consumo",
+  "glosa": "CUENTA (pagar)",
+  "configuracion": "Bimanual asimétrico: índice escribe en palma pasiva.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma dominante hacia abajo; trazado rápido y entrega.",
+  "cnm": "Contacto visual con camarero."
+ },
+ {
+  "n": 426,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "CALLE",
+  "configuracion": "Bimanual simétrico: manos planas (B) paralelas.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas enfrentadas; avance recto paralelo dibujando vía.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 427,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "PLAZA",
+  "configuracion": "Bimanual simétrico: manos planas (B) dibujan cuadrado/círculo.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas enfrentadas; trazado perimetral abierto.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 428,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "CIUDAD",
+  "configuracion": "Bimanual simétrico: manos en garra/planas agrupadas.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; movimientos alternos ascendentes (edificios).",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 429,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "PUEBLO",
+  "configuracion": "Bimanual: manos planas (B) formando tejados bajos.",
+  "ubicacion": "Espacio neutro frente al abdomen.",
+  "movimiento": "Palmas inclinadas; repetición corta horizontal.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 430,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "ESPAÑA",
+  "configuracion": "Unimanual: dedo índice (G) o mano en pinza en hombro/pecho.",
+  "ubicacion": "Hombro izquierdo / pecho.",
+  "movimiento": "Palma hacia dentro; gancho corto (charretera/capa).",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 431,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "DIRECCIÓN",
+  "configuracion": "Bimanual: escritura + señalización de lugar.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; trazado y proyección.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 432,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "TIENDA",
+  "configuracion": "Bimanual simétrico: manos planas (B) o en T.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; movimientos cortos hacia delante.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 433,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "SUPERMERCADO",
+  "configuracion": "Bimanual simétrico: puños cerrados (S) empujando carro.",
+  "ubicacion": "Espacio neutro frente al abdomen.",
+  "movimiento": "Palmas hacia abajo; avance recto paralelo.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 434,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "CENTRO-COMERCIAL",
+  "configuracion": "Compuesto: TIENDA + GRANDE / edificio amplio.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas enfrentadas; separación amplia.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 435,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "FARMACIA",
+  "configuracion": "Bimanual asimétrico: índice (G) traza cruz sobre palma pasiva.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma dominante hacia abajo; línea vertical y horizontal.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 436,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "HOSPITAL",
+  "configuracion": "Unimanual: dedos índice y corazón (H/U) trazan cruz en brazo.",
+  "ubicacion": "Parte superior del brazo pasivo.",
+  "movimiento": "Palma hacia dentro; cruz sobre el hombro/brazo.",
+  "cnm": "Expresión seria."
+ },
+ {
+  "n": 437,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "CENTRO-SALUD",
+  "configuracion": "Compuesto: MÉDICO + CASA / cruz pequeña.",
+  "ubicacion": "Brazo y espacio neutro.",
+  "movimiento": "Palmas enfrentadas; cruz y tejado.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 438,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "BANCO",
+  "configuracion": "Unimanual: configuración en B o DINERO + edificio.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia fuera; movimiento corto.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 439,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "COLEGIO",
+  "configuracion": "Bimanual simétrico: manos planas (B) o palmadas.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; doble palmada suave.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 440,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "INSTITUTO",
+  "configuracion": "Unimanual: configuración en I (meñique) con movimiento.",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia dentro; ligero giro o toque.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 441,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "UNIVERSIDAD",
+  "configuracion": "Unimanual: configuración en U (índice y corazón juntos).",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; movimiento circular alto.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 442,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "PLAYA",
+  "configuracion": "Bimanual simétrico: manos abiertas (5) ondulando (olas).",
+  "ubicacion": "Espacio neutro frente al abdomen.",
+  "movimiento": "Palmas hacia abajo; avance ondulante suave.",
+  "cnm": "Expresión relajada."
+ },
+ {
+  "n": 443,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "MONTAÑA",
+  "configuracion": "Unimanual (o bimanual): mano plana (B) trazando pico.",
+  "ubicacion": "Espacio neutro alto.",
+  "movimiento": "Palma hacia abajo; ascenso y descenso en ángulo agudo.",
+  "cnm": "Mirada hacia arriba."
+ },
+ {
+  "n": 444,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "ESTACIÓN",
+  "configuracion": "Bimanual asimétrico: dedos en V sobre palma pasiva (parada tren).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia abajo; detención sobre palma pasiva.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 445,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "AEROPUERTO",
+  "configuracion": "Unimanual: pulgar y meñique extendidos (Y - avión) aterrizando.",
+  "ubicacion": "De espacio alto a palma pasiva.",
+  "movimiento": "Palma hacia abajo; descenso diagonal hasta posarse.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 446,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "PARADA",
+  "configuracion": "Bimanual asimétrico: canto de mano plana (B) sobre palma pasiva.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma lateral; golpe vertical firme.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 447,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "COCHE",
+  "configuracion": "Bimanual simétrico: puños cerrados (S) girando volante.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; rotación alterna corta.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 448,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "AUTOBÚS",
+  "configuracion": "Bimanual simétrico: puños cerrados (S) sujetando volante grande.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas enfrentadas; giro amplio horizontal.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 449,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "METRO",
+  "configuracion": "Bimanual asimétrico: mano plana avanza por debajo de mano pasiva.",
+  "ubicacion": "Espacio neutro frente al abdomen.",
+  "movimiento": "Palma hacia abajo; desplazamiento subterráneo recto.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 450,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "TREN",
+  "configuracion": "Bimanual simétrico: dedos índice y corazón (H) frotándose.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia abajo; deslizamiento recto adelante-atrás (raíles).",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 451,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "TAXI",
+  "configuracion": "Unimanual: configuración en T o luz sobre techo.",
+  "ubicacion": "Encima de la cabeza / espacio neutro.",
+  "movimiento": "Palma hacia fuera; giro rápido.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 452,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "AVIÓN",
+  "configuracion": "Unimanual: pulgar, índice y meñique extendidos (avión).",
+  "ubicacion": "Espacio neutro alto.",
+  "movimiento": "Palma hacia abajo; desplazamiento ascendente diagonal.",
+  "cnm": "Mirada acompañando el vuelo."
+ },
+ {
+  "n": 453,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "BARCO",
+  "configuracion": "Bimanual simétrico: manos planas (B) unidas en proa.",
+  "ubicacion": "Espacio neutro frente al abdomen.",
+  "movimiento": "Palmas enfrentadas en ángulo; avance con balanceo de olas.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 454,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "BILLETE",
+  "configuracion": "Bimanual asimétrico: pinza (F) pica borde de mano pasiva plana.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma lateral; doble mordida de revisor.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 455,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "MALETA",
+  "configuracion": "Unimanual: puño cerrado (S) levantando asa lateral.",
+  "ubicacion": "Espacio neutro lateral bajo.",
+  "movimiento": "Palma hacia dentro; ligero ascenso vertical.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 456,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "DNI",
+  "configuracion": "Bimanual: rectángulo pequeño con índices + pulgar en palma (huella).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia abajo; contorno de carné y presión de pulgar.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 457,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "DINERO",
+  "configuracion": "Unimanual: pulgar frotando yema de índice y corazón.",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia arriba; frote repetido de dedos.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 458,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "EURO",
+  "configuracion": "Unimanual: mano en C (o E) girando hacia fuera.",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; giro corto de muñeca.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 459,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "TARJETA",
+  "configuracion": "Bimanual asimétrico: mano plana desliza borde sobre palma pasiva.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma lateral; deslizamiento rápido (pasar tarjeta).",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 460,
+  "categoria": "9. Ciudad, transporte, trámites y trabajo",
+  "glosa": "BIZUM",
+  "configuracion": "Unimanual: móvil (C) + deslizamiento rápido de índice hacia fuera.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia arriba; envío instantáneo hacia el interlocutor.",
+  "cnm": "Sonrisa y asentimiento."
+ },
+ {
+  "n": 461,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "CITA-PREVIA",
+  "configuracion": "Bimanual: índice señala punto exacto en palma pasiva (calendario).",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palma hacia abajo; contacto firme fijando día/hora.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 462,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "SEGURIDAD-SOCIAL",
+  "configuracion": "Compuesto: MÉDICO + TARJETA / protección.",
+  "ubicacion": "Brazo y espacio neutro.",
+  "movimiento": "Palmas hacia abajo; cruz y entrega de tarjeta.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 463,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "ENFERMO",
+  "configuracion": "Unimanual: mano plana (B) o dorso sobre frente.",
+  "ubicacion": "Frente.",
+  "movimiento": "Palma hacia fuera/dentro; apoyo sobre la frente.",
+  "cnm": "Ceño fruncido y expresión decaída."
+ },
+ {
+  "n": 464,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "DOLOR",
+  "configuracion": "Bimanual simétrico: dedos índices (G) enfrentados vibrando.",
+  "ubicacion": "Zona dolorida o espacio neutro.",
+  "movimiento": "Palmas enfrentadas; choque/vibración repetida.",
+  "cnm": "Ceño muy fruncido y mueca de dolor."
+ },
+ {
+  "n": 465,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "FIEBRE",
+  "configuracion": "Unimanual: dorso de mano plana (B) sobre la frente.",
+  "ubicacion": "Frente.",
+  "movimiento": "Palma hacia fuera; contacto y ligero ascenso de calor.",
+  "cnm": "Ojos semicerrados y expresión de malestar."
+ },
+ {
+  "n": 466,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "RESFRIADO",
+  "configuracion": "Unimanual: pulgar e índice apretando suavemente nariz.",
+  "ubicacion": "Nariz.",
+  "movimiento": "Palma hacia dentro; movimiento descendente corto.",
+  "cnm": "Expresión nasal/congestionada."
+ },
+ {
+  "n": 467,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "ALERGIA",
+  "configuracion": "Unimanual: índice (G) rascando/tocando nariz o brazo.",
+  "ubicacion": "Nariz / antebrazo.",
+  "movimiento": "Palma hacia dentro; toque repetido con picor.",
+  "cnm": "Ceño fruncido."
+ },
+ {
+  "n": 468,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "PASTILLA",
+  "configuracion": "Unimanual: pinza de pulgar e índice (F) lanzando a boca.",
+  "ubicacion": "Frente a la boca.",
+  "movimiento": "Palma hacia dentro; impulso corto hacia los labios.",
+  "cnm": "Inclinación leve de cabeza hacia atrás."
+ },
+ {
+  "n": 469,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "MÉDICO",
+  "configuracion": "Unimanual: dedos índice y corazón tomando pulso en muñeca pasiva.",
+  "ubicacion": "Muñeca del brazo pasivo.",
+  "movimiento": "Palma hacia abajo; presión suave de las yemas en muñeca.",
+  "cnm": "Expresión atenta."
+ },
+ {
+  "n": 470,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "URGENCIAS",
+  "configuracion": "Compuesto: HOSPITAL + RÁPIDO / sirena (mano abierta girando).",
+  "ubicacion": "Brazo y espacio neutro alto.",
+  "movimiento": "Palma hacia fuera; giro rápido de luz de sirena.",
+  "cnm": "Ojos muy abiertos y expresión de urgencia."
+ },
+ {
+  "n": 471,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "POLICÍA",
+  "configuracion": "Unimanual: mano en C o puño sobre hombro/pecho (placa/porra).",
+  "ubicacion": "Hombro / pecho izquierdo.",
+  "movimiento": "Palma hacia dentro; contacto firme de insignia.",
+  "cnm": "Expresión seria."
+ },
+ {
+  "n": 472,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "PELIGRO",
+  "configuracion": "Unimanual: puño con pulgar o índice en advertencia.",
+  "ubicacion": "Espacio neutro frente al rostro.",
+  "movimiento": "Palma hacia fuera; movimiento rápido de alerta.",
+  "cnm": "Ojos muy abiertos y cejas altas."
+ },
+ {
+  "n": 473,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "CABEZA",
+  "configuracion": "Unimanual: mano plana (B) o yemas.",
+  "ubicacion": "Sien / lateral de la cabeza.",
+  "movimiento": "Palma hacia dentro; doble toque suave en la sien.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 474,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "GARGANTA",
+  "configuracion": "Unimanual: mano en C o índice y pulgar.",
+  "ubicacion": "Parte anterior del cuello.",
+  "movimiento": "Palma hacia dentro; sujeción suave de la garganta.",
+  "cnm": "Expresión neutra o de molestia."
+ },
+ {
+  "n": 475,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "ESPALDA",
+  "configuracion": "Unimanual: mano plana (B) por encima del hombro hacia atrás.",
+  "ubicacion": "Zona dorsal / hombro.",
+  "movimiento": "Palma hacia dentro; toque en la parte posterior del hombro.",
+  "cnm": "Ligero giro de tronco."
+ },
+ {
+  "n": 476,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "BARRIGA",
+  "configuracion": "Unimanual: mano plana (B) o curva.",
+  "ubicacion": "Abdomen.",
+  "movimiento": "Palma hacia dentro; movimiento circular sobre el vientre.",
+  "cnm": "Expresión neutra."
+ },
+ {
+  "n": 477,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "CONTENTO",
+  "configuracion": "Bimanual simétrico: manos abiertas (5) vibrando frente al pecho.",
+  "ubicacion": "Pecho.",
+  "movimiento": "Palmas hacia dentro; ligero ascenso vibratorio.",
+  "cnm": "Sonrisa amplia y ojos brillantes."
+ },
+ {
+  "n": 478,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "TRISTE",
+  "configuracion": "Unimanual (o bimanual): mano abierta (5) desciende por rostro.",
+  "ubicacion": "Frente al rostro.",
+  "movimiento": "Palma hacia dentro; deslizamiento lento descendente.",
+  "cnm": "Comisuras hacia abajo, cejas caídas y mirada baja."
+ },
+ {
+  "n": 479,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "ENFADADO",
+  "configuracion": "Unimanual (o bimanual): mano en garra (5 flexionada) subiendo.",
+  "ubicacion": "De abdomen/pecho hacia rostro.",
+  "movimiento": "Palma hacia dentro; ascenso tenso.",
+  "cnm": "Ceño muy fruncido y mandíbula tensa."
+ },
+ {
+  "n": 480,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "NERVIOSO",
+  "configuracion": "Bimanual simétrico: manos abiertas (5) con dedos temblando.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas hacia abajo; vibración rápida y continua.",
+  "cnm": "Labios apretados y cejas tensas."
+ },
+ {
+  "n": 481,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "TRANQUILO",
+  "configuracion": "Bimanual simétrico: manos planas (B).",
+  "ubicacion": "De pecho hacia abdomen.",
+  "movimiento": "Palmas hacia abajo; descenso lento y pausado.",
+  "cnm": "Exhalación suave y rostro relajado."
+ },
+ {
+  "n": 482,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "PREOCUPADO",
+  "configuracion": "Bimanual alterno: manos planas (B) o en garra frente a frente.",
+  "ubicacion": "Frente / sien.",
+  "movimiento": "Palmas hacia dentro; movimientos circulares alternos.",
+  "cnm": "Ceño fruncido y labios tensos."
+ },
+ {
+  "n": 483,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "MIEDO",
+  "configuracion": "Bimanual simétrico: manos abiertas (5) que se retraen al pecho.",
+  "ubicacion": "De espacio frontal hacia el pecho.",
+  "movimiento": "Palmas hacia dentro; retroceso rápido encogiendo dedos.",
+  "cnm": "Ojos muy abiertos, cejas altas y boca tensa."
+ },
+ {
+  "n": 484,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "CANSADO",
+  "configuracion": "Bimanual simétrico: manos planas (B) caen sobre el pecho.",
+  "ubicacion": "Hombros / pecho.",
+  "movimiento": "Palmas hacia dentro; descenso pesado con caída de hombros.",
+  "cnm": "Párpados caídos y suspiro."
+ },
+ {
+  "n": 485,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "AGOBIADO",
+  "configuracion": "Bimanual simétrico: manos abiertas (5) presionando sienes/cabeza.",
+  "ubicacion": "A ambos lados de la cabeza.",
+  "movimiento": "Palmas hacia dentro; movimiento circular de presión.",
+  "cnm": "Ceño fruncido y exhalación."
+ },
+ {
+  "n": 486,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "BUENO",
+  "configuracion": "Unimanual: pinza cerrada (O) o mano plana.",
+  "ubicacion": "Barbilla hacia espacio neutro.",
+  "movimiento": "Palma hacia dentro; movimiento recto hacia delante.",
+  "cnm": "Sonrisa y asentimiento."
+ },
+ {
+  "n": 487,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "MALO",
+  "configuracion": "Unimanual: dorso de mano plana (B).",
+  "ubicacion": "Debajo de la barbilla.",
+  "movimiento": "Palma hacia abajo; golpe descendente hacia fuera.",
+  "cnm": "Ceño fruncido."
+ },
+ {
+  "n": 488,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "GRANDE",
+  "configuracion": "Bimanual simétrico: manos planas (B) o en C separándose.",
+  "ubicacion": "Espacio neutro frente al torso.",
+  "movimiento": "Palmas enfrentadas; separación amplia lateral/vertical.",
+  "cnm": "Mejillas infladas y ojos abiertos."
+ },
+ {
+  "n": 489,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "PEQUEÑO",
+  "configuracion": "Unimanual (o bimanual): pinza (G) o manos muy juntas.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; distancia mínima entre dedos/manos.",
+  "cnm": "Ojos entrecerrados y labios fruncidos."
+ },
+ {
+  "n": 490,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "NUEVO",
+  "configuracion": "Unimanual: mano plana (B) o pinza limpia.",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma hacia fuera; giro brillante hacia delante.",
+  "cnm": "Sonrisa y cejas elevadas."
+ },
+ {
+  "n": 491,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "VIEJO",
+  "configuracion": "Unimanual: puño cerrado (S) bajo barbilla.",
+  "ubicacion": "Barbilla hacia abajo.",
+  "movimiento": "Palma hacia dentro; movimiento descendente tembloroso.",
+  "cnm": "Ojos ligeramente entrecerrados."
+ },
+ {
+  "n": 492,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "FÁCIL",
+  "configuracion": "Unimanual: yemas de dedos deslizan suaves bajo barbilla.",
+  "ubicacion": "Debajo de la barbilla.",
+  "movimiento": "Palma hacia arriba; deslizamiento ligero hacia delante.",
+  "cnm": "Sonrisa relajada y elevación leve de cejas."
+ },
+ {
+  "n": 493,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "DIFÍCIL",
+  "configuracion": "Bimanual simétrico: dedos índices flexionados (X) chocando.",
+  "ubicacion": "Espacio neutro frente al pecho.",
+  "movimiento": "Palmas enfrentadas; roce tenso entre nudillos.",
+  "cnm": "Ceño fruncido y labios apretados."
+ },
+ {
+  "n": 494,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "RÁPIDO",
+  "configuracion": "Unimanual: pulgar e índice chasquean o mano corta el aire.",
+  "ubicacion": "Espacio neutro frente al hombro.",
+  "movimiento": "Palma lateral; desplazamiento súbito y veloz.",
+  "cnm": "Tensión labial breve (soplo rápido)."
+ },
+ {
+  "n": 495,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "LENTO",
+  "configuracion": "Bimanual asimétrico: mano plana desliza despacio sobre antebrazo.",
+  "ubicacion": "Antebrazo pasivo.",
+  "movimiento": "Palma hacia abajo; desplazamiento muy pausado.",
+  "cnm": "Movimiento ralentizado y labios estirados."
+ },
+ {
+  "n": 496,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "CARO",
+  "configuracion": "Unimanual: pinza (F) o mano abierta sube con énfasis.",
+  "ubicacion": "De espacio medio hacia arriba.",
+  "movimiento": "Palma hacia arriba; elevación brusca (precio alto).",
+  "cnm": "Cejas muy elevadas y labios fruncidos."
+ },
+ {
+  "n": 497,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "BARATO",
+  "configuracion": "Unimanual: mano plana (B) baja con ligereza.",
+  "ubicacion": "Espacio neutro frente al abdomen.",
+  "movimiento": "Palma hacia abajo; descenso corto y suave.",
+  "cnm": "Sonrisa y asentimiento leve."
+ },
+ {
+  "n": 498,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "IMPORTANTE",
+  "configuracion": "Unimanual (o bimanual): pinza (F) o índice asciende con firmeza.",
+  "ubicacion": "De pecho hacia altura del rostro.",
+  "movimiento": "Palma hacia dentro/arriba; elevación vertical destacada.",
+  "cnm": "Cejas elevadas y asentimiento firme."
+ },
+ {
+  "n": 499,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "PROBLEMA",
+  "configuracion": "Bimanual simétrico: dedos índices flexionados (X) o en garra.",
+  "ubicacion": "Espacio neutro frente a la frente/pecho.",
+  "movimiento": "Palmas enfrentadas; giro/choque tenso.",
+  "cnm": "Ceño fruncido."
+ },
+ {
+  "n": 500,
+  "categoria": "10. Salud, emociones, cualidades y gestión diaria",
+  "glosa": "SOLUCIÓN",
+  "configuracion": "Bimanual simétrico: manos cerradas que abren despejando el espacio.",
+  "ubicacion": "De frente/pecho hacia fuera.",
+  "movimiento": "Palmas hacia fuera; apertura limpia hacia los lados.",
+  "cnm": "Sonrisa de alivio y asentimiento."
+ }
+]

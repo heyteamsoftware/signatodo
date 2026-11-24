@@ -77,6 +77,12 @@ function dibujarCuadro(g, W, H, t) {
   g.fillText(palabra.toUpperCase(), x + fw / 2, y + fh + barra / 2, fw * 0.92);
   g.restore();
 
+  // Créditos (ARASAAC pide citar la fuente): línea discreta abajo a la izquierda.
+  g.font = `${Math.max(10, Math.round(W * 0.0105))}px "Segoe UI", system-ui, sans-serif`;
+  g.letterSpacing = '0px'; g.textAlign = 'left'; g.textBaseline = 'alphabetic';
+  g.fillStyle = 'rgba(255,255,255,.62)';
+  g.fillText('Movimiento de los signos: ARASAAC (Gobierno de Aragón), CC BY-NC-SA · Prototipo educativo, no es interpretación en LSE', W * 0.012, H * 0.987);
+
   // Subtítulos, a la izquierda del recuadro
   if (estado.subtitulos && n >= 0) {
     const seg = segs[n];

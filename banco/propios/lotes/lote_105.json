@@ -1,0 +1,377 @@
+{
+ "signos": {
+  "pasado": {
+   "palabras": ["pasado", "pasada", "pasados", "ayer", "antes"],
+   "dur": 1.2, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Mano plana que pasa sobre el hombro hacia la espalda; la orientación de la palma y la altura exacta son interpretación.",
+   "d": [
+    {"t": 0, "en": "hombro", "desp": [0.1, 0.1, 0.2], "dir": "arriba+atras", "pal": "atras", "forma": "plana", "punto": "palma"},
+    {"t": 0.5, "pos": [0.4, 0.1, -0.1]},
+    {"t": 1, "pos": [0.35, 0.05, -0.3]}
+   ],
+   "nm": {"necesita": {"cuerpo": true, "cara": false, "ojos": false}, "nota": "Inclinación leve del cuerpo y la cabeza hacia atrás.",
+    "claves": [{"t": 0, "cuerpo": {"adelante": 0}, "cabeza": {"adelante": 0}}, {"t": 1, "cuerpo": {"adelante": -6}, "cabeza": {"adelante": -8}}]}
+  },
+  "presente": {
+   "palabras": ["presente", "presentes", "ahora", "actual", "hoy"],
+   "dur": 1.1, "repetir": 2, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Descenso corto doble con ambas manos planas; 'doble' interpretado como ciclo repetido dos veces.",
+   "d": [
+    {"t": 0, "pos": [0.2, -0.15, 0.45], "dir": "adelante", "pal": "abajo", "forma": "plana", "punto": "palma"},
+    {"t": 0.5, "pos": [0.2, -0.4, 0.45]},
+    {"t": 1, "pos": [0.2, -0.15, 0.45]}
+   ],
+   "n": [
+    {"t": 0, "pos": [0.2, -0.15, 0.45], "dir": "adelante", "pal": "abajo", "forma": "plana", "punto": "palma"},
+    {"t": 0.5, "pos": [0.2, -0.4, 0.45]},
+    {"t": 1, "pos": [0.2, -0.15, 0.45]}
+   ],
+   "nm": {"necesita": {"cuerpo": true, "cara": false, "ojos": false}, "nota": "Asentimiento breve de la cabeza con cada descenso.", "repetir": 2,
+    "claves": [{"t": 0, "cabeza": {"adelante": 0}}, {"t": 0.5, "cabeza": {"adelante": 8}}, {"t": 1, "cabeza": {"adelante": 0}}]}
+  },
+  "futuro": {
+   "palabras": ["futuro", "futura", "futuros", "mañana"],
+   "dur": 1.3, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Mano plana lateral que sale de la sien hacia delante; no se sabe si parte de sien u hombro.",
+   "d": [
+    {"t": 0, "en": "sien", "desp": [0.15, -0.05, 0.15], "dir": "adelante+arriba", "pal": "adentro", "forma": "plana", "punto": "palma"},
+    {"t": 0.5, "pos": [0.3, 0.3, 0.7]},
+    {"t": 1, "pos": [0.35, 0.25, 1.1]}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": true}, "nota": "Mirada hacia delante, siguiendo la mano.",
+    "claves": [{"t": 0, "ojos": 1, "mirada": [0, 0]}, {"t": 1, "ojos": 1.1, "mirada": [0, 0.2]}]}
+  },
+  "qué": {
+   "palabras": ["qué", "que"],
+   "dur": 1.2, "repetir": 2, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "La descripción da índice o mano abierta (unimanual o bimanual); se elige mano abierta unimanual con vaivén.",
+   "d": [
+    {"t": 0, "pos": [0.35, -0.2, 0.5], "dir": "adelante+arriba", "pal": "arriba", "forma": "abierta", "punto": "palma"},
+    {"t": 0.5, "pos": [0.1, -0.2, 0.5]},
+    {"t": 1, "pos": [0.35, -0.2, 0.5]}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": true, "ojos": false}, "nota": "Cejas fruncidas/arqueadas de pregunta directa.",
+    "claves": [{"t": 0, "expr": "pregunta", "cejas": 0.5, "ceño": 0.3}, {"t": 1, "expr": "pregunta", "cejas": 0.5, "ceño": 0.3}]}
+  },
+  "quién": {
+   "palabras": ["quién", "quien", "quiénes", "quienes"],
+   "dur": 1.3, "repetir": 2, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Círculo vertical pequeño del índice ante la barbilla; se aproxima con 4 claves.",
+   "d": [
+    {"t": 0, "en": "barbilla", "desp": [0.1, -0.05, 0.2], "dir": "arriba+adelante", "pal": "adentro", "forma": "indice", "punto": "indice"},
+    {"t": 0.25, "desp": [0.15, -0.1, 0.25]},
+    {"t": 0.5, "desp": [0.1, -0.15, 0.2]},
+    {"t": 0.75, "desp": [0.05, -0.1, 0.15]},
+    {"t": 1, "desp": [0.1, -0.05, 0.2]}
+   ],
+   "nm": {"necesita": {"cuerpo": true, "cara": true, "ojos": false}, "nota": "Cejas fruncidas e inclinación de cabeza.",
+    "claves": [{"t": 0, "cabeza": {"lado": 8}, "expr": "pregunta", "ceño": 0.4}, {"t": 1, "cabeza": {"lado": 8}, "expr": "pregunta", "ceño": 0.4}]}
+  },
+  "cuándo": {
+   "palabras": ["cuándo", "cuando"],
+   "dur": 1.1, "repetir": 2, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Índice o pinza; se elige índice con giro rápido de muñeca (palma fuera-dentro).",
+   "d": [
+    {"t": 0, "pos": [0.4, 0.1, 0.45], "dir": "arriba", "pal": "adelante", "forma": "indice", "punto": "indice"},
+    {"t": 0.5, "pal": "adentro"},
+    {"t": 1, "pal": "adelante"}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": true, "ojos": false}, "nota": "Cejas fruncidas/elevadas.",
+    "claves": [{"t": 0, "expr": "pregunta", "cejas": 0.6}, {"t": 1, "expr": "pregunta", "cejas": 0.6}]}
+  },
+  "dónde": {
+   "palabras": ["dónde", "donde", "adónde", "adonde"],
+   "dur": 1.3, "repetir": 2, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Se elige bimanual con manos abiertas, palmas arriba, oscilando en horizontal (la descripción admite también índices).",
+   "d": [
+    {"t": 0, "pos": [0.35, -0.2, 0.5], "dir": "adelante", "pal": "arriba", "forma": "abierta", "punto": "palma"},
+    {"t": 0.5, "pos": [0.15, -0.2, 0.5]},
+    {"t": 1, "pos": [0.35, -0.2, 0.5]}
+   ],
+   "n": [
+    {"t": 0, "pos": [0.35, -0.2, 0.5], "dir": "adelante", "pal": "arriba", "forma": "abierta", "punto": "palma"},
+    {"t": 0.5, "pos": [0.15, -0.2, 0.5]},
+    {"t": 1, "pos": [0.35, -0.2, 0.5]}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": true, "ojos": true}, "nota": "Cejas fruncidas y mirada interrogativa que recorre el espacio.",
+    "claves": [{"t": 0, "expr": "pregunta", "ceño": 0.4, "ojos": 1.1, "mirada": [-0.4, 0.1]}, {"t": 0.5, "ojos": 1.1, "mirada": [0.4, 0.1]}, {"t": 1, "ojos": 1.1, "mirada": [-0.4, 0.1]}]}
+  },
+  "por_qué": {
+   "palabras": ["por qué", "porqué", "porque", "por que"],
+   "dur": 1.4, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Toque con el índice en la sien y proyección hacia delante; la palma se da como dentro/fuera, se usa palma hacia dentro.",
+   "d": [
+    {"t": 0, "en": "sien", "desp": [0.1, 0, 0.1], "dir": "arriba+adelante", "pal": "adentro", "forma": "indice", "punto": "indice"},
+    {"t": 0.35, "desp": [0.1, 0, 0.1]},
+    {"t": 1, "pos": [0.3, 0.3, 0.8], "dir": "adelante+arriba"}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": true, "ojos": false}, "nota": "Cejas muy fruncidas.",
+    "claves": [{"t": 0, "expr": "pregunta", "ceño": 0.8}, {"t": 1, "expr": "pregunta", "ceño": 0.8}]}
+  },
+  "para_qué": {
+   "palabras": ["para qué", "para que", "paraqué"],
+   "dur": 1.3, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Muy parecido a por qué; aquí el índice sale de la sien en línea recta hacia delante sin toque previo.",
+   "d": [
+    {"t": 0, "en": "sien", "desp": [0.15, 0, 0.1], "dir": "adelante", "pal": "adentro", "forma": "indice", "punto": "indice"},
+    {"t": 1, "pos": [0.3, 0.3, 1.0]}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": true, "ojos": false}, "nota": "Cejas fruncidas.",
+    "claves": [{"t": 0, "expr": "pregunta", "ceño": 0.6}, {"t": 1, "expr": "pregunta", "ceño": 0.6}]}
+  },
+  "cómo": {
+   "palabras": ["cómo", "como"],
+   "dur": 1.4, "repetir": 2, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Garra o pinza F: se elige garra; el giro simultáneo de muñecas se anima alternando la palma.",
+   "d": [
+    {"t": 0, "pos": [0.25, -0.2, 0.5], "dir": "adelante", "pal": "arriba", "forma": "garra", "punto": "palma"},
+    {"t": 0.5, "pal": "adentro"},
+    {"t": 1, "pal": "arriba"}
+   ],
+   "n": [
+    {"t": 0, "pos": [0.25, -0.2, 0.5], "dir": "adelante", "pal": "arriba", "forma": "garra", "punto": "palma"},
+    {"t": 0.5, "pal": "adentro"},
+    {"t": 1, "pal": "arriba"}
+   ],
+   "nm": {"necesita": {"cuerpo": true, "cara": true, "ojos": false}, "nota": "Cejas fruncidas e inclinación de cabeza.",
+    "claves": [{"t": 0, "cabeza": {"lado": 8}, "expr": "pregunta", "ceño": 0.4}, {"t": 1, "cabeza": {"lado": 8}, "expr": "pregunta", "ceño": 0.4}]}
+  },
+  "cuánto": {
+   "palabras": ["cuánto", "cuanto", "cuánta", "cuántos", "cuántas"],
+   "dur": 1.5, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Puño que abre dedos uno a uno; se aproxima con formas intermedias (índice, v, w, abierta).",
+   "d": [
+    {"t": 0, "pos": [0.35, -0.1, 0.5], "dir": "adelante+arriba", "pal": "arriba", "forma": "puño", "punto": "palma"},
+    {"t": 0.3, "forma": "indice"},
+    {"t": 0.5, "forma": "v"},
+    {"t": 0.7, "forma": "w"},
+    {"t": 1, "forma": "abierta"}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": true, "ojos": false}, "nota": "Cejas fruncidas.",
+    "claves": [{"t": 0, "expr": "pregunta", "ceño": 0.5}, {"t": 1, "expr": "pregunta", "ceño": 0.5}]}
+  },
+  "cuál": {
+   "palabras": ["cuál", "cual", "cuáles", "cuales"],
+   "dur": 1.4, "repetir": 2, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Índices alternos arriba y abajo con palmas hacia fuera; se elige índice (no pulgares).",
+   "d": [
+    {"t": 0, "pos": [0.3, 0.0, 0.5], "dir": "arriba", "pal": "adelante", "forma": "indice", "punto": "indice"},
+    {"t": 0.5, "pos": [0.3, -0.3, 0.5]},
+    {"t": 1, "pos": [0.3, 0.0, 0.5]}
+   ],
+   "n": [
+    {"t": 0, "pos": [0.3, -0.3, 0.5], "dir": "arriba", "pal": "adelante", "forma": "indice", "punto": "indice"},
+    {"t": 0.5, "pos": [0.3, 0.0, 0.5]},
+    {"t": 1, "pos": [0.3, -0.3, 0.5]}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": true, "ojos": false}, "nota": "Cejas fruncidas.",
+    "claves": [{"t": 0, "expr": "pregunta", "ceño": 0.5}, {"t": 1, "expr": "pregunta", "ceño": 0.5}]}
+  },
+  "también": {
+   "palabras": ["también", "tambien"],
+   "dur": 1.2, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Dos índices paralelos que avanzan juntos con palmas abajo; la descripción no indica separación entre manos.",
+   "d": [
+    {"t": 0, "pos": [0.15, -0.15, 0.4], "dir": "adelante", "pal": "abajo", "forma": "indice", "punto": "indice"},
+    {"t": 1, "pos": [0.15, -0.15, 0.75]}
+   ],
+   "n": [
+    {"t": 0, "pos": [0.15, -0.15, 0.4], "dir": "adelante", "pal": "abajo", "forma": "indice", "punto": "indice"},
+    {"t": 1, "pos": [0.15, -0.15, 0.75]}
+   ],
+   "nm": {"necesita": {"cuerpo": true, "cara": false, "ojos": false}, "nota": "Asentimiento.",
+    "claves": [{"t": 0, "cabeza": {"adelante": 0}}, {"t": 0.5, "cabeza": {"adelante": 8}}, {"t": 1, "cabeza": {"adelante": 0}}]}
+  },
+  "tampoco": {
+   "palabras": ["tampoco"],
+   "dur": 1.4, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Índices con palmas abajo que se separan hacia fuera; el giro de la palma no se precisa.",
+   "d": [
+    {"t": 0, "pos": [0.1, -0.15, 0.5], "dir": "adelante", "pal": "abajo", "forma": "indice", "punto": "indice"},
+    {"t": 1, "pos": [0.55, -0.15, 0.5], "dir": "adelante+afuera"}
+   ],
+   "n": [
+    {"t": 0, "pos": [0.1, -0.15, 0.5], "dir": "adelante", "pal": "abajo", "forma": "indice", "punto": "indice"},
+    {"t": 1, "pos": [0.55, -0.15, 0.5], "dir": "adelante+afuera"}
+   ],
+   "nm": {"necesita": {"cuerpo": true, "cara": true, "ojos": false}, "nota": "Negación lateral de cabeza con cara de negación.", "repetir": 2,
+    "claves": [{"t": 0, "cabeza": {"gira": -12}, "expr": "negacion"}, {"t": 0.5, "cabeza": {"gira": 12}, "expr": "negacion"}, {"t": 1, "cabeza": {"gira": -12}, "expr": "negacion"}]}
+  },
+  "además": {
+   "palabras": ["además", "ademas"],
+   "dur": 1.5, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Mano pasiva plana con palma arriba (suposición); el índice dominante se posa sobre sus yemas. El punto exacto de contacto es interpretado.",
+   "d": [
+    {"t": 0, "pos": [0.2, 0.05, 0.45], "dir": "adelante", "pal": "abajo", "forma": "indice", "punto": "indice"},
+    {"t": 0.6, "pos": [0.2, -0.2, 0.7]},
+    {"t": 1, "pos": [0.2, -0.22, 0.72]}
+   ],
+   "n": [
+    {"t": 0, "pos": [0.2, -0.3, 0.5], "dir": "adelante", "pal": "arriba", "forma": "plana", "punto": "palma"},
+    {"t": 1, "pos": [0.2, -0.3, 0.5]}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": true, "ojos": false}, "nota": "Elevación leve de cejas.",
+    "claves": [{"t": 0, "cejas": 0}, {"t": 0.6, "cejas": 0.4}, {"t": 1, "cejas": 0.4}]}
+  },
+  "entonces": {
+   "palabras": ["entonces", "luego", "pues"],
+   "dur": 1.3, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Se elige mano plana con arco semicircular hacia delante (la descripción admite también índice).",
+   "d": [
+    {"t": 0, "pos": [0.15, -0.1, 0.35], "dir": "adelante", "pal": "adentro", "forma": "plana", "punto": "palma"},
+    {"t": 0.5, "pos": [0.3, 0.05, 0.6]},
+    {"t": 1, "pos": [0.4, -0.1, 0.85]}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": true, "ojos": false}, "nota": "Cejas ligeramente elevadas.",
+    "claves": [{"t": 0, "cejas": 0.3}, {"t": 1, "cejas": 0.3}]}
+  },
+  "aunque": {
+   "palabras": ["aunque", "a pesar"],
+   "dur": 1.4, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Mano plana palma abajo que pasa en arco por encima; 'frente al hombro' es ambiguo, se coloca algo alto.",
+   "d": [
+    {"t": 0, "pos": [0.25, 0.0, 0.35], "dir": "adelante", "pal": "abajo", "forma": "plana", "punto": "palma"},
+    {"t": 0.5, "pos": [0.3, 0.2, 0.6]},
+    {"t": 1, "pos": [0.35, -0.05, 0.9]}
+   ],
+   "nm": {"necesita": {"cuerpo": true, "cara": true, "ojos": false}, "nota": "Cejas elevadas y leve inclinación de la cabeza.",
+    "claves": [{"t": 0, "cejas": 0.5, "cabeza": {"lado": 0}}, {"t": 1, "cejas": 0.5, "cabeza": {"lado": 6}}]}
+  },
+  "lejos": {
+   "palabras": ["lejos", "lejano", "lejana", "distante"],
+   "dur": 1.6, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Mano plana (o índice) con palma lateral/abajo que avanza largo y sostenido; se elige plana con la palma hacia dentro y algo hacia abajo.",
+   "d": [
+    {"t": 0, "pos": [0.25, -0.1, 0.4], "dir": "adelante", "pal": "adentro+abajo", "forma": "plana", "punto": "palma"},
+    {"t": 0.7, "pos": [0.3, 0.05, 1.1]},
+    {"t": 1, "pos": [0.3, 0.1, 1.2]}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": true}, "nota": "Ojos entrecerrados mirando a lo lejos.",
+    "claves": [{"t": 0, "ojos": 1, "mirada": [0, 0]}, {"t": 0.6, "ojos": 0.6, "mirada": [0, 0.2]}, {"t": 1, "ojos": 0.6, "mirada": [0, 0.2]}]}
+  },
+  "al_lado": {
+   "palabras": ["al lado", "junto", "junto a", "cerca"],
+   "dur": 1.4, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "La mano pasiva queda fija y la dominante se coloca contigua con las palmas hacia dentro; la altura y orientación de dedos son interpretación.",
+   "d": [
+    {"t": 0, "pos": [0.6, -0.1, 0.5], "dir": "adelante", "pal": "adentro", "forma": "plana", "punto": "palma"},
+    {"t": 0.6, "pos": [0.14, -0.1, 0.5]},
+    {"t": 1, "pos": [0.14, -0.1, 0.5]}
+   ],
+   "n": [
+    {"t": 0, "pos": [0.14, -0.1, 0.5], "dir": "adelante", "pal": "adentro", "forma": "plana", "punto": "palma"},
+    {"t": 1, "pos": [0.14, -0.1, 0.5]}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Expresión neutra."}
+  },
+  "enfrente": {
+   "palabras": ["enfrente", "frente a", "delante"],
+   "dur": 1.3, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Dos manos planas cara a cara con ligera aproximación; la orientación vertical de los dedos es una elección.",
+   "d": [
+    {"t": 0, "pos": [0.4, 0.0, 0.5], "dir": "arriba", "pal": "adentro", "forma": "plana", "punto": "palma"},
+    {"t": 1, "pos": [0.22, 0.0, 0.5]}
+   ],
+   "n": [
+    {"t": 0, "pos": [0.4, 0.0, 0.5], "dir": "arriba", "pal": "adentro", "forma": "plana", "punto": "palma"},
+    {"t": 1, "pos": [0.22, 0.0, 0.5]}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Expresión neutra."}
+  },
+  "recto": {
+   "palabras": ["recto", "derecho", "todo recto", "seguido"],
+   "dur": 1.4, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Unimanual (o bimanual) con palma lateral y avance recto; se elige unimanual.",
+   "d": [
+    {"t": 0, "pos": [0.15, -0.1, 0.3], "dir": "adelante", "pal": "adentro", "forma": "plana", "punto": "palma"},
+    {"t": 1, "pos": [0.15, -0.1, 1.0]}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": true}, "nota": "Mirada fija al frente.",
+    "claves": [{"t": 0, "ojos": 1, "mirada": [0, 0.05]}, {"t": 1, "ojos": 1, "mirada": [0, 0.05]}]}
+  },
+  "todo": {
+   "palabras": ["todo", "toda", "todos", "todas"],
+   "dur": 1.8, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Trazo de esfera con ambas manos abiertas enfrentadas; se aproxima con 4 claves (arriba, lados, abajo, cierre).",
+   "d": [
+    {"t": 0, "pos": [0.15, 0.2, 0.6], "dir": "adelante", "pal": "adentro", "forma": "abierta", "punto": "palma"},
+    {"t": 0.35, "pos": [0.55, 0.0, 0.6]},
+    {"t": 0.7, "pos": [0.45, -0.4, 0.6]},
+    {"t": 1, "pos": [0.1, -0.4, 0.6], "pal": "arriba"}
+   ],
+   "n": [
+    {"t": 0, "pos": [0.15, 0.2, 0.6], "dir": "adelante", "pal": "adentro", "forma": "abierta", "punto": "palma"},
+    {"t": 0.35, "pos": [0.55, 0.0, 0.6]},
+    {"t": 0.7, "pos": [0.45, -0.4, 0.6]},
+    {"t": 1, "pos": [0.1, -0.4, 0.6], "pal": "arriba"}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": true, "ojos": false}, "nota": "Expresión abarcadora, de énfasis.",
+    "claves": [{"t": 0, "expr": "enfasis"}, {"t": 1, "expr": "enfasis"}]}
+  },
+  "algo": {
+   "palabras": ["algo"],
+   "dur": 1.2, "repetir": 2, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Índice con palma abajo y vaivén lateral indefinido; el índice apunta hacia delante por la palma abajo.",
+   "d": [
+    {"t": 0, "pos": [0.25, -0.1, 0.5], "dir": "adelante", "pal": "abajo", "forma": "indice", "punto": "indice"},
+    {"t": 0.5, "pos": [0.4, -0.1, 0.5]},
+    {"t": 1, "pos": [0.25, -0.1, 0.5]}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": true, "ojos": false}, "nota": "Cejas levemente elevadas.",
+    "claves": [{"t": 0, "cejas": 0.3}, {"t": 1, "cejas": 0.3}]}
+  },
+  "bastante": {
+   "palabras": ["bastante", "suficiente", "bastantes", "suficientes", "basta"],
+   "dur": 1.2, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Mano plana horizontal bajo la barbilla que avanza un poco como tope; la mano parte de la barbilla y baja ligeramente al avanzar.",
+   "d": [
+    {"t": 0, "en": "barbilla", "desp": [0.05, -0.2, 0.15], "dir": "adelante", "pal": "abajo", "forma": "plana", "punto": "palma"},
+    {"t": 0.6, "desp": [0.05, -0.2, 0.45]},
+    {"t": 1, "desp": [0.05, -0.2, 0.45]}
+   ],
+   "nm": {"necesita": {"cuerpo": true, "cara": true, "ojos": false}, "nota": "Asentimiento firme y labios cerrados.",
+    "claves": [{"t": 0, "cabeza": {"adelante": 0}, "sonrisa": -0.3, "boca": 0}, {"t": 0.6, "cabeza": {"adelante": 9}, "sonrisa": -0.3, "boca": 0}, {"t": 1, "cabeza": {"adelante": 0}, "sonrisa": -0.3, "boca": 0}]}
+  },
+  "demasiado": {
+   "palabras": ["demasiado", "demasiada", "demasiados", "demasiadas", "excesivo"],
+   "dur": 1.4, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Ambas manos planas, palmas abajo, que suben por encima de un nivel; no se describe si hay una mano base.",
+   "d": [
+    {"t": 0, "pos": [0.25, -0.15, 0.45], "dir": "adelante", "pal": "abajo", "forma": "plana", "punto": "palma"},
+    {"t": 0.7, "pos": [0.25, 0.5, 0.45]},
+    {"t": 1, "pos": [0.25, 0.75, 0.45]}
+   ],
+   "n": [
+    {"t": 0, "pos": [0.25, -0.15, 0.45], "dir": "adelante", "pal": "abajo", "forma": "plana", "punto": "palma"},
+    {"t": 0.7, "pos": [0.25, 0.5, 0.45]},
+    {"t": 1, "pos": [0.25, 0.75, 0.45]}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": true, "ojos": false}, "nota": "Cejas muy elevadas y exhalación (boca algo abierta).",
+    "claves": [{"t": 0, "cejas": 0.4}, {"t": 0.7, "cejas": 1, "boca": 0.4}, {"t": 1, "cejas": 1, "boca": 0.4}]}
+  },
+  "casi": {
+   "palabras": ["casi"],
+   "dur": 1.2, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Movimiento corto que se detiene antes de tocar; no se indica con qué se iba a tocar, se anima solo una aproximación y un leve retroceso.",
+   "d": [
+    {"t": 0, "pos": [0.2, -0.1, 0.35], "dir": "adelante", "pal": "adentro", "forma": "plana", "punto": "palma"},
+    {"t": 0.5, "pos": [0.2, -0.1, 0.65]},
+    {"t": 0.75, "pos": [0.2, -0.1, 0.6]},
+    {"t": 1, "pos": [0.2, -0.1, 0.6]}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": true}, "nota": "Ojos entrecerrados.",
+    "claves": [{"t": 0, "ojos": 1}, {"t": 0.5, "ojos": 0.6}, {"t": 1, "ojos": 0.6}]}
+  },
+  "doble": {
+   "palabras": ["doble", "dobles", "dos veces"],
+   "dur": 1.4, "repetir": 2, "confianza": "baja", "fuente": "Lista de 500 signos (Gemini): descripción en texto, sin vídeo de referencia",
+   "duda": "Mano en V, palma hacia fuera, con desplazamiento en dos tiempos; se anima como ciclo repetido dos veces.",
+   "d": [
+    {"t": 0, "pos": [0.3, 0.0, 0.5], "dir": "arriba", "pal": "adelante", "forma": "v", "punto": "palma"},
+    {"t": 0.5, "pos": [0.3, 0.0, 0.8]},
+    {"t": 1, "pos": [0.3, 0.0, 0.5]}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Expresión neutra."}
+  }
+ }
+}

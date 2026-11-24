@@ -35,8 +35,16 @@ CENTENAS = {1: "ciento", 2: "doscientos", 3: "trescientos", 4: "cuatrocientos", 
 
 
 def numero_a_palabras(n):
-    """Número (0-9999) a palabras; los mayores se leen cifra a cifra."""
-    if n > 9999:
+    """Número en cifras a los signos que se hacen.
+
+    Del 0 al 20 y el 30 hay un signo propio. Los demás (21, 22…, 40, 100, 2006…) se signan cifra a cifra
+    (25 = 2, 5; 2006 = 2, 0, 0, 6). SUPOSICIÓN pendiente de validar con una persona que sepa LSE.
+    """
+    if n <= 20:
+        return [UNIDADES[n]]
+    if n == 30:
+        return ["treinta"]
+    if n < 10 ** 9:
         return [UNIDADES[int(c)] for c in str(n)]
     if n <= 20:
         return [UNIDADES[n]]

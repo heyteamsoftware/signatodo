@@ -74,10 +74,54 @@
     <p class="resumen" id="resumen"></p>
 
     <p class="nota">
-      Prototipo: muestra una tarjeta por palabra (español signado), no lengua de signos española con su gramática.
-      Dibujos de signos: «Diccionario básico de lengua de signos española», recopilado por la Asociación Equitación como Terapia.
-      Alfabeto dactilológico: adaptado del «Manual básico. Curso de lengua de signos española» (academia-formacion.com).
+      Prototipo educativo sin ánimo de lucro. Signa palabra a palabra, siguiendo el orden del castellano: <strong>no es
+      interpretación en lengua de signos española (LSE)</strong> ni la ha validado ninguna persona sorda ni intérprete.
+      Los subtítulos muestran siempre el texto completo.
     </p>
+
+    <details class="fuentes" id="fuentes">
+      <summary>Fuentes, documentos y créditos</summary>
+
+      <h2>Movimiento de los signos</h2>
+      <ul>
+        <li><strong>ARASAAC</strong> (Centro Aragonés para la Comunicación Aumentativa y Alternativa, Gobierno de Aragón,
+          <a href="https://arasaac.org" target="_blank" rel="noopener">arasaac.org</a>): vídeos de LSE de unas 3.700 palabras.
+          Licencia Creative Commons BY-NC-SA: se cita la fuente, no se usa con fin comercial y lo derivado se comparte igual.
+          De ellos se extrae el movimiento (posición de manos, brazos y cabeza) que anima al avatar.</li>
+        <li><strong>Signos propios</strong> (<code>banco/propios</code>): descritos en este proyecto con una notación por parámetros,
+          para los gestos de cuerpo, cabeza, cara y ojos y para las palabras sin vídeo. Borrador sin validar.</li>
+      </ul>
+
+      <h2>Vocabulario y documentos</h2>
+      <ul>
+        <li><strong>Lista de 500 signos básicos de la LSE con parámetros querológicos</strong>
+          (documento <em>500_signos_LSE_parametros_querologicos (Gemini)</em>): lista generada con inteligencia artificial,
+          <strong>no verificada</strong>. Se usa para elegir el vocabulario básico, los componentes no manuales y para describir
+          los signos que no tienen vídeo (162 de 500).</li>
+        <li><strong>Criterios de interpretación en LSE con habla rápida</strong> (texto aportado por el proyecto, atribuido a la
+          práctica profesional y a la formación en Mediación Comunicativa): desfase, síntesis y claridad antes que velocidad.
+          No se ha localizado el documento original.</li>
+        <li><strong>Manual básico. Curso de Lengua de Signos Española (LSE)</strong>
+          (academia-formacion.com): referencia del alfabeto dactilológico.</li>
+        <li><strong>Diccionario básico de lengua de signos española</strong>, recopilado por la Asociación Equitación como Terapia,
+          a partir de <em>Introducción a la comunicación bimodal. Diccionario básico</em> (Ministerio de Educación y Ciencia –
+          CNREE, 1989; ilustraciones de Lorenzo López Salcedo): dibujos de signos, solo como referencia en desarrollo.</li>
+        <li><strong>Banco de imágenes y signos LSE</strong> (Fundación CNSE, CC BY-NC-SA 3.0) y <strong>DILSE</strong>:
+          consultados como referencia.</li>
+        <li><strong>Informe de fuentes de LSE</strong> de este proyecto (<code>reports/Fuentes de signos LSE.md</code>): inventario
+          de dónde hay signos, con sus licencias y los datos sin verificar.</li>
+      </ul>
+
+      <h2>Tecnología</h2>
+      <ul>
+        <li>MediaPipe Holistic (Google, licencia Apache 2.0): extracción de poses de los vídeos.</li>
+        <li>faster-whisper / Whisper de OpenAI (licencia MIT): transcripción del audio.</li>
+        <li>simplemma (MIT): lemas de las palabras. ffmpeg: audio y vídeo. Voces sintéticas de Microsoft (edge-tts) en los vídeos de ejemplo.</li>
+      </ul>
+
+      <p class="aviso-legal">Las licencias y condiciones de cada fuente prevalecen sobre este resumen. Si compartes un vídeo
+        generado con esta herramienta, conserva la atribución a ARASAAC.</p>
+    </details>
   </main>
 
   <script src="/web/signos.js"></script>

@@ -19,6 +19,9 @@ const Avatar = (() => {
   let indice = {};              // referencia (terceros): clave normalizada -> id de clip
   let definiciones = {};        // signos propios: id -> definición
   const propios = {};           // signos propios: palabra normalizada -> id
+  const gestosPalabra = {};     // gestos no manuales de la lista de 500: palabra normalizada -> nm
+  const compuestos = {};        // signos compuestos: expresión normalizada -> partes
+  let letrasDef = {};           // alfabeto dactilológico propio: letra -> definición
   const clips = {};             // id -> clip ya convertido a poses
   let pista = [];               // signos colocados en el tiempo
   let esPropio = true;          // el signo que se está dibujando es de creación propia (manos más grandes)
@@ -114,7 +117,20 @@ const Avatar = (() => {
         if (r.ok) Object.assign(definiciones, (await r.json()).signos);
       }
     } catch { /* sin signos propios */ }
-    for (const [id, s] of Object.entries(definiciones)) for (const palabra of s.palabras) propios[normalizar(palabra)] = id;
+    for (const [id, s] of Object.entries(definiciones)) for (const palabra of s.palabras) { const clave = normalizar(palabra); if (clave) propios[clave] = id; }
+    // Gestos no manuales de la lista de 500 signos (para palabras con movimiento extraído).
+    try {
+      const r = await fetch('/banco/propios/gestos.json');
+      if (r.ok) for (const [palabra, nm] of Object.entries((await r.json()).gestos)) { const clave = normalizar(palabra); if (clave) gestosPalabra[clave] = nm; }
+    } catch { /* sin gestos de la lista */ }
+    try {
+      const r = await fetch('/banco/propios/compuestos.json');
+      if (r.ok) for (const [clave, partes] of Object.entries((await r.json()).compuestos)) { const k = normalizar(clave); if (k) compuestos[k] = partes; }
+    } catch { /* sin compuestos */ }
+    try {
+      const r = await fetch('/banco/propios/alfabeto.json');
+      if (r.ok) letrasDef = (await r.json()).letras;
+    } catch { /* sin alfabeto */ }
     // Movimiento extraído de vídeos de una persona real signando.
     if (!SOLO_PROPIOS) {
       try {
@@ -131,11 +147,38 @@ const Avatar = (() => {
     return { poses: fotogramas.map((f) => pose(f.cuerpo, f.izq, f.der, f.zi, f.zd, f.zm, f.nm)), dura, propio: true };
   }
 
+  // Una letra del alfabeto dactilológico, ya como poses del avatar.
+  function crearLetra(letra) {
+    const { fotogramas, dura } = Signos.generar(letrasDef[letra]);
+    return { poses: fotogramas.map((f) => pose(f.cuerpo, f.izq, f.der, f.zi, f.zd, f.zm, f.nm)), dura, propio: true };
+  }
+
   // Pone sobre un movimiento extraído los gestos de cuerpo, cara y ojos de un signo propio.
-  function aplicarGestos(clip, idPropio) {
-    const gestos = Signos.gestos(definiciones[idPropio]);
+  function aplicarGestos(clip, ref) {     // ref: 'o:<id>' (signo propio) o 'g:<palabra>' (gestos de la lista de 500)
+    const nm = ref.startsWith('o:') ? definiciones[ref.slice(2)].nm : gestosPalabra[ref.slice(2)];
+    const gestos = Signos.gestos({ nm });
     const n = clip.poses.length;
     clip.poses.forEach((p, i) => p.splice(NM, NM_N, ...gestos(n > 1 ? i / (n - 1) : 0)));
+  }
+
+  // Une las palabras seguidas que forman una expresión con signo ("por favor", "de nada", "fin de semana").
+  function fusionarFrases(unidades) {
+    const hay = (c) => propios[c] !== undefined || indice[c] !== undefined || compuestos[c] !== undefined;
+    const salida = [];
+    for (let i = 0; i < unidades.length;) {
+      let unida = false;
+      for (let n = Math.min(4, unidades.length - i); n >= 2 && !unida; n--) {
+        const grupo = unidades.slice(i, i + n);
+        if (grupo.some((u) => u.seg !== grupo[0].seg)) continue;            // no cruza de una frase a otra
+        const texto = grupo.map((u) => u.texto).join(' ');
+        if (hay(normalizar(texto))) {
+          salida.push({ ...grupo[0], t1: grupo.at(-1).t1, texto, lema: '', tarjeta: '', tipo: 'deletreo' });
+          i += n; unida = true;
+        }
+      }
+      if (!unida) { salida.push(unidades[i]); i++; }
+    }
+    return salida;
   }
 
   // unidades: las de <video>.signos.json; tarjetas: banco.tarjetas (para probar también con su etiqueta)
@@ -147,26 +190,61 @@ const Avatar = (() => {
     unidades = unidades.map(aReloj);
     segmentos = segmentos.map(aReloj);
     pista = [];
+    // Expresiones de varias palabras ("por favor", "de nada", "fin de semana"): se fusionan en una sola unidad.
+    unidades = fusionarFrases(unidades);
     const elegidas = [];
+    // Qué clip se usa para unas palabras candidatas: movimiento extraído (con gestos propios o de la lista
+    // de 500 encima) si existe; si no, el signo propio.
+    const resolverId = (cands) => {
+      const propia = cands.find((c) => propios[c] !== undefined);
+      const extraida = cands.find((c) => indice[c] !== undefined);
+      if (extraida !== undefined) {
+        const gesto = cands.find((c) => gestosPalabra[c] !== undefined);
+        const ref = propia !== undefined && definiciones[propios[propia]].nm ? '|o:' + propios[propia] : (gesto !== undefined ? '|g:' + gesto : '');
+        return String(indice[extraida]) + ref;
+      }
+      return propia !== undefined ? 'o:' + propios[propia] : undefined;
+    };
     unidades.forEach((u, i) => {
       const etiqueta = tarjetas[u.tarjeta]?.etiqueta || '';
-      const candidatas = [normalizar(u.texto), normalizar(u.lema || ''), normalizar(etiqueta), normalizar((u.tarjeta || '').replace(/ny/g, 'ñ').replace(/-/g, ' '))];
-      const propia = candidatas.find((c) => propios[c] !== undefined);
-      const extraida = candidatas.find((c) => indice[c] !== undefined);
+      const candidatas = [normalizar(u.texto), normalizar(u.lema || ''), normalizar(etiqueta), normalizar((u.tarjeta || '').replace(/ny/g, 'ñ').replace(/-/g, ' '))].filter(Boolean);
+      const id = resolverId(candidatas);
+      const compuesto = id === undefined ? candidatas.find((c) => compuestos[c] !== undefined) : undefined;
       // También se signan las palabras sin tarjeta (por ejemplo "yo", "hola") si tienen movimiento o signo propio.
-      if (u.tipo !== 'signo' && !(u.tipo === 'deletreo' && (propia !== undefined || extraida !== undefined))) return;
+      const deletreable = u.tipo === 'deletreo' && Array.isArray(u.letras) && u.letras.some((l) => letrasDef[l]);
+      if (u.tipo !== 'signo' && !(u.tipo === 'deletreo' && (id !== undefined || compuesto !== undefined || deletreable))) return;
       // "complemento" = viene tras una preposición ("en la cocina", "con mantequilla"): es lo primero
       // que se sacrifica, después del relleno, si hay que condensar.
       const anterior = unidades[i - 1];
       const complemento = !!anterior && anterior.tipo === 'omitir' && PREPOSICIONES.has(normalizar(anterior.texto));
-      // Movimiento extraído si existe (con los gestos del signo propio, si lo hay); si no, el signo propio.
-      let id;
-      if (extraida !== undefined) id = String(indice[extraida]) + (propia !== undefined && definiciones[propios[propia]].nm ? '|' + propios[propia] : '');
-      else if (propia !== undefined) id = 'o:' + propios[propia];
-      if (id !== undefined) elegidas.push({ u, id, complemento });
+      if (id !== undefined) {
+        elegidas.push({ u, id, complemento });
+      } else if (compuesto !== undefined) {
+        // Signo compuesto: se encadenan sus partes repartiendo el tiempo de la palabra.
+        const partes = compuestos[compuesto], parte = (u.t1 - u.t0) / partes.length;
+        partes.forEach((p, k) => {
+          const idParte = resolverId([normalizar(p)]);
+          if (idParte !== undefined) elegidas.push({ u: { ...u, t0: u.t0 + k * parte, t1: u.t0 + (k + 1) * parte, texto: p }, id: idParte, complemento });
+        });
+      } else if (deletreable) {
+        // Sin signo: se deletrea. Un nombre propio (con mayúscula, no a principio de frase) no se recorta nunca.
+        const primera = i === 0 || unidades[i - 1].seg !== u.seg;
+        const nombre = /^[A-ZÁÉÍÓÚÑ]/.test(u.texto) && !primera;
+        const letras = u.letras.filter((l) => letrasDef[l]), parte = (u.t1 - u.t0) / letras.length;
+        const sigla = /^[A-ZÁÉÍÓÚÑ]{2,}$/.test(u.texto);
+        // Una palabra común sin signo y larga no se deletrea (los subtítulos ya la muestran): solo nombres,
+        // siglas y palabras de hasta 4 letras.
+        if (nombre || sigla || letras.length <= 4) {
+          letras.forEach((l, k) => elegidas.push({
+            u: { ...u, t0: u.t0 + k * parte, t1: u.t0 + (k + 1) * parte, texto: l.toUpperCase() },
+            id: 'l:' + l, complemento, deletreo: true, nombre: nombre || sigla, grupo: 'd' + i,
+          }));
+        }
+      }
     });
     await Promise.all([...new Set(elegidas.map((e) => e.id))].filter((id) => !clips[id]).map(async (id) => {
       if (String(id).startsWith('o:')) { clips[id] = crearPropio(id.slice(2)); return; }
+      if (String(id).startsWith('l:')) { clips[id] = crearLetra(id.slice(2)); return; }
       const [idExtraido, idPropio] = String(id).split('|');
       const r = await fetch(`/banco/poses/${idExtraido}.json`);
       if (!r.ok) return;
@@ -208,6 +286,7 @@ const Avatar = (() => {
     'HOLA', 'ADIOS', 'GRACIAS', 'PERDON', 'POR FAVOR', 'BUENOS DIAS', 'BUENAS TARDES', 'BUENAS NOCHES',
   ]);
   const nivelDeCorte = (e) => {             // 0 = intocable; mayor = se sacrifica antes
+    if (e.deletreo) return e.nombre ? 0 : 2;   // un nombre propio se deletrea siempre; el resto, si hay tiempo
     const p = normalizar(e.u.texto);
     if (INTOCABLES.has(p) || /^\d+$/.test(p)) return 0;
     if (RELLENO.has(p)) return 4;
@@ -232,7 +311,7 @@ const Avatar = (() => {
       let lista = frases.get(seg).filter((e, k, todas) => {
         const palabra = normalizar(e.u.texto);
         const muletilla = MULETILLAS.has(palabra) && (k === 0 || /,\s*$/.test(e.u.texto)) && todas.length > 1;
-        const repetida = k > 0 && todas[k - 1].u.tarjeta === e.u.tarjeta;
+        const repetida = k > 0 && todas[k - 1].id === e.id;
         return !muletilla && !repetida;
       });
       const inicio = Math.max(inicioIdeal(seg), cursor + TRANSICION);
@@ -250,7 +329,12 @@ const Avatar = (() => {
       const atrasado = inicio - segmentos[seg].t0 > RETRASO_OBJETIVO;
       for (const nivel of atrasado ? [4, 3, 2, 1] : [4, 3]) {
         for (let k = lista.length - 1; k >= 0 && lista.length > 1 && necesario(lista, tope) > disponible; k--) {
-          if (nivelDeCorte(lista[k]) === nivel) lista.splice(k, 1);
+          if (nivelDeCorte(lista[k]) === nivel) {
+            // Una palabra deletreada se quita entera, nunca a medias.
+            const g = lista[k].grupo;
+            if (g === undefined) lista.splice(k, 1);
+            else { for (let j = lista.length - 1; j >= 0; j--) if (lista[j].grupo === g) lista.splice(j, 1); k = Math.min(k, lista.length); }
+          }
         }
       }
       cuenta.recortados += frases.get(seg).length - lista.length;
@@ -528,5 +612,5 @@ const Avatar = (() => {
     return texto;
   }
 
-  return { iniciar, preparar, pintar, visemas, boca, pista: () => pista, propio: crearPropio, definiciones: () => definiciones };
+  return { iniciar, preparar, pintar, visemas, boca, pista: () => pista, propio: crearPropio, letra: crearLetra, definiciones: () => definiciones, compuestos: () => compuestos, gestos: () => gestosPalabra };
 })();
