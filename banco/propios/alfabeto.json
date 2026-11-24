@@ -45,7 +45,7 @@
       0.55
      ],
      "dir": "adentro",
-     "pal": "abajo",
+     "pal": "adelante",
      "forma": {
       "d": [
        0,
@@ -98,8 +98,8 @@
       0.22,
       0.55
      ],
-     "dir": "arriba+adelante",
-     "pal": "adentro",
+     "dir": "arriba",
+     "pal": "adelante+afuera",
      "forma": "c",
      "punto": "palma"
     },
@@ -132,7 +132,7 @@
       0.55
      ],
      "dir": "arriba",
-     "pal": "adelante",
+     "pal": "adelante+afuera",
      "forma": {
       "d": [
        0,
@@ -231,7 +231,7 @@
       0.55
      ],
      "dir": "arriba",
-     "pal": "adelante",
+     "pal": "adelante+afuera",
      "forma": "f",
      "punto": "palma"
     },
@@ -264,7 +264,7 @@
       0.55
      ],
      "dir": "adentro",
-     "pal": "abajo",
+     "pal": "afuera",
      "forma": {
       "d": [
        0,
@@ -318,7 +318,7 @@
       0.55
      ],
      "dir": "adentro",
-     "pal": "abajo",
+     "pal": "afuera",
      "forma": {
       "d": [
        0,
@@ -427,7 +427,28 @@
      ],
      "dir": "arriba",
      "pal": "adelante",
-     "forma": "k",
+     "forma": {
+      "d": [
+       0,
+       0,
+       1,
+       1
+      ],
+      "ab": [
+       -5,
+       80,
+       0,
+       0
+      ],
+      "p": {
+       "a": 55,
+       "f": [
+        10,
+        20,
+        10
+       ]
+      }
+     },
      "punto": "palma"
     },
     {
@@ -492,7 +513,7 @@
       0.55
      ],
      "dir": "abajo",
-     "pal": "atras",
+     "pal": "adelante",
      "forma": {
       "d": [
        [
@@ -558,7 +579,7 @@
       0.55
      ],
      "dir": "abajo",
-     "pal": "atras",
+     "pal": "adelante",
      "forma": {
       "d": [
        [
@@ -619,8 +640,8 @@
       0.22,
       0.55
      ],
-     "dir": "arriba+adelante",
-     "pal": "adentro",
+     "dir": "arriba",
+     "pal": "adelante+afuera",
      "forma": "o",
      "punto": "palma"
     },
@@ -794,8 +815,33 @@
       0.55
      ],
      "dir": "arriba",
-     "pal": "adelante",
-     "forma": "puño",
+     "pal": "adelante+afuera",
+     "forma": {
+      "d": [
+       [
+        70,
+        75,
+        40
+       ],
+       0,
+       0,
+       0
+      ],
+      "ab": [
+       0,
+       6,
+       0,
+       -8
+      ],
+      "p": {
+       "a": 15,
+       "f": [
+        20,
+        30,
+        25
+       ]
+      }
+     },
      "punto": "palma"
     },
     {
@@ -827,26 +873,30 @@
       0.55
      ],
      "dir": "arriba",
-     "pal": "adelante",
+     "pal": "adelante+afuera",
      "forma": {
       "d": [
-       1,
-       1,
-       1,
-       1
-      ],
-      "ab": [
-       0,
+       [
+        50,
+        55,
+        30
+       ],
        0,
        0,
        0
       ],
+      "ab": [
+       0,
+       6,
+       0,
+       -8
+      ],
       "p": {
-       "a": -12,
+       "a": 25,
        "f": [
-        20,
-        32,
-        16
+        30,
+        40,
+        30
        ]
       }
      },
@@ -1131,7 +1181,7 @@
       0.55
      ],
      "dir": "abajo",
-     "pal": "atras",
+     "pal": "adelante",
      "forma": {
       "d": [
        [

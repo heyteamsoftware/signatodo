@@ -33,30 +33,35 @@ FORMAS = {
     "p": {"d": [R, R, R, I], "ab": [0, 0, 0, 0], "p": {"a": -40, "f": [25, 40, 25]}},
     "r": {"d": [R, R, I, I], "ab": [-10, 10, 0, 0], "p": {"a": -30, "f": [25, 40, 25]}},
     "t": {"d": [I, I, I, I], "ab": [0, 0, 0, 0], "p": {"a": -12, "f": [20, 32, 16]}},
+    # K: índice arriba, corazón horizontal hacia dentro y el pulgar apoyado en él (dibujo del manual).
+    "k_lse": {"d": [R, R, I, I], "ab": [-5, 80, 0, 0], "p": {"a": 55, "f": [10, 20, 10]}},
+    # S y T: tres dedos arriba, índice curvado hacia el pulgar; en S el pulgar se cruza sobre el índice, en T se apoya al lado.
+    "s_lse": {"d": [[70, 75, 40], R, R, R], "ab": [0, 6, 0, -8], "p": {"a": 15, "f": [20, 30, 25]}},
+    "t_lse": {"d": [[50, 55, 30], R, R, R], "ab": [0, 6, 0, -8], "p": {"a": 25, "f": [30, 40, 30]}},
     "u": {"d": [R, R, I, I], "ab": [0, 0, 0, 0], "p": {"a": -30, "f": [25, 40, 25]}},
 }
 
 # (forma, dir, pal)
 LETRAS = {
     "a": ("puño", "arriba", "adelante"),
-    "b": ("b", "adentro", "abajo"),
-    "c": ("c", "arriba+adelante", "adentro"),
-    "d": ("d", "arriba", "adelante"),
+    "b": ("b", "adentro", "adelante"),
+    "c": ("c", "arriba", "adelante+afuera"),
+    "d": ("d", "arriba", "adelante+afuera"),
     "e": ("pulgar", "arriba", "adelante"),
-    "f": ("f", "arriba", "adelante"),
-    "g": ("g", "adentro", "abajo"),
-    "h": ("h", "adentro", "abajo"),
+    "f": ("f", "arriba", "adelante+afuera"),
+    "g": ("g", "adentro", "afuera"),
+    "h": ("h", "adentro", "afuera"),
     "i": ("i", "arriba", "adelante"),
-    "k": ("k", "arriba", "adelante"),
+    "k": ("k_lse", "arriba", "adelante"),
     "l": ("l", "arriba", "adelante"),
-    "m": ("m", "abajo", "atras"),
-    "n": ("n", "abajo", "atras"),
-    "o": ("o", "arriba+adelante", "adentro"),
+    "m": ("m", "abajo", "adelante"),
+    "n": ("n", "abajo", "adelante"),
+    "o": ("o", "arriba", "adelante+afuera"),
     "p": ("p", "arriba", "adelante"),
     "q": ("piña", "abajo+adentro", "atras"),
     "r": ("r", "arriba", "adelante"),
-    "s": ("puño", "arriba", "adelante"),
-    "t": ("t", "arriba", "adelante"),
+    "s": ("s_lse", "arriba", "adelante+afuera"),
+    "t": ("t_lse", "arriba", "adelante+afuera"),
     "u": ("u", "arriba", "adelante"),
     "v": ("v", "arriba", "adelante"),
     "w": ("w", "arriba", "adelante"),
@@ -85,7 +90,7 @@ def main():
     ]}
     # Ñ: la N con un vaivén lateral.
     letras["ñ"] = {"dur": 0.6, "d": [
-        clave(0, "n", "abajo", "atras", (-0.05, 0, 0)),
+        clave(0, "n", "abajo", "adelante", (-0.05, 0, 0)),
         {"t": 0.5, "pos": [POS[0] + 0.07, POS[1], POS[2]]},
         {"t": 1, "pos": [POS[0] - 0.05, POS[1], POS[2]]},
     ]}
