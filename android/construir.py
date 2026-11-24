@@ -16,12 +16,13 @@ import os
 import shutil
 import subprocess
 import sys
+import time
 import zipfile
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 AND = os.path.join(RAIZ, "android")
 OBRA = os.path.join(AND, "build")
-VERSION_CODIGO, VERSION_NOMBRE = 1, "0.1"
+VERSION_CODIGO, VERSION_NOMBRE = 2, "0.2"       # 0.2: avatar 3D y revisión del modo directo
 
 
 def buscar_sdk():
@@ -55,6 +56,26 @@ def ejecutar(orden, **kw):
     return r.stdout
 
 
+def copiar_json(origen, carpeta):
+    """Copia un JSON comprobando que está entero.
+
+    La extracción de movimientos puede estar reescribiendo archivos mientras se construye el APK; uno a medio escribir
+    dejaría esa palabra sin signo en la app. Si no se lee bien, se reintenta un momento después.
+    """
+    destino = os.path.join(carpeta, os.path.basename(origen))
+    for _ in range(4):
+        try:
+            shutil.copy(origen, destino)
+            with open(destino, encoding="utf-8") as f:
+                json.load(f)
+            return True
+        except (OSError, ValueError):
+            time.sleep(0.6)
+    if os.path.isfile(destino):
+        os.remove(destino)
+    return False
+
+
 def preparar_assets(poses):
     assets = os.path.join(OBRA, "assets")
     shutil.copytree(os.path.join(RAIZ, "web"), os.path.join(assets, "web"))
@@ -64,11 +85,15 @@ def preparar_assets(poses):
     destino = os.path.join(assets, "banco", "poses")
     os.makedirs(destino)
     if poses == "todas":
-        n = 0
+        n, malos = 0, []
         for f in glob.glob(os.path.join(RAIZ, "banco", "poses", "*.json")):
-            shutil.copy(f, destino)
-            n += 1
+            if copiar_json(f, destino):
+                n += 1
+            else:
+                malos.append(os.path.basename(f))
         print(f"  {n} archivos de movimiento")
+        if malos:
+            print(f"  AVISO: {len(malos)} archivos no se han podido leer y no van en el APK: {', '.join(malos[:8])}")
     else:
         with open(os.path.join(destino, "indice.json"), "w", encoding="utf-8") as f:
             f.write("{}")
