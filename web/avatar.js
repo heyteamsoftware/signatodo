@@ -13,7 +13,9 @@ const Avatar = (() => {
   const TINTA = '#111', PAPEL = '#fff';
 
   let lienzo, ctx;
-  const USAR_REFERENCIA = new URLSearchParams(location.search).has('referencia');
+  // Por defecto se usa el movimiento extraído de vídeos de una persona real (banco/poses), con los gestos
+  // de cuerpo, cara y ojos de los signos propios por encima. Con ?soloPropios=1 se usan solo los signos propios.
+  const SOLO_PROPIOS = new URLSearchParams(location.search).has('soloPropios');
   let indice = {};              // referencia (terceros): clave normalizada -> id de clip
   let definiciones = {};        // signos propios: id -> definición
   const propios = {};           // signos propios: palabra normalizada -> id
@@ -104,7 +106,7 @@ const Avatar = (() => {
   async function iniciar(canvas) {
     lienzo = canvas;
     ctx = canvas.getContext('2d');
-    // Signos propios (nuestra notación): lo único que se usa por defecto.
+    // Signos propios (nuestra notación): aportan los gestos no manuales y cubren palabras sin vídeo.
     try {
       definiciones = {};
       for (const url of await (await fetch('/api/propios')).json()) {
@@ -113,8 +115,8 @@ const Avatar = (() => {
       }
     } catch { /* sin signos propios */ }
     for (const [id, s] of Object.entries(definiciones)) for (const palabra of s.palabras) propios[normalizar(palabra)] = id;
-    // Movimiento extraído de vídeos de terceros: solo como referencia, con ?referencia=1 en la dirección.
-    if (USAR_REFERENCIA) {
+    // Movimiento extraído de vídeos de una persona real signando.
+    if (!SOLO_PROPIOS) {
       try {
         const r = await fetch('/banco/poses/indice.json');
         indice = r.ok ? await r.json() : {};
@@ -127,6 +129,13 @@ const Avatar = (() => {
   function crearPropio(id) {
     const { fotogramas, dura } = Signos.generar(definiciones[id]);
     return { poses: fotogramas.map((f) => pose(f.cuerpo, f.izq, f.der, f.zi, f.zd, f.zm, f.nm)), dura, propio: true };
+  }
+
+  // Pone sobre un movimiento extraído los gestos de cuerpo, cara y ojos de un signo propio.
+  function aplicarGestos(clip, idPropio) {
+    const gestos = Signos.gestos(definiciones[idPropio]);
+    const n = clip.poses.length;
+    clip.poses.forEach((p, i) => p.splice(NM, NM_N, ...gestos(n > 1 ? i / (n - 1) : 0)));
   }
 
   // unidades: las de <video>.signos.json; tarjetas: banco.tarjetas (para probar también con su etiqueta)
@@ -142,20 +151,28 @@ const Avatar = (() => {
     unidades.forEach((u, i) => {
       const etiqueta = tarjetas[u.tarjeta]?.etiqueta || '';
       const candidatas = [normalizar(u.texto), normalizar(u.lema || ''), normalizar(etiqueta), normalizar((u.tarjeta || '').replace(/ny/g, 'ñ').replace(/-/g, ' '))];
-      // También se signan las palabras sin tarjeta (por ejemplo "yo", "hola") si tienen signo propio.
-      if (u.tipo !== 'signo' && !(u.tipo === 'deletreo' && candidatas.some((c) => propios[c] !== undefined))) return;
       const propia = candidatas.find((c) => propios[c] !== undefined);
-      const clave = propia ?? candidatas.find((c) => indice[c] !== undefined);
+      const extraida = candidatas.find((c) => indice[c] !== undefined);
+      // También se signan las palabras sin tarjeta (por ejemplo "yo", "hola") si tienen movimiento o signo propio.
+      if (u.tipo !== 'signo' && !(u.tipo === 'deletreo' && (propia !== undefined || extraida !== undefined))) return;
       // "complemento" = viene tras una preposición ("en la cocina", "con mantequilla"): es lo primero
       // que se sacrifica, después del relleno, si hay que condensar.
       const anterior = unidades[i - 1];
       const complemento = !!anterior && anterior.tipo === 'omitir' && PREPOSICIONES.has(normalizar(anterior.texto));
-      if (clave !== undefined) elegidas.push({ u, id: propia !== undefined ? 'o:' + propios[propia] : indice[clave], complemento });
+      // Movimiento extraído si existe (con los gestos del signo propio, si lo hay); si no, el signo propio.
+      let id;
+      if (extraida !== undefined) id = String(indice[extraida]) + (propia !== undefined && definiciones[propios[propia]].nm ? '|' + propios[propia] : '');
+      else if (propia !== undefined) id = 'o:' + propios[propia];
+      if (id !== undefined) elegidas.push({ u, id, complemento });
     });
     await Promise.all([...new Set(elegidas.map((e) => e.id))].filter((id) => !clips[id]).map(async (id) => {
       if (String(id).startsWith('o:')) { clips[id] = crearPropio(id.slice(2)); return; }
-      const r = await fetch(`/banco/poses/${id}.json`);
-      if (r.ok) clips[id] = convertir(await r.json());
+      const [idExtraido, idPropio] = String(id).split('|');
+      const r = await fetch(`/banco/poses/${idExtraido}.json`);
+      if (!r.ok) return;
+      const clip = convertir(await r.json());
+      if (idPropio) aplicarGestos(clip, idPropio);
+      clips[id] = clip;
     }));
     const validas = elegidas.filter((e) => clips[e.id]);
     const resumen = planificar(validas, segmentos);

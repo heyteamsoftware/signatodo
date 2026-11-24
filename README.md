@@ -94,3 +94,18 @@ cuerpo, gesto de cara o gesto de ojos (47 necesitan alguno). Se validan con
 Para describir más: `py herramientas/lotes.py siguiente 30` reserva palabras y
 `py herramientas/hoja_referencia.py --grande --salida carpeta --archivo lista.txt` genera las hojas de
 consulta (con `--grande` los dedos se leen mucho mejor). Guía de la notación: `herramientas/NOTACION.md`.
+
+## Movimiento: extraído de vídeos reales + gestos propios (vigente)
+
+Por decisión del proyecto, el avatar usa por defecto el **movimiento extraído de vídeos de una persona real
+signando** (`banco/poses`, ~3.700 signos, se genera en local con `descargar_arasaac.py` y
+`extraer_poses.py`), porque es mucho más natural que los signos descritos con pocos fotogramas clave.
+Encima se aplican los **gestos de cuerpo, cabeza, cara y ojos** de los signos propios (`banco/propios`);
+las palabras sin vídeo usan el signo propio. Con `?soloPropios=1` en la dirección solo se usan los propios.
+
+Los vídeos de origen son de ARASAAC (Gobierno de Aragón), licencia Creative Commons BY-NC-SA: hay que
+citar la fuente, no se puede usar con fin comercial y lo derivado se comparte igual. Los clips extraídos
+no se suben al repositorio (están en `.gitignore`).
+
+El botón **Descargar vídeo con signos** graba la reproducción (vídeo + avatar + subtítulos) y la une con el
+audio original. Dura lo que dura el vídeo y la pestaña debe quedar a la vista hasta que termine.

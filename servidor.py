@@ -6,11 +6,12 @@ import json
 import mimetypes
 import os
 import re
+import shutil
 import subprocess
 import sys
 import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from urllib.parse import quote, unquote, urlparse
+from urllib.parse import parse_qs, quote, unquote, urlparse
 
 RAIZ = os.path.dirname(os.path.abspath(__file__))
 PUERTO = int(sys.argv[1]) if len(sys.argv) > 1 else 8765
@@ -105,6 +106,41 @@ def listar_propios():
     return urls
 
 
+def guardar_grabacion(sesion, datos):
+    """Guarda la grabación (webm) del vídeo con avatar que dibuja la página."""
+    if not re.fullmatch(r"[A-Za-z0-9_-]{4,40}", sesion) or not datos or len(datos) > 900_000_000:
+        return False
+    carpeta = os.path.join(RAIZ, "exportados", "_grabaciones")
+    os.makedirs(carpeta, exist_ok=True)
+    with open(os.path.join(carpeta, sesion + ".webm"), "wb") as f:
+        f.write(datos)
+    return True
+
+
+def unir_avatar(nombre, sesion, fps, desfase):
+    """Une la grabación con el audio del vídeo original. Devuelve (código, respuesta)."""
+    valido = os.path.basename(nombre) == nombre and os.path.splitext(nombre)[1].lower() in EXT_VIDEO
+    origen = os.path.join(RAIZ, "videos", nombre)
+    if not valido or not os.path.isfile(origen) or not re.fullmatch(r"[A-Za-z0-9_-]{4,40}", sesion):
+        return 404, {"error": "Vídeo o sesión no válidos."}
+    grabacion = os.path.join(RAIZ, "exportados", "_grabaciones", sesion + ".webm")
+    if not os.path.isfile(grabacion):
+        return 404, {"error": "No hay grabación de esa sesión."}
+    try:
+        desfase = min(max(float(desfase), 0.0), 5.0)
+    except (TypeError, ValueError):
+        desfase = 0.0
+    salida = os.path.join(RAIZ, "exportados", os.path.splitext(nombre)[0] + "-avatar.mp4")
+    orden = ["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{desfase:.3f}", "-i", grabacion, "-i", origen,
+             "-map", "0:v:0", "-map", "1:a:0?", "-vf", f"fps={int(fps)}", "-c:v", "libx264", "-preset", "veryfast",
+             "-crf", "21", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k", "-shortest", "-movflags", "+faststart", salida]
+    r = subprocess.run(orden, capture_output=True, text=True, encoding="utf-8", errors="replace")
+    os.remove(grabacion)
+    if r.returncode != 0:
+        return 500, {"error": "ffmpeg ha fallado: " + r.stderr[-300:]}
+    return 200, {"archivo": "/exportados/" + os.path.basename(salida)}
+
+
 class Manejador(BaseHTTPRequestHandler):
     protocol_version = "HTTP/1.1"
 
@@ -118,6 +154,20 @@ class Manejador(BaseHTTPRequestHandler):
         ruta = urlparse(self.path).path
         largo = int(self.headers.get("Content-Length") or 0)
         cuerpo = self.rfile.read(largo) if largo else b""
+        tipo_cuerpo = self.headers.get("Content-Type") or ""
+        if ruta == "/api/avatar-grabacion" and tipo_cuerpo.startswith("video/webm"):
+            consulta = parse_qs(urlparse(self.path).query)
+            try:
+                ok = guardar_grabacion(consulta["sesion"][0], cuerpo)
+            except (KeyError, IndexError):
+                ok = False
+            return self.responder_json(200 if ok else 400, {"ok": ok})
+        if ruta == "/api/avatar-final" and "application/json" in tipo_cuerpo:
+            try:
+                pedido = json.loads(cuerpo.decode("utf-8"))
+                return self.responder_json(*unir_avatar(str(pedido["video"]), str(pedido["sesion"]), pedido.get("fps", 25), pedido.get("desfase", 0)))
+            except (ValueError, KeyError, TypeError):
+                return self.responder_json(400, {"error": "Petición incorrecta."})
         # Solo JSON: así otra página web no puede lanzar un trabajo sin permiso del navegador.
         if ruta not in ("/api/procesar", "/api/exportar") or "application/json" not in (self.headers.get("Content-Type") or ""):
             return self.responder(404, b"No encontrado")

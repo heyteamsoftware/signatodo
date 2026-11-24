@@ -331,7 +331,7 @@ const Signos = (() => {
     return { fotogramas, dura };
   }
 
-  return { generar, FORMAS, LUGARES, EXPRESIONES, NM_NEUTRO, DIRECCIONES, puntosDeMano, direccion, L_BRAZO, L_ANTEBRAZO };
+  return { gestos: (signo) => trayectoriaNM(signo.nm), generar, FORMAS, LUGARES, EXPRESIONES, NM_NEUTRO, DIRECCIONES, puntosDeMano, direccion, L_BRAZO, L_ANTEBRAZO };
 })();
 
 if (typeof module !== 'undefined') module.exports = Signos;   // para el validador en Node

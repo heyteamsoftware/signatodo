@@ -192,11 +192,10 @@ function actualizarBotonProcesar() {
   $('boton-procesar').textContent = v && v.datos ? 'Volver a procesar' : 'Procesar vídeo';
   $('boton-procesar').disabled = estado.ocupado;
   $('lista-videos').disabled = estado.ocupado;
-  // La exportación aún solo sabe dibujar tarjetas de terceros: con el avatar (por defecto) no se ofrece.
-  $('boton-exportar').disabled = estado.ocupado || !v || !v.datos || estado.avatar;
+  $('boton-exportar').disabled = estado.ocupado || !v || !v.datos;
   $('boton-exportar').title = estado.avatar
-    ? 'Todavía no se puede exportar el avatar. Solo con las tarjetas de referencia (opción de desarrollo).'
-    : 'Genera un mp4 con el recuadro y los subtítulos pegados, con los ajustes de aquí al lado';
+    ? 'Genera un mp4 con el avatar y los subtítulos pegados. Se dibuja fotograma a fotograma en esta página: no la cierres.'
+    : 'Genera un mp4 con el recuadro de tarjetas de referencia y los subtítulos pegados';
 }
 
 // Lo que tapa el vídeo cuando no hay ningún trabajo en marcha.
@@ -266,6 +265,7 @@ async function procesar() {
 async function exportar() {
   const v = videoElegido();
   if (!v || !v.datos || estado.ocupado) return;
+  if (estado.avatar) return exportarAvatar();      // lo que se ve es el avatar: se exporta el avatar
   video.pause();
   const respuesta = await fetch('/api/exportar', {
     method: 'POST',
