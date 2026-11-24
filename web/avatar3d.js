@@ -10,8 +10,8 @@
 //   3. color: cada material con su color, sombreado en tres tonos y con las sombras de la pasada 1.
 //
 // La cara es parte del modelo, no un dibujo pegado encima: la cabeza tiene un hueco de verdad donde se abre la boca, y por
-// él se ven los dientes y la lengua, que están dentro; los labios son tubos que siguen la curva de la cara; la barbilla baja
-// al abrir; los ojos son globos con su pupila y las cejas van en relieve.
+// él se ven los dientes y la lengua, que están dentro; los labios son tubos que siguen la curva de la cara; los ojos son
+// globos con su pupila y las cejas van en relieve. La cabeza es redonda: no tiene barbilla que se mueva.
 //
 // Coordenadas: x a la derecha de la pantalla, y hacia arriba, z hacia quien mira. Unidad = ancho de hombros.
 // La vista tiene una perspectiva suave: los signos quedan casi donde se grabaron y lo que se acerca a quien mira se ve
@@ -281,7 +281,7 @@ const Avatar3D = (() => {
     // Tronco de persona (medidas en anchos de hombro, tomadas de proporciones reales): el pecho es algo más estrecho que
     // los hombros y se estrecha hacia la cintura; debajo, las caderas. Una pieza de lado a lado hace la línea de los hombros,
     // de donde cuelgan los brazos.
-    const PECHO = 0.45, CINTURA = 0.37, CADERAS = 0.43, FONDO = 0.56, CUPULA = 0.5, R_HOMBROS = 0.125;
+    const PECHO = 0.47, CINTURA = 0.41, CADERAS = 0.45, FONDO = 0.58, CUPULA = 0.5, R_HOMBROS = 0.125;
     const yPecho = medio[1] - 0.17, yCintura = medio[1] - 1.0;
     const aplastada = (a, b, ra, rb) => ({ a, b, ra, rb, m: escala3(1, CUPULA, FONDO), n: escala3(1, 1 / CUPULA, 1 / FONDO), mat: 'ropa', contorno: 1 });
     piezas.push(aplastada([medio[0], yCintura, 0], [medio[0], yPecho, 0], CINTURA, PECHO));            // pecho
@@ -289,6 +289,12 @@ const Avatar3D = (() => {
     piezas.push(aplastada([medio[0], cadera - 1.4, 0], [medio[0], cadera, 0], CADERAS, CADERAS));      // sigue hacia abajo, fuera del recuadro
     const yHombros = (hI[1] + hD[1]) / 2 - 0.02;
     piezas.push(capsula([hD[0], hD[1] - 0.02, -0.02], [hI[0], hI[1] - 0.02, -0.02], R_HOMBROS, R_HOMBROS, 'ropa'));
+    // Del cuello a cada hombro, en pendiente (como caen los hombros de una persona), y el cuello del jersey.
+    for (const hombro of [hI, hD]) {
+      const lado = Math.sign(hombro[0] - medio[0]) || 1;
+      piezas.push(capsula([medio[0] + lado * 0.12, medio[1] + 0.085, -0.02], [hombro[0] - lado * 0.05, hombro[1] + 0.005, -0.02], 0.085, 0.115, 'ropa'));
+    }
+    piezas.push(elipsoide([medio[0], medio[1] + 0.07, 0.008], 0.185, 0.06, 0.175, IDENTIDAD3, 'ropa'));
     const anchoTronco = (y) => (y >= yCintura
       ? CINTURA + (PECHO - CINTURA) * Math.min((y - yCintura) / (yPecho - yCintura), 1)
       : CINTURA + (CADERAS - CINTURA) * Math.min((yCintura - y) / (yCintura - cadera), 1));
@@ -298,6 +304,7 @@ const Avatar3D = (() => {
       const ancho = anchoTronco(y), k = (x - medio[0]) / ancho;
       if (Math.abs(k) < 1 && y <= yPecho + PECHO * CUPULA) z = ancho * FONDO * Math.sqrt(1 - k * k);
       if (Math.abs(y - yHombros) < R_HOMBROS && Math.abs(x - medio[0]) < 0.5 + R_HOMBROS) z = Math.max(z, R_HOMBROS - 0.02);   // línea de los hombros
+      if (y > yHombros && Math.abs(x - medio[0]) < 0.3) z = Math.max(z, 0.18);                                            // cuello del jersey y arranque de los hombros
       return z;
     };
 
@@ -314,28 +321,24 @@ const Avatar3D = (() => {
     // La boca: de los nueve números del sonido a su geometría.
     const [ancho, alto, redondeo, dientesArriba, dientesAbajo, lenguaVista, lenguaSitio, aprieta, efe] = cara.forma;
     const sonrisa = cara.sonrisa;
-    const AMPLIA = 1.12, Y_BOCA = 0.245;                                // la boca, algo mayor que la real y bajo la nariz
+    const AMPLIA = 1.12, Y_BOCA = 0.235;                                // la boca, algo mayor que la real y bajo la nariz
     const mw = Math.max(ancho * AMPLIA / 2 * (1 + 0.15 * sonrisa), 0.03);      // media anchura de la abertura
     const abre = alto * AMPLIA;                                         // abertura total
     const abierta = abre >= 0.014;
     const grosorLabio = (0.017 + 0.024 * redondeo) * (1 + 0.12 * aprieta);
     const yComisura = Y_BOCA - sonrisa * 0.03;                          // las comisuras suben al sonreír
-    const arriba = abierta ? Y_BOCA - abre * 0.3 : Y_BOCA;              // al abrir, baja la mandíbula más de lo que sube el labio
-    const abajoMandibula = abierta ? Y_BOCA + abre * 0.7 : Y_BOCA;
+    const arriba = abierta ? Y_BOCA - abre * 0.4 : Y_BOCA;              // se abre algo más hacia abajo que hacia arriba
+    const abajoMandibula = abierta ? Y_BOCA + abre * 0.6 : Y_BOCA;
     const abajo = abierta && efe > 0.5 ? arriba + abre * 0.5 : abajoMandibula;   // f: el labio de abajo sube hasta los dientes
-    const caida = abierta ? abre * 0.4 : 0;                             // lo que baja la barbilla
 
-    // Superficie de la cara: la esfera de la cabeza y, por debajo, la mandíbula (un elipsoide que baja al abrir la boca).
-    // Es más estrecha que la cabeza a su altura, así que queda dentro salvo abajo, donde hace la barbilla.
-    const MAND = { y: 0.3 + caida, z0: 0.03, rx: 0.24, ry: 0.19, rz: 0.29 };
+    // Superficie de la cara: la esfera de la cabeza, redonda. (Se probó una barbilla que bajaba al abrir la boca y quedaba
+    // mal; la boca se abre dentro de la cara, sin deformarla.)
     const zCabeza = (x, y) => Math.sqrt(Math.max(R * R - x * x - y * y, 0));
-    const zMandibula = (x, y) => { const k = 1 - (x / MAND.rx) ** 2 - ((y - MAND.y) / MAND.ry) ** 2; return k > 0 ? MAND.z0 + MAND.rz * Math.sqrt(k) : 0; };
-    const zPiel = (x, y) => Math.max(zCabeza(x, y), zMandibula(x, y));
+    const zPiel = zCabeza;
     const enPiel = (x, y, fuera = 0) => enCara(x, y, zPiel(x, y) + fuera);
 
-    piezas.push(capsula(baseCuello, enCara(0, R * 0.75, -0.03), 0.155, 0.14, 'piel'));                       // cuello
+    piezas.push(capsula(baseCuello, enCara(0, R * 0.75, -0.03), 0.14, 0.13, 'piel'));                        // cuello
     piezas.push({ a: centroCabeza, b: centroCabeza, ra: R, rb: R, m: giroCabeza, n: giroCabeza, mat: 'piel', cara: 1, hueco: 1, contorno: 1 });
-    piezas.push({ ...elipsoide(enCara(0, MAND.y, MAND.z0), MAND.rx, MAND.ry, MAND.rz, giroCabeza, 'piel'), hueco: 1 });   // barbilla
     piezas.push(elipsoide(enCara(0, -0.15 * R, -0.16 * R), 1.035 * R, 1.035 * R, 1.035 * R, giroCabeza, 'pelo'));        // pelo: casquete por arriba y por detrás
     piezas.push(esfera(enCara(0, 0.045, zCabeza(0, 0.045) * 0.985), 0.034, 'piel', 0.45));                   // nariz
 
@@ -356,7 +359,8 @@ const Avatar3D = (() => {
     // Dentro de la boca (solo se ve por el hueco): el fondo oscuro, los dientes y la lengua.
     if (abierta) {
       const zLabios = zCabeza(mw * 0.88, Y_BOCA);
-      piezas.push(elipsoide(enCara(0, Y_BOCA + abre * 0.2, zCabeza(0, Y_BOCA) - 0.24), 0.2, 0.17, 0.09, giroCabeza, 'boca', 0));
+      // El fondo cabe entero dentro de la cabeza: si fuera mayor asomaría por debajo de la cara.
+      piezas.push(elipsoide(enCara(0, Y_BOCA + abre * 0.1, zCabeza(0, Y_BOCA) - 0.24), 0.17, 0.12, 0.08, giroCabeza, 'boca', 0));
       const R_DIENTE = 0.026;
       // Una fila de dientes: tan adentro como haga falta para que ni sus extremos asomen por la piel (solo se ve por el hueco).
       const fila = (y, medioAncho, extra) => {
@@ -395,14 +399,12 @@ const Avatar3D = (() => {
       piezas.push(capsula(enPiel(cima[0], cima[1], 0.012), enPiel(exterior[0], exterior[1], 0.012), 0.018, 0.012, 'ceja', 0));
     }
 
-    // Hasta dónde llega la cabeza hacia quien mira (con la mandíbula y un margen por la nariz, los labios y los ojos).
+    // Hasta dónde llega la cabeza hacia quien mira (con un margen por la nariz, los labios y los ojos).
     const frenteCabeza = (x, y) => {
       const dx = x - centroCabeza[0], dy = y - centroCabeza[1];
       let z = -Infinity;
       const d2 = dx * dx + dy * dy;
       if (d2 < R * R) z = centroCabeza[2] + Math.sqrt(R * R - d2) + 0.04;
-      const k = 1 - (dx / MAND.rx) ** 2 - ((-dy - MAND.y) / MAND.ry) ** 2;
-      if (k > 0) z = Math.max(z, centroCabeza[2] + MAND.z0 + MAND.rz * Math.sqrt(k) + 0.03);
       return z;
     };
 

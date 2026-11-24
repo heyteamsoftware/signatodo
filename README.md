@@ -241,8 +241,15 @@ El muñeco blanco y gris con la cara pintada encima resultaba inquietante. Ahora
   con degradado suave (un corte de tono en la cara parece barba).
 - **La boca es parte del modelo**: la cabeza tiene un hueco de verdad donde se abre la boca (el sombreador descarta esa zona) y por
   él se ven los dientes y la lengua, que son piezas de dentro; los labios son tubos que siguen la curva de la cara y se adelantan
-  al redondear (o, u); la barbilla baja al abrir. Con la cabeza girada la forma se sigue leyendo.
+  al redondear (o, u). Con la cabeza girada la forma se sigue leyendo. La cabeza es redonda: se probó una barbilla que
+  bajaba al abrir la boca y quedaba mal, así que la boca se abre dentro de la cara sin deformarla.
 - **Ojos y cejas en relieve**: globo blanco, pupila y brillo; las cejas son piezas que suben, bajan y se fruncen. Sobre la cabeza
   solo queda pintado el flequillo, el rubor y la raya de los ojos cerrados.
 
 El muñeco plano (sin WebGL) sigue siendo el de línea en blanco y negro.
+
+### Cuello, hombros, tronco y zoom
+
+El cuello es más fino (radio 0,14) y sale de un cuello de jersey bajo; del cuello a cada hombro hay una pieza en pendiente, como
+caen los hombros de una persona; el tronco es algo más ancho y con más fondo (pecho 0,47, cintura 0,41, caderas 0,45 de medio
+ancho). El zoom por defecto sube un poco: 135 % en el modo vídeo («Acercar avatar») y 1,2 en el modo directo.

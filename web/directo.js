@@ -23,7 +23,7 @@ function ajustar() {
   lienzo.style.height = alto + 'px';
   lienzo.width = Math.round(ancho * dpr);
   lienzo.height = Math.round(alto * dpr);
-  zoom = 1; margen = null;
+  zoom = 1.2; margen = null;       // un poco de zoom: se ve de la cabeza a la cintura
 }
 
 function estado(texto) { $('estado').textContent = texto; }
