@@ -1029,7 +1029,7 @@ const Avatar = (() => {
     const propia = poseDada ? true : esPropio;
     const W = lienzo.width, H = lienzo.height;
     const u = W * 0.245 * zoom, ox = W / 2;                      // unidad = ancho de hombros
-    const oy = (margen === null ? H * 0.1 / zoom : margen) + 1.3 * u;                        // la cabeza siempre queda arriba, a la vista
+    const oy = (margen === null ? H * 0.06 / zoom : margen) + 1.3 * u;                        // la cabeza siempre queda arriba, a la vista
     const X = (i) => ox + p[i] * u, Y = (i) => oy + p[i + 1] * u;
     const grosor = Math.max(2, W / 260) * Math.sqrt(zoom);
     ctx.clearRect(0, 0, W, H);

@@ -250,6 +250,10 @@ El muñeco plano (sin WebGL) sigue siendo el de línea en blanco y negro.
 
 ### Cuello, hombros, tronco y zoom
 
-El cuello es más fino (radio 0,14) y sale de un cuello de jersey bajo; del cuello a cada hombro hay una pieza en pendiente, como
-caen los hombros de una persona; el tronco es algo más ancho y con más fondo (pecho 0,47, cintura 0,41, caderas 0,45 de medio
-ancho). El zoom por defecto sube un poco: 135 % en el modo vídeo («Acercar avatar») y 1,2 en el modo directo.
+El cuello es un cilindro de piel (radio 0,17 en la base y 0,155 arriba) que sale de un cuello de jersey redondo: un anillo del
+mismo eje y más ancho que lo envuelve, para que su base no asome por delante del pecho. Del cuello a cada hombro hay una pieza en
+pendiente, como caen los hombros de una persona, que arranca separada del cuello para no taparle el contorno. El tronco es algo
+más ancho y con más fondo (pecho 0,47, cintura 0,41, caderas 0,45 de medio ancho).
+
+El zoom por defecto es 155 % en el modo vídeo («Acercar avatar») y 1,45 en el modo directo, con la cabeza cerca del borde de
+arriba del cuadro. A ese zoom la mano que no signa, en reposo a la altura de la cintura, puede quedar cortada por abajo.

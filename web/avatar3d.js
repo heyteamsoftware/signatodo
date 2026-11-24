@@ -281,6 +281,7 @@ const Avatar3D = (() => {
     // Tronco de persona (medidas en anchos de hombro, tomadas de proporciones reales): el pecho es algo más estrecho que
     // los hombros y se estrecha hacia la cintura; debajo, las caderas. Una pieza de lado a lado hace la línea de los hombros,
     // de donde cuelgan los brazos.
+    const R_CUELLO = [0.17, 0.155], R_CUELLO_JERSEY = 0.205;        // el cuello (base y arriba) y el cuello del jersey que lo envuelve
     const PECHO = 0.47, CINTURA = 0.41, CADERAS = 0.45, FONDO = 0.58, CUPULA = 0.5, R_HOMBROS = 0.125;
     const yPecho = medio[1] - 0.17, yCintura = medio[1] - 1.0;
     const aplastada = (a, b, ra, rb) => ({ a, b, ra, rb, m: escala3(1, CUPULA, FONDO), n: escala3(1, 1 / CUPULA, 1 / FONDO), mat: 'ropa', contorno: 1 });
@@ -292,9 +293,10 @@ const Avatar3D = (() => {
     // Del cuello a cada hombro, en pendiente (como caen los hombros de una persona), y el cuello del jersey.
     for (const hombro of [hI, hD]) {
       const lado = Math.sign(hombro[0] - medio[0]) || 1;
-      piezas.push(capsula([medio[0] + lado * 0.12, medio[1] + 0.085, -0.02], [hombro[0] - lado * 0.05, hombro[1] + 0.005, -0.02], 0.085, 0.115, 'ropa'));
+      piezas.push(capsula([medio[0] + lado * 0.19, medio[1] + 0.05, -0.03], [hombro[0] - lado * 0.05, hombro[1] + 0.005, -0.02], 0.085, 0.115, 'ropa'));
     }
-    piezas.push(elipsoide([medio[0], medio[1] + 0.07, 0.008], 0.185, 0.06, 0.175, IDENTIDAD3, 'ropa'));
+    piezas.push({ a: [medio[0], medio[1] - 0.08, 0.02], b: [medio[0], medio[1] + 0.07, 0.02], ra: R_CUELLO_JERSEY, rb: R_CUELLO_JERSEY,
+      m: escala3(1, 0.33, 1), n: escala3(1, 1 / 0.33, 1), mat: 'ropa', contorno: 1 });
     const anchoTronco = (y) => (y >= yCintura
       ? CINTURA + (PECHO - CINTURA) * Math.min((y - yCintura) / (yPecho - yCintura), 1)
       : CINTURA + (CADERAS - CINTURA) * Math.min((yCintura - y) / (yCintura - cadera), 1));
@@ -337,7 +339,7 @@ const Avatar3D = (() => {
     const zPiel = zCabeza;
     const enPiel = (x, y, fuera = 0) => enCara(x, y, zPiel(x, y) + fuera);
 
-    piezas.push(capsula(baseCuello, enCara(0, R * 0.75, -0.03), 0.14, 0.13, 'piel'));                        // cuello
+    piezas.push(capsula(baseCuello, enCara(0, R * 0.75, -0.03), R_CUELLO[0], R_CUELLO[1], 'piel'));          // cuello
     piezas.push({ a: centroCabeza, b: centroCabeza, ra: R, rb: R, m: giroCabeza, n: giroCabeza, mat: 'piel', cara: 1, hueco: 1, contorno: 1 });
     piezas.push(elipsoide(enCara(0, -0.15 * R, -0.16 * R), 1.035 * R, 1.035 * R, 1.035 * R, giroCabeza, 'pelo'));        // pelo: casquete por arriba y por detrás
     piezas.push(esfera(enCara(0, 0.045, zCabeza(0, 0.045) * 0.985), 0.034, 'piel', 0.45));                   // nariz
