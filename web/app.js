@@ -30,6 +30,7 @@ const estado = {
   segmento: -1,       // índice del subtítulo visible
   videos: [],         // lista de /api/videos
   ocupado: false,     // hay un procesado o una exportación en marcha
+  avatar: true,       // por defecto solo se usa nuestro avatar; las tarjetas de terceros son opcionales
   deletrear: true,
   subtitulos: true,
 };
@@ -191,7 +192,11 @@ function actualizarBotonProcesar() {
   $('boton-procesar').textContent = v && v.datos ? 'Volver a procesar' : 'Procesar vídeo';
   $('boton-procesar').disabled = estado.ocupado;
   $('lista-videos').disabled = estado.ocupado;
-  $('boton-exportar').disabled = estado.ocupado || !v || !v.datos;
+  // La exportación aún solo sabe dibujar tarjetas de terceros: con el avatar (por defecto) no se ofrece.
+  $('boton-exportar').disabled = estado.ocupado || !v || !v.datos || estado.avatar;
+  $('boton-exportar').title = estado.avatar
+    ? 'Todavía no se puede exportar el avatar. Solo con las tarjetas de referencia (opción de desarrollo).'
+    : 'Genera un mp4 con el recuadro y los subtítulos pegados, con los ajustes de aquí al lado';
 }
 
 // Lo que tapa el vídeo cuando no hay ningún trabajo en marcha.
@@ -390,10 +395,11 @@ $('ajuste-velocidad').addEventListener('change', async (e) => {
 
 $('ajuste-zoom').addEventListener('input', sincronizar);
 
-$('ajuste-avatar').addEventListener('change', (e) => {
-  estado.avatar = e.target.checked;
+$('ajuste-tarjetas').addEventListener('change', (e) => {
+  estado.avatar = !e.target.checked;
   recuadro.classList.toggle('con-avatar', estado.avatar);
   estado.actual = -2;                 // al volver a las tarjetas, fuerza a redibujar
+  actualizarBotonProcesar();
   sincronizar();
 });
 
