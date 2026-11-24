@@ -20,6 +20,7 @@ const Avatar = (() => {
   let definiciones = {};        // signos propios: id -> definición
   const propios = {};           // signos propios: palabra normalizada -> id
   const gestosPalabra = {};     // gestos no manuales de la lista de 500: palabra normalizada -> nm
+  let CAPA_MANO = null;          // lienzo auxiliar donde se dibuja y sombrea cada mano
   let expresiones = [];         // capa de expresión por frase: {t0, t1, d, shake, nod, nombre}
   const sinonimos = {};         // palabra normalizada -> { a: palabra con signo, relacion, confianza }
   const compuestos = {};        // signos compuestos: expresión normalizada -> partes
@@ -839,6 +840,78 @@ const Avatar = (() => {
       return { mano: Math.min(Math.max((dzS + dzA - 0.25) / 1.25, 0), 1), codo: Math.min(dzS / 0.8, 1) };
     };
     const gris = (prof) => { const g = Math.round(150 * (1 - Math.min(prof * 1.7, 1))); return `rgb(${g},${g},${g})`; };   // lejos = gris, cerca = negro
+    // ---- Mano de silueta continua ----
+    // Los dedos nacen de la palma sin raya de separación, la palma es una mancha suave, el contorno exterior es firme
+    // y por dentro hay sombreado (la luz viene de arriba a la izquierda). Se dibuja en una capa aparte para poder
+    // sombrear solo lo que ya está pintado de la mano.
+    const manoContinua = (pts, anchoPalma, anchoDedo, tinta, zDedo) => {
+      let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+      for (const [x, y] of pts) { x0 = Math.min(x0, x); y0 = Math.min(y0, y); x1 = Math.max(x1, x); y1 = Math.max(y1, y); }
+      const margen = 0.22 * u;
+      x0 = Math.floor(x0 - margen); y0 = Math.floor(y0 - margen);
+      const sw = Math.ceil(x1 + margen - x0), sh = Math.ceil(y1 + margen - y0);
+      if (!CAPA_MANO) CAPA_MANO = document.createElement('canvas');
+      if (CAPA_MANO.width < sw) CAPA_MANO.width = sw;
+      if (CAPA_MANO.height < sh) CAPA_MANO.height = sh;
+      const g = CAPA_MANO.getContext('2d');
+      g.setTransform(1, 0, 0, 1, 0, 0);
+      g.clearRect(0, 0, CAPA_MANO.width, CAPA_MANO.height);
+      g.setTransform(1, 0, 0, 1, -x0, -y0);
+      g.lineJoin = 'round';
+      const trazo = grosor * 1.5;
+      // Palma: curva cerrada y suave por sus puntos, algo inflada.
+      const nud = [pts[5], pts[9], pts[13], pts[17]];
+      const ejeAncho = [pts[17][0] - pts[5][0], pts[17][1] - pts[5][1]];
+      const lateral = [ejeAncho[0] * 0.38, ejeAncho[1] * 0.38];
+      const crudo = [[pts[0][0] - lateral[0], pts[0][1] - lateral[1]], [pts[0][0] + lateral[0], pts[0][1] + lateral[1]], pts[1], ...nud];
+      const c0 = [crudo.reduce((a, q) => a + q[0], 0) / crudo.length, crudo.reduce((a, q) => a + q[1], 0) / crudo.length];
+      const base = crudo.slice().sort((a, b) => Math.atan2(a[1] - c0[1], a[0] - c0[0]) - Math.atan2(b[1] - c0[1], b[0] - c0[0]));
+      const cx0 = base.reduce((a, q) => a + q[0], 0) / base.length, cy0 = base.reduce((a, q) => a + q[1], 0) / base.length;
+      const inflados = base.map(([x, y]) => { const dx = x - cx0, dy = y - cy0, d = Math.hypot(dx, dy) || 1; return [x + dx / d * anchoPalma * 0.55, y + dy / d * anchoPalma * 0.55]; });
+      const rutaPalma = new Path2D();
+      const medio = (a, b) => [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+      const m0 = medio(inflados.at(-1), inflados[0]);
+      rutaPalma.moveTo(m0[0], m0[1]);
+      inflados.forEach((q, i) => { const m = medio(q, inflados[(i + 1) % inflados.length]); rutaPalma.quadraticCurveTo(q[0], q[1], m[0], m[1]); });
+      rutaPalma.closePath();
+      const elementos = [{ z: z0Palma(zDedo), tipo: 'palma' }, ...DEDOS.map((d, k) => ({ z: zDedo(k), tipo: 'dedo', k }))].sort((a, b) => b.z - a.z);
+      const ancho = (k) => anchoDedo * (k ? 0.058 : 0.066);
+      for (const e of elementos) {
+        if (e.tipo === 'palma') {
+          g.fillStyle = '#fff'; g.strokeStyle = tinta; g.lineWidth = trazo;
+          g.fill(rutaPalma); g.stroke(rutaPalma);
+        } else {
+          const f = DEDOS[e.k].map((i) => pts[i]), w = ancho(e.k);
+          // Contorno sin la primera falange: así el dedo nace de la palma sin raya en medio.
+          g.strokeStyle = tinta; g.fillStyle = tinta; g.lineWidth = w + trazo * 2; g.lineCap = 'butt';
+          g.beginPath(); f.slice(1).forEach(([x, y], i) => (i ? g.lineTo(x, y) : g.moveTo(x, y))); g.stroke();
+          g.beginPath(); g.arc(f.at(-1)[0], f.at(-1)[1], w / 2 + trazo, 0, Math.PI * 2); g.fill();
+          g.beginPath(); g.arc(f[1][0], f[1][1], w / 2 + trazo, 0, Math.PI * 2); g.fill();
+          g.strokeStyle = '#fff'; g.fillStyle = '#fff'; g.lineWidth = w; g.lineCap = 'round';
+          g.beginPath(); f.forEach(([x, y], i) => (i ? g.lineTo(x, y) : g.moveTo(x, y))); g.stroke();
+        }
+      }
+      // Sombreado, solo sobre lo ya pintado de la mano.
+      g.globalCompositeOperation = 'source-atop';
+      const gr = g.createLinearGradient(cx0 - anchoPalma, cy0 - anchoPalma, cx0 + anchoPalma * 1.6, cy0 + anchoPalma * 1.6);
+      gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, 'rgba(0,0,0,0.14)');
+      g.fillStyle = gr; g.fill(rutaPalma);
+      g.lineCap = 'round';
+      for (const e of elementos) {
+        if (e.tipo !== 'dedo') continue;
+        const f = DEDOS[e.k].map((i) => pts[i]), w = ancho(e.k);
+        g.strokeStyle = 'rgba(0,0,0,0.13)'; g.lineWidth = w * 0.34; g.lineCap = 'butt'; g.lineJoin = 'round';
+        const dx = f.at(-1)[0] - f[0][0], dy = f.at(-1)[1] - f[0][1], l = Math.hypot(dx, dy) || 1;
+        let nx = -dy / l, ny = dx / l;
+        if (nx + ny < 0) { nx = -nx; ny = -ny; }                      // el lado de sombra mira abajo a la derecha
+        const o = w * 0.3;
+        g.beginPath(); f.forEach(([x, y], i) => (i ? g.lineTo(x + nx * o, y + ny * o) : g.moveTo(x + nx * o, y + ny * o))); g.stroke();
+      }
+      g.globalCompositeOperation = 'source-over';
+      g.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.drawImage(CAPA_MANO, 0, 0, sw, sh, x0, y0, sw, sh);
+    };
+    const z0Palma = (zDedo) => (zDedo(1) + zDedo(2) + zDedo(3) + zDedo(4)) / 4 + 0.01;   // la palma queda algo detrás de los dedos
     // Piezas de un brazo, cada una con su profundidad media (z menor = más cerca).
     const piezas = (hombro, codo, mano, zMano, zMuneca) => {
       const prof = profundidad(hombro, codo, mano), tinta = gris(prof.mano);
@@ -846,14 +919,14 @@ const Avatar = (() => {
       const mx = X(mano), my = Y(mano);
       const M = (k) => [mx + (X(mano + k * 2) - mx) * escala, my + (Y(mano + k * 2) - my) * escala];
       const z = (lista) => lista.reduce((s, k) => s + p[zMano + k], 0) / lista.length;
+      const anchoPalma = (propia ? 0.085 : 0.055) * u * escala, anchoDedo = (propia ? 1.55 : 1) * u * escala;
       const lista = [
         { z: Infinity, pinta: () => {
           tubo([[X(hombro), Y(hombro)], [X(codo), Y(codo)]], 0.16 * u * (0.95 + 0.12 * prof.codo), false, tinta);
           cono([X(codo), Y(codo)], M(0), 0.16 * u * (0.9 + 0.14 * prof.codo), 0.16 * u * (0.82 + 0.5 * prof.mano), tinta);
         } },
-        { z: z(PALMA), pinta: () => tubo(PALMA.map(M), (propia ? 0.085 : 0.055) * u * escala, true, tinta) },
+        { z: 0, pinta: () => manoContinua(Array.from({ length: 21 }, (_, k) => M(k)), anchoPalma, anchoDedo, tinta, (k) => z(DEDOS[k])) },
       ];
-      DEDOS.forEach((dedo, k) => lista.push({ z: z(dedo), pinta: () => tubo(dedo.map(M), (k ? 0.058 : 0.066) * (propia ? 1.55 : 1) * u * escala, false, tinta) }));
       const centro = [0, 5, 9, 13, 17].map(M).reduce((a, q) => [a[0] + q[0] / 5, a[1] + q[1] / 5], [0, 0]);
       return { fondo: -prof.mano, prof: prof.mano, centro, escala, codo: [X(codo), Y(codo)], muneca: M(0), piezas: lista.sort((a, b) => b.z - a.z) };   // de lejos a cerca
     };

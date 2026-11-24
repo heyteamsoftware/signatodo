@@ -30,6 +30,12 @@ MODELO = os.path.join(RAIZ, "referencia", "modelos", "holistic_landmarker.task")
 FPS = 25
 # Puntos del cuerpo que se guardan, en este orden (índices de MediaPipe Pose).
 CUERPO = [0, 11, 12, 13, 14, 15, 16, 23, 24]   # nariz, hombros i/d, codos i/d, muñecas i/d, caderas i/d
+# Puntos de la cara (malla de MediaPipe, 478) que se guardan para sacar la boca, las cejas y los ojos.
+CARA = {"ojo_i_ext": 33, "ojo_d_ext": 263, "ojo_i_int": 133, "ojo_d_int": 362, "comisura_i": 61, "comisura_d": 291,
+        "labio_sup_int": 13, "labio_inf_int": 14, "labio_sup": 0, "labio_inf": 17, "nariz": 1, "menton": 152,
+        "ceja_i": 105, "ceja_d": 334, "parpado_sup_i": 159, "parpado_sup_d": 386, "parpado_inf_i": 145, "parpado_inf_d": 374,
+        "mejilla_i": 234, "mejilla_d": 454, "pomulo_i": 205, "pomulo_d": 425}
+CARA_IDX = list(CARA.values())
 DISTANCIA_REPOSO = 0.3                          # muñeca a menos de esto (en anchos de hombro) del reposo = aún no signa
 
 
@@ -47,7 +53,7 @@ def leer_video(ruta, detector_nuevo):
     fps = captura.get(cv2.CAP_PROP_FPS) or 25
     ancho, alto = captura.get(3), captura.get(4)
     detector = detector_nuevo()
-    cuerpo, izq, der, i = [], [], [], 0
+    cuerpo, izq, der, cara, i = [], [], [], [], 0
     while True:
         ok, cuadro = captura.read()
         if not ok:
@@ -59,10 +65,44 @@ def leer_video(ruta, detector_nuevo):
             vacia = np.full((21, 3), np.nan, np.float32)
             izq.append(puntos(r.left_hand_landmarks, ancho, alto) if r.left_hand_landmarks else vacia)
             der.append(puntos(r.right_hand_landmarks, ancho, alto) if r.right_hand_landmarks else vacia)
+            cara.append(puntos(r.face_landmarks, ancho, alto)[CARA_IDX] if r.face_landmarks
+                        else np.full((len(CARA_IDX), 3), np.nan, np.float32))
         i += 1
     captura.release()
     detector.close()
-    return np.array(cuerpo), np.array(izq), np.array(der), fps
+    return np.array(cuerpo), np.array(izq), np.array(der), np.array(cara), fps
+
+
+def parametros_cara(c):
+    """De los puntos de la cara a 10 números por fotograma, todos relativos a la anchura de la cara.
+
+    Boca: anchura, abertura interior, abertura exterior, sonrisa (comisuras por encima del centro de los labios),
+    mandíbula (nariz-mentón), labios hacia delante (z). Cara: cejas levantadas, ojos abiertos y mejillas (hinchadas).
+    Las columnas faltantes (cara no detectada) se interpolan.
+    """
+    k = {nombre: c[:, i] for i, nombre in enumerate(CARA)}
+    d = lambda a, b: np.linalg.norm(k[a][:, :2] - k[b][:, :2], axis=1)
+    ancho = d("ojo_i_ext", "ojo_d_ext")
+    m = lambda a, b: (k[a] + k[b]) / 2
+    centro_labios_y = m("labio_sup_int", "labio_inf_int")[:, 1]
+    comisuras_y = m("comisura_i", "comisura_d")[:, 1]
+    plano_z = m("mejilla_i", "mejilla_d")[:, 2]
+    labios_z = (k["labio_sup"][:, 2] + k["labio_inf"][:, 2] + k["comisura_i"][:, 2] + k["comisura_d"][:, 2]) / 4
+    ceja = ((k["parpado_sup_i"][:, 1] - k["ceja_i"][:, 1]) + (k["parpado_sup_d"][:, 1] - k["ceja_d"][:, 1])) / 2
+    ojo = (d("parpado_sup_i", "parpado_inf_i") / np.maximum(d("ojo_i_ext", "ojo_i_int"), 1e-3)
+           + d("parpado_sup_d", "parpado_inf_d") / np.maximum(d("ojo_d_ext", "ojo_d_int"), 1e-3)) / 2
+    mejillas = (d("pomulo_i", "pomulo_d"))
+    columnas = [d("comisura_i", "comisura_d") / ancho, d("labio_sup_int", "labio_inf_int") / ancho,
+                d("labio_sup", "labio_inf") / ancho, (centro_labios_y - comisuras_y) / ancho,
+                d("nariz", "menton") / ancho, (plano_z - labios_z) / ancho, ceja / ancho, ojo, mejillas / ancho]
+    salida = np.stack(columnas, axis=1).astype(np.float32)
+    hay = ~np.isnan(salida).any(axis=1)
+    if hay.sum() < 3:
+        return None
+    indices = np.arange(len(salida))
+    for j in range(salida.shape[1]):
+        salida[:, j] = np.interp(indices, indices[hay], salida[hay, j])
+    return salida
 
 
 def rellenar_mano(mano, muneca):
@@ -96,7 +136,7 @@ def extraer(ident, detector_nuevo):
     ruta = os.path.join(VIDEOS, f"{ident}.mp4")
     if not os.path.isfile(ruta) and bajar_video(ident) == "falta":
         return None
-    cuerpo, izq, der, fps = leer_video(ruta, detector_nuevo)
+    cuerpo, izq, der, cara, fps = leer_video(ruta, detector_nuevo)
     if len(cuerpo) < 8:
         return None
     # Normaliza: origen entre los hombros, unidad = ancho de hombros (medianas de todo el clip).
@@ -108,6 +148,8 @@ def extraer(ident, detector_nuevo):
     salto = max(1, round(fps / FPS))
     reducir = lambda a: None if a is None else suavizar(norma(a), 2 * salto - 1)[::salto]
     cuerpo, izq, der = reducir(cuerpo), reducir(izq), reducir(der)
+    rostro = parametros_cara(cara)
+    rostro = None if rostro is None else suavizar(rostro, 2 * salto - 1)[::salto]
 
     # Recorta la salida y la vuelta al reposo. La signante descansa con las manos juntas
     # delante del cuerpo, así que "en reposo" = muñecas cerca de donde están al empezar
@@ -123,7 +165,8 @@ def extraer(ident, detector_nuevo):
     entero = lambda m: None if m is None else np.round(m[a:b] * 1000).astype(int).reshape(b - a, -1).tolist()
     plano = lambda m: None if m is None else entero(m[:, :, :2])        # x, y de cada punto
     fondo = lambda m: None if m is None else entero(m[:, :, 2])         # z de cada punto
-    return {"v": 2, "fps": FPS, "n": int(b - a),
+    clip_cara = None if rostro is None else np.round(rostro[a:b] * 1000).astype(int).tolist()
+    return {"v": 3, "fps": FPS, "n": int(b - a), "cara": clip_cara,
             "cuerpo": plano(cuerpo), "izq": plano(izq), "der": plano(der),
             # Profundidad, para saber qué mano y qué dedos quedan delante al cruzarse:
             "zi": fondo(izq), "zd": fondo(der), "zm": entero(cuerpo[:, 5:7, 2])}

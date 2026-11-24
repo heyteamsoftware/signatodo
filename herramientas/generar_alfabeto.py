@@ -38,7 +38,7 @@ FORMAS = {
 
 # (forma, dir, pal)
 LETRAS = {
-    "a": ("a", "arriba", "adelante"),
+    "a": ("puño", "arriba", "adelante"),
     "b": ("b", "adentro", "abajo"),
     "c": ("c", "arriba+adelante", "adentro"),
     "d": ("d", "arriba", "adelante"),
