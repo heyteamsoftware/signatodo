@@ -131,3 +131,15 @@ audio original. Dura lo que dura el vídeo y la pestaña debe quedar a la vista 
 `error-lematizador`) y una confianza (`baja` hasta que lo revise una persona signante). Orden de búsqueda: palabra exacta,
 lema, equivalencia, compuesto, deletreo. Al procesar, el resumen lista las palabras resueltas por equivalencia, las
 deletreadas y las que se quedan **sin signo**, para ver los huecos antes de exportar.
+
+## Expresión de la cara y lectura labial
+
+- **Capa de expresión por frase** (`construirExpresiones` en `web/avatar.js`): la cara marca la gramática de toda la
+  oración, con los tiempos de los signos ya planificados. Pregunta sí/no: cejas arriba y ojos abiertos. Pregunta con
+  qué/quién/dónde…: ceño fruncido. Exclamación, negación (la cabeza niega), «sí» (asiente), «si» condicional (cejas hasta la
+  coma) y palabras de emoción (alegría, tristeza, enfado, sorpresa, miedo, dolor, duda). La distinción cejas/ceño en
+  preguntas y las listas de palabras son hipótesis sin validar por una persona signante.
+- **Rótulo de la expresión**: opción «Rotular la expresión de la cara» (activada por defecto) escribe en el recuadro qué marca
+  la cara en cada momento; también sale en el vídeo exportado.
+- **Lectura labial**: formas de boca exageradas, interior oscuro con dientes y lengua visibles, y la boca termina de decir la
+  palabra aunque el signo sea más corto.

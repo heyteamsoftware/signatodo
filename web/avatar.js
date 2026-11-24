@@ -20,6 +20,7 @@ const Avatar = (() => {
   let definiciones = {};        // signos propios: id -> definición
   const propios = {};           // signos propios: palabra normalizada -> id
   const gestosPalabra = {};     // gestos no manuales de la lista de 500: palabra normalizada -> nm
+  let expresiones = [];         // capa de expresión por frase: {t0, t1, d, shake, nod, nombre}
   const sinonimos = {};         // palabra normalizada -> { a: palabra con signo, relacion, confianza }
   const compuestos = {};        // signos compuestos: expresión normalizada -> partes
   let letrasDef = {};           // alfabeto dactilológico propio: letra -> definición
@@ -195,8 +196,9 @@ const Avatar = (() => {
     unidades = unidades.map(aReloj);
     segmentos = segmentos.map(aReloj);
     pista = [];
+    expresiones = [];
     // Expresiones de varias palabras ("por favor", "de nada", "fin de semana"): se fusionan en una sola unidad.
-    unidades = fusionarFrases(unidades);
+    unidades = fusionarFrases(unidades).map((u, idx) => ({ ...u, idx }));
     const elegidas = [];
     const porSinonimo = [], sinSigno = [], deletreadas = [];
     // Qué clip se usa para unas palabras candidatas: movimiento extraído (con gestos propios o de la lista
@@ -266,6 +268,7 @@ const Avatar = (() => {
     }));
     const validas = elegidas.filter((e) => clips[e.id]);
     const resumen = planificar(validas, segmentos);
+    expresiones = construirExpresiones(unidades);
     return { ...resumen, signos: unidades.filter((u) => u.tipo === 'signo').length, porSinonimo, sinSigno, deletreadas };
   }
 
@@ -363,7 +366,7 @@ const Avatar = (() => {
         // Si hay hueco, espera a su palabra (menos un pequeño anticipo): así sigue el ritmo del orador.
         t = Math.max(t, u.t0 - (k ? ANTICIPO_PALABRA : ANTICIPO_FRASE));
         const t1 = t + clips[id].dura / velocidad;
-        pista.push({ t0: t, t1, clip: clips[id], texto: u.texto.replace(/[¿?¡!.,;:"«»()]/g, '').trim() });
+        pista.push({ t0: t, t1, habla: Math.max(t1 - t, 0.3 + 0.07 * u.texto.replace(/[^\p{L}]/gu, '').length), idx: u.idx, clip: clips[id], texto: u.texto.replace(/[¿?¡!.,;:"«»()]/g, '').trim() });
         cuenta.retrasoMaximo = Math.max(cuenta.retrasoMaximo, t - u.t0);
         cuenta.sumaRetraso += t - u.t0; cuenta.nSignos++; if (t <= u.t0) cuenta.adelantadas++;
         t = t1;
@@ -375,6 +378,127 @@ const Avatar = (() => {
     return cuenta;
   }
 
+  // ----- Expresión de la cara, por frase y sincronizada con los signos -----
+  //
+  // La cara no es decoración de cada signo: marca la gramática de toda la oración. Una pregunta
+  // sí/no lleva las cejas arriba de principio a fin; una pregunta con qué/quién/dónde, el ceño
+  // fruncido; una negación, la cabeza que niega; "si" condicional, cejas arriba hasta la coma. Y las
+  // palabras de emoción (feliz, triste, enfadado…) tiñen la cara mientras se signan. Los tiempos
+  // salen de la pista ya planificada, así que la cara empieza con el primer signo de la frase
+  // y termina con el último, aunque se hayan condensado palabras. (Reglas de la práctica
+  // profesional pegadas por el usuario; la distinción cejas arriba/ceño en preguntas, sin validar.)
+  const ENTRADA_EXPR = 0.28, SALIDA_EXPR = 0.35;
+  const INTERROGATIVAS = /^(qué|quién|quiénes|cuál|cuáles|dónde|cuándo|cómo|cuánto|cuánta|cuántos|cuántas|adónde)$/;
+  const NEGACIONES = new Set(['no', 'nunca', 'jamas', 'nada', 'nadie', 'tampoco', 'ninguno', 'ninguna', 'ni']);
+  const EMOCIONES = {
+    alegria: { escala: 1, palabras: ['feliz', 'felices', 'contento', 'contenta', 'alegre', 'alegria', 'encantado', 'encantada', 'genial', 'felicidades', 'cumpleanos', 'fiesta', 'amor', 'divertido', 'celebrar'] },
+    alegria_suave: { expr: 'alegria', escala: 0.55, palabras: ['hola', 'gracias', 'bien', 'bueno', 'saludar', 'abrazar', 'invitar'] },
+    tristeza: { escala: 1, palabras: ['triste', 'tristeza', 'lamento', 'pena', 'llorar', 'morir', 'muerte', 'fallecer', 'echar'] },
+    enfado: { escala: 1, palabras: ['enfadado', 'enfadada', 'enfadar', 'rabia', 'odiar', 'furioso', 'furiosa', 'molesto'] },
+    sorpresa: { escala: 1, palabras: ['sorpresa', 'sorprender', 'increible', 'guau'] },
+    miedo: { escala: 1, palabras: ['miedo', 'asustar', 'susto', 'peligro', 'peligroso'] },
+    dolor: { escala: 0.8, palabras: ['dolor', 'doler', 'enfermo', 'enferma', 'herida'] },
+    duda: { escala: 1, palabras: ['quizas', 'dudar', 'duda', 'probablemente'] },
+  };
+  const EMOCION_DE = {};
+  for (const [nombre, e] of Object.entries(EMOCIONES)) for (const p of e.palabras) EMOCION_DE[p] = { expr: e.expr || nombre, escala: e.escala, nombre: e.expr || nombre };
+  const NOMBRE_EXPR = { alegria: 'alegría', tristeza: 'tristeza', enfado: 'enfado', sorpresa: 'sorpresa', miedo: 'miedo', dolor: 'dolor', duda: 'duda' };
+
+  // Desviaciones (se suman a lo que ya haga el signo) de una expresión con nombre de signos.js.
+  function deltasDeExpresion(nombre, escala = 1) {
+    const e = Signos.EXPRESIONES[nombre] || {}, d = {};
+    if (e.cejas) d[5] = e.cejas * escala;
+    if (e.ceno) d[6] = e.ceno * escala;
+    if (e.ojos !== undefined) d[7] = (e.ojos - 1) * escala;
+    if (e.sonrisa) d[10] = e.sonrisa * escala;
+    if (e.boca) d[11] = e.boca * escala;
+    return d;
+  }
+
+  function construirExpresiones(unidades) {
+    const lista = [];
+    const limpia = (s) => s.replace(/[¿?¡!.,;:"«»()…]/g, '').trim();
+    // Tiempo que ocupan en la pista las unidades desde..hasta (índices de unidad).
+    const ventana = (desde, hasta) => {
+      let t0 = Infinity, t1 = -Infinity;
+      for (const e of pista) if (e.idx >= desde && e.idx <= hasta) { t0 = Math.min(t0, e.t0); t1 = Math.max(t1, e.t1); }
+      return t1 > t0 ? [t0, t1] : null;
+    };
+    // Primera unidad con signo a partir de i (para que la marca caiga sobre algo que se signa).
+    const conSigno = (i, hasta) => { for (let k = i; k <= hasta; k++) if (pista.some((e) => e.idx === k)) return k; return -1; };
+    const poner = (desde, hasta, ev, minimo = 0) => {
+      const w = ventana(desde, hasta);
+      if (!w) return;
+      if (w[1] - w[0] < minimo) w[1] = w[0] + minimo;
+      lista.push({ t0: w[0], t1: w[1], ...ev });
+    };
+
+    let a = 0;
+    for (let b = 0; b < unidades.length; b++) {
+      const fin = /[.!?…]["»)]*\s*$/.test(unidades[b].texto) || b === unidades.length - 1;
+      if (!fin) continue;
+      const trozo = unidades.slice(a, b + 1);
+      // Preguntas
+      const iFin = trozo.findIndex((u) => u.texto.includes('?'));
+      if (iFin >= 0) {
+        let iIni = trozo.findIndex((u) => u.texto.includes('¿'));
+        if (iIni < 0 || iIni > iFin) iIni = 0;
+        const parte = trozo.slice(iIni, iFin + 1);
+        const conPalabra = parte.some((u) => limpia(u.texto).toLowerCase().split(/\s+/).some((w) => INTERROGATIVAS.test(w)));
+        poner(a + iIni, a + iFin, conPalabra
+          ? { nombre: 'pregunta (qué, quién, dónde…): ceño', d: { 5: -0.15, 6: 0.85, 7: -0.12, 2: 0.0 }, nod: null, lado: 6 }
+          : { nombre: 'pregunta sí/no: cejas arriba', d: { 5: 1, 7: 0.22, 1: 4, 3: -5 } });
+      } else if (trozo.some((u) => u.texto.includes('!'))) {
+        let iIni = trozo.findIndex((u) => u.texto.includes('¡'));
+        if (iIni < 0) iIni = 0;
+        poner(a + iIni, b, { nombre: 'exclamación', d: { 5: 0.55, 7: 0.25, 1: 4 } });
+      }
+      // Palabra a palabra: negación, sí, condicional y emoción.
+      for (let i = a; i <= b; i++) {
+        const u = unidades[i], crudo = limpia(u.texto).toLowerCase(), norm = normalizar(u.texto).toLowerCase(), lema = normalizar(u.lema || '').toLowerCase();
+        if (NEGACIONES.has(norm) && conSigno(i, b) >= 0) {
+          const k = conSigno(i, b);
+          poner(k, Math.min(k + 1, b), { nombre: 'negación: cabeza', d: { 6: 0.4, 10: -0.2 }, shake: { amp: 16, f: 2.6 } }, 0.9);
+        } else if (norm === 'si' && crudo === 'sí') {
+          const k = conSigno(i, b);
+          if (k >= 0) poner(k, k, { nombre: 'afirmación: asentir', d: { 10: 0.25 }, nod: { amp: 9, f: 2.4 } }, 0.8);
+        } else if (crudo === 'si') {
+          let h = i; while (h < b && !/[,;:]$/.test(unidades[h].texto)) h++;
+          poner(i, h, { nombre: 'condición: cejas', d: { 5: 0.5, 2: 4 } });
+        }
+        const emo = EMOCION_DE[norm] || (lema && EMOCION_DE[lema]) || norm.split(/\s+/).map((w) => EMOCION_DE[w]).find(Boolean);
+        if (emo && conSigno(i, i) >= 0) {
+          poner(i, i, { nombre: NOMBRE_EXPR[emo.nombre] || emo.nombre, d: deltasDeExpresion(emo.expr, emo.escala) }, 0.7);
+        }
+      }
+      a = b + 1;
+    }
+    return lista;
+  }
+
+  // Desviaciones de la cara en el instante t (reloj) y nombre de la expresión que domina.
+  function superposicion(t) {
+    const d = new Array(NM_N).fill(0);
+    let nombre = '', mayor = 0;
+    for (const ev of expresiones) {
+      if (t < ev.t0 - ENTRADA_EXPR || t > ev.t1 + SALIDA_EXPR) continue;
+      const w = t < ev.t0 ? suave((t - (ev.t0 - ENTRADA_EXPR)) / ENTRADA_EXPR)
+        : t > ev.t1 ? suave(1 - (t - ev.t1) / SALIDA_EXPR) : 1;
+      for (const k in ev.d) d[k] += ev.d[k] * w;
+      if (ev.shake) d[4] += ev.shake.amp * w * Math.sin(2 * Math.PI * ev.shake.f * (t - ev.t0));
+      if (ev.nod) d[3] += ev.nod.amp * w * Math.sin(2 * Math.PI * ev.nod.f * (t - ev.t0));
+      if (ev.lado) d[2] += ev.lado * w;
+      if (ev.nombre && w > mayor) { mayor = w; nombre = ev.nombre; }
+    }
+    return { d, nombre: mayor > 0.35 ? nombre : '' };
+  }
+
+  // Cuánto dura la articulación de la palabra de un signo: lo que tarda en decirse, sin pisar al siguiente.
+  function bocaDe(actual, siguiente) {
+    const tope = siguiente ? Math.max(siguiente.t0 + 0.15 - actual.t0, actual.t1 - actual.t0) : Infinity;
+    return Math.min(actual.habla, tope);
+  }
+
   // Pose y palabra en el instante t.
   function estadoEn(t) {
     let i = -1;
@@ -383,15 +507,18 @@ const Avatar = (() => {
     if (actual && t <= actual.t1) {
       esPropio = !!actual.clip.propio;
       const k = (t - actual.t0) / (actual.t1 - actual.t0);
-      return { pose: poseDeClip(actual.clip, k), texto: actual.texto, avance: k };
+      return { pose: poseDeClip(actual.clip, k), texto: actual.texto, avance: Math.min((t - actual.t0) / bocaDe(actual, siguiente), 1) };
     }
     const desde = actual ? actual.clip.poses.at(-1) : REPOSO;
     const hasta = siguiente ? siguiente.clip.poses[0] : REPOSO;
     const inicio = actual ? actual.t1 : -Infinity, fin = siguiente ? siguiente.t0 : Infinity;
+    // Si la palabra tarda más en decirse que el signo, los labios la terminan mientras las manos pasan al siguiente.
+    const sigueHablando = actual && t - actual.t0 < bocaDe(actual, siguiente);
+    const resto = sigueHablando ? { texto: actual.texto, avance: (t - actual.t0) / bocaDe(actual, siguiente) } : { texto: '', avance: 0 };
     if (fin - inicio <= PAUSA_LARGA) {                        // enlace directo de un signo al siguiente
-      return { pose: mezclar(desde, hasta, suave((t - inicio) / (fin - inicio))), texto: '', avance: 0 };
+      return { pose: mezclar(desde, hasta, suave((t - inicio) / (fin - inicio))), ...resto };
     }
-    if (t - inicio < A_REPOSO) return { pose: mezclar(desde, REPOSO, suave((t - inicio) / A_REPOSO)), texto: '', avance: 0 };
+    if (t - inicio < A_REPOSO) return { pose: mezclar(desde, REPOSO, suave((t - inicio) / A_REPOSO)), ...resto };
     if (fin - t < A_REPOSO) return { pose: mezclar(REPOSO, hasta, suave(1 - (fin - t) / A_REPOSO)), texto: '', avance: 0 };
     return { pose: REPOSO, texto: '', avance: 0 };
   }
@@ -414,6 +541,9 @@ const Avatar = (() => {
     velar: [0.14, 0.065, 0],            // k, g, j, q: boca algo abierta
     vibrante: [0.14, 0.055, 0.3],       // r, rr
   };
+  // Lectura labial: todas las formas llevan un cuarto número (cuánto se ve la lengua) y se exageran un poco.
+  const LENGUA_VISIBLE = { lengua: 0.95, palatal: 0.35, sibilante: 0.15, vibrante: 0.55, i: 0.1, e: 0.1, a: 0.15 };
+  for (const k of Object.keys(VISEMAS)) VISEMAS[k] = [VISEMAS[k][0] * 1.22, VISEMAS[k][1] * 1.45, VISEMAS[k][2], LENGUA_VISIBLE[k] || 0];
   const VOCALES = 'aeiou';
   const PESO = { vocal: 2.3, consonante: 1, cerrada: 0.9 };
 
@@ -471,7 +601,7 @@ const Avatar = (() => {
     if (!lista.length) return null;
     // La boca se abre un poco antes de empezar la palabra y se relaja un poco después.
     const k = Math.min(Math.max(avance, 0), 1);
-    const REPOSO_BOCA = [0.13, 0.03, 0];
+    const REPOSO_BOCA = [0.13, 0.03, 0, 0];
     if (k < lista[0].centro) return mezclarBoca(REPOSO_BOCA, lista[0].v, suave(k / lista[0].centro));
     const ultimo = lista.at(-1);
     if (k >= ultimo.centro) return mezclarBoca(ultimo.v, REPOSO_BOCA, suave((k - ultimo.centro) / (1 - ultimo.centro + 1e-6)) * 0.7);
@@ -489,7 +619,7 @@ const Avatar = (() => {
   const PALMA = [0, 1, 5, 9, 13, 17];
 
   // opciones: pregunta (cejas arriba) y zoom (1 = hasta las caderas, con las manos en reposo a la vista; más = más cerca)
-  function pintar(t, { pregunta = false, zoom = 1, pose: poseDada = null, texto: textoDado = '', avance: avanceDado = 0 } = {}) {
+  function pintar(t, { pregunta = false, rotular = false, zoom = 1, pose: poseDada = null, texto: textoDado = '', avance: avanceDado = 0 } = {}) {
     t *= escalaTiempo;
     const { pose: p, texto, avance } = poseDada ? { pose: poseDada, texto: textoDado, avance: avanceDado } : estadoEn(t);
     const propia = poseDada ? true : esPropio;
@@ -505,7 +635,11 @@ const Avatar = (() => {
     ctx.lineWidth = grosor;
 
     // Gestos no manuales de este instante (inclinación, cabeza, cejas, ojos, mirada, boca).
-    const nm = p.length > NM ? p.slice(NM, NM + NM_N) : NM_NEUTRO;
+    const nm = (p.length > NM ? p.slice(NM, NM + NM_N) : NM_NEUTRO).slice();
+    const capa = superposicion(t);
+    for (let k = 0; k < NM_N; k++) nm[k] += capa.d[k];
+    nm[5] = Math.max(-1, Math.min(1.2, nm[5])); nm[6] = Math.max(-1, Math.min(1.1, nm[6]));
+    nm[7] = Math.max(0, Math.min(1.4, nm[7])); nm[10] = Math.max(-1, Math.min(1, nm[10])); nm[11] = Math.max(0, Math.min(1, nm[11]));
     const RAD = Math.PI / 180;
 
     // Inclinación del cuerpo: todo el personaje gira alrededor de la cintura (y se acerca un poco al inclinarse adelante).
@@ -552,7 +686,7 @@ const Avatar = (() => {
     // Ojos y cejas
     const parpadeo = (t % 4.3) < 0.12;
     const abierto = parpadeo ? 0 : nm[7];
-    const alza = (pregunta ? Math.max(nm[5], 0.6) : nm[5]) * 0.07 * u;   // cejas levantadas (+) o bajas (-)
+    const alza = nm[5] * 0.11 * u;   // cejas levantadas (+) o bajas (-)
     for (const lado of [-1, 1]) {
       const ex = cx + lado * 0.17 * u, ey = cy - 0.02 * u;
       ctx.beginPath();
@@ -565,7 +699,7 @@ const Avatar = (() => {
         ctx.fillStyle = TINTA; ctx.fill(); ctx.fillStyle = PAPEL;
       }
       const baseY = ey - 0.13 * u - alza;
-      const ceño = nm[6] * 0.06 * u;                              // + interior abajo (enfado), - interior arriba (tristeza)
+      const ceño = nm[6] * 0.085 * u;                              // + interior abajo (enfado), - interior arriba (tristeza)
       const interior = [ex - lado * 0.07 * u, baseY + ceño];
       const exterior = [ex + lado * 0.07 * u, baseY + 0.01 * u - ceño * 0.4];
       ctx.beginPath();
@@ -583,17 +717,18 @@ const Avatar = (() => {
       const comisura = by - (0.01 + 0.012 * sonrisa) * u, curva = by + (0.03 + 0.06 * sonrisa) * u, ancho = (0.09 + 0.02 * sonrisa) * u;
       ctx.moveTo(cx - ancho, comisura); ctx.quadraticCurveTo(cx, curva, cx + ancho, comisura); ctx.stroke();
     } else {
-      const [ancho, alto, dientes] = forma, mw = ancho * u / 2 * (1 + 0.18 * sonrisa), mh = Math.max(alto * u / 2, 0.5);
-      if (alto < 0.012) { ctx.moveTo(cx - mw, by); ctx.lineTo(cx + mw, by); ctx.stroke(); }   // labios cerrados
+      const [ancho, alto, dientes, lengua = 0] = forma, mw = ancho * u / 2 * (1 + 0.2 * sonrisa), mh = Math.max(alto * u / 2, 0.5);
+      if (alto < 0.012) { ctx.lineWidth = grosor * 1.25; ctx.moveTo(cx - mw, by); ctx.lineTo(cx + mw, by); ctx.stroke(); ctx.lineWidth = grosor; }   // labios cerrados
       else {
-        ctx.ellipse(cx, by, mw, mh, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-        if (dientes > 0.35 && mh > 0.012 * u) {                                              // dientes de arriba
-          ctx.save();
-          ctx.beginPath(); ctx.ellipse(cx, by, mw, mh, 0, 0, Math.PI * 2); ctx.clip();
-          ctx.beginPath(); ctx.moveTo(cx - mw, by - mh * 0.2); ctx.lineTo(cx + mw, by - mh * 0.2);
-          ctx.lineWidth = grosor * (0.5 + dientes * 0.5); ctx.stroke();
-          ctx.restore();
-        }
+        // Boca abierta que se lee bien: interior oscuro, dientes de arriba blancos y lengua visible.
+        ctx.save();
+        ctx.beginPath(); ctx.ellipse(cx, by, mw, mh, 0, 0, Math.PI * 2); ctx.clip();
+        ctx.fillStyle = TINTA; ctx.fillRect(cx - mw, by - mh, mw * 2, mh * 2);
+        ctx.fillStyle = PAPEL;
+        if (dientes > 0.25 && mh > 0.008 * u) ctx.fillRect(cx - mw, by - mh, mw * 2, Math.min(mh * 0.7, mh * (0.25 + dientes * 0.45)));
+        if (lengua > 0.12 && mh > 0.012 * u) { ctx.beginPath(); ctx.ellipse(cx, by + mh * 0.5, mw * 0.55, mh * 0.5 * Math.min(lengua + 0.25, 1), 0, 0, Math.PI * 2); ctx.fill(); }
+        ctx.restore();
+        ctx.lineWidth = grosor * 1.25; ctx.beginPath(); ctx.ellipse(cx, by, mw, mh, 0, 0, Math.PI * 2); ctx.stroke(); ctx.lineWidth = grosor;
       }
     }
     if (nm[12] > 0.3) {                                           // mejillas infladas
@@ -628,8 +763,15 @@ const Avatar = (() => {
     for (const brazo of brazos) for (const pieza of brazo.piezas) pieza.pinta();
     ctx.restore();                                              // fin de la inclinación del cuerpo
     ctx.strokeStyle = TINTA; ctx.lineWidth = grosor; ctx.fillStyle = PAPEL;
+    if (rotular && capa.nombre) {                                 // rótulo de la expresión que se marca
+      ctx.save();
+      ctx.font = `700 ${Math.round(W * 0.052)}px "Segoe UI", system-ui, sans-serif`;
+      ctx.fillStyle = TINTA; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+      ctx.fillText(capa.nombre, W * 0.04, H * 0.035, W * 0.92);
+      ctx.restore();
+    }
     return texto;
   }
 
-  return { iniciar, preparar, pintar, visemas, boca, pista: () => pista, propio: crearPropio, letra: crearLetra, definiciones: () => definiciones, compuestos: () => compuestos, sinonimos: () => sinonimos, gestos: () => gestosPalabra };
+  return { iniciar, preparar, pintar, visemas, boca, pista: () => pista, propio: crearPropio, letra: crearLetra, definiciones: () => definiciones, compuestos: () => compuestos, sinonimos: () => sinonimos, expresiones: () => expresiones, gestos: () => gestosPalabra };
 })();

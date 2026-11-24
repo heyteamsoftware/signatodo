@@ -151,7 +151,7 @@ function sincronizar() {
     if (estado.avatar) {
       // El avatar signa en continuo; en una pregunta levanta las cejas.
       const frase = estado.segmento >= 0 ? estado.datos.segmentos[estado.segmento].texto : '';
-      const palabra = Avatar.pintar(t, { pregunta: frase.includes('?'), zoom: $('ajuste-zoom').value / 100 });
+      const palabra = Avatar.pintar(t, { rotular: $('ajuste-rotular').checked, zoom: $('ajuste-zoom').value / 100 });
       rotulo.textContent = palabra || ' ';
     } else {
       pintarTarjeta(indiceEn(t));
