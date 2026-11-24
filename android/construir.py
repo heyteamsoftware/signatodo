@@ -22,7 +22,7 @@ import zipfile
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 AND = os.path.join(RAIZ, "android")
 OBRA = os.path.join(AND, "build")
-VERSION_CODIGO, VERSION_NOMBRE = 3, "0.3"       # 0.3: muñeco cálido, cabeza y cuerpo al unísono, parpadeo y aviso de voz
+VERSION_CODIGO, VERSION_NOMBRE = 4, "0.4"       # 0.4: las palabras sin signo salen escritas en la camiseta
 
 
 def buscar_sdk():
