@@ -223,3 +223,11 @@ navegador no tiene WebGL, se dibuja el muñeco plano de siempre.
 - **Expresiones**: el ceño fruncido se leía como enfado. Ahora solo se frunce del todo en los signos y palabras de enfado o asco.
   Las preguntas con qué/quién/dónde llevan las cejas algo bajas y la cabeza ladeada; la negación, solo la cabeza que niega; las
   palabras de enfermedad o agobio, cara de malestar. Las cejas grabadas se miden respecto al reposo de su propio clip.
+
+### Proporciones del muñeco 3D
+
+Las medidas de brazos y tronco siguen proporciones de persona, con el ancho de hombros como unidad: el brazo tiene un radio de
+0,125 en el hombro y 0,105 en el codo; el antebrazo es algo más ancho cerca del codo (0,108) y fino en la muñeca (0,074); el
+guante acaba en un puño que lo une al antebrazo. El tronco tiene línea de hombros, pecho (0,45 de medio ancho) que se estrecha a
+la cintura (0,37) y caderas (0,43). Las longitudes de los brazos no se tocan: salen de la grabación, y cambiarlas movería las
+manos de su sitio. Las constantes están al principio de `construir()` en `web/avatar3d.js`.

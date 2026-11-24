@@ -216,6 +216,10 @@ const Avatar3D = (() => {
   // Profundidad de un brazo a partir del escorzo: un hueso mide siempre lo mismo, así que si se ve más corto es que apunta
   // hacia quien mira. Con una zona muerta para que un brazo casi de perfil no "flote" por el ruido de la medida.
   const L_BRAZO = 0.95, L_ANTEBRAZO = 0.85;
+  // Grosor de los brazos (radios, en anchos de hombro), con proporciones de persona: el brazo mide de ancho como un
+  // cuarto de los hombros, el antebrazo algo menos y la muñeca unos dos tercios de la palma.
+  const R_HOMBRO = 0.14, R_BRAZO = [0.125, 0.105], R_ANTEBRAZO = [0.105, 0.108, 0.074];
+  const mezcla = (a, b, k) => [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k, a[2] + (b[2] - a[2]) * k];
   const escorzo = (largo, visto, muerta) => Math.max(Math.sqrt(Math.max(largo * largo - visto * visto, 0)) - muerta, 0);
 
   // esqueleto: { cabeza, hombros:[i,d], codos:[i,d], munecas:[i,d], caderas:[i,d] } en (x, y) con y hacia arriba,
@@ -228,17 +232,27 @@ const Avatar3D = (() => {
     const cadera = (esq.caderas[0][1] + esq.caderas[1][1]) / 2;
     const RAD = Math.PI / 180;
 
-    // Tronco: cápsula aplastada (ancha de hombros, poco fondo), con la parte de arriba redondeada.
-    const ANCHO = 0.52, FONDO = 0.42, CUPULA = 0.45;
-    const tronco = {
-      a: [medio[0], cadera - 1.2, 0], b: [medio[0], medio[1] - 0.13, 0], ra: ANCHO * 0.9, rb: ANCHO,
-      m: escala3(1, CUPULA, FONDO), n: escala3(1, 1 / CUPULA, 1 / FONDO), color: ROPA,
-    };
-    piezas.push(tronco);
+    // Tronco de persona (medidas en anchos de hombro, tomadas de proporciones reales): el pecho es algo más estrecho que
+    // los hombros y se estrecha hacia la cintura; debajo, las caderas. Una pieza de lado a lado hace la línea de los hombros,
+    // de donde cuelgan los brazos.
+    const PECHO = 0.45, CINTURA = 0.37, CADERAS = 0.43, FONDO = 0.56, CUPULA = 0.5, R_HOMBROS = 0.125;
+    const yPecho = medio[1] - 0.17, yCintura = medio[1] - 1.0;
+    const aplastada = (a, b, ra, rb) => ({ a, b, ra, rb, m: escala3(1, CUPULA, FONDO), n: escala3(1, 1 / CUPULA, 1 / FONDO), color: ROPA });
+    piezas.push(aplastada([medio[0], yCintura, 0], [medio[0], yPecho, 0], CINTURA, PECHO));            // pecho
+    piezas.push(aplastada([medio[0], cadera, 0], [medio[0], yCintura, 0], CADERAS, CINTURA));          // de la cintura a las caderas
+    piezas.push(aplastada([medio[0], cadera - 1.4, 0], [medio[0], cadera, 0], CADERAS, CADERAS));      // sigue hacia abajo, fuera del recuadro
+    const yHombros = (hI[1] + hD[1]) / 2 - 0.02;
+    piezas.push(capsula([hD[0], hD[1] - 0.02, -0.02], [hI[0], hI[1] - 0.02, -0.02], R_HOMBROS, R_HOMBROS, ROPA));
+    const anchoTronco = (y) => (y >= yCintura
+      ? CINTURA + (PECHO - CINTURA) * Math.min((y - yCintura) / (yPecho - yCintura), 1)
+      : CINTURA + (CADERAS - CINTURA) * Math.min((yCintura - y) / (yCintura - cadera), 1));
     const frenteTronco = (x, y) => {
-      if (y > medio[1] + 0.12) return -Infinity;
-      const k = (x - medio[0]) / ANCHO;
-      return Math.abs(k) < 1 ? ANCHO * FONDO * Math.sqrt(1 - k * k) : -Infinity;
+      if (y > medio[1] + 0.14) return -Infinity;
+      let z = -Infinity;
+      const ancho = anchoTronco(y), k = (x - medio[0]) / ancho;
+      if (Math.abs(k) < 1 && y <= yPecho + PECHO * CUPULA) z = ancho * FONDO * Math.sqrt(1 - k * k);
+      if (Math.abs(y - yHombros) < R_HOMBROS && Math.abs(x - medio[0]) < 0.5 + R_HOMBROS) z = Math.max(z, R_HOMBROS - 0.02);   // línea de los hombros
+      return z;
     };
 
     // Cabeza: gira de verdad sobre la base del cuello (ladea, asiente, gira).
@@ -249,7 +263,7 @@ const Avatar3D = (() => {
     const giroCabeza = mat3xMat3(rotZ(-g[0] * RAD), mat3xMat3(rotY(g[2] * RAD), rotX(g[1] * RAD)));
     const enCabeza = (v) => suma(baseCuello, mat3xVec(giroCabeza, resta(v, baseCuello)));
     const centroCabeza = enCabeza(centroCabeza0);
-    piezas.push(capsula(baseCuello, suma(centroCabeza, mat3xVec(giroCabeza, [0, -R_CABEZA * 0.75, -0.03])), 0.14, 0.13, BLANCO));
+    piezas.push(capsula(baseCuello, suma(centroCabeza, mat3xVec(giroCabeza, [0, -R_CABEZA * 0.75, -0.03])), 0.155, 0.14, BLANCO));
     piezas.push({ a: centroCabeza, b: centroCabeza, ra: R_CABEZA, rb: R_CABEZA, m: giroCabeza, n: giroCabeza, color: BLANCO, cara: 1 });
     piezas.push(esfera(enCabeza(suma(centroCabeza0, [0, -0.04, R_CABEZA * 0.99])), 0.034, BLANCO));         // nariz
     const frenteCabeza = (x, y) => {
@@ -275,15 +289,15 @@ const Avatar3D = (() => {
       // En la grabación el brazo se veía entero, así que nunca estaba dentro del cuerpo: si un tramo cae sobre el tronco o la
       // cabeza, se adelanta lo justo para pasar por delante.
       let zCodo = 0.7 * escorzo(L_BRAZO, Math.hypot(c2[0] - h[0], c2[1] - h[1]), 0.18);
-      zCodo = Math.min(librar(h, [c2[0], c2[1], zCodo], 0.092, 0.08, [0.5, 0.75, 1]), Math.max(zCodo, 0.75));
+      zCodo = Math.min(librar(h, [c2[0], c2[1], zCodo], R_BRAZO[0], R_BRAZO[1], [0.5, 0.75, 1]), Math.max(zCodo, 0.8));
       let zMuneca = zCodo + escorzo(L_ANTEBRAZO, Math.hypot(m2[0] - c2[0], m2[1] - c2[1]), 0.24);
-      zMuneca = librar([c2[0], c2[1], zCodo], [m2[0], m2[1], zMuneca], 0.08, 0.06, [0.25, 0.5, 0.75, 1]);
-      const grosor = esq.propia ? 1.35 : 1.3;
+      zMuneca = librar([c2[0], c2[1], zCodo], [m2[0], m2[1], zMuneca], R_ANTEBRAZO[1], R_ANTEBRAZO[2], [0.25, 0.5, 0.75, 1]);
+      const grosor = esq.propia ? 1.3 : 1.18;
       const rDedo = 0.032 * grosor, rPalma = 0.047 * grosor;
       // La mano nunca queda dentro del cuerpo ni de la cabeza: si su sitio en la imagen cae sobre ellos, va por delante.
       // Las manos grabadas son de tamaño real y a esta escala se leen mal: se agrandan un poco desde la muñeca (las del
       // modelo propio ya vienen grandes).
-      const AMPLIA = esq.propia ? 1 : 1.22;
+      const AMPLIA = esq.propia ? 1 : 1.15;
       const origen = esq.manos[lado][0];
       const mano = esq.manos[lado].map((q) => [origen[0] + (q[0] - origen[0]) * AMPLIA, origen[1] + (q[1] - origen[1]) * AMPLIA, q[2] * AMPLIA]);
       let empuje = 0;
@@ -294,10 +308,15 @@ const Avatar3D = (() => {
       zMuneca += empuje;
       const codo = [c2[0], c2[1], zCodo + empuje * 0.35];
       const P = mano.map((q) => [q[0], q[1], zMuneca + q[2]]);
-      piezas.push(esfera(h, 0.105, ROPA));
-      piezas.push(capsula(h, codo, 0.092, 0.08, ROPA));
-      piezas.push(capsula(codo, P[0], 0.08, 0.06, ROPA));
-      tramos.push({ a: h, b: codo, r: 0.085, desde: 0.5 }, { a: codo, b: P[0], r: 0.07, desde: 0 });
+      // Brazo: hombro redondeado, brazo que se afina hacia el codo, y antebrazo con su forma (más ancho cerca del codo, fino
+      // en la muñeca). El guante acaba en un puño que lo une al antebrazo.
+      const vientre = mezcla(codo, P[0], 0.3), puno = mezcla(codo, P[0], 0.85);
+      piezas.push(esfera(h, R_HOMBRO, ROPA));
+      piezas.push(capsula(h, codo, R_BRAZO[0], R_BRAZO[1], ROPA));
+      piezas.push(capsula(codo, vientre, R_ANTEBRAZO[0], R_ANTEBRAZO[1], ROPA));
+      piezas.push(capsula(vientre, P[0], R_ANTEBRAZO[1], R_ANTEBRAZO[2], ROPA));
+      piezas.push(capsula(puno, P[0], R_ANTEBRAZO[2] + 0.012, R_ANTEBRAZO[2] + 0.008, BLANCO));
+      tramos.push({ a: h, b: codo, r: R_BRAZO[1], desde: 0.5 }, { a: codo, b: P[0], r: R_ANTEBRAZO[2], desde: 0 });
       for (const base of [1, 5, 9, 13, 17]) for (let k = 0; k < 3; k++) tramos.push({ a: P[base + k], b: P[base + k + 1], r: rDedo, desde: 0 });
       // Palma: los cuatro huesos hacia los nudillos, la línea de nudillos y la base del pulgar; juntos hacen una pieza continua.
       for (const k of [5, 9, 13, 17]) piezas.push(capsula(P[0], P[k], rPalma * 1.05, rPalma, BLANCO));
