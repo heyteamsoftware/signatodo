@@ -1,423 +1,2680 @@
 {
-  "signos": {
-    "caramelo": {
-      "palabras": ["caramelo", "caramelos"], "dur": 1.4, "confianza": "baja",
-      "duda": "Fotogramas pequeños: mano con dedos junto a la boca/mejilla, parece un giro; luego manos abajo.",
-      "d": [
-        {"t": 0, "en": "boca", "desp": [0.15, -0.05, 0.25], "dir": "arriba+adentro", "pal": "adentro", "forma": "pinza", "punto": "indice"},
-        {"t": 0.5, "desp": [0.1, -0.02, 0.25], "dir": "arriba", "pal": "atras"},
-        {"t": 1, "desp": [0.15, -0.05, 0.25], "dir": "arriba+adentro", "pal": "adentro"}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno claro; la boca articula."}
+ "signos": {
+  "caramelo": {
+   "palabras": [
+    "caramelo",
+    "caramelos"
+   ],
+   "dur": 1.5,
+   "repetir": 2,
+   "confianza": "baja",
+   "revision": 2,
+   "duda": "Se ve el índice extendido junto a la mejilla/boca, aparentemente girando sobre la mejilla; el final con la mano a la altura del pecho no se entiende.",
+   "d": [
+    {
+     "t": 0,
+     "en": "mejilla",
+     "desp": [
+      0.1,
+      0,
+      0.15
+     ],
+     "dir": "arriba",
+     "pal": "atras",
+     "forma": "indice",
+     "punto": "indice"
     },
-    "carnaval": {
-      "palabras": ["carnaval", "carnavales"], "dur": 1.6, "confianza": "baja",
-      "duda": "Una mano se lleva a la cara (zona de ojos/nariz, como antifaz) y se desliza; detalle poco claro.",
-      "d": [
-        {"t": 0, "pos": [0.3, -0.6, 0.5], "dir": "adelante", "pal": "abajo", "forma": "plana", "punto": "palma"},
-        {"t": 0.5, "en": "ojos", "desp": [0.05, 0, 0.1], "dir": "arriba+adentro", "pal": "adentro", "forma": "plana", "punto": "palma"},
-        {"t": 1, "en": "nariz", "desp": [0.05, -0.05, 0.1], "dir": "arriba+adentro", "pal": "adentro"}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "La mano tapa la zona de los ojos como un antifaz."}
+    {
+     "t": 0.5,
+     "en": "mejilla",
+     "desp": [
+      0.05,
+      -0.05,
+      0.1
+     ],
+     "dir": "arriba+adentro",
+     "pal": "adentro"
     },
-    "carne": {
-      "palabras": ["carne", "carnes"], "dur": 1.3, "confianza": "baja",
-      "duda": "Las dos manos se juntan delante del pecho/vientre, parece pellizcar o frotar; no está claro.",
-      "d": [
-        {"t": 0, "pos": [0.15, -0.35, 0.45], "dir": "adelante+adentro", "pal": "abajo", "forma": "pinza", "punto": "puntas"},
-        {"t": 0.5, "pos": [0.05, -0.4, 0.45]},
-        {"t": 1, "pos": [0.15, -0.35, 0.45]}
-      ],
-      "n": [
-        {"t": 0, "pos": [0.1, -0.5, 0.45], "dir": "adelante+adentro", "pal": "arriba", "forma": "plana", "punto": "palma"},
-        {"t": 1, "pos": [0.1, -0.5, 0.45]}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
-    },
-    "caro": {
-      "palabras": ["caro", "cara", "caros", "caras"], "dur": 1.3, "confianza": "baja",
-      "duda": "Mano al frente a la altura del pecho, frotando con la otra (como contar dinero); cara con boca de énfasis.",
-      "d": [
-        {"t": 0, "pos": [0.25, -0.3, 0.5], "dir": "adelante+arriba", "pal": "arriba", "forma": "pinza", "punto": "puntas"},
-        {"t": 0.5, "pos": [0.3, -0.15, 0.6]},
-        {"t": 1, "pos": [0.25, -0.3, 0.5]}
-      ],
-      "n": [
-        {"t": 0, "pos": [0.1, -0.5, 0.45], "dir": "adelante", "pal": "arriba", "forma": "plana", "punto": "palma"},
-        {"t": 1, "pos": [0.1, -0.5, 0.45]}
-      ],
-      "nm": {
-        "necesita": {"cuerpo": false, "cara": true, "ojos": false},
-        "nota": "Cara de énfasis con la boca marcada.",
-        "claves": [{"t": 0, "expr": "neutra"}, {"t": 0.4, "expr": "enfasis"}, {"t": 1, "expr": "neutra"}]
-      }
-    },
-    "carpintero": {
-      "palabras": ["carpintero", "carpintera", "carpinteros"], "dur": 1.8, "repetir": 3, "confianza": "baja",
-      "duda": "Una mano plana se desliza sobre la otra como un cepillo; ciclo supuesto.",
-      "d": [
-        {"t": 0, "pos": [0.05, -0.35, 0.5], "dir": "adelante+adentro", "pal": "abajo", "forma": "plana", "punto": "palma"},
-        {"t": 0.5, "pos": [0.2, -0.4, 0.62]},
-        {"t": 1, "pos": [0.05, -0.35, 0.5]}
-      ],
-      "n": [
-        {"t": 0, "pos": [0.1, -0.55, 0.5], "dir": "adelante", "pal": "abajo", "forma": "plana", "punto": "palma"},
-        {"t": 1, "pos": [0.1, -0.55, 0.5]}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
-    },
-    "cartera": {
-      "palabras": ["cartera", "cartero", "carteros", "carteras"], "dur": 2.0, "confianza": "baja",
-      "duda": "Mano en alto (¿gorra/cartero?) y luego brazos cruzados con manos abiertas; secuencia poco clara.",
-      "d": [
-        {"t": 0, "en": "frente", "desp": [0.2, 0.1, 0.2], "dir": "arriba", "pal": "adentro", "forma": "garra", "punto": "palma"},
-        {"t": 0.5, "pos": [-0.2, -0.3, 0.55], "dir": "adelante", "pal": "abajo", "forma": "plana"},
-        {"t": 1, "pos": [0.1, 0.0, 0.5], "dir": "arriba", "pal": "adelante", "forma": "abierta"}
-      ],
-      "n": [
-        {"t": 0, "pos": [0.1, -0.7, 0.4], "dir": "adelante", "pal": "abajo", "forma": "plana", "punto": "palma"},
-        {"t": 0.5, "pos": [-0.2, -0.45, 0.5]},
-        {"t": 1, "pos": [0.1, -0.1, 0.5], "dir": "arriba", "pal": "adelante", "forma": "abierta"}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
-    },
-    "castillo": {
-      "palabras": ["castillo", "castillos"], "dur": 2.0, "confianza": "baja",
-      "duda": "Manos con puños en alto y antebrazos cayendo como muros/almenas; supuesto.",
-      "d": [
-        {"t": 0, "pos": [0.5, 0.3, 0.5], "dir": "arriba", "pal": "adentro", "forma": "puño", "punto": "nudillos"},
-        {"t": 0.5, "pos": [0.6, 0.0, 0.5], "dir": "adelante+afuera", "pal": "abajo", "forma": "plana"},
-        {"t": 1, "pos": [0.4, -0.5, 0.5], "dir": "adelante", "pal": "abajo"}
-      ],
-      "n": [
-        {"t": 0, "pos": [0.5, 0.3, 0.5], "dir": "arriba", "pal": "adentro", "forma": "puño", "punto": "nudillos"},
-        {"t": 0.5, "pos": [0.6, 0.0, 0.5], "dir": "adelante+afuera", "pal": "abajo", "forma": "plana"},
-        {"t": 1, "pos": [0.4, -0.5, 0.5], "dir": "adelante", "pal": "abajo"}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
-    },
-    "cazo": {
-      "palabras": ["cazo", "cazos"], "dur": 1.4, "confianza": "baja",
-      "duda": "Una mano en forma de c/puño sostiene un mango imaginario y hace remover; fotogramas poco nítidos.",
-      "d": [
-        {"t": 0, "pos": [0.2, -0.5, 0.5], "dir": "adelante", "pal": "adentro", "forma": "c", "punto": "palma"},
-        {"t": 0.5, "pos": [0.2, -0.45, 0.58], "dir": "adelante+abajo"},
-        {"t": 1, "pos": [0.2, -0.5, 0.5], "dir": "adelante"}
-      ],
-      "n": [
-        {"t": 0, "pos": [0.05, -0.55, 0.45], "dir": "adelante", "pal": "arriba", "forma": "curva", "punto": "palma"},
-        {"t": 1, "pos": [0.05, -0.55, 0.45]}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
-    },
-    "cazuela": {
-      "palabras": ["cazuela", "cazuelas"], "dur": 1.5, "confianza": "baja",
-      "duda": "Manos en forma de puño/c separándose a los lados dibujando un recipiente ancho.",
-      "d": [
-        {"t": 0, "pos": [0.1, -0.4, 0.5], "dir": "adelante", "pal": "arriba", "forma": "c", "punto": "palma"},
-        {"t": 0.6, "pos": [0.55, -0.4, 0.5]},
-        {"t": 1, "pos": [0.5, -0.5, 0.5]}
-      ],
-      "n": [
-        {"t": 0, "pos": [0.1, -0.4, 0.5], "dir": "adelante", "pal": "arriba", "forma": "c", "punto": "palma"},
-        {"t": 0.6, "pos": [0.55, -0.4, 0.5]},
-        {"t": 1, "pos": [0.5, -0.5, 0.5]}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
-    },
-    "cebolla": {
-      "palabras": ["cebolla", "cebollas"], "dur": 1.8, "repetir": 2, "confianza": "baja",
-      "duda": "Una mano en pinza gira sobre la palma de la otra (como pelar/cortar); no veo gesto facial claro de llorar.",
-      "d": [
-        {"t": 0, "pos": [0.1, -0.2, 0.5], "dir": "abajo+adentro", "pal": "adentro", "forma": "pinza", "punto": "puntas"},
-        {"t": 0.5, "pos": [0.05, -0.25, 0.5], "dir": "abajo+atras"},
-        {"t": 1, "pos": [0.1, -0.2, 0.5], "dir": "abajo+adentro"}
-      ],
-      "n": [
-        {"t": 0, "pos": [0.05, -0.5, 0.5], "dir": "adelante", "pal": "arriba", "forma": "curva", "punto": "palma"},
-        {"t": 1, "pos": [0.05, -0.5, 0.5]}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
-    },
-    "celebrar": {
-      "palabras": ["celebrar", "celebra", "celebran", "celebración"], "dur": 1.6, "repetir": 2, "confianza": "baja",
-      "duda": "Manos con dedos agrupados delante del pecho, giran/abren; cara alegre.",
-      "d": [
-        {"t": 0, "pos": [0.15, -0.1, 0.45], "dir": "arriba", "pal": "adentro", "forma": "piña", "punto": "puntas"},
-        {"t": 0.5, "pos": [0.35, 0.0, 0.5], "dir": "arriba+afuera", "forma": "abierta"},
-        {"t": 1, "pos": [0.15, -0.1, 0.45], "dir": "arriba", "forma": "piña"}
-      ],
-      "n": [
-        {"t": 0, "pos": [0.15, -0.1, 0.45], "dir": "arriba", "pal": "adentro", "forma": "piña", "punto": "puntas"},
-        {"t": 0.5, "pos": [0.35, 0.0, 0.5], "dir": "arriba+afuera", "forma": "abierta"},
-        {"t": 1, "pos": [0.15, -0.1, 0.45], "dir": "arriba", "forma": "piña"}
-      ],
-      "nm": {
-        "necesita": {"cuerpo": false, "cara": true, "ojos": false},
-        "nota": "Cara alegre de fiesta.",
-        "claves": [{"t": 0, "expr": "alegria"}, {"t": 1, "expr": "alegria"}]
-      }
-    },
-    "cenar": {
-      "palabras": ["cenar", "cena", "cenan", "cenamos"], "dur": 2.0, "confianza": "baja",
-      "duda": "Parece comer (mano a la boca) y luego manos abiertas hacia arriba/lados (noche); secuencia supuesta.",
-      "d": [
-        {"t": 0, "en": "boca", "desp": [0.1, -0.2, 0.3], "dir": "arriba+atras", "pal": "adentro", "forma": "piña", "punto": "puntas"},
-        {"t": 0.4, "desp": [0.1, -0.05, 0.1]},
-        {"t": 0.7, "pos": [0.6, 0.4, 0.5], "dir": "arriba", "pal": "adelante", "forma": "abierta", "punto": "palma"},
-        {"t": 1, "pos": [0.1, -0.4, 0.5], "dir": "adelante+adentro", "pal": "abajo", "forma": "plana"}
-      ],
-      "n": [
-        {"t": 0, "pos": [0.05, -0.7, 0.4], "dir": "adelante", "pal": "abajo", "forma": "plana", "punto": "palma"},
-        {"t": 0.7, "pos": [0.6, 0.4, 0.5], "dir": "arriba", "pal": "adelante", "forma": "abierta"},
-        {"t": 1, "pos": [-0.1, -0.4, 0.5], "dir": "adelante+adentro", "pal": "abajo", "forma": "plana"}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
-    },
-    "cereza": {
-      "palabras": ["cereza"], "dur": 1.3, "confianza": "baja",
-      "duda": "Mano junto a la oreja/sien con dedos que pellizcan (rabillo colgando); posible.",
-      "d": [
-        {"t": 0, "en": "oreja", "desp": [0.1, 0.1, 0.15], "dir": "arriba", "pal": "adentro", "forma": "pinza", "punto": "puntas"},
-        {"t": 0.5, "desp": [0.1, -0.05, 0.15], "dir": "abajo"},
-        {"t": 1, "desp": [0.1, 0.1, 0.15], "dir": "arriba"}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
-    },
-    "cerezas": {
-      "palabras": ["cerezas"], "dur": 1.7, "repetir": 2, "confianza": "baja",
-      "duda": "Como cereza, con el gesto repetido (plural).",
-      "d": [
-        {"t": 0, "en": "oreja", "desp": [0.1, 0.1, 0.15], "dir": "arriba", "pal": "adentro", "forma": "pinza", "punto": "puntas"},
-        {"t": 0.5, "desp": [0.1, -0.05, 0.15], "dir": "abajo"},
-        {"t": 1, "desp": [0.1, 0.1, 0.15], "dir": "arriba"}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
-    },
-    "cerrar": {
-      "palabras": ["cerrar", "cierra", "cierran", "cerrado"], "dur": 1.2, "confianza": "baja",
-      "duda": "Dos puños delante del pecho que se juntan o giran como cerrando una puerta; poco nítido.",
-      "d": [
-        {"t": 0, "pos": [0.4, -0.1, 0.5], "dir": "arriba", "pal": "adentro", "forma": "puño", "punto": "nudillos"},
-        {"t": 0.6, "pos": [0.1, -0.2, 0.5], "dir": "arriba+adentro"},
-        {"t": 1, "pos": [0.05, -0.3, 0.5]}
-      ],
-      "n": [
-        {"t": 0, "pos": [0.4, -0.1, 0.5], "dir": "arriba", "pal": "adentro", "forma": "puño", "punto": "nudillos"},
-        {"t": 0.6, "pos": [0.1, -0.2, 0.5], "dir": "arriba+adentro"},
-        {"t": 1, "pos": [0.05, -0.3, 0.5]}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
-    },
-    "cerveza": {
-      "palabras": ["cerveza", "cervezas"], "dur": 1.5, "confianza": "baja",
-      "duda": "Una mano en forma de c o pinza sobre la otra plana (sirviendo/espuma); poco claro.",
-      "d": [
-        {"t": 0, "pos": [0.15, -0.15, 0.5], "dir": "adelante+abajo", "pal": "abajo", "forma": "pinza", "punto": "puntas"},
-        {"t": 0.5, "pos": [0.1, -0.3, 0.5], "dir": "abajo"},
-        {"t": 1, "pos": [0.15, -0.15, 0.5], "dir": "adelante+abajo"}
-      ],
-      "n": [
-        {"t": 0, "pos": [0.05, -0.5, 0.5], "dir": "adelante", "pal": "arriba", "forma": "plana", "punto": "palma"},
-        {"t": 1, "pos": [0.05, -0.5, 0.5]}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
-    },
-    "cesto": {
-      "palabras": ["cesto", "cesta", "cestos"], "dur": 1.6, "confianza": "baja",
-      "duda": "Una mano tras otra dibuja el borde del cesto y se mueve como asa; poco claro. Cara con boca torcida.",
-      "d": [
-        {"t": 0, "pos": [0.1, -0.5, 0.5], "dir": "adelante+adentro", "pal": "abajo", "forma": "c", "punto": "palma"},
-        {"t": 0.5, "pos": [0.4, -0.45, 0.5]},
-        {"t": 1, "pos": [0.5, -0.2, 0.5], "dir": "adelante+arriba"}
-      ],
-      "n": [
-        {"t": 0, "pos": [0.1, -0.5, 0.5], "dir": "adelante+adentro", "pal": "abajo", "forma": "c", "punto": "palma"},
-        {"t": 0.5, "pos": [0.4, -0.45, 0.5]},
-        {"t": 1, "pos": [0.5, -0.2, 0.5], "dir": "adelante+arriba"}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno claro."}
-    },
-    "chocolate": {
-      "palabras": ["chocolate", "chocolates"], "dur": 1.4, "confianza": "baja",
-      "duda": "Dedos (índice y corazón) tocan la comisura/boca y se frotan; luego mano baja.",
-      "d": [
-        {"t": 0, "en": "mejilla", "desp": [0.1, -0.15, 0.15], "dir": "arriba+adentro", "pal": "adentro", "forma": "v", "punto": "puntas"},
-        {"t": 0.5, "en": "boca", "desp": [0.15, -0.05, 0.12]},
-        {"t": 1, "en": "mejilla", "desp": [0.1, -0.15, 0.15]}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
-    },
-    "chorizo": {
-      "palabras": ["chorizo", "chorizos"], "dur": 1.3, "confianza": "baja",
-      "duda": "Dos dedos (v) bajo la barbilla/boca, parecen mover como cortando; poco claro.",
-      "d": [
-        {"t": 0, "en": "barbilla", "desp": [0.1, -0.1, 0.15], "dir": "arriba+adentro", "pal": "adentro", "forma": "v", "punto": "puntas"},
-        {"t": 0.5, "desp": [0.05, -0.2, 0.15]},
-        {"t": 1, "desp": [0.1, -0.1, 0.15]}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
-    },
-    "chuletas": {
-      "palabras": ["chuletas", "chuleta"], "dur": 1.6, "confianza": "baja",
-      "duda": "Antebrazo cruzado ante el pecho y la mano del otro lado desliza como marcando costillas.",
-      "d": [
-        {"t": 0, "pos": [-0.3, -0.35, 0.5], "dir": "adelante+adentro", "pal": "abajo", "forma": "plana", "punto": "palma"},
-        {"t": 0.5, "pos": [-0.3, -0.5, 0.5]},
-        {"t": 1, "pos": [-0.3, -0.35, 0.5]}
-      ],
-      "n": [
-        {"t": 0, "pos": [0.1, -0.35, 0.45], "dir": "adelante", "pal": "abajo", "forma": "plana", "punto": "palma"},
-        {"t": 1, "pos": [0.1, -0.35, 0.45]}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
-    },
-    "cielo": {
-      "palabras": ["cielo", "cielos"], "dur": 1.5, "confianza": "baja",
-      "duda": "Mano abierta en alto, luego índice señalando hacia arriba; probable cielo/arriba.",
-      "d": [
-        {"t": 0, "pos": [0.5, 0.7, 0.4], "dir": "arriba", "pal": "adelante", "forma": "abierta", "punto": "palma"},
-        {"t": 0.5, "pos": [0.3, 1.2, 0.4], "dir": "arriba", "pal": "adelante", "forma": "indice", "punto": "indice"},
-        {"t": 1, "pos": [0.2, 1.3, 0.4], "dir": "arriba"}
-      ],
-      "nm": {
-        "necesita": {"cuerpo": false, "cara": false, "ojos": true},
-        "nota": "La mirada sube hacia el cielo.",
-        "claves": [{"t": 0, "ojos": 1, "mirada": [0, 0]}, {"t": 0.5, "ojos": 1, "mirada": [0, 0.8]}, {"t": 1, "ojos": 1, "mirada": [0, 0.8]}]
-      }
-    },
-    "cine": {
-      "palabras": ["cine", "cines"], "dur": 1.6, "repetir": 2, "confianza": "baja",
-      "duda": "Mano abierta que oscila (como luz de proyector/rodar) sobre el antebrazo de la otra mano.",
-      "d": [
-        {"t": 0, "pos": [0.45, 0.0, 0.5], "dir": "arriba", "pal": "adelante", "forma": "abierta", "punto": "palma"},
-        {"t": 0.5, "pos": [0.35, 0.0, 0.5], "dir": "arriba+adentro", "pal": "atras"},
-        {"t": 1, "pos": [0.45, 0.0, 0.5], "dir": "arriba", "pal": "adelante"}
-      ],
-      "n": [
-        {"t": 0, "pos": [0.1, -0.45, 0.5], "dir": "adelante+adentro", "pal": "abajo", "forma": "plana", "punto": "palma"},
-        {"t": 1, "pos": [0.1, -0.45, 0.5]}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
-    },
-    "circo": {
-      "palabras": ["circo", "circos"], "dur": 1.8, "confianza": "baja",
-      "duda": "Manos con índices/dedos trazando una carpa (triángulo) sobre la cabeza; no muy claro.",
-      "d": [
-        {"t": 0, "pos": [0.3, 0.9, 0.35], "dir": "arriba+adentro", "pal": "adelante", "forma": "indice", "punto": "indice"},
-        {"t": 0.5, "pos": [0.1, 1.3, 0.35], "dir": "arriba"},
-        {"t": 1, "pos": [0.7, 0.6, 0.4], "dir": "abajo+afuera", "forma": "piña"}
-      ],
-      "n": [
-        {"t": 0, "pos": [0.3, 0.9, 0.35], "dir": "arriba+adentro", "pal": "adelante", "forma": "indice", "punto": "indice"},
-        {"t": 0.5, "pos": [0.1, 1.3, 0.35], "dir": "arriba"},
-        {"t": 1, "pos": [0.7, 0.6, 0.4], "dir": "abajo+afuera", "forma": "piña"}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
-    },
-    "ciudad": {
-      "palabras": ["ciudad", "ciudades"], "dur": 1.7, "confianza": "baja",
-      "duda": "Manos con palmas enfrentadas que suben como edificios; en el vídeo aparece una mano en forma de puño con la otra plana debajo.",
-      "d": [
-        {"t": 0, "pos": [0.25, -0.2, 0.5], "dir": "arriba", "pal": "adentro", "forma": "plana", "punto": "palma"},
-        {"t": 0.5, "pos": [0.3, 0.0, 0.5]},
-        {"t": 1, "pos": [0.6, -0.1, 0.5]}
-      ],
-      "n": [
-        {"t": 0, "pos": [0.25, -0.2, 0.5], "dir": "arriba", "pal": "adentro", "forma": "plana", "punto": "palma"},
-        {"t": 0.5, "pos": [0.3, 0.0, 0.5]},
-        {"t": 1, "pos": [0.6, -0.1, 0.5]}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
-    },
-    "claro": {
-      "palabras": ["claro", "clara", "claros"], "dur": 1.6, "confianza": "baja",
-      "duda": "Manos cruzadas delante que se abren a los lados y suben con los dedos extendidos (luz).",
-      "d": [
-        {"t": 0, "pos": [-0.2, -0.2, 0.5], "dir": "arriba+afuera", "pal": "adelante", "forma": "abierta", "punto": "palma"},
-        {"t": 0.5, "pos": [0.3, 0.4, 0.5], "dir": "arriba"},
-        {"t": 1, "pos": [0.7, 0.7, 0.4], "dir": "arriba+afuera"}
-      ],
-      "n": [
-        {"t": 0, "pos": [-0.2, -0.2, 0.5], "dir": "arriba+afuera", "pal": "adelante", "forma": "abierta", "punto": "palma"},
-        {"t": 0.5, "pos": [0.3, 0.4, 0.5], "dir": "arriba"},
-        {"t": 1, "pos": [0.7, 0.7, 0.4], "dir": "arriba+afuera"}
-      ],
-      "nm": {
-        "necesita": {"cuerpo": false, "cara": false, "ojos": true},
-        "nota": "Los ojos se abren al abrir las manos (luz).",
-        "claves": [{"t": 0, "ojos": 1}, {"t": 0.6, "ojos": 1.3}, {"t": 1, "ojos": 1.3}]
-      }
-    },
-    "clase": {
-      "palabras": ["clase", "clases", "aula"], "dur": 1.8, "confianza": "baja",
-      "duda": "Manos con índices apuntando ante el pecho alternando (¿alumnos en filas?); supuesto.",
-      "d": [
-        {"t": 0, "pos": [0.3, -0.15, 0.5], "dir": "arriba+adentro", "pal": "atras", "forma": "indice", "punto": "indice"},
-        {"t": 0.5, "pos": [0.3, -0.05, 0.5]},
-        {"t": 1, "pos": [0.3, -0.15, 0.5]}
-      ],
-      "n": [
-        {"t": 0, "pos": [0.3, -0.35, 0.5], "dir": "arriba+adentro", "pal": "atras", "forma": "indice", "punto": "indice"},
-        {"t": 0.5, "pos": [0.3, -0.25, 0.5]},
-        {"t": 1, "pos": [0.3, -0.35, 0.5]}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
-    },
-    "coche": {
-      "palabras": ["coche", "coches", "carro"], "dur": 1.3, "repetir": 2, "confianza": "media",
-      "duda": "Dos puños delante del pecho como sujetando un volante y girando; el vídeo muestra el sentido de carruaje pero parece volante.",
-      "d": [
-        {"t": 0, "pos": [0.3, -0.2, 0.5], "dir": "arriba", "pal": "adentro", "forma": "puño", "punto": "nudillos"},
-        {"t": 0.5, "pos": [0.3, -0.35, 0.5]},
-        {"t": 1, "pos": [0.3, -0.2, 0.5]}
-      ],
-      "n": [
-        {"t": 0, "pos": [0.3, -0.35, 0.5], "dir": "arriba", "pal": "adentro", "forma": "puño", "punto": "nudillos"},
-        {"t": 0.5, "pos": [0.3, -0.2, 0.5]},
-        {"t": 1, "pos": [0.3, -0.35, 0.5]}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
-    },
-    "cocina": {
-      "palabras": ["cocina", "cocinas"], "dur": 1.9, "confianza": "baja",
-      "duda": "Manos abiertas moviéndose y pulgares hacia arriba al final (¿fuego?); secuencia dudosa.",
-      "d": [
-        {"t": 0, "pos": [0.35, -0.3, 0.5], "dir": "arriba+adentro", "pal": "arriba", "forma": "abierta", "punto": "palma"},
-        {"t": 0.5, "pos": [0.5, -0.2, 0.5], "dir": "arriba"},
-        {"t": 1, "pos": [0.35, -0.3, 0.5], "dir": "arriba", "pal": "adentro", "forma": "pulgar"}
-      ],
-      "n": [
-        {"t": 0, "pos": [0.35, -0.3, 0.5], "dir": "arriba+adentro", "pal": "arriba", "forma": "abierta", "punto": "palma"},
-        {"t": 0.5, "pos": [0.5, -0.2, 0.5], "dir": "arriba"},
-        {"t": 1, "pos": [0.35, -0.3, 0.5], "dir": "arriba", "pal": "adentro", "forma": "pulgar"}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
-    },
-    "cocinar": {
-      "palabras": ["cocinar", "cocina", "cocinan", "cocino"], "dur": 1.6, "repetir": 2, "confianza": "baja",
-      "duda": "Manos con dedos curvados delante, palmas arriba, moviéndose como removiendo/salteando.",
-      "d": [
-        {"t": 0, "pos": [0.3, -0.35, 0.55], "dir": "adelante", "pal": "arriba", "forma": "garra", "punto": "palma"},
-        {"t": 0.5, "pos": [0.3, -0.25, 0.55]},
-        {"t": 1, "pos": [0.3, -0.35, 0.55]}
-      ],
-      "n": [
-        {"t": 0, "pos": [0.3, -0.25, 0.55], "dir": "adelante", "pal": "arriba", "forma": "garra", "punto": "palma"},
-        {"t": 0.5, "pos": [0.3, -0.35, 0.55]},
-        {"t": 1, "pos": [0.3, -0.25, 0.55]}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
-    },
-    "coger": {
-      "palabras": ["coger", "coge", "cogen", "agarrar"], "dur": 1.2, "confianza": "baja",
-      "duda": "Mano abierta que se cierra en puño hacia el cuerpo; poco nítido.",
-      "d": [
-        {"t": 0, "pos": [0.6, -0.1, 0.65], "dir": "adelante+arriba", "pal": "adelante", "forma": "abierta", "punto": "palma"},
-        {"t": 0.5, "pos": [0.5, -0.25, 0.55], "forma": "garra"},
-        {"t": 1, "pos": [0.25, -0.35, 0.45], "dir": "adelante", "pal": "abajo", "forma": "puño"}
-      ],
-      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
+    {
+     "t": 1,
+     "en": "mejilla",
+     "desp": [
+      0.1,
+      0,
+      0.15
+     ],
+     "dir": "arriba",
+     "pal": "atras"
     }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Sin gestos no manuales claros."
+   }
+  },
+  "carnaval": {
+   "palabras": [
+    "carnaval",
+    "carnavales"
+   ],
+   "dur": 1.7,
+   "confianza": "media",
+   "revision": 2,
+   "duda": "La mano sube ante la cara con la palma hacia ella y baja desde los ojos a la nariz (antifaz); la otra mano queda abajo con los dedos juntos.",
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.3,
+      -0.55,
+      0.4
+     ],
+     "dir": "arriba",
+     "pal": "adentro",
+     "forma": "abierta",
+     "punto": "palma"
+    },
+    {
+     "t": 0.5,
+     "en": "ojos",
+     "desp": [
+      0.05,
+      -0.05,
+      0.2
+     ],
+     "dir": "arriba",
+     "pal": "adentro",
+     "forma": "abierta"
+    },
+    {
+     "t": 1,
+     "en": "nariz",
+     "desp": [
+      0.05,
+      -0.05,
+      0.2
+     ],
+     "dir": "arriba",
+     "pal": "adentro"
+    }
+   ],
+   "n": [
+    {
+     "t": 0,
+     "pos": [
+      0.15,
+      -0.8,
+      0.4
+     ],
+     "dir": "adelante+adentro",
+     "pal": "arriba",
+     "forma": "piña",
+     "punto": "puntas"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.15,
+      -0.8,
+      0.4
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": true,
+     "ojos": false
+    },
+    "nota": "Cara alegre de fiesta tras la mano.",
+    "claves": [
+     {
+      "t": 0,
+      "expr": "neutra"
+     },
+     {
+      "t": 0.5,
+      "sonrisa": 0.5
+     },
+     {
+      "t": 1,
+      "sonrisa": 0.6
+     }
+    ]
+   }
+  },
+  "carne": {
+   "palabras": [
+    "carne",
+    "carnes"
+   ],
+   "dur": 1.4,
+   "repetir": 2,
+   "confianza": "media",
+   "revision": 2,
+   "duda": "La mano dominante pellizca la carne de la palma/dorso de la otra, que está plana hacia arriba; no se distingue si pellizca varias veces.",
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.2,
+      -0.2,
+      0.45
+     ],
+     "dir": "arriba+adelante",
+     "pal": "adentro",
+     "forma": "pinza",
+     "punto": "puntas"
+    },
+    {
+     "t": 0.4,
+     "pos": [
+      0.05,
+      -0.5,
+      0.45
+     ],
+     "dir": "abajo+adelante",
+     "pal": "abajo"
+    },
+    {
+     "t": 0.7,
+     "pos": [
+      0.05,
+      -0.45,
+      0.45
+     ]
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.2,
+      -0.2,
+      0.45
+     ],
+     "dir": "arriba+adelante"
+    }
+   ],
+   "n": [
+    {
+     "t": 0,
+     "pos": [
+      0.1,
+      -0.65,
+      0.45
+     ],
+     "dir": "adelante+adentro",
+     "pal": "arriba",
+     "forma": "plana",
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.1,
+      -0.65,
+      0.45
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Sin gestos no manuales claros."
+   }
+  },
+  "caro": {
+   "palabras": [
+    "caro",
+    "cara",
+    "caros",
+    "caras"
+   ],
+   "dur": 1.5,
+   "confianza": "baja",
+   "revision": 2,
+   "duda": "El puño sube junto al hombro con la boca en 'o'; después los dedos caen sueltos hacia abajo. No se aprecia si frota dedos (dinero) ni el papel de la otra mano.",
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.5,
+      -0.4,
+      0.35
+     ],
+     "dir": "arriba",
+     "pal": "adentro",
+     "forma": "puño",
+     "punto": "nudillos"
+    },
+    {
+     "t": 0.35,
+     "pos": [
+      0.55,
+      0.1,
+      0.35
+     ]
+    },
+    {
+     "t": 0.7,
+     "pos": [
+      0.5,
+      -0.2,
+      0.45
+     ],
+     "dir": "abajo+adelante",
+     "pal": "abajo",
+     "forma": "garra"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.4,
+      -0.45,
+      0.45
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": true,
+     "ojos": false
+    },
+    "nota": "Boca redonda de énfasis al subir el puño.",
+    "claves": [
+     {
+      "t": 0,
+      "expr": "neutra"
+     },
+     {
+      "t": 0.35,
+      "expr": "enfasis",
+      "boca": 0.5
+     },
+     {
+      "t": 1,
+      "expr": "neutra"
+     }
+    ]
+   }
+  },
+  "carpintero": {
+   "palabras": [
+    "carpintero",
+    "carpintera",
+    "carpinteros"
+   ],
+   "dur": 2.0,
+   "repetir": 1,
+   "confianza": "media",
+   "revision": 2,
+   "duda": "Se ve la mano al pecho (marca de persona/oficio) y luego una mano plana deslizándose sobre la otra como cepillo; la dirección exacta del frotado es aproximada.",
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.55,
+      -0.4,
+      0.3
+     ],
+     "dir": "adentro+arriba",
+     "pal": "adentro",
+     "forma": "plana",
+     "punto": "palma"
+    },
+    {
+     "t": 0.2,
+     "en": "pecho",
+     "desp": [
+      0.1,
+      0,
+      0.1
+     ],
+     "dir": "adentro",
+     "pal": "atras"
+    },
+    {
+     "t": 0.4,
+     "pos": [
+      0.1,
+      -0.4,
+      0.5
+     ],
+     "dir": "adelante+adentro",
+     "pal": "abajo"
+    },
+    {
+     "t": 0.6,
+     "pos": [
+      0.3,
+      -0.45,
+      0.65
+     ]
+    },
+    {
+     "t": 0.8,
+     "pos": [
+      0.1,
+      -0.4,
+      0.5
+     ]
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.3,
+      -0.45,
+      0.65
+     ]
+    }
+   ],
+   "n": [
+    {
+     "t": 0,
+     "pos": [
+      0.15,
+      -0.8,
+      0.4
+     ],
+     "dir": "adelante",
+     "pal": "abajo",
+     "forma": "plana"
+    },
+    {
+     "t": 0.4,
+     "pos": [
+      0.1,
+      -0.6,
+      0.5
+     ],
+     "dir": "adelante+afuera",
+     "pal": "arriba"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.1,
+      -0.6,
+      0.5
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Sin gestos no manuales claros."
+   }
+  },
+  "cartera": {
+   "palabras": [
+    "cartera",
+    "cartero",
+    "carteros",
+    "carteras"
+   ],
+   "dur": 2.2,
+   "confianza": "baja",
+   "revision": 2,
+   "duda": "Se ven dos brazos cruzados ante el pecho con una mano de dedos extendidos arriba, y luego manos planas superpuestas; la secuencia completa (¿carta + persona?) sigue sin entenderse. El vídeo podría no corresponder al sentido exacto.",
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.5,
+      -0.5,
+      0.3
+     ],
+     "dir": "arriba",
+     "pal": "adelante",
+     "forma": "abierta",
+     "punto": "palma"
+    },
+    {
+     "t": 0.4,
+     "pos": [
+      -0.1,
+      -0.1,
+      0.5
+     ],
+     "dir": "adelante+adentro",
+     "pal": "abajo",
+     "forma": "plana"
+    },
+    {
+     "t": 0.7,
+     "pos": [
+      0.1,
+      0.1,
+      0.5
+     ],
+     "dir": "arriba",
+     "pal": "adelante",
+     "forma": "abierta"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.1,
+      -0.5,
+      0.5
+     ],
+     "dir": "adelante+adentro",
+     "pal": "abajo",
+     "forma": "plana"
+    }
+   ],
+   "n": [
+    {
+     "t": 0,
+     "pos": [
+      0.15,
+      -0.8,
+      0.4
+     ],
+     "dir": "adelante",
+     "pal": "abajo",
+     "forma": "plana",
+     "punto": "palma"
+    },
+    {
+     "t": 0.4,
+     "pos": [
+      -0.1,
+      -0.3,
+      0.45
+     ]
+    },
+    {
+     "t": 0.7,
+     "pos": [
+      0.0,
+      -0.25,
+      0.45
+     ]
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.1,
+      -0.55,
+      0.5
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Sin gestos no manuales claros."
+   }
+  },
+  "castillo": {
+   "palabras": [
+    "castillo",
+    "castillos"
+   ],
+   "dur": 2.1,
+   "confianza": "baja",
+   "revision": 2,
+   "duda": "Se ven manos con dedos colgando hacia abajo ante el pecho, luego brazos que suben a los lados de la cabeza y un puño en alto con la otra mano abajo; la forma de muralla/torre no se interpreta con seguridad.",
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.3,
+      -0.4,
+      0.5
+     ],
+     "dir": "abajo+adelante",
+     "pal": "abajo",
+     "forma": "plana",
+     "punto": "palma"
+    },
+    {
+     "t": 0.4,
+     "pos": [
+      0.1,
+      -0.35,
+      0.55
+     ]
+    },
+    {
+     "t": 0.7,
+     "pos": [
+      0.6,
+      0.4,
+      0.3
+     ],
+     "dir": "adelante+adentro",
+     "pal": "abajo"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.55,
+      0.55,
+      0.3
+     ],
+     "dir": "arriba",
+     "pal": "adentro",
+     "forma": "puño",
+     "punto": "nudillos"
+    }
+   ],
+   "n": [
+    {
+     "t": 0,
+     "pos": [
+      0.3,
+      -0.4,
+      0.5
+     ],
+     "dir": "abajo+adelante",
+     "pal": "abajo",
+     "forma": "plana",
+     "punto": "palma"
+    },
+    {
+     "t": 0.4,
+     "pos": [
+      0.1,
+      -0.35,
+      0.55
+     ]
+    },
+    {
+     "t": 0.7,
+     "pos": [
+      0.6,
+      0.35,
+      0.3
+     ],
+     "dir": "adelante+adentro",
+     "pal": "abajo"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.5,
+      -0.5,
+      0.4
+     ],
+     "dir": "abajo+adelante",
+     "pal": "abajo"
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Sin gestos no manuales claros."
+   }
+  },
+  "cazo": {
+   "palabras": [
+    "cazo",
+    "cazos"
+   ],
+   "dur": 1.5,
+   "repetir": 2,
+   "confianza": "media",
+   "revision": 2,
+   "duda": "La mano dominante sostiene un mango con los dedos pellizcando, a la altura del vientre, y lo mueve ligeramente (remover); la otra mano queda abajo en reposo.",
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.3,
+      -0.55,
+      0.5
+     ],
+     "dir": "adelante+abajo",
+     "pal": "abajo",
+     "forma": "pinza",
+     "punto": "puntas"
+    },
+    {
+     "t": 0.5,
+     "pos": [
+      0.25,
+      -0.5,
+      0.6
+     ],
+     "dir": "adelante"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.3,
+      -0.55,
+      0.5
+     ],
+     "dir": "adelante+abajo"
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Sin gestos no manuales claros."
+   }
+  },
+  "cazuela": {
+   "palabras": [
+    "cazuela",
+    "cazuelas"
+   ],
+   "dur": 1.6,
+   "confianza": "media",
+   "revision": 2,
+   "duda": "Las dos manos, cerradas como agarrando, se separan hasta los lados a la altura de la cintura (asas de una cazuela ancha); no se ve si la forma es puño o pinza.",
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.1,
+      -0.7,
+      0.45
+     ],
+     "dir": "adelante",
+     "pal": "adentro",
+     "forma": "puño",
+     "punto": "nudillos"
+    },
+    {
+     "t": 0.6,
+     "pos": [
+      0.95,
+      -0.7,
+      0.35
+     ]
+    },
+    {
+     "t": 1,
+     "pos": [
+      1.0,
+      -0.75,
+      0.3
+     ]
+    }
+   ],
+   "n": [
+    {
+     "t": 0,
+     "pos": [
+      0.1,
+      -0.7,
+      0.45
+     ],
+     "dir": "adelante",
+     "pal": "adentro",
+     "forma": "puño",
+     "punto": "nudillos"
+    },
+    {
+     "t": 0.6,
+     "pos": [
+      0.95,
+      -0.7,
+      0.35
+     ]
+    },
+    {
+     "t": 1,
+     "pos": [
+      1.0,
+      -0.75,
+      0.3
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Sin gestos no manuales claros."
+   }
+  },
+  "cebolla": {
+   "palabras": [
+    "cebolla",
+    "cebollas"
+   ],
+   "dur": 2.0,
+   "confianza": "baja",
+   "revision": 2,
+   "duda": "Mano dominante en canto vertical sobre la palma de la otra (cortar) y luego dedos que giran sobre ella; el orden y el giro no están claros. No se aprecia gesto de llorar.",
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.4,
+      -0.1,
+      0.4
+     ],
+     "dir": "arriba",
+     "pal": "adentro",
+     "forma": "plana",
+     "punto": "puntas"
+    },
+    {
+     "t": 0.3,
+     "pos": [
+      0.1,
+      -0.5,
+      0.5
+     ],
+     "dir": "arriba+adentro",
+     "pal": "adentro"
+    },
+    {
+     "t": 0.55,
+     "pos": [
+      0.1,
+      -0.5,
+      0.5
+     ],
+     "dir": "abajo",
+     "pal": "adentro",
+     "forma": "pinza",
+     "punto": "puntas"
+    },
+    {
+     "t": 0.8,
+     "pos": [
+      0.1,
+      -0.5,
+      0.5
+     ],
+     "dir": "abajo+atras"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.1,
+      -0.5,
+      0.5
+     ],
+     "dir": "abajo"
+    }
+   ],
+   "n": [
+    {
+     "t": 0,
+     "pos": [
+      0.1,
+      -0.75,
+      0.5
+     ],
+     "dir": "adelante+adentro",
+     "pal": "arriba",
+     "forma": "curva",
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.1,
+      -0.75,
+      0.5
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Sin gestos no manuales claros."
+   }
+  },
+  "celebrar": {
+   "palabras": [
+    "celebrar",
+    "celebra",
+    "celebran",
+    "celebración"
+   ],
+   "dur": 1.8,
+   "repetir": 2,
+   "confianza": "baja",
+   "revision": 2,
+   "duda": "Las dos manos se ven junto a la barbilla con dedos curvados/pellizcando y luego más abajo con dedos sueltos, con cara alegre; el movimiento (giro alterno) no queda claro.",
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.2,
+      0.35,
+      0.35
+     ],
+     "dir": "arriba+adentro",
+     "pal": "adentro",
+     "forma": "pinza",
+     "punto": "puntas"
+    },
+    {
+     "t": 0.5,
+     "pos": [
+      0.4,
+      -0.1,
+      0.5
+     ],
+     "dir": "arriba+afuera",
+     "pal": "adentro",
+     "forma": "piña"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.2,
+      0.35,
+      0.35
+     ],
+     "dir": "arriba+adentro",
+     "forma": "pinza"
+    }
+   ],
+   "n": [
+    {
+     "t": 0,
+     "pos": [
+      0.2,
+      0.35,
+      0.35
+     ],
+     "dir": "arriba+adentro",
+     "pal": "adentro",
+     "forma": "pinza",
+     "punto": "puntas"
+    },
+    {
+     "t": 0.5,
+     "pos": [
+      0.4,
+      -0.1,
+      0.5
+     ],
+     "dir": "arriba+afuera",
+     "pal": "adentro",
+     "forma": "piña"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.2,
+      0.35,
+      0.35
+     ],
+     "dir": "arriba+adentro",
+     "forma": "pinza"
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": true,
+     "ojos": false
+    },
+    "nota": "Cara sonriente de fiesta.",
+    "claves": [
+     {
+      "t": 0,
+      "expr": "alegria"
+     },
+     {
+      "t": 1,
+      "expr": "alegria"
+     }
+    ]
+   }
+  },
+  "cenar": {
+   "palabras": [
+    "cenar",
+    "cena",
+    "cenan",
+    "cenamos"
+   ],
+   "dur": 2.2,
+   "confianza": "media",
+   "revision": 2,
+   "duda": "Se ve comer (dedos a la boca), luego las dos manos abiertas junto a la cabeza con palmas al frente y por último las manos planas cruzadas ante el pecho (noche); el movimiento fino de los dedos arriba no se aprecia.",
+   "d": [
+    {
+     "t": 0,
+     "en": "boca",
+     "desp": [
+      0.1,
+      -0.1,
+      0.3
+     ],
+     "dir": "arriba+atras",
+     "pal": "adentro",
+     "forma": "piña",
+     "punto": "puntas"
+    },
+    {
+     "t": 0.3,
+     "en": "boca",
+     "desp": [
+      0.1,
+      -0.1,
+      0.2
+     ]
+    },
+    {
+     "t": 0.55,
+     "pos": [
+      0.65,
+      0.7,
+      0.3
+     ],
+     "dir": "arriba",
+     "pal": "adelante",
+     "forma": "abierta",
+     "punto": "palma"
+    },
+    {
+     "t": 0.8,
+     "pos": [
+      0.65,
+      0.75,
+      0.3
+     ]
+    },
+    {
+     "t": 1,
+     "pos": [
+      -0.1,
+      -0.25,
+      0.5
+     ],
+     "dir": "adelante+adentro",
+     "pal": "abajo",
+     "forma": "plana"
+    }
+   ],
+   "n": [
+    {
+     "t": 0,
+     "pos": [
+      0.15,
+      -0.8,
+      0.4
+     ],
+     "dir": "adelante",
+     "pal": "abajo",
+     "forma": "plana",
+     "punto": "palma"
+    },
+    {
+     "t": 0.55,
+     "pos": [
+      0.65,
+      0.7,
+      0.3
+     ],
+     "dir": "arriba",
+     "pal": "adelante",
+     "forma": "abierta"
+    },
+    {
+     "t": 0.8,
+     "pos": [
+      0.65,
+      0.75,
+      0.3
+     ]
+    },
+    {
+     "t": 1,
+     "pos": [
+      -0.1,
+      -0.35,
+      0.55
+     ],
+     "dir": "adelante+adentro",
+     "pal": "abajo",
+     "forma": "plana"
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Sin gestos no manuales claros."
+   }
+  },
+  "cereza": {
+   "palabras": [
+    "cereza"
+   ],
+   "dur": 1.4,
+   "confianza": "media",
+   "revision": 2,
+   "duda": "La mano con dedos curvados/pellizcando queda junto a la oreja con el codo hacia fuera (cereza colgando); el detalle de los dedos es aproximado.",
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.5,
+      -0.2,
+      0.2
+     ],
+     "dir": "arriba",
+     "pal": "adentro",
+     "forma": "pinza",
+     "punto": "puntas"
+    },
+    {
+     "t": 0.4,
+     "en": "oreja",
+     "desp": [
+      0.1,
+      -0.05,
+      0.15
+     ],
+     "dir": "arriba+adentro",
+     "pal": "adentro"
+    },
+    {
+     "t": 1,
+     "en": "oreja",
+     "desp": [
+      0.1,
+      -0.1,
+      0.15
+     ],
+     "dir": "abajo+adentro"
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Sin gestos no manuales claros."
+   }
+  },
+  "cerezas": {
+   "palabras": [
+    "cerezas"
+   ],
+   "dur": 1.9,
+   "confianza": "media",
+   "revision": 2,
+   "duda": "Igual que cereza (mano pellizcando junto a la oreja) pero con un movimiento previo de las manos abajo y un barrido final de la mano hacia el pecho (plural); estos extras son aproximados.",
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.5,
+      -0.2,
+      0.2
+     ],
+     "dir": "arriba",
+     "pal": "adentro",
+     "forma": "pinza",
+     "punto": "puntas"
+    },
+    {
+     "t": 0.35,
+     "en": "oreja",
+     "desp": [
+      0.1,
+      -0.05,
+      0.15
+     ],
+     "dir": "arriba+adentro",
+     "pal": "adentro"
+    },
+    {
+     "t": 0.7,
+     "en": "oreja",
+     "desp": [
+      0.1,
+      -0.1,
+      0.15
+     ],
+     "dir": "abajo+adentro"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.2,
+      -0.2,
+      0.35
+     ],
+     "dir": "adentro",
+     "pal": "abajo"
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": true,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "La cabeza se inclina un poco hacia la mano junto a la oreja.",
+    "claves": [
+     {
+      "t": 0,
+      "cabeza": {
+       "lado": 0
+      }
+     },
+     {
+      "t": 0.4,
+      "cabeza": {
+       "lado": -8
+      }
+     },
+     {
+      "t": 0.8,
+      "cabeza": {
+       "lado": -8
+      }
+     },
+     {
+      "t": 1,
+      "cabeza": {
+       "lado": 0
+      }
+     }
+    ]
+   }
+  },
+  "cerrar": {
+   "palabras": [
+    "cerrar",
+    "cierra",
+    "cierran",
+    "cerrado"
+   ],
+   "dur": 1.4,
+   "confianza": "baja",
+   "revision": 2,
+   "duda": "Se ven dos puños apretados a la altura del pecho y luego las manos abajo con los dedos hacia abajo; el movimiento entre ambas posturas (¿cerrando algo hacia abajo?) no se aprecia.",
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.4,
+      -0.15,
+      0.45
+     ],
+     "dir": "arriba",
+     "pal": "adentro",
+     "forma": "puño",
+     "punto": "nudillos"
+    },
+    {
+     "t": 0.5,
+     "pos": [
+      0.35,
+      -0.15,
+      0.45
+     ]
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.25,
+      -0.65,
+      0.45
+     ],
+     "dir": "abajo+adelante",
+     "pal": "adentro",
+     "forma": "gancho"
+    }
+   ],
+   "n": [
+    {
+     "t": 0,
+     "pos": [
+      0.4,
+      -0.15,
+      0.45
+     ],
+     "dir": "arriba",
+     "pal": "adentro",
+     "forma": "puño",
+     "punto": "nudillos"
+    },
+    {
+     "t": 0.5,
+     "pos": [
+      0.35,
+      -0.15,
+      0.45
+     ]
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.25,
+      -0.65,
+      0.45
+     ],
+     "dir": "abajo+adelante",
+     "pal": "adentro",
+     "forma": "gancho"
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Sin gestos no manuales claros."
+   }
+  },
+  "cerveza": {
+   "palabras": [
+    "cerveza",
+    "cervezas"
+   ],
+   "dur": 1.6,
+   "confianza": "baja",
+   "revision": 2,
+   "duda": "Una mano plana horizontal sobre la otra cerrada ante el pecho, luego la mano superior se abre y sube; no se entiende si representa espuma o servir.",
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.15,
+      -0.2,
+      0.5
+     ],
+     "dir": "adelante+adentro",
+     "pal": "abajo",
+     "forma": "plana",
+     "punto": "palma"
+    },
+    {
+     "t": 0.5,
+     "pos": [
+      0.2,
+      -0.2,
+      0.5
+     ]
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.4,
+      0.0,
+      0.45
+     ],
+     "dir": "adelante+arriba",
+     "pal": "adentro",
+     "forma": "curva"
+    }
+   ],
+   "n": [
+    {
+     "t": 0,
+     "pos": [
+      0.1,
+      -0.5,
+      0.5
+     ],
+     "dir": "adelante",
+     "pal": "adentro",
+     "forma": "puño",
+     "punto": "nudillos"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.1,
+      -0.5,
+      0.5
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Sin gestos no manuales claros."
+   }
+  },
+  "cesto": {
+   "palabras": [
+    "cesto",
+    "cesta",
+    "cestos"
+   ],
+   "dur": 1.8,
+   "confianza": "baja",
+   "revision": 2,
+   "duda": "Con fotogramas grandes: el puño de la mano dominante a la altura de la cadera, luego mano plana cruzando el vientre, luego pulgar/índice arriba junto al hombro con la otra mano en el pecho. La secuencia (probable forma de cesta y asa) sigue sin leerse; los fotogramas intermedios faltan. Cara con mueca marcada.",
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.55,
+      -0.8,
+      0.35
+     ],
+     "dir": "adelante+abajo",
+     "pal": "atras",
+     "forma": "puño",
+     "punto": "nudillos"
+    },
+    {
+     "t": 0.4,
+     "pos": [
+      0.1,
+      -0.7,
+      0.5
+     ],
+     "dir": "adentro+adelante",
+     "pal": "arriba",
+     "forma": "plana",
+     "punto": "palma"
+    },
+    {
+     "t": 0.75,
+     "pos": [
+      0.75,
+      0.2,
+      0.4
+     ],
+     "dir": "arriba+adelante",
+     "pal": "adentro",
+     "forma": "pulgar",
+     "punto": "pulgar"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.75,
+      0.2,
+      0.4
+     ]
+    }
+   ],
+   "n": [
+    {
+     "t": 0,
+     "pos": [
+      0.3,
+      -0.7,
+      0.4
+     ],
+     "dir": "adelante",
+     "pal": "abajo",
+     "forma": "plana",
+     "punto": "palma"
+    },
+    {
+     "t": 0.4,
+     "pos": [
+      0.2,
+      -0.6,
+      0.5
+     ]
+    },
+    {
+     "t": 0.75,
+     "pos": [
+      0.2,
+      -0.3,
+      0.5
+     ],
+     "dir": "adelante+adentro",
+     "pal": "arriba"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.2,
+      -0.3,
+      0.5
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": true,
+     "ojos": false
+    },
+    "nota": "Mueca con la boca torcida y ceño fruncido mientras se signa.",
+    "claves": [
+     {
+      "t": 0,
+      "ceño": 0.4,
+      "sonrisa": -0.5,
+      "boca": 0.3
+     },
+     {
+      "t": 0.5,
+      "ceño": 0.5,
+      "sonrisa": -0.6,
+      "boca": 0.3
+     },
+     {
+      "t": 1,
+      "ceño": 0.2,
+      "sonrisa": 0,
+      "boca": 0
+     }
+    ]
+   }
+  },
+  "chocolate": {
+   "palabras": [
+    "chocolate",
+    "chocolates"
+   ],
+   "dur": 1.4,
+   "confianza": "media",
+   "revision": 2,
+   "d": [
+    {
+     "t": 0,
+     "en": "barbilla",
+     "desp": [
+      0.3,
+      -0.1,
+      0.2
+     ],
+     "dir": "arriba+adentro",
+     "pal": "atras",
+     "forma": "v",
+     "punto": "puntas"
+    },
+    {
+     "t": 0.25,
+     "en": "mejilla",
+     "desp": [
+      0.0,
+      -0.05,
+      0.1
+     ],
+     "dir": "adentro+arriba"
+    },
+    {
+     "t": 0.5,
+     "en": "mejilla",
+     "desp": [
+      0.0,
+      -0.12,
+      0.1
+     ]
+    },
+    {
+     "t": 0.75,
+     "en": "mejilla",
+     "desp": [
+      0.0,
+      -0.02,
+      0.1
+     ]
+    },
+    {
+     "t": 1,
+     "en": "mejilla",
+     "desp": [
+      0.0,
+      -0.1,
+      0.1
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Ninguno; la cara queda neutra."
+   }
+  },
+  "chorizo": {
+   "palabras": [
+    "chorizo",
+    "chorizos"
+   ],
+   "dur": 1.3,
+   "confianza": "media",
+   "revision": 2,
+   "d": [
+    {
+     "t": 0,
+     "en": "cuello",
+     "desp": [
+      0.05,
+      0.0,
+      0.2
+     ],
+     "dir": "arriba",
+     "pal": "atras",
+     "forma": {
+      "d": [
+       0,
+       0,
+       1,
+       1
+      ],
+      "ab": [
+       -12,
+       0,
+       0,
+       0
+      ],
+      "p": {
+       "a": -30,
+       "f": [
+        25,
+        40,
+        25
+       ]
+      }
+     },
+     "punto": "puntas"
+    },
+    {
+     "t": 0.5,
+     "en": "barbilla",
+     "desp": [
+      0.05,
+      -0.1,
+      0.2
+     ]
+    },
+    {
+     "t": 1,
+     "en": "cuello",
+     "desp": [
+      0.05,
+      0.0,
+      0.2
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Dedos índice y corazón cruzados, mano hacia el mentón; sin gesto no manual."
+   }
+  },
+  "chuletas": {
+   "palabras": [
+    "chuletas",
+    "chuleta"
+   ],
+   "dur": 1.6,
+   "repetir": 2,
+   "confianza": "baja",
+   "revision": 2,
+   "duda": "El codo sale hacia fuera y la mano dominante va al costado de las costillas de su propio lado; se ve deslizarse, pero la forma exacta de la mano (puño, garra o plana) no se distingue. La otra mano queda en reposo en el vientre.",
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.45,
+      -0.5,
+      0.3
+     ],
+     "dir": "abajo+adentro",
+     "pal": "atras",
+     "forma": "curva",
+     "punto": "puntas"
+    },
+    {
+     "t": 0.5,
+     "pos": [
+      0.5,
+      -0.8,
+      0.3
+     ]
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.45,
+      -0.5,
+      0.3
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Cara neutra; la cabeza ligeramente ladeada, no esencial."
+   }
+  },
+  "cielo": {
+   "palabras": [
+    "cielo",
+    "cielos"
+   ],
+   "dur": 1.8,
+   "confianza": "media",
+   "revision": 2,
+   "duda": "Mano abierta alzada, índice hacia arriba y barrido de la mano abierta junto a la cabeza; la segunda parte (barrido) se ve poco nítida.",
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.5,
+      0.5,
+      0.4
+     ],
+     "dir": "arriba+afuera",
+     "pal": "adelante",
+     "forma": "abierta",
+     "punto": "palma"
+    },
+    {
+     "t": 0.35,
+     "pos": [
+      0.6,
+      0.9,
+      0.4
+     ],
+     "dir": "arriba"
+    },
+    {
+     "t": 0.6,
+     "pos": [
+      0.35,
+      1.4,
+      0.3
+     ],
+     "dir": "arriba",
+     "pal": "adelante",
+     "forma": "indice",
+     "punto": "indice"
+    },
+    {
+     "t": 0.85,
+     "pos": [
+      0.6,
+      1.2,
+      0.3
+     ],
+     "dir": "arriba+adentro",
+     "pal": "adentro",
+     "forma": "abierta",
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.7,
+      0.9,
+      0.3
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": true,
+     "cara": false,
+     "ojos": true
+    },
+    "nota": "La cabeza se echa atrás y los ojos suben al cielo.",
+    "claves": [
+     {
+      "t": 0,
+      "cabeza": {
+       "adelante": 0
+      },
+      "ojos": 1,
+      "mirada": [
+       0,
+       0
+      ]
+     },
+     {
+      "t": 0.5,
+      "cabeza": {
+       "adelante": -12
+      },
+      "ojos": 1,
+      "mirada": [
+       0,
+       0.8
+      ]
+     },
+     {
+      "t": 1,
+      "cabeza": {
+       "adelante": -8
+      },
+      "ojos": 1,
+      "mirada": [
+       0,
+       0.6
+      ]
+     }
+    ]
+   }
+  },
+  "cine": {
+   "palabras": [
+    "cine",
+    "cines"
+   ],
+   "dur": 1.6,
+   "repetir": 3,
+   "confianza": "media",
+   "revision": 2,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.2,
+      -0.1,
+      0.45
+     ],
+     "dir": "arriba+adelante",
+     "pal": "adentro+adelante",
+     "forma": "abierta",
+     "punto": "palma"
+    },
+    {
+     "t": 0.5,
+     "pos": [
+      0.2,
+      -0.1,
+      0.45
+     ],
+     "dir": "arriba+adentro",
+     "pal": "atras",
+     "forma": "curva"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.2,
+      -0.1,
+      0.45
+     ],
+     "dir": "arriba+adelante",
+     "pal": "adentro+adelante",
+     "forma": "abierta"
+    }
+   ],
+   "n": [
+    {
+     "t": 0,
+     "pos": [
+      -0.25,
+      -0.5,
+      0.45
+     ],
+     "dir": "adentro+adelante",
+     "pal": "abajo",
+     "forma": "plana",
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      -0.25,
+      -0.5,
+      0.45
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Ninguno. La mano dominante, de codo apoyado sobre el antebrazo de la otra, mueve los dedos."
+   }
+  },
+  "circo": {
+   "palabras": [
+    "circo",
+    "circos"
+   ],
+   "dur": 2.0,
+   "confianza": "baja",
+   "revision": 2,
+   "duda": "Primero ambas manos forman un triángulo ante la cara (índices y pulgares), luego manos curvas separadas a los lados de la cabeza y por último dedos moviéndose a la altura del pecho. El significado de las dos últimas fases (¿carpa, público, malabares?) no se lee.",
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.25,
+      0.8,
+      0.45
+     ],
+     "dir": "arriba+adentro",
+     "pal": "adelante",
+     "forma": "l",
+     "punto": "indice"
+    },
+    {
+     "t": 0.3,
+     "pos": [
+      0.05,
+      1.1,
+      0.45
+     ],
+     "dir": "arriba+adentro"
+    },
+    {
+     "t": 0.6,
+     "pos": [
+      0.7,
+      0.8,
+      0.35
+     ],
+     "dir": "arriba+adentro",
+     "pal": "adelante",
+     "forma": "garra",
+     "punto": "palma"
+    },
+    {
+     "t": 0.85,
+     "pos": [
+      0.6,
+      -0.1,
+      0.5
+     ],
+     "dir": "adelante",
+     "pal": "abajo",
+     "forma": "piña"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.55,
+      -0.15,
+      0.5
+     ]
+    }
+   ],
+   "n": [
+    {
+     "t": 0,
+     "pos": [
+      0.25,
+      0.8,
+      0.45
+     ],
+     "dir": "arriba+adentro",
+     "pal": "adelante",
+     "forma": "l",
+     "punto": "indice"
+    },
+    {
+     "t": 0.3,
+     "pos": [
+      0.05,
+      1.1,
+      0.45
+     ],
+     "dir": "arriba+adentro"
+    },
+    {
+     "t": 0.6,
+     "pos": [
+      0.7,
+      0.8,
+      0.35
+     ],
+     "dir": "arriba+adentro",
+     "pal": "adelante",
+     "forma": "garra",
+     "punto": "palma"
+    },
+    {
+     "t": 0.85,
+     "pos": [
+      0.6,
+      -0.1,
+      0.5
+     ],
+     "dir": "adelante",
+     "pal": "abajo",
+     "forma": "piña"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.55,
+      -0.15,
+      0.5
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Ninguno claro."
+   }
+  },
+  "ciudad": {
+   "palabras": [
+    "ciudad",
+    "ciudades"
+   ],
+   "dur": 1.7,
+   "repetir": 2,
+   "confianza": "baja",
+   "revision": 2,
+   "duda": "La mano dominante, con los dedos hacia abajo y juntos, se apoya sobre la palma plana de la otra mano (palma arriba, a la altura del vientre) con pequeños toques; la forma exacta de los dedos de la dominante y el movimiento (¿repite, recorre?) no se distinguen. No coincide con el signo de edificios que se suponía.",
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.15,
+      -0.3,
+      0.5
+     ],
+     "dir": "abajo",
+     "pal": "adentro",
+     "forma": "piña",
+     "punto": "puntas"
+    },
+    {
+     "t": 0.5,
+     "pos": [
+      0.15,
+      -0.5,
+      0.5
+     ]
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.15,
+      -0.3,
+      0.5
+     ]
+    }
+   ],
+   "n": [
+    {
+     "t": 0,
+     "pos": [
+      0.05,
+      -0.55,
+      0.5
+     ],
+     "dir": "adelante+adentro",
+     "pal": "arriba",
+     "forma": "plana",
+     "punto": "palma"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.05,
+      -0.55,
+      0.5
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Ninguno."
+   }
+  },
+  "claro": {
+   "palabras": [
+    "claro",
+    "clara",
+    "claros"
+   ],
+   "dur": 1.8,
+   "confianza": "media",
+   "revision": 2,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      -0.1,
+      -0.1,
+      0.4
+     ],
+     "dir": "arriba+adentro",
+     "pal": "abajo",
+     "forma": "puño",
+     "punto": "nudillos"
+    },
+    {
+     "t": 0.3,
+     "pos": [
+      -0.15,
+      0.6,
+      0.5
+     ],
+     "dir": "arriba+adentro",
+     "pal": "adelante",
+     "forma": "abierta",
+     "punto": "palma"
+    },
+    {
+     "t": 0.7,
+     "pos": [
+      0.65,
+      1.0,
+      0.35
+     ],
+     "dir": "arriba",
+     "pal": "adelante"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.7,
+      0.9,
+      0.35
+     ]
+    }
+   ],
+   "n": [
+    {
+     "t": 0,
+     "pos": [
+      -0.1,
+      -0.1,
+      0.4
+     ],
+     "dir": "arriba+adentro",
+     "pal": "abajo",
+     "forma": "puño",
+     "punto": "nudillos"
+    },
+    {
+     "t": 0.3,
+     "pos": [
+      -0.15,
+      0.6,
+      0.5
+     ],
+     "dir": "arriba+adentro",
+     "pal": "adelante",
+     "forma": "abierta",
+     "punto": "palma"
+    },
+    {
+     "t": 0.7,
+     "pos": [
+      0.65,
+      1.0,
+      0.35
+     ],
+     "dir": "arriba",
+     "pal": "adelante"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.7,
+      0.9,
+      0.35
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": true,
+     "ojos": true
+    },
+    "nota": "Cejas arriba y ojos muy abiertos, expresión luminosa al abrir las manos.",
+    "claves": [
+     {
+      "t": 0,
+      "ojos": 1,
+      "cejas": 0
+     },
+     {
+      "t": 0.6,
+      "ojos": 1.3,
+      "cejas": 0.6,
+      "sonrisa": 0.3
+     },
+     {
+      "t": 1,
+      "ojos": 1.3,
+      "cejas": 0.6,
+      "sonrisa": 0.3
+     }
+    ]
+   }
+  },
+  "clase": {
+   "palabras": [
+    "clase",
+    "clases",
+    "aula"
+   ],
+   "dur": 1.8,
+   "confianza": "baja",
+   "revision": 2,
+   "duda": "Ambas manos abiertas a los lados del pecho, palmas enfrentadas, giran hacia fuera mostrando la palma y vuelven a juntarse con los dedos tocándose; la forma intermedia (dedos separados o juntos) y el recorrido exacto no se aprecian bien.",
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.2,
+      -0.1,
+      0.5
+     ],
+     "dir": "arriba+adelante",
+     "pal": "adentro",
+     "forma": "plana",
+     "punto": "palma"
+    },
+    {
+     "t": 0.4,
+     "pos": [
+      0.4,
+      0.3,
+      0.5
+     ],
+     "dir": "arriba",
+     "pal": "adentro"
+    },
+    {
+     "t": 0.7,
+     "pos": [
+      0.75,
+      0.2,
+      0.45
+     ],
+     "dir": "arriba+afuera",
+     "pal": "adelante",
+     "forma": "abierta"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.1,
+      -0.15,
+      0.5
+     ],
+     "dir": "adelante+adentro",
+     "pal": "atras",
+     "forma": "plana"
+    }
+   ],
+   "n": [
+    {
+     "t": 0,
+     "pos": [
+      0.2,
+      -0.1,
+      0.5
+     ],
+     "dir": "arriba+adelante",
+     "pal": "adentro",
+     "forma": "plana",
+     "punto": "palma"
+    },
+    {
+     "t": 0.4,
+     "pos": [
+      0.4,
+      0.3,
+      0.5
+     ],
+     "dir": "arriba",
+     "pal": "adentro"
+    },
+    {
+     "t": 0.7,
+     "pos": [
+      0.75,
+      0.2,
+      0.45
+     ],
+     "dir": "arriba+afuera",
+     "pal": "adelante",
+     "forma": "abierta"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.1,
+      -0.15,
+      0.5
+     ],
+     "dir": "adelante+adentro",
+     "pal": "atras",
+     "forma": "plana"
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Ninguno."
+   }
+  },
+  "coche": {
+   "palabras": [
+    "coche",
+    "coches",
+    "carro"
+   ],
+   "dur": 1.3,
+   "repetir": 2,
+   "confianza": "media",
+   "duda": "Dos puños delante del pecho como sujetando un volante y girando; el vídeo muestra el sentido de carruaje pero parece volante.",
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.3,
+      -0.2,
+      0.5
+     ],
+     "dir": "arriba",
+     "pal": "adentro",
+     "forma": "puño",
+     "punto": "nudillos"
+    },
+    {
+     "t": 0.5,
+     "pos": [
+      0.3,
+      -0.35,
+      0.5
+     ]
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.3,
+      -0.2,
+      0.5
+     ]
+    }
+   ],
+   "n": [
+    {
+     "t": 0,
+     "pos": [
+      0.3,
+      -0.35,
+      0.5
+     ],
+     "dir": "arriba",
+     "pal": "adentro",
+     "forma": "puño",
+     "punto": "nudillos"
+    },
+    {
+     "t": 0.5,
+     "pos": [
+      0.3,
+      -0.2,
+      0.5
+     ]
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.3,
+      -0.35,
+      0.5
+     ]
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Ninguno."
+   }
+  },
+  "cocina": {
+   "palabras": [
+    "cocina",
+    "cocinas"
+   ],
+   "dur": 2.0,
+   "confianza": "baja",
+   "revision": 2,
+   "duda": "Secuencia de varias fases: manos curvas con palmas arriba y hacia el interior, luego mano plana horizontal sobre la otra, luego índice/pulgar hacia arriba ante el hombro y manos relajadas. El orden y la forma de cada fase no están claros; probablemente combina varios elementos (fuego, olla).",
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.35,
+      -0.1,
+      0.5
+     ],
+     "dir": "arriba+adelante",
+     "pal": "arriba+adentro",
+     "forma": "garra",
+     "punto": "palma"
+    },
+    {
+     "t": 0.35,
+     "pos": [
+      0.2,
+      -0.4,
+      0.5
+     ],
+     "dir": "adelante+adentro",
+     "pal": "abajo",
+     "forma": "plana"
+    },
+    {
+     "t": 0.7,
+     "pos": [
+      0.5,
+      0.2,
+      0.4
+     ],
+     "dir": "arriba",
+     "pal": "adentro",
+     "forma": "indice",
+     "punto": "indice"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.4,
+      -0.3,
+      0.5
+     ],
+     "dir": "adelante",
+     "pal": "arriba",
+     "forma": "curva"
+    }
+   ],
+   "n": [
+    {
+     "t": 0,
+     "pos": [
+      0.35,
+      -0.1,
+      0.5
+     ],
+     "dir": "arriba+adelante",
+     "pal": "arriba+adentro",
+     "forma": "garra",
+     "punto": "palma"
+    },
+    {
+     "t": 0.35,
+     "pos": [
+      0.15,
+      -0.55,
+      0.5
+     ],
+     "dir": "adelante+adentro",
+     "pal": "arriba",
+     "forma": "plana"
+    },
+    {
+     "t": 0.7,
+     "pos": [
+      0.2,
+      -0.45,
+      0.5
+     ]
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.4,
+      -0.35,
+      0.5
+     ],
+     "dir": "adelante",
+     "pal": "arriba",
+     "forma": "curva"
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Ninguno claro."
+   }
+  },
+  "cocinar": {
+   "palabras": [
+    "cocinar",
+    "cocina",
+    "cocinan",
+    "cocino"
+   ],
+   "dur": 1.8,
+   "repetir": 2,
+   "confianza": "media",
+   "revision": 2,
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.3,
+      -0.35,
+      0.55
+     ],
+     "dir": "adelante+arriba",
+     "pal": "arriba",
+     "forma": "garra",
+     "punto": "palma"
+    },
+    {
+     "t": 0.25,
+     "pos": [
+      0.4,
+      -0.2,
+      0.55
+     ],
+     "dir": "arriba+adelante",
+     "pal": "arriba+adentro"
+    },
+    {
+     "t": 0.5,
+     "pos": [
+      0.35,
+      -0.1,
+      0.55
+     ],
+     "dir": "arriba+adentro",
+     "pal": "adentro"
+    },
+    {
+     "t": 0.75,
+     "pos": [
+      0.3,
+      -0.25,
+      0.55
+     ],
+     "dir": "adelante+arriba",
+     "pal": "arriba"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.3,
+      -0.35,
+      0.55
+     ]
+    }
+   ],
+   "n": [
+    {
+     "t": 0,
+     "pos": [
+      0.3,
+      -0.1,
+      0.55
+     ],
+     "dir": "arriba+adentro",
+     "pal": "adentro",
+     "forma": "garra",
+     "punto": "palma"
+    },
+    {
+     "t": 0.25,
+     "pos": [
+      0.3,
+      -0.25,
+      0.55
+     ],
+     "dir": "adelante+arriba",
+     "pal": "arriba"
+    },
+    {
+     "t": 0.5,
+     "pos": [
+      0.3,
+      -0.35,
+      0.55
+     ]
+    },
+    {
+     "t": 0.75,
+     "pos": [
+      0.4,
+      -0.2,
+      0.55
+     ],
+     "dir": "arriba+adelante",
+     "pal": "arriba+adentro"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.3,
+      -0.1,
+      0.55
+     ],
+     "dir": "arriba+adentro",
+     "pal": "adentro"
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": true,
+     "ojos": false
+    },
+    "nota": "Cara expresiva, concentrada, que acompaña el gesto de remover.",
+    "claves": [
+     {
+      "t": 0,
+      "expr": "concentracion"
+     },
+     {
+      "t": 1,
+      "expr": "concentracion"
+     }
+    ]
+   }
+  },
+  "coger": {
+   "palabras": [
+    "coger",
+    "coge",
+    "cogen",
+    "agarrar"
+   ],
+   "dur": 1.2,
+   "confianza": "baja",
+   "revision": 2,
+   "duda": "La mano se ve abierta a la altura del hombro (plana, dedos arriba), luego cerrada en puño ante el pecho y, por último, con el índice asomando hacia delante (¿pinza o gancho?). La forma final de la mano no se distingue y falta el último fotograma (negro).",
+   "d": [
+    {
+     "t": 0,
+     "pos": [
+      0.55,
+      0.15,
+      0.5
+     ],
+     "dir": "arriba+adelante",
+     "pal": "adentro",
+     "forma": "plana",
+     "punto": "palma"
+    },
+    {
+     "t": 0.5,
+     "pos": [
+      0.4,
+      -0.15,
+      0.55
+     ],
+     "dir": "adelante",
+     "pal": "abajo+adentro",
+     "forma": "garra"
+    },
+    {
+     "t": 1,
+     "pos": [
+      0.3,
+      -0.3,
+      0.5
+     ],
+     "dir": "adelante",
+     "pal": "abajo",
+     "forma": "gancho"
+    }
+   ],
+   "nm": {
+    "necesita": {
+     "cuerpo": false,
+     "cara": false,
+     "ojos": false
+    },
+    "nota": "Ninguno."
+   }
   }
+ }
 }

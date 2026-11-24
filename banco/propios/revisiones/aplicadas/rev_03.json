@@ -1,0 +1,243 @@
+{
+ "signos": {
+  "ayudar": {
+   "palabras": ["ayudar", "ayuda", "ayudo", "ayudan"], "dur": 1.6, "confianza": "media", "revision": 2,
+   "duda": "El vídeo muestra ambas manos abiertas con palmas hacia arriba ofreciéndose y bajando; falta confirmar si en LSE el signo lleva apoyo de una mano bajo la otra.",
+   "d": [
+    {"t": 0, "pos": [0.25, -0.5, 0.35], "dir": "adelante", "pal": "arriba", "forma": "abierta", "punto": "palma"},
+    {"t": 0.4, "pos": [0.5, -0.1, 0.6]},
+    {"t": 0.7, "pos": [0.5, -0.25, 0.6]},
+    {"t": 1, "pos": [0.25, -0.5, 0.35]}
+   ],
+   "n": [
+    {"t": 0, "pos": [0.25, -0.5, 0.35], "dir": "adelante", "pal": "arriba", "forma": "abierta", "punto": "palma"},
+    {"t": 0.4, "pos": [0.5, -0.1, 0.6]},
+    {"t": 0.7, "pos": [0.5, -0.25, 0.6]},
+    {"t": 1, "pos": [0.25, -0.5, 0.35]}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Sin gesto no manual marcado más allá de la expresión amable habitual."}
+  },
+  "azúcar": {
+   "palabras": ["azúcar", "azúcares"], "dur": 1.5, "repetir": 2, "confianza": "baja", "revision": 2,
+   "duda": "Se ve una mano con dedos (índice, quizá también corazón, cruzados al principio) que tocan y frotan la barbilla/lado de la boca; no se distingue con claridad qué dedos intervienen.",
+   "d": [
+    {"t": 0, "en": "barbilla", "desp": [0.05, 0.05, 0.1], "dir": "arriba+adentro", "pal": "adentro", "forma": "v", "punto": "puntas"},
+    {"t": 0.5, "en": "barbilla", "desp": [0.0, -0.05, 0.05]},
+    {"t": 1, "en": "barbilla", "desp": [0.05, 0.05, 0.1]}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "No se aprecia gesto no manual relevante."}
+  },
+  "azul": {
+   "palabras": ["azul", "azules"], "dur": 1.5, "confianza": "baja", "revision": 2,
+   "duda": "La mano sale con pulgar extendido junto al hombro y luego pasa por delante del pecho girando; la forma exacta (pulgar solo o pulgar y meñique) y el recorrido no se aprecian con claridad.",
+   "d": [
+    {"t": 0, "pos": [0.55, 0.0, 0.3], "dir": "arriba", "pal": "adentro", "forma": "pulgar", "punto": "pulgar"},
+    {"t": 0.5, "pos": [0.25, -0.1, 0.5], "dir": "arriba+adentro", "pal": "atras"},
+    {"t": 1, "pos": [0.15, -0.4, 0.45], "dir": "adelante", "pal": "abajo"}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Sin gesto no manual claro."}
+  },
+  "año": {
+   "palabras": ["año", "años"], "dur": 2.2, "confianza": "media", "revision": 2,
+   "duda": "La mano izquierda mantiene el índice vertical y la derecha, en puño, rodea el dedo en una vuelta; falta confirmar la forma exacta de la mano que gira y el sentido.",
+   "d": [
+    {"t": 0, "pos": [-0.05, 0.0, 0.7], "dir": "adentro", "pal": "abajo", "forma": "puño", "punto": "nudillos"},
+    {"t": 0.25, "pos": [-0.25, 0.0, 0.5]},
+    {"t": 0.5, "pos": [-0.05, 0.0, 0.35]},
+    {"t": 0.75, "pos": [0.08, 0.0, 0.5]},
+    {"t": 1, "pos": [-0.05, 0.0, 0.7]}
+   ],
+   "n": [
+    {"t": 0, "pos": [0.12, -0.25, 0.5], "dir": "arriba", "pal": "adentro", "forma": "indice", "punto": "indice"},
+    {"t": 1, "pos": [0.12, -0.25, 0.5]}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Sin gesto no manual marcado."}
+  },
+  "babero": {
+   "palabras": ["babero", "baberos"], "dur": 1.9, "confianza": "baja", "revision": 2,
+   "duda": "Se ven los puños a ambos lados del cuello (atar detrás) y luego las manos cayendo sobre el pecho; la primera acción con pinza en el cuello izquierdo no se distingue.",
+   "d": [
+    {"t": 0, "en": "cuello", "desp": [0.3, 0, 0.15], "dir": "adentro", "pal": "abajo", "forma": "puño", "punto": "nudillos"},
+    {"t": 0.4, "en": "cuello", "desp": [0.35, 0.05, 0.0]},
+    {"t": 0.7, "en": "cuello", "desp": [0.15, -0.25, 0.2], "dir": "abajo", "forma": "plana", "pal": "atras"},
+    {"t": 1, "en": "pecho", "desp": [0.1, -0.1, 0.2]}
+   ],
+   "n": [
+    {"t": 0, "en": "cuello", "desp": [0.3, 0, 0.15], "dir": "adentro", "pal": "abajo", "forma": "puño", "punto": "nudillos"},
+    {"t": 0.4, "en": "cuello", "desp": [0.35, 0.05, 0.0]},
+    {"t": 0.7, "en": "cuello", "desp": [0.15, -0.25, 0.2], "dir": "abajo", "forma": "plana", "pal": "atras"},
+    {"t": 1, "en": "pecho", "desp": [0.1, -0.1, 0.2]}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Sin gesto no manual marcado."}
+  },
+  "bajar": {
+   "palabras": ["bajar", "baja", "bajan", "bajo"], "dur": 1.4, "confianza": "baja", "revision": 2,
+   "duda": "La mano desciende con dedos relajados colgando de arriba del pecho hacia el abdomen; no queda claro si los dedos se mueven (andar) o si la mano baja entera.",
+   "d": [
+    {"t": 0, "pos": [0.4, 0.0, 0.45], "dir": "abajo+adelante", "pal": "abajo", "forma": "garra", "punto": "puntas"},
+    {"t": 0.5, "pos": [0.3, -0.45, 0.45]},
+    {"t": 1, "pos": [0.2, -0.9, 0.4]}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Sin gesto no manual claro."}
+  },
+  "baloncesto": {
+   "palabras": ["baloncesto", "básquet", "basket"], "dur": 2.0, "confianza": "media", "revision": 2,
+   "duda": "Se ve botar a la altura de la cintura con manos abiertas y después ambas manos junto a la cabeza como lanzando; el orden y repeticiones exactas no son seguros.",
+   "d": [
+    {"t": 0, "pos": [0.3, -0.9, 0.5], "dir": "abajo", "pal": "abajo", "forma": "abierta", "punto": "palma"},
+    {"t": 0.15, "pos": [0.3, -0.6, 0.5]},
+    {"t": 0.3, "pos": [0.3, -0.9, 0.5]},
+    {"t": 0.45, "pos": [0.3, -0.6, 0.5]},
+    {"t": 0.6, "pos": [0.3, -0.9, 0.5]},
+    {"t": 0.8, "pos": [0.3, 0.9, 0.35], "dir": "arriba+adelante", "pal": "adelante", "forma": "garra"},
+    {"t": 1, "pos": [0.35, 0.6, 0.55], "dir": "arriba+adelante"}
+   ],
+   "n": [
+    {"t": 0, "pos": [0.3, -0.9, 0.5], "dir": "abajo", "pal": "abajo", "forma": "abierta", "punto": "palma"},
+    {"t": 0.15, "pos": [0.3, -0.6, 0.5]},
+    {"t": 0.3, "pos": [0.3, -0.9, 0.5]},
+    {"t": 0.45, "pos": [0.3, -0.6, 0.5]},
+    {"t": 0.6, "pos": [0.3, -0.9, 0.5]},
+    {"t": 0.8, "pos": [0.3, 0.9, 0.35], "dir": "arriba+adelante", "pal": "adelante", "forma": "garra"},
+    {"t": 1, "pos": [0.35, 0.6, 0.55], "dir": "arriba+adelante"}
+   ],
+   "nm": {"necesita": {"cuerpo": true, "cara": false, "ojos": true},
+    "nota": "El torso se estira un poco al lanzar y la mirada sube hacia arriba (canasta).",
+    "claves": [
+     {"t": 0, "cuerpo": {"adelante": 6}, "mirada": [0, -0.3]},
+     {"t": 0.7, "cuerpo": {"adelante": 6}, "mirada": [0, -0.3]},
+     {"t": 0.85, "cuerpo": {"adelante": 0}, "mirada": [0, 0.6]},
+     {"t": 1, "cuerpo": {"adelante": 0}, "mirada": [0, 0.6]}
+    ]}
+  },
+  "banco": {
+   "palabras": ["banco", "bancos"], "dur": 1.5, "repetir": 2, "confianza": "baja", "revision": 2,
+   "duda": "Se ve la mano con dedos curvados juntos a la altura de la boca/barbilla y luego puño en el pecho; no se distingue el gesto (¿dinero?, ¿rozar los dedos?) ni si corresponde a la acepción de entidad financiera.",
+   "d": [
+    {"t": 0, "en": "barbilla", "desp": [0.15, -0.05, 0.25], "dir": "arriba+adentro", "pal": "adentro", "forma": "piña", "punto": "puntas"},
+    {"t": 0.5, "en": "boca", "desp": [0.05, -0.05, 0.15]},
+    {"t": 1, "en": "barbilla", "desp": [0.15, -0.05, 0.25]}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "No se aprecia gesto no manual claro."}
+  },
+  "bar": {
+   "palabras": ["bar", "bares"], "dur": 1.5, "confianza": "baja", "revision": 2,
+   "duda": "La mano queda a la altura de la barbilla con dedos curvos y gira la muñeca (palma hacia cara, luego hacia abajo); el movimiento exacto y el significado (¿beber?) no son seguros.",
+   "d": [
+    {"t": 0, "en": "barbilla", "desp": [0.2, -0.1, 0.2], "dir": "arriba+adentro", "pal": "adentro", "forma": "curva", "punto": "puntas"},
+    {"t": 0.5, "en": "barbilla", "desp": [0.2, -0.05, 0.25], "dir": "adentro", "pal": "abajo"},
+    {"t": 1, "en": "barbilla", "desp": [0.2, -0.1, 0.2], "dir": "arriba+adentro", "pal": "adentro"}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "No se aprecia gesto no manual claro."}
+  },
+  "barato": {
+   "palabras": ["barato", "barata", "baratos", "baratas"], "dur": 1.5, "confianza": "baja", "revision": 2,
+   "duda": "La mano sale a la altura del hombro con dedos abiertos y desciende cerrándose hasta un puño en el pecho; forma inicial (¿cuernos, abierta?) poco clara.",
+   "d": [
+    {"t": 0, "pos": [0.4, 0.2, 0.3], "dir": "arriba", "pal": "adentro", "forma": "abierta", "punto": "palma"},
+    {"t": 0.5, "pos": [0.3, -0.15, 0.4], "forma": "piña", "dir": "arriba+adentro"},
+    {"t": 1, "pos": [0.2, -0.5, 0.4], "forma": "puño", "dir": "adelante", "pal": "abajo"}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Sin gesto no manual claro."}
+  },
+  "bata": {
+   "palabras": ["bata", "batas"], "dur": 1.7, "confianza": "media", "revision": 2,
+   "duda": "Ambas manos arrancan en el pecho con dedos abiertos y bajan alisando el torso; falta confirmar si las manos llegan a la cintura.",
+   "d": [
+    {"t": 0, "en": "pecho", "desp": [0.2, 0.1, 0.15], "dir": "adentro+arriba", "pal": "atras", "forma": "garra", "punto": "puntas"},
+    {"t": 0.5, "en": "pecho", "desp": [0.25, -0.2, 0.2], "dir": "abajo+adentro", "forma": "plana", "pal": "atras"},
+    {"t": 1, "en": "vientre", "desp": [0.3, -0.1, 0.2], "dir": "abajo", "pal": "atras"}
+   ],
+   "n": [
+    {"t": 0, "en": "pecho", "desp": [0.2, 0.1, 0.15], "dir": "adentro+arriba", "pal": "atras", "forma": "garra", "punto": "puntas"},
+    {"t": 0.5, "en": "pecho", "desp": [0.25, -0.2, 0.2], "dir": "abajo+adentro", "forma": "plana", "pal": "atras"},
+    {"t": 1, "en": "vientre", "desp": [0.3, -0.1, 0.2], "dir": "abajo", "pal": "atras"}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Sin gesto no manual marcado."}
+  },
+  "bañador": {
+   "palabras": ["bañador", "bañadores", "traje de baño"], "dur": 1.6, "confianza": "baja", "revision": 2,
+   "duda": "Las manos parten juntas en el vientre y se abren a los lados de la cadera, palmas hacia el cuerpo; no queda claro si trazan la forma de la prenda o solo marcan la cadera.",
+   "d": [
+    {"t": 0, "en": "vientre", "desp": [0.05, -0.05, 0.2], "dir": "adelante", "pal": "arriba", "forma": "plana", "punto": "palma"},
+    {"t": 0.5, "en": "cintura", "desp": [0.5, 0, 0.15], "dir": "abajo+adentro", "pal": "adentro"},
+    {"t": 1, "en": "cintura", "desp": [0.4, -0.2, 0.1], "dir": "abajo+adentro", "pal": "adentro"}
+   ],
+   "n": [
+    {"t": 0, "en": "vientre", "desp": [0.05, -0.05, 0.2], "dir": "adelante", "pal": "arriba", "forma": "plana", "punto": "palma"},
+    {"t": 0.5, "en": "cintura", "desp": [0.5, 0, 0.15], "dir": "abajo+adentro", "pal": "adentro"},
+    {"t": 1, "en": "cintura", "desp": [0.4, -0.2, 0.1], "dir": "abajo+adentro", "pal": "adentro"}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Sin gesto no manual claro."}
+  },
+  "baño": {
+   "palabras": ["baño", "baños", "servicio", "aseo"], "dur": 1.4, "confianza": "baja", "revision": 2,
+   "duda": "El índice queda horizontal bajo la barbilla/cuello, apuntando al lado contrario, con ligero balanceo; el vídeo termina pronto y no se ve si repite o cambia de forma.",
+   "d": [
+    {"t": 0, "en": "cuello", "desp": [0.15, 0.0, 0.2], "dir": "adentro", "pal": "abajo", "forma": "indice", "punto": "indice"},
+    {"t": 0.5, "en": "cuello", "desp": [0.15, 0.1, 0.2], "dir": "adentro+arriba"},
+    {"t": 1, "en": "cuello", "desp": [0.15, 0.0, 0.2], "dir": "adentro"}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Sin gesto no manual claro."}
+  },
+  "biberón": {
+   "palabras": ["biberón", "biberones"], "dur": 1.6, "confianza": "baja", "revision": 2,
+   "duda": "La mano llega a la sien/oreja con dedos curvados y el codo alto; no se ve el objeto ni su relación con una botella; posible signo de bebé u otro concepto.",
+   "d": [
+    {"t": 0, "en": "pecho", "desp": [0.3, 0.1, 0.2], "dir": "arriba", "pal": "adentro", "forma": "curva", "punto": "puntas"},
+    {"t": 0.4, "en": "sien", "desp": [0.25, 0.0, 0.2]},
+    {"t": 0.8, "en": "sien", "desp": [0.25, 0.05, 0.2]},
+    {"t": 1, "en": "pecho", "desp": [0.3, 0.1, 0.2]}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Se observa boca con morro (succión) al mismo tiempo, pero lo articula la boca automática."}
+  },
+  "bien": {
+   "palabras": ["bien"], "dur": 1.3, "confianza": "baja", "revision": 2,
+   "duda": "El vídeo corresponde a la calificación escolar 'bien': mano con dedos extendidos separados a la altura del pecho/barbilla que se agita; no corresponde claramente al adverbio 'bien'.",
+   "d": [
+    {"t": 0, "en": "pecho", "desp": [0.25, 0.2, 0.2], "dir": "arriba+adentro", "pal": "adentro", "forma": "abierta", "punto": "palma"},
+    {"t": 0.5, "en": "pecho", "desp": [0.3, 0.25, 0.25], "dir": "arriba+afuera"},
+    {"t": 1, "en": "pecho", "desp": [0.25, 0.2, 0.2], "dir": "arriba+adentro"}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": true, "ojos": false}, "nota": "Expresión afirmativa suave.",
+    "claves": [{"t": 0, "sonrisa": 0.3}, {"t": 1, "sonrisa": 0.3}]}
+  },
+  "¡bien!": {
+   "palabras": ["¡bien!", "bien!"], "dur": 1.3, "confianza": "baja", "revision": 2,
+   "duda": "El vídeo es el mismo que el de 'bien' (calificación escolar); no se ve la exclamación; misma duda de sentido.",
+   "d": [
+    {"t": 0, "en": "pecho", "desp": [0.25, 0.2, 0.2], "dir": "arriba+adentro", "pal": "adentro", "forma": "abierta", "punto": "palma"},
+    {"t": 0.5, "en": "pecho", "desp": [0.3, 0.25, 0.25], "dir": "arriba+afuera"},
+    {"t": 1, "en": "pecho", "desp": [0.25, 0.2, 0.2], "dir": "arriba+adentro"}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": true, "ojos": false}, "nota": "Expresión alegre para marcar la exclamación.",
+    "claves": [{"t": 0, "expr": "alegria"}, {"t": 1, "expr": "alegria"}]}
+  },
+  "blanco": {
+   "palabras": ["blanco", "blanca", "blancos", "blancas"], "dur": 1.5, "confianza": "baja", "revision": 2,
+   "duda": "La mano toca el pecho con yemas juntas y se abre moviéndose hacia fuera con dedos separados; el contacto inicial exacto no se aprecia.",
+   "d": [
+    {"t": 0, "en": "pecho", "desp": [0.1, 0.1, 0.1], "dir": "arriba+adentro", "pal": "atras", "forma": "piña", "punto": "puntas"},
+    {"t": 0.6, "en": "pecho", "desp": [0.3, 0.2, 0.3], "forma": "abierta", "dir": "arriba+adentro"},
+    {"t": 1, "en": "pecho", "desp": [0.3, 0.1, 0.3]}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Sin gesto no manual claro."}
+  },
+  "blando": {
+   "palabras": ["blando", "blanda", "blandos", "blandas", "suave"], "dur": 1.8, "repetir": 2, "confianza": "media", "revision": 2,
+   "duda": "Ambas manos curvadas frente al pecho se abren y cierran suavemente (apretar algo blando); falta confirmar si los dedos se tocan en el cierre.",
+   "d": [
+    {"t": 0, "pos": [0.2, -0.1, 0.55], "dir": "adelante+arriba", "pal": "adentro", "forma": "curva", "punto": "puntas"},
+    {"t": 0.5, "pos": [0.1, -0.1, 0.55], "forma": "piña"},
+    {"t": 1, "pos": [0.2, -0.1, 0.55], "forma": "curva"}
+   ],
+   "n": [
+    {"t": 0, "pos": [0.2, -0.1, 0.55], "dir": "adelante+arriba", "pal": "adentro", "forma": "curva", "punto": "puntas"},
+    {"t": 0.5, "pos": [0.1, -0.1, 0.55], "forma": "piña"},
+    {"t": 1, "pos": [0.2, -0.1, 0.55], "forma": "curva"}
+   ],
+   "nm": {"necesita": {"cuerpo": false, "cara": true, "ojos": false}, "nota": "Cara relajada y suave.",
+    "claves": [{"t": 0, "sonrisa": 0.2, "cejas": 0.2}, {"t": 1, "sonrisa": 0.2, "cejas": 0.2}]}
+  }
+ }
+}

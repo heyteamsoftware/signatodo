@@ -87,8 +87,8 @@ movimiento extraído de vídeos de terceros (que no está en el repositorio).
 
 Además de los 19 iniciales hay 120 signos más en `banco/propios/lotes/` (lotes 001 a 004, de «abajo» a
 «coger»), descritos a partir de hojas de consulta de vídeos de referencia: 139 signos en total, de
-los que 34 tienen confianza media, 2 alta y 103 baja. Cada uno anota si necesita inclinación del
-cuerpo, gesto de cara o gesto de ojos (37 necesitan alguno). Se validan con
+los que 78 tienen confianza media, 2 alta y 59 baja (tras rehacer los dudosos con fotogramas grandes). Cada uno anota si necesita inclinación del
+cuerpo, gesto de cara o gesto de ojos (47 necesitan alguno). Se validan con
 `node herramientas/validar_signos.js banco/propios/signos.json banco/propios/lotes/*.json`.
 
 Para describir más: `py herramientas/lotes.py siguiente 30` reserva palabras y
