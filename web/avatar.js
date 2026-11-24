@@ -71,14 +71,14 @@ const Avatar = (() => {
       const escala = (lista) => lista && lista[f].map((v) => v / 1000);
       poses.push(pose(escala(clip.cuerpo), escala(clip.izq), escala(clip.der), escala(clip.zi), escala(clip.zd), escala(clip.zm)));
     }
-    return nucleo(poses, clip.fps);
+    return nucleo(poses, clip.fps, clip.cara ? clip.cara.map((r) => r.map((v) => v / 1000)) : null);
   }
 
   // Se queda con el núcleo del signo. El clip grabado es la forma "de diccionario": sale del
   // reposo, hace el signo y vuelve. Signando seguido eso sobra: el recorrido lo hace el enlace
   // con el signo anterior y el siguiente. Núcleo = tramo en que alguna mano está, al menos,
   // al 50 % de lo más lejos que llega a estar de su punto de partida.
-  function nucleo(poses, fps) {
+  function nucleo(poses, fps, cara = null) {
     const lejos = poses.map((p) => Math.max(...[10, 12].map((i) => Math.min(
       Math.hypot(p[i] - poses[0][i], p[i + 1] - poses[0][i + 1]),
       Math.hypot(p[i] - poses.at(-1)[i], p[i + 1] - poses.at(-1)[i + 1])))));
@@ -87,13 +87,21 @@ const Avatar = (() => {
     a = Math.max(a - 1, 0); b = Math.min(b + 1, poses.length - 1);
     if (b - a < 6) { a = Math.max(a - 3, 0); b = Math.min(b + 3, poses.length - 1); }   // nunca menos de ~0,25 s
     const recorte = poses.slice(a, b + 1);
-    return { poses: recorte, dura: (recorte.length - 1) / fps };
+    return { poses: recorte, dura: (recorte.length - 1) / fps, cara: cara ? cara.slice(a, b + 1) : null };
   }
 
   // El enlace entre dos signos dura según lo que tengan que viajar las manos.
   function enlace(desde, hasta) {
     const viaje = Math.max(...[10, 12].map((i) => Math.hypot(desde[i] - hasta[i], desde[i + 1] - hasta[i + 1])));
     return Math.min(0.14 + 0.13 * viaje, 0.4);
+  }
+
+  // Cara grabada (boca, cejas) en el avance k del clip, o null si el clip no la guarda.
+  function caraDeClip(clip, k) {
+    if (!clip.cara || !clip.cara.length) return null;
+    const x = Math.min(Math.max(k, 0), 1) * (clip.cara.length - 1);
+    const a = Math.floor(x), b = Math.min(a + 1, clip.cara.length - 1), f = x - a;
+    return clip.cara[a].map((v, i) => v + (clip.cara[b][i] - v) * f);
   }
 
   function poseDeClip(clip, k) {              // k = 0..1 a lo largo del clip
@@ -508,7 +516,7 @@ const Avatar = (() => {
     if (actual && t <= actual.t1) {
       esPropio = !!actual.clip.propio;
       const k = (t - actual.t0) / (actual.t1 - actual.t0);
-      return { pose: poseDeClip(actual.clip, k), texto: actual.texto, avance: Math.min((t - actual.t0) / bocaDe(actual, siguiente), 1) };
+      return { pose: poseDeClip(actual.clip, k), texto: actual.texto, avance: Math.min((t - actual.t0) / bocaDe(actual, siguiente), 1), cara: caraDeClip(actual.clip, k) };
     }
     const desde = actual ? actual.clip.poses.at(-1) : REPOSO;
     const hasta = siguiente ? siguiente.clip.poses[0] : REPOSO;
@@ -621,6 +629,27 @@ const Avatar = (() => {
 
   const mezclarBoca = (a, b, k) => a.map((v, i) => v + (b[i] - v) * k);
 
+  // La signante de los vídeos articula cada palabra mientras signa. De su cara (anchura de la boca, abertura interior,
+  // sonrisa) sale la forma real; la lengua y la f vienen de los sonidos de la palabra, que la cámara no distingue.
+  // Se mezcla con los sonidos (65 % grabada) para que la boca siga leyéndose con claridad.
+  const acota = (x, a, b) => Math.min(Math.max(x, a), b);
+  function formaConCara(fonemas, cara) {
+    const [ancho, abre] = cara;
+    const wn = acota((ancho - 0.42) / 0.28, 0, 1);
+    const grabada = [
+      0.09 + 0.19 * wn,                                           // anchura
+      acota(abre * 0.85, 0, 0.26),                                // abertura
+      acota((0.52 - ancho) / 0.1, 0, 1),                          // labios redondeados (boca estrecha)
+      acota((abre - 0.03) / 0.08, 0, 1) * (0.55 + 0.45 * wn),     // dientes de arriba
+      acota((abre - 0.12) / 0.12, 0, 1) * 0.7,                    // dientes de abajo
+      fonemas[5], fonemas[6],                                     // lengua: de los sonidos
+      abre < 0.025 ? 1 : 0,                                       // labios apretados
+      fonemas[8],
+    ];
+    const peso = 0.65;
+    return fonemas.map((v, i) => (i === 5 || i === 6 || i === 8 ? v : v + (grabada[i] - v) * peso));
+  }
+
   // ----- Dibujo -----
 
   const DEDOS = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16], [17, 18, 19, 20]];
@@ -701,7 +730,7 @@ const Avatar = (() => {
   // opciones: pregunta (cejas arriba) y zoom (1 = hasta las caderas, con las manos en reposo a la vista; más = más cerca)
   function pintar(t, { pregunta = false, rotular = false, zoom = 1, pose: poseDada = null, texto: textoDado = '', avance: avanceDado = 0 } = {}) {
     t *= escalaTiempo;
-    const { pose: p, texto, avance } = poseDada ? { pose: poseDada, texto: textoDado, avance: avanceDado } : estadoEn(t);
+    const { pose: p, texto, avance, cara = null } = poseDada ? { pose: poseDada, texto: textoDado, avance: avanceDado } : estadoEn(t);
     const propia = poseDada ? true : esPropio;
     const W = lienzo.width, H = lienzo.height;
     const u = W * 0.245 * zoom, ox = W / 2;                      // unidad = ancho de hombros
@@ -718,6 +747,7 @@ const Avatar = (() => {
     const nm = (p.length > NM ? p.slice(NM, NM + NM_N) : NM_NEUTRO).slice();
     const capa = superposicion(t);
     for (let k = 0; k < NM_N; k++) nm[k] += capa.d[k];
+    if (cara) nm[5] += acota((cara[6] - 0.23) / 0.06, -1, 1) * 0.5;   // cejas de la signante, suavizadas
     nm[5] = Math.max(-1, Math.min(1.2, nm[5])); nm[6] = Math.max(-1, Math.min(1.1, nm[6]));
     nm[7] = Math.max(0, Math.min(1.4, nm[7])); nm[10] = Math.max(-1, Math.min(1, nm[10])); nm[11] = Math.max(0, Math.min(1, nm[11]));
     const RAD = Math.PI / 180;
@@ -789,7 +819,8 @@ const Avatar = (() => {
     }
 
     // Boca: articula la palabra que se signa; sin palabra, muestra la expresión.
-    const forma = texto ? boca(texto, avance) : null, by = cy + 0.22 * u, sonrisa = nm[10];
+    const forma = texto ? (cara ? formaConCara(boca(texto, avance), cara) : boca(texto, avance)) : null, by = cy + 0.22 * u;
+    const sonrisa = acota(nm[10] + (cara ? acota(cara[3] / 0.05, -1, 1) * 0.5 : 0), -1, 1);
     ctx.beginPath();
     if (!forma && nm[11] > 0.15) {                                // boca abierta (sorpresa, miedo)
       ctx.ellipse(cx, by, (0.05 + 0.03 * nm[11]) * u, (0.03 + 0.07 * nm[11]) * u, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();

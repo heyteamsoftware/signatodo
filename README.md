@@ -155,3 +155,14 @@ deletreadas y las que se quedan **sin signo**, para ver los huecos antes de expo
   ensancha hacia la mano, el trazo es más oscuro cuanto más cerca (gris si está lejos) y proyecta una sombra sobre el cuerpo y la
   cara, más separada cuanto más adelantada. El brazo menos adelantado se dibuja detrás. Se asume que las manos van delante del
   cuerpo (no se distingue «delante» de «detrás» por la imagen sola).
+
+### Boca y cejas grabadas (clips v3)
+
+Los vídeos de ARASAAC muestran la cara de la signante, que articula cada palabra mientras signa. `herramientas/extraer_poses.py`
+guarda ahora, además del cuerpo y las manos, 9 parámetros de la cara por fotograma (anchura de la boca, abertura interior y
+exterior, sonrisa, mandíbula, labios hacia delante, cejas, ojos, mejillas), relativos a la anchura de los ojos. El avatar los usa
+para dar forma a la boca (65 % grabada y 35 % sonidos; la lengua y la f vienen de los sonidos) y para mover un poco las cejas. Los
+clips sin cara siguen usando solo los sonidos. Para completar los que faltan, sin repetir los que ya la tienen:
+
+    py -3.12 herramientas\extraer_poses.py --cara --lista palabras.txt     (una palabra por línea)
+    py -3.12 herramientas\extraer_poses.py --cara --todo                    (todos; varias horas)

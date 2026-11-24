@@ -177,6 +177,8 @@ def main():
     ap.add_argument("palabras", nargs="*")
     ap.add_argument("--todo", action="store_true")
     ap.add_argument("--rehacer", action="store_true", help="vuelve a extraer aunque el clip ya exista")
+    ap.add_argument("--cara", action="store_true", help="solo vuelve a extraer los clips que aún no guardan la cara (v3)")
+    ap.add_argument("--lista", help="archivo de texto con una palabra por línea (en vez de palabras en la orden)")
     args = ap.parse_args()
     with open(os.path.join(RAIZ, "referencia", "arasaac", "indice.json"), encoding="utf-8") as f:
         arasaac = json.load(f)["palabras"]
@@ -186,6 +188,9 @@ def main():
         if videos:
             por_clave.setdefault(normalizar(palabra), videos[0])     # acepción principal
 
+    if args.lista:
+        with open(args.lista, encoding="utf-8") as fl:
+            args.palabras = [l.strip() for l in fl if l.strip()]
     pedidas = list(por_clave) if args.todo else [normalizar(p) for p in args.palabras]
     os.makedirs(POSES, exist_ok=True)
     ruta_indice = os.path.join(POSES, "indice.json")
@@ -200,7 +205,11 @@ def main():
             print(f"  sin vídeo en ARASAAC: {clave}", flush=True)
             continue
         destino = os.path.join(POSES, f"{ident}.json")
-        if args.rehacer or not os.path.isfile(destino):
+        sin_cara = False
+        if args.cara and os.path.isfile(destino):
+            with open(destino, encoding="utf-8") as fc:
+                sin_cara = not json.load(fc).get("cara")
+        if args.rehacer or not os.path.isfile(destino) or sin_cara:
             clip = extraer(ident, detector_nuevo)
             if clip is None:
                 print(f"  no se pudo extraer: {clave} ({ident})", flush=True)
