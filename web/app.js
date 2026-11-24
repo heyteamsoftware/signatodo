@@ -218,8 +218,10 @@ async function cargarVideo(v) {
   estado.datos = await (await fetch(v.datos)).json();
   construirLinea();
   resumir();
-  const avatar = await Avatar.preparar(estado.datos.unidades, estado.banco.tarjetas);
-  $('resumen').textContent += ` · avatar: ${avatar.conMovimiento} de ${avatar.signos} signos con movimiento`;
+  const avatar = await Avatar.preparar(estado.datos.unidades, estado.banco.tarjetas, estado.datos.segmentos,
+    video.playbackRate);
+  $('resumen').textContent += ` · avatar: ${avatar.conMovimiento} de ${avatar.signos} signos con movimiento, ${avatar.recortados} condensados, `
+    + `retraso máximo ${avatar.retrasoMaximo.toFixed(1)} s, ${avatar.frasesConApuro} frases en modo de apuro`;
   sincronizar();
 }
 
@@ -372,6 +374,18 @@ $('ajuste-ancho').addEventListener('input', (e) => {
 $('ajuste-deletreo').addEventListener('change', (e) => {
   estado.deletrear = e.target.checked;
   if (estado.datos) { construirLinea(); sincronizar(); }
+});
+
+$('ajuste-velocidad').addEventListener('change', async (e) => {
+  // Frenar el vídeo da tiempo al avatar para signar sin acelerar ni perder contenido.
+  video.defaultPlaybackRate = video.playbackRate = Number(e.target.value);
+  if (!estado.datos) return;
+  const avatar = await Avatar.preparar(estado.datos.unidades, estado.banco.tarjetas, estado.datos.segmentos,
+    video.playbackRate);
+  resumir();
+  $('resumen').textContent += ` · avatar: ${avatar.conMovimiento} de ${avatar.signos} signos con movimiento, `
+    + `${avatar.recortados} condensados, retraso máximo ${avatar.retrasoMaximo.toFixed(1)} s`;
+  sincronizar();
 });
 
 $('ajuste-zoom').addEventListener('input', sincronizar);

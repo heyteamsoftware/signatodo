@@ -29,6 +29,33 @@ py exportar.py videos\mi_video.mp4  # mp4 con recuadro y subtítulos pegados (o 
 En la web: elegir vídeo, marcar «Avatar (prueba)» y reproducir. El vídeo `prueba-lenta`
 tiene movimiento para todos sus signos.
 
+## Habla rápida
+
+El avatar no persigue cada palabra: planifica por frases con un desfase de unos 3,5 s, quita
+muletillas, y si la frase no cabe condensa por niveles (relleno, verbos de apoyo, matices y
+complementos tras preposición) antes de acelerar, sin pasar de 1,2× (1,5× si ya va muy
+retrasado). Preguntas, negaciones, cifras y calendario no se recortan nunca; los subtítulos
+siempre muestran el texto completo. Si aun así no llega, el selector **Velocidad del vídeo**
+frena al orador (el avatar sigue signando a ritmo real).
+
+Vídeos de prueba con el mismo texto a tres velocidades: `test-lenta` (130 palabras/min),
+`test-media` (181) y `test-rapida` (233). Retraso máximo medido del avatar:
+
+| Vídeo a… | lenta | media | rápida |
+|---|---|---|---|
+| velocidad normal | 4,5 s | 6,6 s | 18,1 s |
+| 0,75× | 4,6 s | 4,6 s | 7,5 s |
+
+Se parte de los criterios de práctica profesional de interpretación en LSE (síntesis antes
+que velocidad, desfase, datos críticos intactos). El uso del espacio y los clasificadores no
+está implementado.
+
+## Boca
+
+La boca articula la palabra que se está signando: se convierte en sonidos con las reglas de la
+ortografía castellana (qu, gu, ch, ll, h muda, v como b…) y cada sonido tiene su forma de
+labios, con interpolación entre ellas.
+
 ## Datos que no están en el repositorio
 
 | Qué | Cómo se obtiene |

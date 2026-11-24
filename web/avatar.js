@@ -7,16 +7,16 @@
 // y se dibuja un personaje minimalista con cara (cejas, ojos, boca que vocaliza).
 
 const Avatar = (() => {
-  const TRANSICION = 0.28;      // segundos de enlace mínimo entre dos signos
+  const TRANSICION = 0.25;      // enlace medio entre dos signos, para calcular si una frase cabe
   const A_REPOSO = 0.45;        // lo que tarda en bajar o subir las manos
   const PAUSA_LARGA = 1.3;      // con un hueco mayor, las manos vuelven a reposo entre signos
-  const ANTICIPO = 0.15;        // el signo empieza un poco antes que la palabra
   const TINTA = '#111', PAPEL = '#fff';
 
   let lienzo, ctx;
   let indice = null;            // clave normalizada -> id de clip
   const clips = {};             // id -> clip ya convertido a poses
   let pista = [];               // signos colocados en el tiempo
+  let escalaTiempo = 1;         // 1 / velocidad del vídeo: el avatar signa a ritmo real aunque se frene al orador
 
   // ----- Poses -----
   // Una pose es una lista de 146 números:
@@ -57,7 +57,29 @@ const Avatar = (() => {
       const escala = (lista) => lista && lista[f].map((v) => v / 1000);
       poses.push(pose(escala(clip.cuerpo), escala(clip.izq), escala(clip.der), escala(clip.zi), escala(clip.zd), escala(clip.zm)));
     }
-    return { poses, dura: clip.n / clip.fps };
+    return nucleo(poses, clip.fps);
+  }
+
+  // Se queda con el núcleo del signo. El clip grabado es la forma "de diccionario": sale del
+  // reposo, hace el signo y vuelve. Signando seguido eso sobra: el recorrido lo hace el enlace
+  // con el signo anterior y el siguiente. Núcleo = tramo en que alguna mano está, al menos,
+  // al 50 % de lo más lejos que llega a estar de su punto de partida.
+  function nucleo(poses, fps) {
+    const lejos = poses.map((p) => Math.max(...[10, 12].map((i) => Math.min(
+      Math.hypot(p[i] - poses[0][i], p[i + 1] - poses[0][i + 1]),
+      Math.hypot(p[i] - poses.at(-1)[i], p[i + 1] - poses.at(-1)[i + 1])))));
+    const umbral = 0.5 * Math.max(...lejos);
+    let a = lejos.findIndex((d) => d >= umbral), b = lejos.findLastIndex((d) => d >= umbral);
+    a = Math.max(a - 1, 0); b = Math.min(b + 1, poses.length - 1);
+    if (b - a < 6) { a = Math.max(a - 3, 0); b = Math.min(b + 3, poses.length - 1); }   // nunca menos de ~0,25 s
+    const recorte = poses.slice(a, b + 1);
+    return { poses: recorte, dura: (recorte.length - 1) / fps };
+  }
+
+  // El enlace entre dos signos dura según lo que tengan que viajar las manos.
+  function enlace(desde, hasta) {
+    const viaje = Math.max(...[10, 12].map((i) => Math.hypot(desde[i] - hasta[i], desde[i + 1] - hasta[i + 1])));
+    return Math.min(0.14 + 0.13 * viaje, 0.4);
   }
 
   function poseDeClip(clip, k) {              // k = 0..1 a lo largo del clip
@@ -84,34 +106,126 @@ const Avatar = (() => {
   }
 
   // unidades: las de <video>.signos.json; tarjetas: banco.tarjetas (para probar también con su etiqueta)
-  async function preparar(unidades, tarjetas) {
+  async function preparar(unidades, tarjetas, segmentos, velocidadVideo = 1) {
+    // Si el vídeo se reproduce más despacio, el orador dura más pero las manos no: se planifica en
+    // tiempo real (segundos de reloj), no en tiempo del vídeo. Por eso se reescalan los tiempos.
+    escalaTiempo = 1 / velocidadVideo;
+    const aReloj = (x) => ({ ...x, t0: x.t0 * escalaTiempo, t1: x.t1 * escalaTiempo });
+    unidades = unidades.map(aReloj);
+    segmentos = segmentos.map(aReloj);
     pista = [];
     const elegidas = [];
-    for (const u of unidades) {
-      if (u.tipo !== 'signo') continue;
+    unidades.forEach((u, i) => {
+      if (u.tipo !== 'signo') return;
       const etiqueta = tarjetas[u.tarjeta]?.etiqueta || '';
       const candidatas = [normalizar(u.texto), normalizar(etiqueta), normalizar(u.tarjeta.replace(/ny/g, 'ñ').replace(/-/g, ' '))];
       const clave = candidatas.find((c) => indice[c] !== undefined);
-      if (clave) elegidas.push({ u, id: indice[clave] });
-    }
+      // "complemento" = viene tras una preposición ("en la cocina", "con mantequilla"): es lo primero
+      // que se sacrifica, después del relleno, si hay que condensar.
+      const anterior = unidades[i - 1];
+      const complemento = !!anterior && anterior.tipo === 'omitir' && PREPOSICIONES.has(normalizar(anterior.texto));
+      if (clave) elegidas.push({ u, id: indice[clave], complemento });
+    });
     await Promise.all([...new Set(elegidas.map((e) => e.id))].filter((id) => !clips[id]).map(async (id) => {
       const r = await fetch(`/banco/poses/${id}.json`);
       if (r.ok) clips[id] = convertir(await r.json());
     }));
-    let cursor = 0;
     const validas = elegidas.filter((e) => clips[e.id]);
-    validas.forEach(({ u, id }, k) => {
-      const clip = clips[id];
-      const t0 = Math.max(u.t0 - ANTICIPO, cursor + TRANSICION);
-      // Signa a su ritmo si cabe antes de la palabra siguiente; si no, acelera (hasta 1,8x).
-      const siguiente = validas[k + 1];
-      const hueco = siguiente ? siguiente.u.t0 - ANTICIPO - TRANSICION - t0 : Infinity;
-      const velocidad = Math.min(Math.max(clip.dura / Math.max(hueco, 0.01), 1), 1.8);
-      const t1 = t0 + clip.dura / velocidad;
-      pista.push({ t0, t1, clip, texto: u.texto.replace(/[¿?¡!.,;:"«»()]/g, '').trim() });
-      cursor = t1;
+    const resumen = planificar(validas, segmentos);
+    return { ...resumen, signos: unidades.filter((u) => u.tipo === 'signo').length };
+  }
+
+  // ----- Planificación por frases (criterios de interpretación con habla rápida) -----
+  //
+  // No se persigue cada palabra. Se espera a tener la frase (desfase de unos 3,5 s), se
+  // quitan muletillas y repeticiones, y si la frase no cabe en su tiempo se recorta lo
+  // prescindible ANTES que acelerar: la velocidad nunca pasa de 1,2x. Si aun así no cabe,
+  // el avatar se retrasa y recupera en la siguiente pausa. Cifras, fechas, nombres,
+  // negaciones y preguntas no se recortan nunca.
+  const DESFASE = 3.5;              // segundos por detrás del audio, como máximo, al empezar una frase
+  const TRAS_FRASE = 0.3;           // si la frase es corta, empieza en cuanto termina de oírse
+  const VELOCIDAD_MAXIMA = 1.2;
+  const RETRASO_DE_APURO = 6;       // con más retraso que esto (s) entra el modo de apuro
+  const VELOCIDAD_DE_APURO = 1.5;
+  const MULETILLAS = new Set(['BUENO', 'PUES', 'ENTONCES', 'VALE', 'CLARO', 'MIRA', 'OYE', 'DIGAMOS']);
+  const RETRASO_OBJETIVO = 6;       // retraso (s) que se intenta no superar; pasado esto se condensa más
+  // Qué se sacrifica, de más a menos prescindible, cuando la frase no cabe en su tiempo:
+  const RELLENO = new Set(['TAMBIEN', 'YA', 'PERO', 'CON', 'ALGO', 'CASI', 'ESTO', 'ENTONCES', 'ASI', 'AQUI', 'ALLI']);
+  const APOYO = new Set(['SER', 'ESTAR', 'HAY', 'HACER', 'TENER', 'PODER', 'DEBER']);   // verbos de apoyo
+  const MATICES = new Set(['MUY', 'MUCHO', 'MUCHA', 'MUCHOS', 'MUCHAS', 'POCO', 'BASTANTE', 'SIEMPRE', 'SOLO', 'MAS', 'MENOS', 'BIEN', 'CADA', 'TODO', 'TODOS']);
+  const PREPOSICIONES = new Set(['A', 'AL', 'ANTE', 'BAJO', 'CON', 'CONTRA', 'DE', 'DEL', 'DESDE', 'DURANTE', 'EN', 'ENTRE', 'HACIA', 'HASTA', 'PARA', 'POR', 'SEGUN', 'SIN', 'SOBRE', 'TRAS']);
+  // Intocables: nunca se recortan (preguntas, negaciones, cifras, saludos, calendario).
+  const INTOCABLES = new Set([
+    'QUE', 'QUIEN', 'QUIENES', 'COMO', 'CUANDO', 'DONDE', 'CUAL', 'CUALES', 'CUANTO', 'CUANTOS', 'CUANTA', 'CUANTAS', 'POR QUE',
+    'NO', 'NUNCA', 'NADA', 'NADIE', 'TAMPOCO', 'NINGUN', 'NINGUNO', 'NINGUNA', 'SIN',
+    'CERO', 'UNO', 'DOS', 'TRES', 'CUATRO', 'CINCO', 'SEIS', 'SIETE', 'OCHO', 'NUEVE', 'DIEZ', 'ONCE', 'DOCE', 'VEINTE', 'TREINTA', 'CIEN', 'MIL',
+    'LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO', 'DOMINGO', 'HOY', 'AYER', 'MANANA',
+    'ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE',
+    'HOLA', 'ADIOS', 'GRACIAS', 'PERDON', 'POR FAVOR', 'BUENOS DIAS', 'BUENAS TARDES', 'BUENAS NOCHES',
+  ]);
+  const nivelDeCorte = (e) => {             // 0 = intocable; mayor = se sacrifica antes
+    const p = normalizar(e.u.texto);
+    if (INTOCABLES.has(p) || /^\d+$/.test(p)) return 0;
+    if (RELLENO.has(p)) return 4;
+    if (APOYO.has(p)) return 3;
+    if (MATICES.has(p)) return 2;
+    return e.complemento ? 1 : 0;           // lo demás es el núcleo (sujeto, verbo, objeto): se queda
+  };
+
+  function planificar(validas, segmentos) {
+    const frases = new Map();
+    for (const e of validas) {
+      if (!frases.has(e.u.seg)) frases.set(e.u.seg, []);
+      frases.get(e.u.seg).push(e);
+    }
+    const orden = [...frases.keys()].sort((a, b) => a - b);
+    const inicioIdeal = (seg) => Math.min(segmentos[seg].t0 + DESFASE, segmentos[seg].t1 + TRAS_FRASE);
+    const cuenta = { conMovimiento: 0, recortados: 0, frasesAceleradas: 0, frasesConApuro: 0, retrasoMaximo: 0 };
+    let cursor = 0;
+
+    orden.forEach((seg, n) => {
+      // 1. Siempre fuera: muletillas al empezar la frase o seguidas de coma, y repeticiones seguidas.
+      let lista = frases.get(seg).filter((e, k, todas) => {
+        const palabra = normalizar(e.u.texto);
+        const muletilla = MULETILLAS.has(palabra) && (k === 0 || /,\s*$/.test(e.u.texto)) && todas.length > 1;
+        const repetida = k > 0 && todas[k - 1].u.tarjeta === e.u.tarjeta;
+        return !muletilla && !repetida;
+      });
+      const inicio = Math.max(inicioIdeal(seg), cursor + TRANSICION);
+      const disponible = (n + 1 < orden.length ? inicioIdeal(orden[n + 1]) : Infinity) - inicio;
+      const necesario = (l, v) => l.reduce((s, e) => s + clips[e.id].dura / v + TRANSICION, 0);
+      // Modo de apuro: si ya vamos muy por detrás del orador, se permite signar algo más deprisa
+      // (y se recorta más) para volver a un retraso razonable. Mejor eso que perder el hilo.
+      const apuro = inicio - segmentos[seg].t0 > RETRASO_DE_APURO;
+      const tope = apuro ? VELOCIDAD_DE_APURO : VELOCIDAD_MAXIMA;
+      if (apuro) cuenta.frasesConApuro++;
+
+      // 2. Si no cabe ni a la velocidad máxima, condensa por niveles (relleno, verbos de apoyo,
+      //    matices, complementos), siempre de menos a más importante y desde el final. Matices y
+      //    complementos solo se sacrifican cuando el retraso ya pasa del objetivo.
+      const atrasado = inicio - segmentos[seg].t0 > RETRASO_OBJETIVO;
+      for (const nivel of atrasado ? [4, 3, 2, 1] : [4, 3]) {
+        for (let k = lista.length - 1; k >= 0 && lista.length > 1 && necesario(lista, tope) > disponible; k--) {
+          if (nivelDeCorte(lista[k]) === nivel) lista.splice(k, 1);
+        }
+      }
+      cuenta.recortados += frases.get(seg).length - lista.length;
+
+      // 3. Velocidad justa para caber, sin pasar nunca del tope.
+      const velocidad = Math.min(Math.max(necesario(lista, 1) / disponible, 1), tope);
+      if (velocidad > 1.01) cuenta.frasesAceleradas++;
+      let t = inicio;
+      lista.forEach(({ u, id }, k) => {
+        if (k) t += enlace(clips[lista[k - 1].id].poses.at(-1), clips[id].poses[0]);
+        const t1 = t + clips[id].dura / velocidad;
+        pista.push({ t0: t, t1, clip: clips[id], texto: u.texto.replace(/[¿?¡!.,;:"«»()]/g, '').trim() });
+        cuenta.retrasoMaximo = Math.max(cuenta.retrasoMaximo, t - u.t0);
+        t = t1;
+      });
+      cursor = t;
+      cuenta.conMovimiento += lista.length;
     });
-    return { conMovimiento: pista.length, signos: unidades.filter((u) => u.tipo === 'signo').length };
+    return cuenta;
   }
 
   // Pose y palabra en el instante t.
@@ -134,24 +248,92 @@ const Avatar = (() => {
     return { pose: REPOSO, texto: '', avance: 0 };
   }
 
-  // ----- Boca: forma según la letra que "toca" de la palabra -----
+  // ----- Boca: los sonidos reales de la palabra que se signa -----
+  //
+  // El intérprete articula la palabra mientras la signa (mouthing). Aquí se convierte la
+  // palabra en sus sonidos con las reglas de la ortografía castellana y cada sonido se
+  // dibuja con su forma de labios (visema). Las vocales duran más que las consonantes y se
+  // interpola entre una forma y la siguiente (coarticulación), no se salta de una a otra.
 
-  //            ancho  alto
-  const BOCAS = {
-    a: [0.17, 0.13], e: [0.19, 0.08], i: [0.21, 0.045], o: [0.12, 0.12], u: [0.08, 0.08],
-    m: [0.16, 0], b: [0.16, 0], p: [0.16, 0], f: [0.15, 0.025], v: [0.15, 0.025],
-    consonante: [0.15, 0.045],
+  // [ancho, alto, dientes]  (en anchos de hombro; dientes: 0 = no se ven, 1 = se ven los de arriba)
+  const VISEMAS = {
+    a: [0.17, 0.13, 0.3], e: [0.19, 0.085, 0.5], i: [0.21, 0.045, 1], o: [0.11, 0.12, 0], u: [0.075, 0.08, 0],
+    cerrada: [0.15, 0, 0],              // b, p, m (y la v castellana, que suena como b)
+    fv: [0.15, 0.03, 1],                // f: el labio de abajo toca los dientes de arriba
+    lengua: [0.15, 0.05, 0.6],          // d, t, n, l: la punta de la lengua toca los dientes
+    sibilante: [0.17, 0.035, 1],        // s, z, c (e/i), x: dientes casi juntos
+    palatal: [0.14, 0.045, 0.4],        // ch, y, ll, ñ
+    velar: [0.14, 0.065, 0],            // k, g, j, q: boca algo abierta
+    vibrante: [0.14, 0.055, 0.3],       // r, rr
   };
+  const VOCALES = 'aeiou';
+  const PESO = { vocal: 2.3, consonante: 1, cerrada: 0.9 };
 
-  function boca(texto, avance) {
-    const letras = normalizar(texto).toLowerCase().replace(/[^a-zñ]/g, '');
-    if (!letras) return null;                                   // sonrisa de reposo
-    const x = Math.min(avance, 0.999) * letras.length;
-    const forma = (c) => BOCAS[c] || BOCAS.consonante;
-    const a = forma(letras[Math.floor(x)]), b = forma(letras[Math.min(Math.floor(x) + 1, letras.length - 1)]);
-    const k = suave(x - Math.floor(x));
-    return [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k];
+  function visemas(texto) {
+    // Normaliza: minúsculas, sin tildes, conserva la ñ y la ü.
+    const t = texto.toLowerCase().replace(/ñ/g, '\u0001').replace(/ü/g, 'u').normalize('NFD')
+      .replace(/[̀-ͯ]/g, '').replace(/\u0001/g, 'ñ').replace(/[^a-zñ]/g, '');
+    const salida = [];
+    const poner = (visema, tipo) => salida.push({ v: VISEMAS[visema], peso: PESO[tipo] });
+    for (let i = 0; i < t.length; i++) {
+      const c = t[i], sig = t[i + 1] || '', ant = t[i - 1] || '';
+      if (VOCALES.includes(c)) { poner(c, 'vocal'); continue; }
+      switch (c) {
+        case 'h': break;                                                            // muda (ch se trata en la c)
+        case 'b': case 'p': case 'm': case 'v': poner('cerrada', 'cerrada'); break;
+        case 'f': poner('fv', 'consonante'); break;
+        case 'd': case 't': case 'n': case 'l': poner('lengua', 'consonante'); break;
+        case 'z': case 's': case 'x': poner('sibilante', 'consonante'); break;
+        case 'c':
+          if (sig === 'h') { poner('palatal', 'consonante'); i++; }                 // ch
+          else if ('ei'.includes(sig)) poner('sibilante', 'consonante');            // ce, ci
+          else poner('velar', 'consonante');                                        // ca, co, cu
+          break;
+        case 'q': poner('velar', 'consonante'); if (sig === 'u') i++; break;        // que, qui: la u no suena
+        case 'g':
+          poner('velar', 'consonante');
+          if (sig === 'u' && 'ei'.includes(t[i + 2] || '')) i++;                    // gue, gui: la u no suena
+          break;
+        case 'k': case 'j': poner('velar', 'consonante'); break;
+        case 'y': case 'ñ': poner('palatal', 'consonante'); break;
+        case 'r': poner('vibrante', 'consonante'); if (sig === 'r') i++; break;     // r, rr
+        case 'w': poner('u', 'vocal'); break;
+        default: poner('velar', 'consonante');
+      }
+      if (c === 'l' && sig === 'l') { salida.pop(); poner('palatal', 'consonante'); i++; }   // ll
+    }
+    return salida;
   }
+
+  const memoVisemas = new Map();
+
+  // Forma de la boca en el avance k (0..1) de la palabra: [ancho, alto, dientes] o null (reposo).
+  function boca(texto, avance) {
+    if (!memoVisemas.has(texto)) {
+      const lista = visemas(texto);
+      const total = lista.reduce((s, x) => s + x.peso, 0);
+      let acumulado = 0;
+      memoVisemas.set(texto, lista.map((x) => {            // centro de cada sonido, de 0 a 1
+        const centro = (acumulado + x.peso / 2) / total;
+        acumulado += x.peso;
+        return { v: x.v, centro };
+      }));
+    }
+    const lista = memoVisemas.get(texto);
+    if (!lista.length) return null;
+    // La boca se abre un poco antes de empezar la palabra y se relaja un poco después.
+    const k = Math.min(Math.max(avance, 0), 1);
+    const REPOSO_BOCA = [0.13, 0.03, 0];
+    if (k < lista[0].centro) return mezclarBoca(REPOSO_BOCA, lista[0].v, suave(k / lista[0].centro));
+    const ultimo = lista.at(-1);
+    if (k >= ultimo.centro) return mezclarBoca(ultimo.v, REPOSO_BOCA, suave((k - ultimo.centro) / (1 - ultimo.centro + 1e-6)) * 0.7);
+    let j = 0;
+    while (lista[j + 1].centro < k) j++;
+    const a = lista[j], b = lista[j + 1];
+    return mezclarBoca(a.v, b.v, suave((k - a.centro) / (b.centro - a.centro)));
+  }
+
+  const mezclarBoca = (a, b, k) => a.map((v, i) => v + (b[i] - v) * k);
 
   // ----- Dibujo -----
 
@@ -160,6 +342,7 @@ const Avatar = (() => {
 
   // opciones: pregunta (cejas arriba) y zoom (1 = hasta las caderas, con las manos en reposo a la vista; más = más cerca)
   function pintar(t, { pregunta = false, zoom = 1 } = {}) {
+    t *= escalaTiempo;
     const { pose: p, texto, avance } = estadoEn(t);
     const W = lienzo.width, H = lienzo.height;
     const u = W * 0.245 * zoom, ox = W / 2;                      // unidad = ancho de hombros
@@ -209,11 +392,23 @@ const Avatar = (() => {
       ctx.quadraticCurveTo(ex, ey - (0.17 - cejas * 1.6) * u, ex + lado * 0.07 * u, ey - (0.12 - cejas * 0.6) * u);
       ctx.stroke();
     }
-    const forma = boca(texto, avance), by = cy + 0.22 * u;
+    const forma = texto ? boca(texto, avance) : null, by = cy + 0.22 * u;
     ctx.beginPath();
     if (!forma) { ctx.moveTo(cx - 0.09 * u, by - 0.01 * u); ctx.quadraticCurveTo(cx, by + 0.06 * u, cx + 0.09 * u, by - 0.01 * u); ctx.stroke(); }
-    else if (forma[1] < 0.012) { ctx.moveTo(cx - forma[0] * u / 2, by); ctx.lineTo(cx + forma[0] * u / 2, by); ctx.stroke(); }
-    else { ctx.ellipse(cx, by, forma[0] * u / 2, forma[1] * u / 2, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke(); }
+    else {
+      const [ancho, alto, dientes] = forma, mw = ancho * u / 2, mh = Math.max(alto * u / 2, 0.5);
+      if (alto < 0.012) { ctx.moveTo(cx - mw, by); ctx.lineTo(cx + mw, by); ctx.stroke(); }   // labios cerrados
+      else {
+        ctx.ellipse(cx, by, mw, mh, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        if (dientes > 0.35 && mh > 0.012 * u) {                                              // dientes de arriba
+          ctx.save();
+          ctx.beginPath(); ctx.ellipse(cx, by, mw, mh, 0, 0, Math.PI * 2); ctx.clip();
+          ctx.beginPath(); ctx.moveTo(cx - mw, by - mh * 0.2); ctx.lineTo(cx + mw, by - mh * 0.2);
+          ctx.lineWidth = grosor * (0.5 + dientes * 0.5); ctx.stroke();
+          ctx.restore();
+        }
+      }
+    }
 
     // Brazos y manos, encima de todo. Cada pieza es un "tubo": trazo negro y, por dentro, blanco.
     const borde = grosor * 0.8;
@@ -244,5 +439,5 @@ const Avatar = (() => {
     return texto;
   }
 
-  return { iniciar, preparar, pintar };
+  return { iniciar, preparar, pintar, visemas, boca, pista: () => pista };
 })();
