@@ -225,7 +225,7 @@ async function cargarVideo(v) {
   const avatar = await Avatar.preparar(estado.datos.unidades, estado.banco.tarjetas, estado.datos.segmentos,
     video.playbackRate);
   $('resumen').textContent += ` · avatar: ${avatar.conMovimiento} de ${avatar.signos} signos con movimiento, ${avatar.recortados} condensados, `
-    + `retraso máximo ${avatar.retrasoMaximo.toFixed(1)} s, ${avatar.frasesConApuro} frases en modo de apuro`;
+    + `retraso medio ${avatar.retrasoMedio.toFixed(1)} s (máximo ${avatar.retrasoMaximo.toFixed(1)} s), ${avatar.adelantadas} signos antes que su palabra, ${avatar.frasesConApuro} frases en modo de apuro`;
   sincronizar();
 }
 
@@ -389,7 +389,7 @@ $('ajuste-velocidad').addEventListener('change', async (e) => {
     video.playbackRate);
   resumir();
   $('resumen').textContent += ` · avatar: ${avatar.conMovimiento} de ${avatar.signos} signos con movimiento, `
-    + `${avatar.recortados} condensados, retraso máximo ${avatar.retrasoMaximo.toFixed(1)} s`;
+    + `${avatar.recortados} condensados, retraso medio ${avatar.retrasoMedio.toFixed(1)} s (máximo ${avatar.retrasoMaximo.toFixed(1)} s), ${avatar.adelantadas} signos antes que su palabra`;
   sincronizar();
 });
 

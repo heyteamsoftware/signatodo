@@ -259,13 +259,15 @@ const Avatar = (() => {
 
   // ----- Planificación por frases (criterios de interpretación con habla rápida) -----
   //
-  // No se persigue cada palabra. Se espera a tener la frase (desfase de unos 3,5 s), se
-  // quitan muletillas y repeticiones, y si la frase no cabe en su tiempo se recorta lo
-  // prescindible ANTES que acelerar: la velocidad nunca pasa de 1,2x. Si aun así no cabe,
-  // el avatar se retrasa y recupera en la siguiente pausa. Cifras, fechas, nombres,
-  // negaciones y preguntas no se recortan nunca.
-  const DESFASE = 3.5;              // segundos por detrás del audio, como máximo, al empezar una frase
-  const TRAS_FRASE = 0.3;           // si la frase es corta, empieza en cuanto termina de oírse
+  // En un vídeo grabado se conoce todo el audio de antemano, así que el avatar NO espera: cada signo
+  // empieza a la vez que su palabra (un poco antes) y, si hay un silencio antes de la frase, la primera
+  // seña se adelanta para ganar margen y mantener el ritmo. Se quitan muletillas y repeticiones y, si la
+  // frase no cabe en su tiempo, se recorta lo prescindible ANTES que acelerar: la velocidad nunca pasa
+  // de 1,2x. Si aun así no cabe, el avatar se retrasa y recupera en la siguiente pausa. Cifras, fechas,
+  // nombres, negaciones y preguntas no se recortan nunca. (En directo sí haría falta un desfase de varios
+  // segundos, porque no se sabe lo que viene.)
+  const ANTICIPO_FRASE = 1.5;       // la primera seña de una frase puede empezar hasta tanto antes de su palabra
+  const ANTICIPO_PALABRA = 0.4;     // cada seña empieza un poco antes de oírse su palabra
   const VELOCIDAD_MAXIMA = 1.2;
   const RETRASO_DE_APURO = 6;       // con más retraso que esto (s) entra el modo de apuro
   const VELOCIDAD_DE_APURO = 1.5;
@@ -302,8 +304,9 @@ const Avatar = (() => {
       frases.get(e.u.seg).push(e);
     }
     const orden = [...frases.keys()].sort((a, b) => a - b);
-    const inicioIdeal = (seg) => Math.min(segmentos[seg].t0 + DESFASE, segmentos[seg].t1 + TRAS_FRASE);
-    const cuenta = { conMovimiento: 0, recortados: 0, frasesAceleradas: 0, frasesConApuro: 0, retrasoMaximo: 0 };
+    // Cuándo conviene empezar una frase: poco antes de su primera palabra con signo.
+    const inicioIdeal = (seg) => Math.max(frases.get(seg)[0].u.t0 - ANTICIPO_FRASE, 0);
+    const cuenta = { conMovimiento: 0, recortados: 0, frasesAceleradas: 0, frasesConApuro: 0, retrasoMaximo: 0, sumaRetraso: 0, nSignos: 0, adelantadas: 0 };
     let cursor = 0;
 
     orden.forEach((seg, n) => {
@@ -319,14 +322,14 @@ const Avatar = (() => {
       const necesario = (l, v) => l.reduce((s, e) => s + clips[e.id].dura / v + TRANSICION, 0);
       // Modo de apuro: si ya vamos muy por detrás del orador, se permite signar algo más deprisa
       // (y se recorta más) para volver a un retraso razonable. Mejor eso que perder el hilo.
-      const apuro = inicio - segmentos[seg].t0 > RETRASO_DE_APURO;
+      const apuro = inicio - frases.get(seg)[0].u.t0 > RETRASO_DE_APURO;
       const tope = apuro ? VELOCIDAD_DE_APURO : VELOCIDAD_MAXIMA;
       if (apuro) cuenta.frasesConApuro++;
 
       // 2. Si no cabe ni a la velocidad máxima, condensa por niveles (relleno, verbos de apoyo,
       //    matices, complementos), siempre de menos a más importante y desde el final. Matices y
       //    complementos solo se sacrifican cuando el retraso ya pasa del objetivo.
-      const atrasado = inicio - segmentos[seg].t0 > RETRASO_OBJETIVO;
+      const atrasado = inicio - frases.get(seg)[0].u.t0 > RETRASO_OBJETIVO;
       for (const nivel of atrasado ? [4, 3, 2, 1] : [4, 3]) {
         for (let k = lista.length - 1; k >= 0 && lista.length > 1 && necesario(lista, tope) > disponible; k--) {
           if (nivelDeCorte(lista[k]) === nivel) {
@@ -345,14 +348,18 @@ const Avatar = (() => {
       let t = inicio;
       lista.forEach(({ u, id }, k) => {
         if (k) t += enlace(clips[lista[k - 1].id].poses.at(-1), clips[id].poses[0]);
+        // Si hay hueco, espera a su palabra (menos un pequeño anticipo): así sigue el ritmo del orador.
+        t = Math.max(t, u.t0 - (k ? ANTICIPO_PALABRA : ANTICIPO_FRASE));
         const t1 = t + clips[id].dura / velocidad;
         pista.push({ t0: t, t1, clip: clips[id], texto: u.texto.replace(/[¿?¡!.,;:"«»()]/g, '').trim() });
         cuenta.retrasoMaximo = Math.max(cuenta.retrasoMaximo, t - u.t0);
+        cuenta.sumaRetraso += t - u.t0; cuenta.nSignos++; if (t <= u.t0) cuenta.adelantadas++;
         t = t1;
       });
       cursor = t;
       cuenta.conMovimiento += lista.length;
     });
+    cuenta.retrasoMedio = cuenta.nSignos ? cuenta.sumaRetraso / cuenta.nSignos : 0;
     return cuenta;
   }
 
