@@ -203,6 +203,14 @@ document.addEventListener('visibilitychange', () => { if (document.hidden && !wi
 
 (async function arrancar() {
   if (window.AndroidVoz) $('modos').hidden = true;      // en la app no hay servidor para el modo vídeo
+  // En la app, la pantalla de información dice qué versión es y que se actualiza sola.
+  if (window.AndroidVoz && window.AndroidVoz.version) {
+    const version = window.AndroidVoz.version();
+    if (version) {
+      $('version-app').textContent = 'Versión ' + version + '. Al abrirse, la app consulta en el servidor del CIFP Tony Gallardo si hay una versión nueva; esa consulta no lleva ningún dato tuyo.';
+      $('version-app').hidden = false;
+    }
+  }
   try {
     await Avatar.iniciar(lienzo);
     ajustar();

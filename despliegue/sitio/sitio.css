@@ -1,0 +1,84 @@
+/* Signatodo · página de descarga. Mismo aspecto que la app: papel blanco, tinta negra y el recuadro con su rótulo. */
+:root { --tinta: #111; --papel: #fff; --gris: #55595e; --raya: #d7d9dc; --rojo: #b3261e; }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--papel); color: var(--tinta); line-height: 1.5;
+  font: 17px/1.5 "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; }
+a { color: var(--tinta); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--rojo); outline-offset: 2px; border-radius: 4px; }
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.salto { position: absolute; left: -999px; top: 8px; background: var(--tinta); color: var(--papel); padding: 8px 14px; border-radius: 8px; z-index: 5; }
+.salto:focus { left: 8px; }
+
+main, .pie { width: min(980px, 100%); margin: 0 auto; padding: 0 18px; }
+.cabecera { padding: 22px 0 4px; text-align: center; }
+h1 { margin: 0; font: 700 clamp(38px, 9vw, 60px)/1.05 "Times New Roman", Times, serif; letter-spacing: .02em; }
+.lema { margin: 10px auto 0; max-width: 34em; font-size: clamp(18px, 4.4vw, 21px); color: var(--gris); }
+h2 { margin: 0 0 6px; font-size: 24px; }
+h3 { margin: 18px 0 6px; font-size: 18px; }
+
+/* Móvil: descarga, imagen y detalles, uno debajo de otro. Pantalla ancha: la imagen a la izquierda y el resto a la derecha. */
+.portada { display: grid; gap: 22px; padding: 18px 0 8px; }
+.accion { text-align: center; }
+@media (min-width: 760px) {
+  .portada { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "tarjeta accion" "tarjeta detalles"; column-gap: 40px; row-gap: 6px; padding-top: 22px; }
+  .tarjeta { grid-area: tarjeta; align-self: center; }
+  .accion { grid-area: accion; align-self: end; text-align: left; }
+  .detalles { grid-area: detalles; align-self: start; }
+}
+
+/* El recuadro del avatar, igual que en la app: borde de tinta, esquinas redondas y el rótulo negro debajo. */
+.tarjeta { margin: 0 auto; width: min(420px, 78%); border: 2px solid var(--tinta); border-radius: 16px; overflow: hidden;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, .16); background: var(--papel); }
+.tarjeta img { display: block; width: 100%; height: auto; }
+.rotulo { background: var(--tinta); color: var(--papel); text-align: center; padding: 9px 8px; letter-spacing: .08em;
+  font: 700 22px "Times New Roman", Times, serif; text-transform: uppercase; }
+
+.version { margin: 0 0 14px; color: var(--gris); }
+.boton { display: inline-block; background: var(--tinta); color: var(--papel); text-decoration: none; font-size: 21px; font-weight: 600;
+  padding: 16px 30px; border-radius: 999px; border: 2px solid var(--tinta); }
+.boton:hover { background: #333; border-color: #333; }
+.requisito { margin: 10px 0 0; font-size: 15px; color: var(--gris); }
+.novedades, .avisos ul { margin: 0; padding-left: 1.2em; }
+.novedades li, .avisos li { margin: 5px 0; }
+details { margin-top: 18px; border-top: 1px solid var(--raya); padding-top: 12px; }
+summary { cursor: pointer; font-weight: 600; padding: 4px 0; }
+details ol { margin: 8px 0; padding-left: 1.3em; }
+details li { margin: 6px 0; }
+
+.avisos { margin: 30px 0 10px; padding: 20px 22px; border: 2px solid var(--tinta); border-radius: 16px; }
+.avisos p { margin: 0 0 6px; }
+
+.pie { margin-top: 26px; padding-top: 16px; padding-bottom: 110px; border-top: 1px solid var(--raya); font-size: 15px; color: var(--gris); }
+.pie p { margin: 0 0 8px; }
+.pie a, .enlace { color: var(--gris); }
+.enlace { background: none; border: 0; padding: 0; font: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.visitas { display: inline-flex; align-items: center; gap: 5px; margin-left: 10px; white-space: nowrap; }
+.visitas svg { fill: none; stroke: currentColor; stroke-width: 1.6; }
+.creditos { font-size: 14px; }
+
+/* Aviso de consentimiento: abajo, sin tapar el botón de descarga. */
+.consentimiento { position: fixed; left: 12px; right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); margin: 0 auto; width: min(640px, calc(100% - 24px));
+  background: var(--papel); border: 2px solid var(--tinta); border-radius: 16px; padding: 14px 18px; box-shadow: 0 8px 28px rgba(0, 0, 0, .22); font-size: 15px; }
+.consentimiento p { margin: 0 0 8px; }
+@media (max-width: 520px) { .consentimiento { padding: 11px 14px; font-size: 14px; line-height: 1.4; } .consentimiento-t { font-size: 16px; } .boton-secundario { padding: 8px 18px; } }
+.consentimiento-t { font-weight: 700; font-size: 17px; }
+.consentimiento-botones { display: flex; gap: 10px; justify-content: flex-end; }
+.boton-secundario { font: inherit; font-weight: 600; padding: 9px 20px; border-radius: 999px; border: 2px solid var(--tinta); background: var(--papel); color: var(--tinta); cursor: pointer; }
+.boton-secundario:hover { background: var(--tinta); color: var(--papel); }
+
+/* Páginas de texto (privacidad, aviso legal, 404) */
+.texto { width: min(760px, 100%); margin: 0 auto; padding: 22px 18px 10px; }
+.texto h1 { font-size: clamp(30px, 7vw, 42px); }
+.texto h2 { margin-top: 28px; font-size: 21px; }
+.texto .fecha { color: var(--gris); margin: 6px 0 18px; }
+.texto dl { margin: 10px 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; }
+.texto dt { font-weight: 600; }
+.texto dd { margin: 0; overflow-wrap: anywhere; }
+.volver { display: inline-block; margin: 18px 0 0; font-weight: 600; }
+.centrado { text-align: center; padding-top: 12vh; }
+.centrado .boton { margin-top: 16px; }
+
+[hidden] { display: none !important; }
+@media (prefers-reduced-motion: no-preference) { .boton, .boton-secundario { transition: background-color .15s, color .15s; } }

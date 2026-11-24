@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /signatodo/
+Disallow: /signatodo/data/
+Disallow: /signatodo/contador.php
+Sitemap: https://myappsserver.duckdns.org/signatodo/sitemap.xml

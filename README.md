@@ -309,3 +309,36 @@ en blanco**. No es un signo de la LSE: es un recurso para no dejar la palabra si
   dice «SIN SIGNO, escritas en la camiseta». En directo la palabra sigue saliendo en rojo en los subtítulos y, si no llega otra
   detrás, se queda escrita mientras las manos esperan.
 - En el muñeco plano la camiseta es blanca, así que la palabra va en tinta.
+
+## Despliegue y actualización automática de la app
+
+La app se publica en el servidor de aplicaciones del CIFP Tony Gallardo, en https://myappsserver.duckdns.org/signatodo/, y
+desde la versión 0.5 **se actualiza sola** desde ahí, para no tener que copiar el APK al móvil cada vez.
+
+**Publicar una versión nueva** (tres pasos):
+
+1. Sube `VERSION_CODIGO` y `VERSION_NOMBRE` en `android/construir.py` y apunta las novedades en `despliegue/novedades.json`.
+2. `py android/construir.py`
+3. `py herramientas/desplegar.py` (con `--simular` prepara `despliegue/salida` y no sube nada; con `--sin-apk` publica solo la página).
+
+El script sube el APK con la versión en el nombre (`signatodo-0.5.apk`), comprueba que ha llegado idéntico, publica la página y,
+lo último, `version.json` (número de versión, nombre del APK, tamaño, huella SHA-256 y novedades). Conserva en el servidor el
+APK actual y el anterior, y no deja publicar una versión más vieja que la que ya hay. Los datos del servidor (dirección, usuario
+y clave SSH) no están en el repositorio: van en `despliegue/servidor.local.json` (copia de `servidor.ejemplo.json`).
+
+**Cómo se actualiza la app** (`Actualizacion.java` y el final de `MainActivity.java`): al abrirse consulta `version.json`; si el
+número publicado es mayor que el instalado, avisa con las novedades y, al aceptar, descarga el APK comprobando el tamaño y la
+huella, y lo entrega al instalador de paquetes del sistema. Android pide confirmación (y, la primera vez, permiso para que
+Signatodo instale aplicaciones); a partir de Android 12, las siguientes actualizaciones que la app se hace a sí misma pueden
+instalarse sin volver a preguntar. «Más tarde» aplaza el aviso 6 horas. Sin conexión no pasa nada: sigue la versión que hay.
+Es lo único que la app pide a internet (permisos `INTERNET`, `REQUEST_INSTALL_PACKAGES` y
+`UPDATE_PACKAGES_WITHOUT_USER_ACTION`); el avatar sigue saliendo entero de dentro del APK.
+
+**Importante**: Android solo acepta la actualización si va firmada con la misma clave. No pierdas ni regeneres
+`android/clave-pruebas.keystore`: sin ella habría que desinstalar la app e instalarla de nuevo en cada teléfono.
+
+**La página de descarga** (`despliegue/sitio`) sigue la lista de comprobación de las webs del centro: política de privacidad y
+aviso legal, sin secretos en el código, HTTPS forzado y cabeceras de seguridad (`.htaccess`), aviso de consentimiento (no hay
+cookies: solo se pide permiso para sumar la visita y la descarga a un contador anónimo, `contador.php`), título, descripción e
+imagen para compartir, favicon, `sitemap.xml` y `robots.txt`, textos alternativos, imágenes comprimidas, página 404 propia, un
+único botón principal («Descargar Signatodo») y el contador de visitas discreto en el pie.

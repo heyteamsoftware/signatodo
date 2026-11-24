@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Signatodo · Un avatar que signa en LSE lo que oye</title>
+  <meta name="description" content="Signatodo es una app Android de prueba: un avatar signa en lengua de signos española (LSE) lo que oye el micrófono. Prototipo educativo del CIFP Tony Gallardo.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://myappsserver.duckdns.org/signatodo/">
+  <link rel="icon" type="image/svg+xml" href="/signatodo/favicon.svg">
+  <link rel="apple-touch-icon" href="/signatodo/icono-192.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:title" content="Signatodo · Un avatar que signa lo que oye">
+  <meta property="og:description" content="App Android de prueba: un avatar signa en lengua de signos española lo que oye el micrófono.">
+  <meta property="og:url" content="https://myappsserver.duckdns.org/signatodo/">
+  <meta property="og:image" content="https://myappsserver.duckdns.org/signatodo/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="El avatar de Signatodo saludando con la mano, junto al nombre de la app">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/signatodo/sitio.css?v={{CODIGO}}">
+</head>
+<body>
+  <a class="salto" href="#contenido">Saltar al contenido</a>
+
+  <main id="contenido">
+    <header class="cabecera">
+      <h1>Signatodo</h1>
+      <p class="lema">Un avatar que signa en lengua de signos española lo que oye el micrófono.</p>
+    </header>
+
+    <!-- En el móvil, la descarga va antes que la imagen: el botón se ve nada más entrar. En pantallas anchas, imagen a la izquierda. -->
+    <div class="portada">
+      <section class="accion" aria-labelledby="titulo-descarga">
+        <h2 id="titulo-descarga">App para Android</h2>
+        <p class="version">Versión <strong>{{VERSION}}</strong> · {{FECHA}} · {{TAMANO}}</p>
+        <a class="boton" id="descargar" href="/signatodo/{{APK}}" download>Descargar Signatodo</a>
+        <p class="requisito">Para teléfonos y tabletas con Android 7 o posterior.</p>
+      </section>
+
+      <figure class="tarjeta">
+        <img src="/signatodo/avatar.webp" width="600" height="560" alt="El avatar de Signatodo, un muñeco con jersey azul oscuro y guantes blancos, saluda con la mano abierta">
+        <figcaption class="rotulo">Hola</figcaption>
+      </figure>
+
+      <section class="detalles" aria-labelledby="titulo-novedades">
+        <h3 id="titulo-novedades">Novedades de esta versión</h3>
+        <ul class="novedades">
+{{NOTAS}}
+        </ul>
+        <details>
+          <summary>Cómo instalarla</summary>
+          <ol>
+            <li>Abre esta página en el teléfono y pulsa «Descargar Signatodo».</li>
+            <li>Abre el archivo descargado. Si el teléfono lo pide, permite que el navegador instale aplicaciones.</li>
+            <li>Al abrir la app, permite usar el micrófono y pulsa «Grabar».</li>
+          </ol>
+          <p>Si ya la tienes instalada, la versión nueva se instala encima de la anterior, sin borrar nada. Desde la versión 0.5 la app se actualiza sola.</p>
+        </details>
+      </section>
+    </div>
+
+    <section class="avisos" aria-labelledby="titulo-avisos">
+      <h2 id="titulo-avisos">Antes de usarla</h2>
+      <p>Signatodo es un <strong>prototipo educativo</strong>: no es una interpretación profesional en lengua de signos española (LSE) y no sustituye a una persona intérprete. Los signos y el alfabeto propios son borradores sin validar por una persona signante.</p>
+      <h3>Para realizar una captura de voz correcta</h3>
+      <ul>
+        <li>No hablar varias personas a la vez.</li>
+        <li>Realizar una locución clara.</li>
+        <li>Hablar a un ritmo que ayude a la interpretación.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p>
+      Signatodo · CIFP Tony Gallardo ·
+      <a href="/signatodo/privacidad.html">Privacidad</a> ·
+      <a href="/signatodo/terminos.html">Aviso legal y condiciones</a> ·
+      <button type="button" class="enlace" id="preferencias">Preferencias de privacidad</button>
+      <span class="visitas" id="visitas" hidden>
+        <svg viewBox="0 0 24 16" width="18" height="12" aria-hidden="true"><path d="M1 8s4-6.5 11-6.5S23 8 23 8s-4 6.5-11 6.5S1 8 1 8z"/><circle cx="12" cy="8" r="3.2"/></svg>
+        <span id="visitas-n">0</span><span class="oculto"> visitas</span>
+      </span>
+    </p>
+    <p class="creditos">Movimiento de los signos: vídeos de lengua de signos de ARASAAC (Gobierno de Aragón), con licencia Creative Commons BY-NC-SA. Solo para uso no comercial.</p>
+  </footer>
+
+  <!-- Consentimiento: sin cookies; solo pide permiso para contar la visita y la descarga de forma anónima -->
+  <section class="consentimiento" id="consentimiento" role="dialog" aria-labelledby="consentimiento-t" aria-describedby="consentimiento-d" hidden>
+    <p class="consentimiento-t" id="consentimiento-t">¿Nos dejas contar tu visita?</p>
+    <p id="consentimiento-d">Esta web no usa cookies ni publicidad. Si aceptas, sumaremos tu visita y tu descarga a un contador anónimo: sin cookies y sin guardar tu IP. <a href="/signatodo/privacidad.html#contador">Más información sobre el contador</a></p>
+    <div class="consentimiento-botones">
+      <button type="button" class="boton-secundario" id="consentimiento-no">Rechazar</button>
+      <button type="button" class="boton-secundario" id="consentimiento-si">Aceptar</button>
+    </div>
+  </section>
+
+  <script src="/signatodo/sitio.js?v={{CODIGO}}" defer></script>
+</body>
+</html>

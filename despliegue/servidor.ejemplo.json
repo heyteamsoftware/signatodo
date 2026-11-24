@@ -1,0 +1,7 @@
+{
+ "host": "DIRECCION-O-IP-DEL-SERVIDOR",
+ "usuario": "USUARIO-SSH",
+ "clave": "C:\\ruta\\a\\la\\clave-ssh.key",
+ "carpeta": "/var/www/html/signatodo",
+ "url": "https://myappsserver.duckdns.org/signatodo/"
+}

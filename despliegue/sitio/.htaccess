@@ -1,0 +1,34 @@
+# /signatodo/ · Página de descarga de la app Signatodo y su archivo de versión (version.json)
+Options -Indexes
+ErrorDocument 404 /signatodo/404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# El instalable de Android
+AddType application/vnd.android.package-archive .apk
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set Permissions-Policy "geolocation=(), camera=(), microphone=()"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"
+
+  # La página, su estilo y el archivo de versión se comprueban siempre: así se ve enseguida una versión nueva.
+  <FilesMatch "\.(html|json|css|js)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  # Cada APK lleva su versión en el nombre, así que no cambia nunca.
+  <FilesMatch "\.apk$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+    Header set Content-Disposition "attachment"
+  </FilesMatch>
+  <FilesMatch "\.(png|svg|webp)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+</IfModule>

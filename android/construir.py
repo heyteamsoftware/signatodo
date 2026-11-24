@@ -6,7 +6,8 @@
 Necesita Android Studio (de ahí sale el JDK) y el SDK de Android (build-tools y una plataforma). Salida: android/signatodo.apk,
 firmado con una clave de pruebas (android/clave-pruebas.keystore), suficiente para instalarlo en tu teléfono.
 
-El APK lleva dentro todo lo necesario: no hay servidor ni se descarga nada. OJO: los movimientos vienen de los vídeos de
+El APK lleva dentro todo lo necesario para signar: no hay servidor ni se descarga nada (lo único que pide a internet es si
+hay una versión nueva, ver herramientas/desplegar.py). Para publicarlo: py herramientas/desplegar.py. OJO: los movimientos vienen de los vídeos de
 ARASAAC (CC BY-NC-SA, solo uso no comercial); no repartas el APK con ellos sin cumplir esa licencia.
 """
 import argparse
@@ -22,7 +23,7 @@ import zipfile
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 AND = os.path.join(RAIZ, "android")
 OBRA = os.path.join(AND, "build")
-VERSION_CODIGO, VERSION_NOMBRE = 4, "0.4"       # 0.4: las palabras sin signo salen escritas en la camiseta
+VERSION_CODIGO, VERSION_NOMBRE = 5, "0.5"       # 0.5: actualización automática desde el servidor y nombre de la app arriba
 
 
 def buscar_sdk():

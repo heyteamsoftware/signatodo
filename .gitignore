@@ -26,3 +26,7 @@ android/build/
 android/*.apk
 android/*.idsig
 android/*.keystore
+
+# Despliegue: los datos del servidor (dirección, usuario, clave) y lo que se prepara para subir no se publican.
+despliegue/*.local.json
+despliegue/salida/
