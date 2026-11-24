@@ -1,0 +1,130 @@
+{
+  "nota": "Equivalencias entre palabras castellanas y signos que ya tenemos. Hipotesis sin validar por una persona signante. relacion: nombre-verbo (misma sena, cambia el movimiento o la repeticion), sinonimo, aproximada (termino cercano), error-lematizador (el lematizador se equivoca de verbo).",
+  "sinonimos": {
+    "saludo": {
+      "a": "saludar",
+      "relacion": "nombre-verbo",
+      "confianza": "baja"
+    },
+    "saludos": {
+      "a": "saludar",
+      "relacion": "nombre-verbo",
+      "confianza": "baja"
+    },
+    "un saludo": {
+      "a": "saludar",
+      "relacion": "nombre-verbo",
+      "confianza": "baja"
+    },
+    "llamada": {
+      "a": "llamar",
+      "relacion": "nombre-verbo",
+      "confianza": "baja"
+    },
+    "llamadas": {
+      "a": "llamar",
+      "relacion": "nombre-verbo",
+      "confianza": "baja"
+    },
+    "trabajo": {
+      "a": "trabajar",
+      "relacion": "nombre-verbo",
+      "confianza": "baja"
+    },
+    "estudio": {
+      "a": "estudiar",
+      "relacion": "nombre-verbo",
+      "confianza": "baja"
+    },
+    "compras": {
+      "a": "comprar",
+      "relacion": "nombre-verbo",
+      "confianza": "baja"
+    },
+    "viaje": {
+      "a": "viajar",
+      "relacion": "nombre-verbo",
+      "confianza": "baja"
+    },
+    "canción": {
+      "a": "cantar",
+      "relacion": "nombre-verbo",
+      "confianza": "baja"
+    },
+    "espera": {
+      "a": "esperar",
+      "relacion": "nombre-verbo",
+      "confianza": "baja"
+    },
+    "salida": {
+      "a": "salir",
+      "relacion": "nombre-verbo",
+      "confianza": "baja"
+    },
+    "entrada": {
+      "a": "entrar",
+      "relacion": "nombre-verbo",
+      "confianza": "baja"
+    },
+    "descanso": {
+      "a": "descansar",
+      "relacion": "nombre-verbo",
+      "confianza": "baja"
+    },
+    "automóvil": {
+      "a": "coche",
+      "relacion": "sinonimo",
+      "confianza": "baja"
+    },
+    "auto": {
+      "a": "coche",
+      "relacion": "sinonimo",
+      "confianza": "baja"
+    },
+    "celular": {
+      "a": "móvil",
+      "relacion": "sinonimo",
+      "confianza": "baja"
+    },
+    "vengar": {
+      "a": "venir",
+      "relacion": "error-lematizador",
+      "confianza": "baja"
+    },
+    "vivienda": {
+      "a": "casa",
+      "relacion": "sinonimo",
+      "confianza": "baja"
+    },
+    "hogar": {
+      "a": "casa",
+      "relacion": "sinonimo",
+      "confianza": "baja"
+    },
+    "finalizar": {
+      "a": "acabar",
+      "relacion": "sinonimo",
+      "confianza": "baja"
+    },
+    "iniciar": {
+      "a": "empezar",
+      "relacion": "sinonimo",
+      "confianza": "baja"
+    },
+    "adquirir": {
+      "a": "comprar",
+      "relacion": "sinonimo",
+      "confianza": "baja"
+    },
+    "contestar": {
+      "a": "responder",
+      "relacion": "sinonimo",
+      "confianza": "baja"
+    },
+    "enorme": {
+      "a": "grande",
+      "relacion": "aproximada",
+      "confianza": "baja"
+    }
+  }
+}

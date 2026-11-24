@@ -159,3 +159,15 @@ node herramientas/validar_signos.js banco/propios/lotes/lote_001.json
 
 Un signo no entra bien si tiene errores. Los avisos (mano lejos del cuerpo, confianza sin indicar…)
 conviene revisarlos. Una descripción dudosa debe marcarse con `"confianza": "baja"`, no maquillarse.
+
+## Lo que aporta SignoEscritura (Parkhurst, PROEL 2001/2007)
+
+El manual `Documentacion/SignoEscritura-Parkhurst-ES-LSE.pdf` es un sistema de escritura, no un vocabulario (dice que sus
+ejemplos no son «los signos correctos»). Se usa solo como lista de comprobación de qué debe poder describir nuestra notación:
+
+- Cejas arriba/abajo; ojos abiertos, cerrados, entrecerrados, muy abiertos; dirección de la mirada; boca; movimientos de la
+  cabeza; hombros y tronco; mejillas. Coincide con nuestros 13 canales no manuales. Falta lengua y respiración.
+- Una expresión puede abarcar **toda una frase** (corchetes): la cara de pregunta o de duda dura toda la oración, no un signo.
+- Marcas de **rápido/despacio** y de **tenso** (el clasificador es una mano que se queda fija).
+- Cuatro contactos: tocar, rozar, golpear, agarrar; y el giro del antebrazo como movimiento distinto del de la muñeca.
+- Los movimientos curvos se describen en tres planos (pared de enfrente, suelo, pared de al lado).

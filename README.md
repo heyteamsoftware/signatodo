@@ -123,3 +123,11 @@ audio original. Dura lo que dura el vídeo y la pestaña debe quedar a la vista 
   nombres propios, siglas y palabras de hasta 4 letras; una palabra deletreada se quita entera o no se quita.
   Discrepancia sin resolver: el manual dibuja la I con el índice y su texto dice meñique (se usó el meñique).
 - La app muestra un panel de **fuentes y créditos**, y el vídeo exportado lleva la atribución a ARASAAC.
+
+## Equivalencias entre palabras (sinónimos)
+
+`banco/propios/sinonimos.json` dice qué signo usar cuando una palabra no tiene el suyo: `saludo → saludar`,
+`automóvil → coche`, `llamada → llamar`. Cada entrada indica la relación (`nombre-verbo`, `sinonimo`, `aproximada`,
+`error-lematizador`) y una confianza (`baja` hasta que lo revise una persona signante). Orden de búsqueda: palabra exacta,
+lema, equivalencia, compuesto, deletreo. Al procesar, el resumen lista las palabras resueltas por equivalencia, las
+deletreadas y las que se quedan **sin signo**, para ver los huecos antes de exportar.

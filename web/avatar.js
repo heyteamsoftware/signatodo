@@ -20,6 +20,7 @@ const Avatar = (() => {
   let definiciones = {};        // signos propios: id -> definición
   const propios = {};           // signos propios: palabra normalizada -> id
   const gestosPalabra = {};     // gestos no manuales de la lista de 500: palabra normalizada -> nm
+  const sinonimos = {};         // palabra normalizada -> { a: palabra con signo, relacion, confianza }
   const compuestos = {};        // signos compuestos: expresión normalizada -> partes
   let letrasDef = {};           // alfabeto dactilológico propio: letra -> definición
   const clips = {};             // id -> clip ya convertido a poses
@@ -124,6 +125,10 @@ const Avatar = (() => {
       if (r.ok) for (const [palabra, nm] of Object.entries((await r.json()).gestos)) { const clave = normalizar(palabra); if (clave) gestosPalabra[clave] = nm; }
     } catch { /* sin gestos de la lista */ }
     try {
+      const r = await fetch('/banco/propios/sinonimos.json');
+      if (r.ok) for (const [clave, s] of Object.entries((await r.json()).sinonimos)) { const k = normalizar(clave); if (k) sinonimos[k] = { ...s, a: normalizar(s.a) }; }
+    } catch { /* sin sinónimos */ }
+    try {
       const r = await fetch('/banco/propios/compuestos.json');
       if (r.ok) for (const [clave, partes] of Object.entries((await r.json()).compuestos)) { const k = normalizar(clave); if (k) compuestos[k] = partes; }
     } catch { /* sin compuestos */ }
@@ -193,6 +198,7 @@ const Avatar = (() => {
     // Expresiones de varias palabras ("por favor", "de nada", "fin de semana"): se fusionan en una sola unidad.
     unidades = fusionarFrases(unidades);
     const elegidas = [];
+    const porSinonimo = [], sinSigno = [], deletreadas = [];
     // Qué clip se usa para unas palabras candidatas: movimiento extraído (con gestos propios o de la lista
     // de 500 encima) si existe; si no, el signo propio.
     const resolverId = (cands) => {
@@ -208,7 +214,12 @@ const Avatar = (() => {
     unidades.forEach((u, i) => {
       const etiqueta = tarjetas[u.tarjeta]?.etiqueta || '';
       const candidatas = [normalizar(u.texto), normalizar(u.lema || ''), normalizar(etiqueta), normalizar((u.tarjeta || '').replace(/ny/g, 'ñ').replace(/-/g, ' '))].filter(Boolean);
-      const id = resolverId(candidatas);
+      let id = resolverId(candidatas);
+      // Sin signo con esa palabra: se prueba una equivalencia (saludo -> saludar, automóvil -> coche).
+      if (id === undefined) {
+        const clave = candidatas.find((c) => sinonimos[c] !== undefined && resolverId([sinonimos[c].a]) !== undefined);
+        if (clave !== undefined) { id = resolverId([sinonimos[clave].a]); if (u.tipo !== 'omitir') porSinonimo.push(`${u.texto.replace(/[.,;:!?¡¿]/g, '')} → ${sinonimos[clave].a}`); }
+      }
       const compuesto = id === undefined ? candidatas.find((c) => compuestos[c] !== undefined) : undefined;
       // También se signan las palabras sin tarjeta (por ejemplo "yo", "hola") si tienen movimiento o signo propio.
       const deletreable = u.tipo === 'deletreo' && Array.isArray(u.letras) && u.letras.some((l) => letrasDef[l]);
@@ -235,12 +246,13 @@ const Avatar = (() => {
         // Una palabra común sin signo y larga no se deletrea (los subtítulos ya la muestran): solo nombres,
         // siglas y palabras de hasta 4 letras.
         if (nombre || sigla || letras.length <= 4) {
+          deletreadas.push(u.texto.replace(/[.,;:!?¡¿]/g, ''));
           letras.forEach((l, k) => elegidas.push({
             u: { ...u, t0: u.t0 + k * parte, t1: u.t0 + (k + 1) * parte, texto: l.toUpperCase() },
             id: 'l:' + l, complemento, deletreo: true, nombre: nombre || sigla, grupo: 'd' + i,
           }));
-        }
-      }
+        } else sinSigno.push(u.texto.replace(/[.,;:!?¡¿]/g, ''));
+      } else if (u.tipo === 'signo') sinSigno.push(u.texto.replace(/[.,;:!?¡¿]/g, ''));
     });
     await Promise.all([...new Set(elegidas.map((e) => e.id))].filter((id) => !clips[id]).map(async (id) => {
       if (String(id).startsWith('o:')) { clips[id] = crearPropio(id.slice(2)); return; }
@@ -254,7 +266,7 @@ const Avatar = (() => {
     }));
     const validas = elegidas.filter((e) => clips[e.id]);
     const resumen = planificar(validas, segmentos);
-    return { ...resumen, signos: unidades.filter((u) => u.tipo === 'signo').length };
+    return { ...resumen, signos: unidades.filter((u) => u.tipo === 'signo').length, porSinonimo, sinSigno, deletreadas };
   }
 
   // ----- Planificación por frases (criterios de interpretación con habla rápida) -----
@@ -619,5 +631,5 @@ const Avatar = (() => {
     return texto;
   }
 
-  return { iniciar, preparar, pintar, visemas, boca, pista: () => pista, propio: crearPropio, letra: crearLetra, definiciones: () => definiciones, compuestos: () => compuestos, gestos: () => gestosPalabra };
+  return { iniciar, preparar, pintar, visemas, boca, pista: () => pista, propio: crearPropio, letra: crearLetra, definiciones: () => definiciones, compuestos: () => compuestos, sinonimos: () => sinonimos, gestos: () => gestosPalabra };
 })();
