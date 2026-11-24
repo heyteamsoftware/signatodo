@@ -21,8 +21,10 @@ RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(RAIZ, "herramientas"))
 from texto import normalizar  # noqa: E402
 
+# Por defecto: 8 fotogramas pequeños por palabra. Con --grande: 6 fotogramas grandes (los dedos se ven mejor).
 COLUMNAS, ANCHO, ALTO = 8, 150, 169
 POR_HOJA = 4
+FPS = 2.7
 
 
 def cargar_indice():
@@ -37,7 +39,7 @@ def cargar_indice():
 
 def fotogramas(video, destino):
     """Ocho fotogramas repartidos por el vídeo, recortados a media figura, en una tira."""
-    filtro = f"fps=2.7,crop=480:540:120:0,scale={ANCHO}:{ALTO},tile={COLUMNAS}x1"
+    filtro = f"fps={FPS},crop=480:540:120:0,scale={ANCHO}:{ALTO},tile={COLUMNAS}x1"
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", video, "-vf", filtro, "-frames:v", "1", destino], check=True)
     return Image.open(destino).convert("RGB")
 
@@ -47,7 +49,11 @@ def main():
     ap.add_argument("palabras", nargs="*")
     ap.add_argument("--archivo", help="fichero con una palabra por línea")
     ap.add_argument("--salida", required=True)
+    ap.add_argument("--grande", action="store_true", help="6 fotogramas grandes por palabra y 2 palabras por hoja")
     args = ap.parse_args()
+    global COLUMNAS, ANCHO, ALTO, POR_HOJA, FPS
+    if args.grande:
+        COLUMNAS, ANCHO, ALTO, POR_HOJA, FPS = 6, 240, 270, 2, 2.0
     lista = list(args.palabras)
     if args.archivo:
         with open(args.archivo, encoding="utf-8") as f:

@@ -82,3 +82,15 @@ persona sorda o un intérprete de LSE.** Las palabras sin signo propio dejan al 
 
 Para comparar con material ajeno en local, abrir la web con `?referencia=1`: usa también el
 movimiento extraído de vídeos de terceros (que no está en el repositorio).
+
+### Lotes de signos (estado)
+
+Además de los 19 iniciales hay 120 signos más en `banco/propios/lotes/` (lotes 001 a 004, de «abajo» a
+«coger»), descritos a partir de hojas de consulta de vídeos de referencia: 139 signos en total, de
+los que 34 tienen confianza media, 2 alta y 103 baja. Cada uno anota si necesita inclinación del
+cuerpo, gesto de cara o gesto de ojos (37 necesitan alguno). Se validan con
+`node herramientas/validar_signos.js banco/propios/signos.json banco/propios/lotes/*.json`.
+
+Para describir más: `py herramientas/lotes.py siguiente 30` reserva palabras y
+`py herramientas/hoja_referencia.py --grande --salida carpeta --archivo lista.txt` genera las hojas de
+consulta (con `--grande` los dedos se leen mucho mejor). Guía de la notación: `herramientas/NOTACION.md`.

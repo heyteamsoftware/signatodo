@@ -1,0 +1,414 @@
+{
+  "signos": {
+    "abajo": {
+      "palabras": ["abajo"], "dur": 1.0, "confianza": "baja",
+      "duda": "En el vídeo la mano se mueve por delante del pecho; no distingo si señala hacia abajo con índice o con mano plana.",
+      "d": [
+        {"t": 0,   "pos": [0.2, -0.2, 0.45], "dir": "adelante+abajo", "pal": "adentro", "forma": "indice", "punto": "indice"},
+        {"t": 0.6, "pos": [0.2, -0.75, 0.5]},
+        {"t": 1,   "pos": [0.2, -0.75, 0.5]}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno claro."}
+    },
+    "abogado": {
+      "palabras": ["abogado", "abogada", "abogados"], "dur": 2.0, "confianza": "baja",
+      "duda": "Secuencia de dos pasos (mano alzada con pulgar y luego manos planas cruzadas sobre el pecho); formas poco legibles.",
+      "d": [
+        {"t": 0,   "pos": [0.5, 0.3, 0.4], "dir": "arriba", "pal": "adentro", "forma": "pulgar", "punto": "pulgar"},
+        {"t": 0.4, "pos": [0.1, -0.1, 0.45], "dir": "adentro", "pal": "abajo", "forma": "plana", "punto": "palma"},
+        {"t": 0.8, "pos": [-0.1, -0.15, 0.45]},
+        {"t": 1,   "pos": [-0.1, -0.15, 0.45]}
+      ],
+      "n": [
+        {"t": 0,   "pos": [0.15, -0.8, 0.4], "dir": "adelante", "pal": "arriba", "forma": "plana", "punto": "palma"},
+        {"t": 0.4, "pos": [0.1, -0.3, 0.45], "dir": "adentro", "pal": "abajo"},
+        {"t": 1,   "pos": [0.1, -0.3, 0.45]}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno claro."}
+    },
+    "abrazar": {
+      "palabras": ["abrazar", "abraza", "abrazan", "abrazo"], "dur": 1.8, "confianza": "media",
+      "d": [
+        {"t": 0,   "pos": [0.55, -0.2, 0.5], "dir": "arriba+adentro", "pal": "atras", "forma": "plana", "punto": "palma"},
+        {"t": 0.5, "pos": [-0.5, 0.0, 0.3]},
+        {"t": 1,   "pos": [-0.5, 0.0, 0.3]}
+      ],
+      "n": [
+        {"t": 0,   "pos": [0.55, -0.2, 0.5], "dir": "arriba+adentro", "pal": "atras", "forma": "plana", "punto": "palma"},
+        {"t": 0.5, "pos": [-0.5, 0.0, 0.35]},
+        {"t": 1,   "pos": [-0.5, 0.0, 0.35]}
+      ],
+      "nm": {
+        "necesita": {"cuerpo": true, "cara": true, "ojos": false},
+        "nota": "Los brazos se cruzan sobre el pecho; el torso se encoge un poco y la cara es afectuosa.",
+        "claves": [
+          {"t": 0, "cuerpo": {"adelante": 0}, "sonrisa": 0.2},
+          {"t": 0.5, "cuerpo": {"adelante": 6}, "cabeza": {"lado": -6}, "expr": "alegria", "sonrisa": 0.5},
+          {"t": 1, "cuerpo": {"adelante": 6}, "cabeza": {"lado": -6}, "sonrisa": 0.5}
+        ]
+      }
+    },
+    "abrigo": {
+      "palabras": ["abrigo", "abrigos"], "dur": 1.6, "confianza": "baja",
+      "duda": "Las manos están juntas ante el pecho; parece agarrar solapas y bajarlas, pero no se aprecia bien.",
+      "d": [
+        {"t": 0,   "pos": [0.15, 0.0, 0.35], "dir": "adelante", "pal": "adentro", "forma": "pinza", "punto": "indice"},
+        {"t": 1,   "pos": [0.2, -0.6, 0.35]}
+      ],
+      "n": [
+        {"t": 0,   "pos": [0.15, 0.0, 0.35], "dir": "adelante", "pal": "adentro", "forma": "pinza", "punto": "indice"},
+        {"t": 1,   "pos": [0.2, -0.6, 0.35]}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno claro."}
+    },
+    "abril": {
+      "palabras": ["abril"], "dur": 1.6, "repetir": 2, "confianza": "baja",
+      "duda": "Parece una lluvia de dedos (manos con dedos separados cayendo), pero no estoy seguro.",
+      "d": [
+        {"t": 0,   "pos": [0.35, 0.1, 0.45], "dir": "adelante+arriba", "pal": "abajo", "forma": "garra", "punto": "palma"},
+        {"t": 0.5, "pos": [0.35, -0.35, 0.5], "forma": "abierta"},
+        {"t": 1,   "pos": [0.35, 0.1, 0.45], "forma": "garra"}
+      ],
+      "n": [
+        {"t": 0,   "pos": [0.35, 0.1, 0.45], "dir": "adelante+arriba", "pal": "abajo", "forma": "garra", "punto": "palma"},
+        {"t": 0.5, "pos": [0.35, -0.35, 0.5], "forma": "abierta"},
+        {"t": 1,   "pos": [0.35, 0.1, 0.45], "forma": "garra"}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno claro."}
+    },
+    "abrir": {
+      "palabras": ["abrir", "abre", "abren", "abrió"], "dur": 1.2, "confianza": "media",
+      "d": [
+        {"t": 0,   "pos": [0.05, -0.2, 0.5], "dir": "adelante", "pal": "adentro", "forma": "plana", "punto": "palma"},
+        {"t": 1,   "pos": [0.55, -0.2, 0.5]}
+      ],
+      "n": [
+        {"t": 0,   "pos": [0.05, -0.2, 0.5], "dir": "adelante", "pal": "adentro", "forma": "plana", "punto": "palma"},
+        {"t": 1,   "pos": [0.55, -0.2, 0.5]}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
+    },
+    "abuela": {
+      "palabras": ["abuela", "abuelas"], "dur": 1.8, "confianza": "baja",
+      "duda": "Índice hacia la barbilla/pecho y luego mano abierta junto a la mejilla con dedos que se mueven; significado de cada paso incierto.",
+      "d": [
+        {"t": 0,   "en": "barbilla", "desp": [0.05, -0.1, 0.15], "dir": "arriba", "pal": "atras", "forma": "indice", "punto": "indice"},
+        {"t": 0.4, "en": "mejilla", "desp": [0.2, -0.05, 0.15], "dir": "arriba", "pal": "adentro", "forma": "abierta", "punto": "palma"},
+        {"t": 0.7, "forma": "garra"},
+        {"t": 1,   "forma": "abierta"}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno claro."}
+    },
+    "abuelo": {
+      "palabras": ["abuelo", "abuelos"], "dur": 1.6, "confianza": "baja",
+      "duda": "Puño con pulgar levantado cerca de la cabeza tras un gesto en el pecho; no entiendo el primer paso.",
+      "d": [
+        {"t": 0,   "en": "barbilla", "desp": [0.05, -0.15, 0.15], "dir": "arriba", "pal": "atras", "forma": "indice", "punto": "indice"},
+        {"t": 0.5, "en": "sien", "desp": [0.2, -0.05, 0.2], "dir": "arriba", "pal": "adentro", "forma": "pulgar", "punto": "pulgar"},
+        {"t": 1,   "desp": [0.2, -0.05, 0.2]}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno claro."}
+    },
+    "ácido": {
+      "palabras": ["ácido", "ácida", "ácidos"], "dur": 1.5, "repetir": 2, "confianza": "baja",
+      "duda": "La mano está junto a la boca/mejilla y retuerce los dedos; la cara hace una mueca. Forma de mano incierta.",
+      "d": [
+        {"t": 0,   "en": "boca", "desp": [0.15, -0.05, 0.15], "dir": "arriba", "pal": "adentro", "forma": "gancho", "punto": "indice"},
+        {"t": 0.5, "desp": [0.15, 0.05, 0.15], "pal": "atras"},
+        {"t": 1,   "desp": [0.15, -0.05, 0.15], "pal": "adentro"}
+      ],
+      "nm": {
+        "necesita": {"cuerpo": false, "cara": true, "ojos": false},
+        "nota": "Mueca de asco/acidez en la cara.",
+        "claves": [{"t": 0, "expr": "asco"}, {"t": 1, "expr": "asco"}]
+      }
+    },
+    "actor": {
+      "palabras": ["actor", "actriz", "actores"], "dur": 2.0, "confianza": "baja",
+      "duda": "Puños levantados a los lados de la cabeza con cara expresiva y luego pulgar hacia la cabeza/pecho; sentido incierto.",
+      "d": [
+        {"t": 0,   "pos": [0.6, 0.7, 0.35], "dir": "arriba", "pal": "adentro", "forma": "puño", "punto": "nudillos"},
+        {"t": 0.5, "pos": [0.5, 0.9, 0.3], "forma": "pulgar", "punto": "pulgar"},
+        {"t": 1,   "pos": [0.2, -0.3, 0.4], "dir": "arriba", "pal": "adentro"}
+      ],
+      "n": [
+        {"t": 0,   "pos": [0.6, 0.7, 0.35], "dir": "arriba", "pal": "adentro", "forma": "puño", "punto": "nudillos"},
+        {"t": 0.5, "pos": [0.55, 0.5, 0.35]},
+        {"t": 1,   "pos": [0.2, -0.5, 0.4], "dir": "adelante", "pal": "abajo", "forma": "plana"}
+      ],
+      "nm": {
+        "necesita": {"cuerpo": false, "cara": true, "ojos": false},
+        "nota": "Cara exagerada, teatral, con boca abierta.",
+        "claves": [{"t": 0, "expr": "neutra"}, {"t": 0.3, "expr": "enfasis", "boca": 0.5}, {"t": 1, "expr": "enfasis"}]
+      }
+    },
+    "agosto": {
+      "palabras": ["agosto"], "dur": 1.6, "repetir": 2, "confianza": "baja",
+      "duda": "Una mano con dedos sobre la otra ante el pecho, con pequeño movimiento; no distingo la forma.",
+      "d": [
+        {"t": 0,   "pos": [0.1, -0.35, 0.45], "dir": "adelante", "pal": "abajo", "forma": "plana", "punto": "palma"},
+        {"t": 0.5, "pos": [0.25, -0.35, 0.45]},
+        {"t": 1,   "pos": [0.1, -0.35, 0.45]}
+      ],
+      "n": [
+        {"t": 0,   "pos": [0.1, -0.5, 0.45], "dir": "adelante", "pal": "arriba", "forma": "plana", "punto": "palma"},
+        {"t": 1,   "pos": [0.1, -0.5, 0.45]}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno claro."}
+    },
+    "ajo": {
+      "palabras": ["ajo", "ajos"], "dur": 1.6, "repetir": 2, "confianza": "baja",
+      "duda": "Las manos se frotan o pellizcan una sobre otra (pelar o machacar un diente); forma exacta incierta.",
+      "d": [
+        {"t": 0,   "pos": [0.1, -0.3, 0.45], "dir": "adelante+abajo", "pal": "adentro", "forma": "pinza", "punto": "indice"},
+        {"t": 0.5, "pos": [0.1, -0.4, 0.45], "pal": "abajo"},
+        {"t": 1,   "pos": [0.1, -0.3, 0.45], "pal": "adentro"}
+      ],
+      "n": [
+        {"t": 0,   "pos": [0.0, -0.4, 0.45], "dir": "arriba+adelante", "pal": "adentro", "forma": "piña", "punto": "puntas"},
+        {"t": 1,   "pos": [0.0, -0.4, 0.45]}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
+    },
+    "albañil": {
+      "palabras": ["albañil", "albañiles"], "dur": 1.8, "repetir": 2, "confianza": "baja",
+      "duda": "Manos verticales con pulgar arriba, una frota contra la otra (alisar pared); poco nítido.",
+      "d": [
+        {"t": 0,   "pos": [0.1, -0.1, 0.45], "dir": "arriba", "pal": "adentro", "forma": "plana", "punto": "palma"},
+        {"t": 0.5, "pos": [0.1, 0.1, 0.45]},
+        {"t": 1,   "pos": [0.1, -0.1, 0.45]}
+      ],
+      "n": [
+        {"t": 0,   "pos": [0.05, -0.15, 0.4], "dir": "arriba+adentro", "pal": "afuera", "forma": "plana", "punto": "palma"},
+        {"t": 1,   "pos": [0.05, -0.15, 0.4]}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
+    },
+    "alfombra": {
+      "palabras": ["alfombra", "alfombras"], "dur": 1.6, "confianza": "baja",
+      "duda": "Manos planas bajas ante el cuerpo que se separan alisando una superficie; forma de los dedos poco clara.",
+      "d": [
+        {"t": 0,   "pos": [0.05, -0.55, 0.45], "dir": "adelante", "pal": "abajo", "forma": "plana", "punto": "palma"},
+        {"t": 1,   "pos": [0.55, -0.6, 0.5]}
+      ],
+      "n": [
+        {"t": 0,   "pos": [0.05, -0.55, 0.45], "dir": "adelante", "pal": "abajo", "forma": "plana", "punto": "palma"},
+        {"t": 1,   "pos": [0.55, -0.6, 0.5]}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
+    },
+    "algunos": {
+      "palabras": ["algunos", "algunas", "alguno", "alguna"], "dur": 1.6, "confianza": "baja",
+      "duda": "Dedos levantados de ambas manos y luego uno solo; no está claro cuál es el signo central.",
+      "d": [
+        {"t": 0,   "pos": [0.3, -0.1, 0.45], "dir": "arriba", "pal": "adentro", "forma": "indice", "punto": "indice"},
+        {"t": 0.5, "pos": [0.2, -0.1, 0.45], "pal": "atras"},
+        {"t": 1,   "pos": [0.3, -0.1, 0.45], "pal": "adentro"}
+      ],
+      "n": [
+        {"t": 0,   "pos": [0.3, -0.2, 0.4], "dir": "arriba", "pal": "adentro", "forma": "indice", "punto": "indice"},
+        {"t": 1,   "pos": [0.3, -0.2, 0.4]}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno claro."}
+    },
+    "alimentos": {
+      "palabras": ["alimentos", "alimento", "alimentación"], "dur": 1.8, "confianza": "baja",
+      "duda": "Mano con dedos juntos hacia la boca (como comer) y otra mano ante el pecho; dudo del segundo paso.",
+      "d": [
+        {"t": 0,   "pos": [0.15, -0.35, 0.45], "dir": "adelante", "pal": "arriba", "forma": "plana", "punto": "palma"},
+        {"t": 0.5, "en": "boca", "desp": [0.05, -0.1, 0.25], "dir": "arriba+atras", "pal": "adentro", "forma": "piña", "punto": "puntas"},
+        {"t": 0.8, "desp": [0.05, -0.1, 0.12]},
+        {"t": 1,   "pos": [0.15, -0.35, 0.45]}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Solo la boca articula."}
+    },
+    "allí": {
+      "palabras": ["allí", "ahí", "allá"], "dur": 1.2, "confianza": "media",
+      "d": [
+        {"t": 0,   "pos": [0.3, 0.2, 0.4], "dir": "arriba", "pal": "atras", "forma": "indice", "punto": "indice"},
+        {"t": 0.6, "pos": [0.35, 0.3, 0.9], "dir": "adelante+arriba"},
+        {"t": 1,   "pos": [0.35, 0.3, 0.9]}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno (la mirada podría seguir al dedo, no se aprecia)."}
+    },
+    "almohada": {
+      "palabras": ["almohada", "almohadas"], "dur": 1.8, "confianza": "baja",
+      "duda": "Manos junto a la cabeza y luego trazan una forma ante el pecho; la cabeza podría inclinarse.",
+      "d": [
+        {"t": 0,   "en": "oreja", "desp": [0.15, -0.05, 0.1], "dir": "arriba", "pal": "adentro", "forma": "plana", "punto": "palma"},
+        {"t": 0.5, "desp": [0.05, -0.05, 0.1]},
+        {"t": 1,   "pos": [0.3, -0.3, 0.45], "dir": "adelante", "pal": "abajo"}
+      ],
+      "n": [
+        {"t": 0,   "en": "oreja", "desp": [0.15, -0.05, 0.1], "dir": "arriba", "pal": "adentro", "forma": "plana", "punto": "palma"},
+        {"t": 0.5, "desp": [0.05, -0.05, 0.1]},
+        {"t": 1,   "pos": [0.3, -0.3, 0.45], "dir": "adelante", "pal": "abajo"}
+      ],
+      "nm": {
+        "necesita": {"cuerpo": true, "cara": false, "ojos": false},
+        "nota": "La cabeza se apoya en las manos (inclinación lateral).",
+        "claves": [{"t": 0, "cabeza": {"lado": 0}}, {"t": 0.5, "cabeza": {"lado": -10}}, {"t": 1, "cabeza": {"lado": 0}}]
+      }
+    },
+    "alto": {
+      "palabras": ["alto", "alta", "altos", "altas"], "dur": 1.5, "confianza": "media",
+      "d": [
+        {"t": 0,   "pos": [0.35, 0.2, 0.4], "dir": "arriba", "pal": "adentro", "forma": "indice", "punto": "indice"},
+        {"t": 0.7, "pos": [0.35, 0.9, 0.4]},
+        {"t": 1,   "pos": [0.35, 0.9, 0.4]}
+      ],
+      "n": [
+        {"t": 0,   "pos": [0.0, -0.4, 0.4], "dir": "adentro+adelante", "pal": "arriba", "forma": "plana", "punto": "palma"},
+        {"t": 1,   "pos": [0.0, -0.4, 0.4]}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
+    },
+    "amarillo": {
+      "palabras": ["amarillo", "amarilla"], "dur": 1.4, "confianza": "baja",
+      "duda": "Mano junto a la barbilla/boca con dedos separados; no se ve si señala algo o toca la barbilla.",
+      "d": [
+        {"t": 0,   "en": "barbilla", "desp": [0.15, -0.05, 0.15], "dir": "arriba", "pal": "adentro", "forma": "v", "punto": "indice"},
+        {"t": 0.5, "desp": [0.05, -0.02, 0.1]},
+        {"t": 1,   "desp": [0.15, -0.05, 0.15]}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno claro."}
+    },
+    "amigo": {
+      "palabras": ["amigo", "amiga", "amigos", "amigas"], "dur": 1.6, "repetir": 2, "confianza": "media",
+      "d": [
+        {"t": 0,   "pos": [0.05, -0.3, 0.45], "dir": "adentro", "pal": "abajo", "forma": "gancho", "punto": "indice"},
+        {"t": 0.5, "pos": [0.05, -0.38, 0.4], "pal": "arriba"},
+        {"t": 1,   "pos": [0.05, -0.3, 0.45], "pal": "abajo"}
+      ],
+      "n": [
+        {"t": 0,   "pos": [0.05, -0.38, 0.4], "dir": "adentro", "pal": "arriba", "forma": "gancho", "punto": "indice"},
+        {"t": 0.5, "pos": [0.05, -0.3, 0.45], "pal": "abajo"},
+        {"t": 1,   "pos": [0.05, -0.38, 0.4], "pal": "arriba"}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
+    },
+    "amor": {
+      "palabras": ["amor", "amores"], "dur": 1.8, "repetir": 2, "confianza": "baja",
+      "duda": "Mano plana que se mueve ante el pecho en círculo; la otra baja. No se ve claro si hay contacto con el pecho.",
+      "d": [
+        {"t": 0,   "pos": [0.1, -0.2, 0.3], "dir": "adentro+adelante", "pal": "atras", "forma": "plana", "punto": "palma"},
+        {"t": 0.5, "pos": [0.25, -0.35, 0.35]},
+        {"t": 1,   "pos": [0.1, -0.2, 0.3]}
+      ],
+      "nm": {
+        "necesita": {"cuerpo": false, "cara": true, "ojos": false},
+        "nota": "Expresión afectuosa.",
+        "claves": [{"t": 0, "expr": "alegria", "sonrisa": 0.4}]
+      }
+    },
+    "andar": {
+      "palabras": ["andar", "anda", "andan", "caminar"], "dur": 1.6, "repetir": 2, "confianza": "media",
+      "d": [
+        {"t": 0,   "pos": [0.15, -0.5, 0.35], "dir": "abajo+adelante", "pal": "atras", "forma": "v", "punto": "indice"},
+        {"t": 0.5, "pos": [0.15, -0.5, 0.6]},
+        {"t": 1,   "pos": [0.15, -0.5, 0.35]}
+      ],
+      "n": [
+        {"t": 0,   "pos": [0.1, -0.65, 0.5], "dir": "adelante", "pal": "arriba", "forma": "plana", "punto": "palma"},
+        {"t": 1,   "pos": [0.1, -0.65, 0.5]}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
+    },
+    "animal": {
+      "palabras": ["animal", "animales"], "dur": 1.8, "confianza": "baja",
+      "duda": "Manos en garra junto a la cabeza y luego rascando/moviéndose en el pecho; no entiendo bien el significado icónico.",
+      "d": [
+        {"t": 0,   "pos": [0.55, 0.65, 0.35], "dir": "arriba+adentro", "pal": "adentro", "forma": "garra", "punto": "palma"},
+        {"t": 0.5, "pos": [0.45, 0.55, 0.35]},
+        {"t": 1,   "pos": [0.15, -0.25, 0.3], "dir": "adentro", "pal": "atras"}
+      ],
+      "n": [
+        {"t": 0,   "pos": [0.55, 0.65, 0.35], "dir": "arriba+adentro", "pal": "adentro", "forma": "garra", "punto": "palma"},
+        {"t": 0.5, "pos": [0.45, 0.55, 0.35]},
+        {"t": 1,   "pos": [0.15, -0.25, 0.3], "dir": "adentro", "pal": "atras"}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno claro."}
+    },
+    "aprender": {
+      "palabras": ["aprender", "aprende", "aprenden", "aprendo"], "dur": 1.8, "confianza": "baja",
+      "duda": "Manos de dedos curvados ante el pecho que se cierran como cogiendo algo; no se ve si suben a la frente.",
+      "d": [
+        {"t": 0,   "pos": [0.25, -0.1, 0.45], "dir": "arriba+adelante", "pal": "adentro", "forma": "garra", "punto": "palma"},
+        {"t": 0.6, "forma": "piña", "pos": [0.15, 0.1, 0.4]},
+        {"t": 1,   "pos": [0.15, 0.1, 0.4]}
+      ],
+      "n": [
+        {"t": 0,   "pos": [0.25, -0.1, 0.45], "dir": "arriba+adelante", "pal": "adentro", "forma": "garra", "punto": "palma"},
+        {"t": 0.6, "forma": "piña", "pos": [0.15, 0.1, 0.4]},
+        {"t": 1,   "pos": [0.15, 0.1, 0.4]}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno claro."}
+    },
+    "aquí": {
+      "palabras": ["aquí", "acá"], "dur": 1.2, "repetir": 2, "confianza": "media",
+      "d": [
+        {"t": 0,   "pos": [0.2, -0.25, 0.45], "dir": "abajo", "pal": "atras", "forma": "indice", "punto": "indice"},
+        {"t": 0.5, "pos": [0.2, -0.4, 0.45]},
+        {"t": 1,   "pos": [0.2, -0.25, 0.45]}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
+    },
+    "árbitro": {
+      "palabras": ["árbitro", "árbitra", "árbitros"], "dur": 2.0, "confianza": "baja",
+      "duda": "Brazo levantado con puño y luego mano en la boca (silbato); la cara podría inflar mejillas, no se ve.",
+      "d": [
+        {"t": 0,   "pos": [0.55, 0.5, 0.35], "dir": "arriba", "pal": "adentro", "forma": "puño", "punto": "nudillos"},
+        {"t": 0.5, "en": "boca", "desp": [0.05, -0.05, 0.12], "dir": "adentro", "pal": "atras", "forma": "pinza", "punto": "indice"},
+        {"t": 0.85, "desp": [0.05, -0.05, 0.12]},
+        {"t": 1,   "pos": [0.4, -0.2, 0.4]}
+      ],
+      "nm": {
+        "necesita": {"cuerpo": false, "cara": true, "ojos": false},
+        "nota": "Mejillas infladas al soplar el silbato (suposición).",
+        "claves": [{"t": 0, "mejillas": 0}, {"t": 0.5, "mejillas": 0.6}, {"t": 0.85, "mejillas": 0.6}, {"t": 1, "mejillas": 0}]
+      }
+    },
+    "árbol": {
+      "palabras": ["árbol", "árboles"], "dur": 1.8, "repetir": 2, "confianza": "media",
+      "d": [
+        {"t": 0,   "pos": [0.2, 0.4, 0.4], "dir": "arriba", "pal": "adelante", "forma": "abierta", "punto": "palma"},
+        {"t": 0.5, "pal": "adentro", "pos": [0.25, 0.4, 0.4]},
+        {"t": 1,   "pal": "adelante", "pos": [0.2, 0.4, 0.4]}
+      ],
+      "n": [
+        {"t": 0,   "pos": [0.0, -0.3, 0.4], "dir": "adentro", "pal": "arriba", "forma": "plana", "punto": "palma"},
+        {"t": 1,   "pos": [0.0, -0.3, 0.4]}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
+    },
+    "arcilla": {
+      "palabras": ["arcilla", "arcillas"], "dur": 1.6, "repetir": 2, "confianza": "baja",
+      "duda": "Manos verticales enfrentadas ante el pecho que se acercan y alejan, como modelando; poco claro.",
+      "d": [
+        {"t": 0,   "pos": [0.25, -0.1, 0.45], "dir": "arriba", "pal": "adentro", "forma": "plana", "punto": "palma"},
+        {"t": 0.5, "pos": [0.12, -0.1, 0.45]},
+        {"t": 1,   "pos": [0.25, -0.1, 0.45]}
+      ],
+      "n": [
+        {"t": 0,   "pos": [0.25, -0.1, 0.45], "dir": "arriba", "pal": "adentro", "forma": "plana", "punto": "palma"},
+        {"t": 0.5, "pos": [0.12, -0.1, 0.45]},
+        {"t": 1,   "pos": [0.25, -0.1, 0.45]}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
+    },
+    "arena": {
+      "palabras": ["arena", "arenas"], "dur": 1.6, "repetir": 3, "confianza": "media",
+      "d": [
+        {"t": 0,   "pos": [0.25, -0.3, 0.4], "dir": "adelante", "pal": "abajo", "forma": "piña", "punto": "puntas"},
+        {"t": 0.5, "pos": [0.25, -0.38, 0.4], "forma": "abierta"},
+        {"t": 1,   "pos": [0.25, -0.3, 0.4], "forma": "piña"}
+      ],
+      "n": [
+        {"t": 0,   "pos": [0.25, -0.3, 0.4], "dir": "adelante", "pal": "abajo", "forma": "piña", "punto": "puntas"},
+        {"t": 0.5, "pos": [0.25, -0.38, 0.4], "forma": "abierta"},
+        {"t": 1,   "pos": [0.25, -0.3, 0.4], "forma": "piña"}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
+    }
+  }
+}
