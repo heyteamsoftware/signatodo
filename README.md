@@ -56,22 +56,15 @@ La boca articula la palabra que se está signando: se convierte en sonidos con l
 ortografía castellana (qu, gu, ch, ll, h muda, v como b…) y cada sonido tiene su forma de
 labios, con interpolación entre ellas.
 
-## Datos que no están en el repositorio
+## Signos ajenos: solo como referencia
 
-| Qué | Cómo se obtiene |
-|---|---|
-| Dibujos de signos y alfabeto (`banco/signos`, `banco/dactilologico`) | `py herramientas\construir_banco.py` con los dos PDF de origen en la carpeta del proyecto. No se publican porque sus derechos son de terceros. Sin ellos el modo tarjetas sale vacío; el avatar funciona. |
-| Vídeos de referencia de ARASAAC (`referencia/arasaac`, ~900 MB) | `py herramientas\descargar_arasaac.py` |
-| Modelo de poses (`referencia/modelos/holistic_landmarker.task`) | Descarga del modelo Holistic Landmarker de MediaPipe |
-| Movimiento de más signos (`banco/poses`) | Solo hay una muestra de ~110 signos; `indice.json` lista los ~3.700 posibles. `py -3.12 herramientas\extraer_poses.py --todo` genera el resto (~108 MB, unas 8-12 horas; se puede cortar y reanudar). Antes hay que ejecutar `descargar_arasaac.py`. |
+En este proyecto los signos, dibujos y vídeos de otras fuentes se usan únicamente como
+**referencia** para consultar cómo se hace cada signo. No forman parte del producto ni se
+publican aquí, ni siquiera como datos derivados (por ejemplo, movimiento extraído de sus
+vídeos). Los movimientos del avatar tienen que ser de creación propia.
 
-## Créditos y licencias de los datos
+Hoy el prototipo todavía se apoya en esos materiales en local para poder probar el planificador,
+la boca y el avatar. Esos archivos están fuera del repositorio (`banco/poses/`, `banco/signos/`,
+`referencia/`, los PDF) y se sustituirán por signos propios.
 
-- **Movimiento de los signos (`banco/poses`)**: derivado de los vídeos de LSE de
-  [ARASAAC](https://arasaac.org) (Gobierno de Aragón), distribuidos con licencia Creative
-  Commons BY-NC-SA. Estos datos derivados se comparten bajo la misma licencia: uso sin ánimo
-  de lucro, citando la fuente y compartiendo igual.
-- **Dibujos de signos** (no incluidos): «Introducción a la comunicación bimodal. Diccionario
-  básico», Ministerio de Educación y Ciencia, 1989, ilustraciones de Lorenzo López Salcedo.
-- **Voz de los vídeos de prueba**: síntesis de voz de Microsoft (edge-tts).
-- El inventario de fuentes de LSE está en `reports/Fuentes de signos LSE.md`.
+Fuentes consultadas y su situación de derechos: `reports/Fuentes de signos LSE.md`.
