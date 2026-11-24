@@ -113,6 +113,7 @@ function bucle() {
   requestAnimationFrame(bucle);
 }
 
+window.pararExterno = parar;       // la app de Android lo llama al pasar a segundo plano
 $('grabar').addEventListener('click', () => (escuchando ? parar() : empezar()));
 $('boton-info').addEventListener('click', () => { $('info').hidden = false; });
 $('cerrar-info').addEventListener('click', () => { $('info').hidden = true; });

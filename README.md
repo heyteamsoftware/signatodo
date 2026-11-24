@@ -166,3 +166,28 @@ clips sin cara siguen usando solo los sonidos. Para completar los que faltan, si
 
     py -3.12 herramientas\extraer_poses.py --cara --lista palabras.txt     (una palabra por línea)
     py -3.12 herramientas\extraer_poses.py --cara --todo                    (todos; varias horas)
+
+## App Android: signar en directo (APK)
+
+`web/directo.html` es una pantalla completa con el avatar y un botón **Grabar**: lo que se oye por el micrófono se signa al
+momento y se subtitula. Se puede probar en el navegador (`http://localhost:8765/web/directo.html`; si no hay reconocimiento de voz,
+sale un cuadro para escribir frases) y se empaqueta como APK en `android/`.
+
+- **Cómo funciona en el móvil**: un `WebView` muestra la web desde los *assets* del propio APK (nada de internet ni de servidor) y
+  un puente (`AndroidVoz`) conecta el reconocedor de voz del sistema (`SpeechRecognizer`, es-ES, resultados parciales) con el
+  avatar. Cada palabra se da al avatar cuando es estable; el texto del reconocedor no trae puntuación, así que una pausa o un
+  resultado final cierra la frase, y si empieza por qué/quién/dónde… se marca como pregunta.
+- **Modo directo** (`directo*` en `web/avatar.js`): no se conoce lo que vendrá, así que no hay anticipo ni planificación por
+  frases. Cada signo empieza al llegar su palabra, detrás del anterior; si se acumula retraso se acelera hasta 1,35× y se salta el
+  relleno; las manos esperan 1,2 s al siguiente signo antes de bajar. Las expresiones de la cara (pregunta, negación, emoción) se
+  aplican al cerrar la frase. Las expresiones de varias palabras («por favor») hacen esperar a la primera palabra hasta 1 s.
+- **Lemas**: el móvil no tiene el procesado de Python; `banco/lemas.json` (28 000 formas, `py herramientas/generar_lemas.py`)
+  dice que «comiendo» es «comer».
+- **Construir el APK** (sin Gradle; usa el SDK y el JDK de Android Studio): `py android/construir.py` (completo, ~40 MB) o
+  `py android/construir.py --poses ninguna` (ligero, solo para probar). Sale `android/signatodo.apk`, firmado con una clave de
+  pruebas. Para instalarlo: copiarlo al teléfono y abrirlo (permitir «instalar apps desconocidas»), o
+  `adb install -r android/signatodo.apk`. Hay que **reconstruirlo** cuando termine la extracción de bocas para que lleve todos los clips.
+- **Reconocimiento de voz**: lo hace el sistema (Google en la mayoría de móviles); según el dispositivo puede usar internet.
+  Sin ese servicio, la app avisa de que no hay reconocimiento disponible.
+- **Licencia**: el APK lleva dentro los movimientos de ARASAAC (CC BY-NC-SA, solo uso no comercial); la pantalla de información
+  de la app lo indica. No lo repartas sin cumplirla.

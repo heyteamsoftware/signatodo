@@ -21,3 +21,7 @@ research_notes/
 
 __pycache__/
 *.pyc
+
+android/build/
+android/*.apk
+android/*.keystore
