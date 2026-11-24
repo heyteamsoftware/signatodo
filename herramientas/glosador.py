@@ -129,7 +129,7 @@ class Glosador:
                 i += n
                 continue
             f = fichas[i]
-            unidades.append({"t0": f["t0"], "t1": f["t1"], "texto": f["texto"], **self._una(f)})
+            unidades.append({"t0": f["t0"], "t1": f["t1"], "texto": f["texto"], "lema": f["lema"].lower(), **self._una(f)})
             i += 1
         for u in unidades:
             u["t0"], u["t1"] = round(u["t0"], 2), round(u["t1"], 2)

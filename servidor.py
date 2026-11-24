@@ -96,6 +96,15 @@ def iniciar_trabajo(tipo, nombre, ajustes=None):
     return 202, dict(trabajo)
 
 
+def listar_propios():
+    """Ficheros de signos propios: el base y los lotes (banco/propios/lotes/lote_*.json)."""
+    urls = ["/banco/propios/signos.json"]
+    lotes = os.path.join(RAIZ, "banco", "propios", "lotes")
+    if os.path.isdir(lotes):
+        urls += [f"/banco/propios/lotes/{n}" for n in sorted(os.listdir(lotes)) if n.startswith("lote_") and n.endswith(".json")]
+    return urls
+
+
 class Manejador(BaseHTTPRequestHandler):
     protocol_version = "HTTP/1.1"
 
@@ -134,6 +143,8 @@ class Manejador(BaseHTTPRequestHandler):
 
     def servir(self, con_cuerpo):
         ruta = unquote(urlparse(self.path).path)
+        if ruta == "/api/propios":
+            return self.responder_json(200, listar_propios(), con_cuerpo)
         if ruta == "/api/videos":
             return self.responder_json(200, listar_videos(), con_cuerpo)
         if ruta == "/api/estado":

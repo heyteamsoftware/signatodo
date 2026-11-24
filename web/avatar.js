@@ -30,6 +30,8 @@ const Avatar = (() => {
   //   144-145 profundidad de cada muñeca (menor = más cerca de quien mira)
   const IZQ = 18, DER = 60, Z_IZQ = 102, Z_DER = 123, Z_MUNECAS = 144;
   const CEROS = new Array(21).fill(0);
+  //   146-158 gestos no manuales (ver signos.js): inclinación, cabeza, cejas, ojos, mirada, boca
+  const NM = 146, NM_N = 13, NM_NEUTRO = Signos.NM_NEUTRO;
 
   // Mano relajada (colgando), relativa a la muñeca; lado = +1 izquierda de la persona, -1 derecha.
   function manoRelajada(mx, my, lado) {
@@ -42,10 +44,10 @@ const Avatar = (() => {
     return p;
   }
 
-  function pose(cuerpo, izq, der, zi, zd, zm) {
+  function pose(cuerpo, izq, der, zi, zd, zm, nm) {
     return cuerpo.concat(
       izq || manoRelajada(cuerpo[10], cuerpo[11], 1), der || manoRelajada(cuerpo[12], cuerpo[13], -1),
-      (izq && zi) || CEROS, (der && zd) || CEROS, zm || [0, 0]);
+      (izq && zi) || CEROS, (der && zd) || CEROS, zm || [0, 0], nm || NM_NEUTRO);
   }
 
   // Reposo natural: brazos sueltos a los lados, codos apenas doblados y manos relajadas a la altura de la cadera.
@@ -104,9 +106,12 @@ const Avatar = (() => {
     ctx = canvas.getContext('2d');
     // Signos propios (nuestra notación): lo único que se usa por defecto.
     try {
-      const r = await fetch('/banco/propios/signos.json');
-      definiciones = r.ok ? (await r.json()).signos : {};
-    } catch { definiciones = {}; }
+      definiciones = {};
+      for (const url of await (await fetch('/api/propios')).json()) {
+        const r = await fetch(url);
+        if (r.ok) Object.assign(definiciones, (await r.json()).signos);
+      }
+    } catch { /* sin signos propios */ }
     for (const [id, s] of Object.entries(definiciones)) for (const palabra of s.palabras) propios[normalizar(palabra)] = id;
     // Movimiento extraído de vídeos de terceros: solo como referencia, con ?referencia=1 en la dirección.
     if (USAR_REFERENCIA) {
@@ -121,7 +126,7 @@ const Avatar = (() => {
   // Movimiento de un signo propio, ya como poses del avatar.
   function crearPropio(id) {
     const { fotogramas, dura } = Signos.generar(definiciones[id]);
-    return { poses: fotogramas.map((f) => pose(f.cuerpo, f.izq, f.der, f.zi, f.zd, f.zm)), dura, propio: true };
+    return { poses: fotogramas.map((f) => pose(f.cuerpo, f.izq, f.der, f.zi, f.zd, f.zm, f.nm)), dura, propio: true };
   }
 
   // unidades: las de <video>.signos.json; tarjetas: banco.tarjetas (para probar también con su etiqueta)
@@ -135,10 +140,10 @@ const Avatar = (() => {
     pista = [];
     const elegidas = [];
     unidades.forEach((u, i) => {
-      // También se signan las palabras sin tarjeta (por ejemplo "yo", "hola") si tienen signo propio.
-      if (u.tipo !== 'signo' && !(u.tipo === 'deletreo' && propios[normalizar(u.texto)] !== undefined)) return;
       const etiqueta = tarjetas[u.tarjeta]?.etiqueta || '';
-      const candidatas = [normalizar(u.texto), normalizar(etiqueta), normalizar((u.tarjeta || '').replace(/ny/g, 'ñ').replace(/-/g, ' '))];
+      const candidatas = [normalizar(u.texto), normalizar(u.lema || ''), normalizar(etiqueta), normalizar((u.tarjeta || '').replace(/ny/g, 'ñ').replace(/-/g, ' '))];
+      // También se signan las palabras sin tarjeta (por ejemplo "yo", "hola") si tienen signo propio.
+      if (u.tipo !== 'signo' && !(u.tipo === 'deletreo' && candidatas.some((c) => propios[c] !== undefined))) return;
       const propia = candidatas.find((c) => propios[c] !== undefined);
       const clave = propia ?? candidatas.find((c) => indice[c] !== undefined);
       // "complemento" = viene tras una preposición ("en la cocina", "con mantequilla"): es lo primero
@@ -379,6 +384,19 @@ const Avatar = (() => {
     ctx.fillStyle = PAPEL;
     ctx.lineWidth = grosor;
 
+    // Gestos no manuales de este instante (inclinación, cabeza, cejas, ojos, mirada, boca).
+    const nm = p.length > NM ? p.slice(NM, NM + NM_N) : NM_NEUTRO;
+    const RAD = Math.PI / 180;
+
+    // Inclinación del cuerpo: todo el personaje gira alrededor de la cintura (y se acerca un poco al inclinarse adelante).
+    ctx.save();
+    const pivoteX = ox, pivoteY = oy + 1.7 * u;
+    ctx.translate(pivoteX, pivoteY + nm[1] * 0.004 * u);
+    ctx.rotate(nm[0] * RAD);
+    const acerca = 1 + nm[1] * 0.0035;
+    ctx.scale(acerca, acerca);
+    ctx.translate(-pivoteX, -pivoteY);
+
     // Tronco: de los hombros hacia abajo, hasta salir del recuadro.
     const hix = X(2), hiy = Y(2), hdx = X(4), hdy = Y(4);
     ctx.beginPath();
@@ -393,10 +411,14 @@ const Avatar = (() => {
 
     // Cabeza y cara.
     const cx = X(0), cy = Y(0) - 0.1 * u, r = 0.46 * u;
+    const cuelloY = (hiy + hdy) / 2 - 0.08 * u;
     ctx.beginPath();                                            // cuello
-    ctx.moveTo(cx - 0.13 * u, cy + r * 0.8); ctx.lineTo(cx - 0.13 * u, (hiy + hdy) / 2 - 0.08 * u);
-    ctx.moveTo(cx + 0.13 * u, cy + r * 0.8); ctx.lineTo(cx + 0.13 * u, (hiy + hdy) / 2 - 0.08 * u);
+    ctx.moveTo(cx - 0.13 * u, cy + r * 0.8); ctx.lineTo(cx - 0.13 * u, cuelloY);
+    ctx.moveTo(cx + 0.13 * u, cy + r * 0.8); ctx.lineTo(cx + 0.13 * u, cuelloY);
     ctx.stroke();
+
+    ctx.save();                                                 // la cabeza se inclina sobre el cuello
+    ctx.translate(cx, cuelloY); ctx.rotate(nm[2] * RAD); ctx.translate(-cx, -cuelloY);
     ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
     ctx.beginPath();                                            // flequillo, como el personaje de las tarjetas
     for (let k = -3; k <= 3; k++) {
@@ -404,23 +426,44 @@ const Avatar = (() => {
       ctx.quadraticCurveTo(cx + k * 0.1 * u, cy - r * 0.8, cx + k * 0.115 * u, cy - r * (0.52 - Math.abs(k) * 0.03));
     }
     ctx.stroke();
+    // Girar y asentir desplazan los rasgos dentro de la cabeza.
+    ctx.translate(nm[4] * 0.0042 * u, nm[3] * 0.0035 * u);
+
+    // Ojos y cejas
     const parpadeo = (t % 4.3) < 0.12;
-    const cejas = pregunta ? -0.1 : 0;                           // en una pregunta, cejas arriba
+    const abierto = parpadeo ? 0 : nm[7];
+    const alza = (pregunta ? Math.max(nm[5], 0.6) : nm[5]) * 0.07 * u;   // cejas levantadas (+) o bajas (-)
     for (const lado of [-1, 1]) {
       const ex = cx + lado * 0.17 * u, ey = cy - 0.02 * u;
       ctx.beginPath();
-      if (parpadeo) { ctx.moveTo(ex - 0.04 * u, ey); ctx.lineTo(ex + 0.04 * u, ey); ctx.stroke(); }
-      else { ctx.arc(ex, ey, 0.028 * u, 0, Math.PI * 2); ctx.fillStyle = TINTA; ctx.fill(); ctx.fillStyle = PAPEL; }
-      ctx.beginPath();                                          // ceja
-      ctx.moveTo(ex - lado * 0.07 * u, ey - (0.13 - cejas) * u);
-      ctx.quadraticCurveTo(ex, ey - (0.17 - cejas * 1.6) * u, ex + lado * 0.07 * u, ey - (0.12 - cejas * 0.6) * u);
+      if (abierto < 0.15) {                                       // cerrados
+        ctx.moveTo(ex - 0.045 * u, ey); ctx.quadraticCurveTo(ex, ey + 0.022 * u, ex + 0.045 * u, ey); ctx.stroke();
+      } else {
+        const rx = 0.03 * u * (abierto > 1 ? 1 + (abierto - 1) * 1.2 : 1);
+        const ry = Math.max(rx * Math.min(abierto, 1.35), 0.006 * u);   // entornados = más achatados
+        ctx.ellipse(ex + nm[8] * 0.03 * u, ey - nm[9] * 0.025 * u, rx, ry, 0, 0, Math.PI * 2);
+        ctx.fillStyle = TINTA; ctx.fill(); ctx.fillStyle = PAPEL;
+      }
+      const baseY = ey - 0.13 * u - alza;
+      const ceño = nm[6] * 0.06 * u;                              // + interior abajo (enfado), - interior arriba (tristeza)
+      const interior = [ex - lado * 0.07 * u, baseY + ceño];
+      const exterior = [ex + lado * 0.07 * u, baseY + 0.01 * u - ceño * 0.4];
+      ctx.beginPath();
+      ctx.moveTo(interior[0], interior[1]);
+      ctx.quadraticCurveTo(ex, (interior[1] + exterior[1]) / 2 - 0.035 * u, exterior[0], exterior[1]);
       ctx.stroke();
     }
-    const forma = texto ? boca(texto, avance) : null, by = cy + 0.22 * u;
+
+    // Boca: articula la palabra que se signa; sin palabra, muestra la expresión.
+    const forma = texto ? boca(texto, avance) : null, by = cy + 0.22 * u, sonrisa = nm[10];
     ctx.beginPath();
-    if (!forma) { ctx.moveTo(cx - 0.09 * u, by - 0.01 * u); ctx.quadraticCurveTo(cx, by + 0.06 * u, cx + 0.09 * u, by - 0.01 * u); ctx.stroke(); }
-    else {
-      const [ancho, alto, dientes] = forma, mw = ancho * u / 2, mh = Math.max(alto * u / 2, 0.5);
+    if (!forma && nm[11] > 0.15) {                                // boca abierta (sorpresa, miedo)
+      ctx.ellipse(cx, by, (0.05 + 0.03 * nm[11]) * u, (0.03 + 0.07 * nm[11]) * u, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    } else if (!forma) {
+      const comisura = by - (0.01 + 0.012 * sonrisa) * u, curva = by + (0.03 + 0.06 * sonrisa) * u, ancho = (0.09 + 0.02 * sonrisa) * u;
+      ctx.moveTo(cx - ancho, comisura); ctx.quadraticCurveTo(cx, curva, cx + ancho, comisura); ctx.stroke();
+    } else {
+      const [ancho, alto, dientes] = forma, mw = ancho * u / 2 * (1 + 0.18 * sonrisa), mh = Math.max(alto * u / 2, 0.5);
       if (alto < 0.012) { ctx.moveTo(cx - mw, by); ctx.lineTo(cx + mw, by); ctx.stroke(); }   // labios cerrados
       else {
         ctx.ellipse(cx, by, mw, mh, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
@@ -433,6 +476,10 @@ const Avatar = (() => {
         }
       }
     }
+    if (nm[12] > 0.3) {                                           // mejillas infladas
+      for (const lado of [-1, 1]) { ctx.beginPath(); ctx.arc(cx + lado * 0.27 * u, by - 0.02 * u, 0.075 * u * nm[12], 0, Math.PI * 2); ctx.stroke(); }
+    }
+    ctx.restore();                                                // fin de la cabeza
 
     // Brazos y manos, encima de todo. Cada pieza es un "tubo": trazo negro y, por dentro, blanco.
     const borde = grosor * 0.8;
@@ -459,6 +506,7 @@ const Avatar = (() => {
     const brazos = [piezas(4, 8, DER, Z_DER, Z_MUNECAS + 1), piezas(2, 6, IZQ, Z_IZQ, Z_MUNECAS)];
     brazos.sort((a, b) => b.fondo - a.fondo);                   // primero el brazo que queda detrás
     for (const brazo of brazos) for (const pieza of brazo.piezas) pieza.pinta();
+    ctx.restore();                                              // fin de la inclinación del cuerpo
     ctx.strokeStyle = TINTA; ctx.lineWidth = grosor; ctx.fillStyle = PAPEL;
     return texto;
   }

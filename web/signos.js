@@ -61,7 +61,85 @@ const Signos = (() => {
     f:       { d: [[55, 60, 30], 0, 0, 0], ab: [0, 2, -4, -10], p: { a: 30, f: [25, 40, 25] } },   // índice y pulgar se tocan
     garra:   { d: [[5, 70, 40], [5, 70, 40], [5, 70, 40], [5, 70, 40]], ab: [6, 0, -4, -8], p: { a: 40, f: [20, 30, 20] } },
     pico:    { d: [[55, 70, 20], [55, 70, 20], [55, 70, 20], [55, 70, 20]], ab: [-6, -2, 2, 6], p: { a: 18, f: [20, 35, 20] } },
+    gancho:  { d: [[5, 80, 50], 1, 1, 1], ab: [0, 0, 0, 0], p: { a: -25, f: [25, 40, 25] } },                          // índice en gancho
+    pinza:   { d: [[45, 50, 25], 1, 1, 1], ab: [0, 0, 0, 0], p: { a: 28, f: [20, 35, 25] } },                          // índice y pulgar se pellizcan
+    cuernos: { d: [0, 1, 1, 0], ab: [-6, 0, 0, 14], p: { a: -30, f: [25, 40, 25] } },                                   // índice y meñique
+    cuatro:  { d: [0, 0, 0, 0], ab: [8, 3, -2, -8], p: { a: -30, f: [30, 45, 25] } },                                   // cuatro dedos, pulgar doblado
+    k:       { d: [0, 0, 1, 1], ab: [6, -6, 0, 0], p: { a: 30, f: [0, 0, 0] } },                                        // índice y corazón con el pulgar entre ellos
+    e:       { d: [[80, 100, 60], [80, 100, 60], [80, 100, 60], [80, 100, 60]], ab: [0, 0, 0, 0], p: { a: -30, f: [40, 50, 30] } },
+    curva:   { d: [[15, 12, 6], [15, 12, 6], [15, 12, 6], [15, 12, 6]], ab: [0, 0, 0, 0], p: { a: 18, f: [8, 8, 4] } },   // mano plana algo curvada
+    pulgar:  { d: [1, 1, 1, 1], ab: [0, 0, 0, 0], p: { a: 85, f: [0, 0, 0] } },                                         // puño con el pulgar extendido
   };
+
+  // ---------- Gestos no manuales: cuerpo, cabeza, cara y ojos ----------
+  // Un vector de 13 números que viaja dentro de la pose del avatar:
+  //  0 torso, inclinación lateral (grados; + = hacia la derecha de la pantalla)
+  //  1 torso, inclinación adelante (grados; + = se inclina hacia quien mira)
+  //  2 cabeza, inclinación lateral (grados)     3 cabeza, asiente (grados; + = baja la barbilla)
+  //  4 cabeza, giro (grados; + = hacia la derecha de la pantalla)
+  //  5 cejas (-1 bajas ... +1 levantadas)       6 ceño (-1 interior levantado, triste ... +1 fruncido, enfado)
+  //  7 ojos (0 cerrados ... 1 abiertos ... 1.3 muy abiertos)
+  //  8 mirada horizontal (-1 a +1; + = derecha de la pantalla)   9 mirada vertical (-1 abajo ... +1 arriba)
+  // 10 sonrisa (-1 boca triste ... +1 sonrisa grande)            11 boca abierta (0 ... 1, sorpresa)
+  // 12 mejillas infladas (0 ... 1)
+  const NM_NEUTRO = [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0];
+  const EXPRESIONES = {
+    neutra: {},
+    alegria:       { cejas: 0.25, ojos: 0.9, sonrisa: 0.9 },
+    tristeza:      { cejas: 0.1, ceno: -0.7, ojos: 0.8, sonrisa: -0.8 },
+    enfado:        { cejas: -0.3, ceno: 0.9, ojos: 0.85, sonrisa: -0.6 },
+    sorpresa:      { cejas: 0.9, ojos: 1.3, boca: 0.8 },
+    miedo:         { cejas: 0.7, ceno: -0.5, ojos: 1.25, boca: 0.4, sonrisa: -0.3 },
+    asco:          { cejas: -0.2, ceno: 0.5, ojos: 0.6, sonrisa: -0.5 },
+    duda:          { cejas: 0.2, ceno: 0.3, sonrisa: -0.1 },
+    pregunta:      { cejas: 0.7, ojos: 1.1 },
+    negacion:      { ceno: 0.4, sonrisa: -0.2 },
+    enfasis:       { cejas: 0.4, ojos: 1.1 },
+    cansancio:     { ojos: 0.45, sonrisa: -0.2 },
+    concentracion: { ceno: 0.5, ojos: 0.8 },
+    dolor:         { ceno: -0.5, ojos: 0.5, sonrisa: -0.7 },
+    inflar:        { mejillas: 0.9 },
+  };
+
+  // Aplica una clave de gestos sobre el estado anterior (lo que no se nombra se mantiene).
+  function resolverNM(c, previo) {
+    const v = previo.slice();
+    if (c.expr) {
+      const e = EXPRESIONES[c.expr];
+      if (!e) throw new Error('Expresión desconocida: ' + c.expr);
+      v[5] = e.cejas || 0; v[6] = e.ceno || 0; v[7] = e.ojos ?? 1; v[10] = e.sonrisa || 0; v[11] = e.boca || 0; v[12] = e.mejillas || 0;
+    }
+    if (c.cuerpo) { if (c.cuerpo.lado !== undefined) v[0] = c.cuerpo.lado; if (c.cuerpo.adelante !== undefined) v[1] = c.cuerpo.adelante; }
+    if (c.cabeza) {
+      if (c.cabeza.lado !== undefined) v[2] = c.cabeza.lado;
+      if (c.cabeza.adelante !== undefined) v[3] = c.cabeza.adelante;
+      if (c.cabeza.gira !== undefined) v[4] = c.cabeza.gira;
+    }
+    if (c.cejas !== undefined) v[5] = c.cejas;
+    if (c['ceño'] !== undefined) v[6] = c['ceño'];
+    if (c.ojos !== undefined) v[7] = c.ojos;
+    if (c.mirada) { v[8] = c.mirada[0]; v[9] = c.mirada[1]; }
+    if (c.sonrisa !== undefined) v[10] = c.sonrisa;
+    if (c.boca !== undefined) v[11] = c.boca;
+    if (c.mejillas !== undefined) v[12] = c.mejillas;
+    return v;
+  }
+
+  // Devuelve una función k (0..1) -> vector de gestos.
+  function trayectoriaNM(nm, repetirDelSigno) {
+    if (!nm || !nm.claves || !nm.claves.length) return () => NM_NEUTRO;
+    const claves = expandir(nm.claves, nm.repetir || 0);
+    let previo = NM_NEUTRO;
+    const hitos = claves.map((c) => { previo = resolverNM(c, previo); return { t: c.t, v: previo }; });
+    return (k) => {
+      k = Math.min(Math.max(k, 0), 1);
+      let i = 0;
+      while (i < hitos.length - 2 && hitos[i + 1].t <= k) i++;
+      const a = hitos[i], b = hitos[Math.min(i + 1, hitos.length - 1)];
+      const u = b.t > a.t ? suave(Math.min(Math.max((k - a.t) / (b.t - a.t), 0), 1)) : 1;
+      return mezcla(a.v, b.v, u);
+    };
+  }
 
   // Longitudes (anchos de hombro): base de cada dedo en la palma y sus tres falanges.
   const DEDO = [
@@ -214,6 +292,7 @@ const Signos = (() => {
   function generar(signo, fps = 25) {
     const dominante = trayectoria(expandir(signo.d, signo.repetir), signo.formaInicial);
     const otra = trayectoria(expandir(signo.n, signo.repetir), signo.formaInicial);
+    const gestos = trayectoriaNM(signo.nm);
     const dura = signo.dur || 1;
     const n = Math.max(Math.round(dura * fps), 2);
     const fotogramas = [];
@@ -246,10 +325,13 @@ const Signos = (() => {
       fotogramas.push({
         cuerpo, izq: plano(izq), der: plano(der), zi: fondo(izq), zd: fondo(der),
         zm: [izq ? izq.muneca[2] : 0.3, der ? der.muneca[2] : 0.3],
+        nm: gestos(k),
       });
     }
     return { fotogramas, dura };
   }
 
-  return { generar, FORMAS, LUGARES, puntosDeMano };
+  return { generar, FORMAS, LUGARES, EXPRESIONES, NM_NEUTRO, DIRECCIONES, puntosDeMano, direccion, L_BRAZO, L_ANTEBRAZO };
 })();
+
+if (typeof module !== 'undefined') module.exports = Signos;   // para el validador en Node

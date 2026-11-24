@@ -1,47 +1,68 @@
 {
-  "version": 1,
-  "nota": "Signos de creación propia en notación por parámetros. Todos son BORRADOR: ninguno ha sido validado por una persona sorda o un intérprete de LSE. Los vídeos y dibujos de otras fuentes se han consultado solo como referencia.",
+  "version": 2,
+  "nota": "Signos de creación propia en notación por parámetros (ver herramientas/NOTACION.md). Todos son BORRADOR: ninguno ha sido validado por una persona sorda o un intérprete de LSE. Los vídeos y dibujos de otras fuentes se han consultado solo como referencia.",
   "signos": {
     "comer": {
-      "palabras": ["comer"], "dur": 1.5, "repetir": 2,
+      "palabras": ["comer"], "dur": 1.5, "repetir": 2, "confianza": "media",
       "d": [
         {"t": 0,   "en": "boca", "desp": [0.1, -0.22, 0.32], "dir": "arriba+atras", "pal": "adentro", "forma": "piña", "punto": "puntas"},
         {"t": 0.5, "desp": [0, 0, 0.03]},
         {"t": 1,   "desp": [0.1, -0.22, 0.32]}
-      ]
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Solo la boca, que articula la palabra."}
     },
     "beber": {
-      "palabras": ["beber"], "dur": 1.5,
+      "palabras": ["beber"], "dur": 1.5, "confianza": "baja",
       "d": [
         {"t": 0,    "en": "boca", "desp": [0.06, -0.2, 0.3], "dir": "arriba+atras", "pal": "adentro", "forma": "c", "punto": "pulgar"},
         {"t": 0.45, "desp": [0.0, -0.02, 0.06]},
         {"t": 0.7,  "desp": [0.0, 0.02, 0.05], "dir": "atras+arriba", "pal": "adentro+arriba"},
         {"t": 1,    "desp": [0.06, -0.2, 0.3], "dir": "arriba+atras", "pal": "adentro"}
-      ]
+      ],
+      "nm": {
+        "necesita": {"cuerpo": true, "cara": false, "ojos": false},
+        "nota": "La cabeza se echa un poco atrás al beber.",
+        "claves": [
+          {"t": 0, "cabeza": {"adelante": 0}},
+          {"t": 0.45, "cabeza": {"adelante": -5}},
+          {"t": 0.7, "cabeza": {"adelante": -12}},
+          {"t": 1, "cabeza": {"adelante": 0}}
+        ]
+      }
     },
     "dormir": {
-      "palabras": ["dormir"], "dur": 1.4,
+      "palabras": ["dormir"], "dur": 1.4, "confianza": "media",
       "d": [
         {"t": 0,   "en": "mejilla", "desp": [-0.02, 0, 0.1], "dir": "arriba", "pal": "adentro", "forma": "plana", "punto": "palma"},
         {"t": 0.5, "desp": [0.02, -0.03, 0.1]},
         {"t": 1,   "desp": [0.02, -0.03, 0.1]}
-      ]
+      ],
+      "nm": {
+        "necesita": {"cuerpo": true, "cara": false, "ojos": true},
+        "nota": "La cabeza se inclina sobre la mano y los ojos se cierran.",
+        "claves": [
+          {"t": 0, "cabeza": {"lado": -6}, "ojos": 1},
+          {"t": 0.35, "cabeza": {"lado": -14}, "ojos": 0},
+          {"t": 1, "cabeza": {"lado": -14}, "ojos": 0}
+        ]
+      }
     },
     "casa": {
-      "palabras": ["casa"], "dur": 1.6,
+      "palabras": ["casa"], "dur": 1.6, "confianza": "media",
       "d": [
         {"t": 0,    "pos": [0.5, 0.6, 0.5], "dir": "arriba+adentro", "pal": "adentro", "forma": "plana", "punto": "puntas"},
-        {"t": 0.45, "pos": [0.05, 0.85, 0.5],  "dir": [-0.75, 1, 0]},
-        {"t": 1,    "pos": [0.5, -0.35, 0.5],  "dir": "arriba"}
+        {"t": 0.45, "pos": [0.05, 0.85, 0.5], "dir": [-0.75, 1, 0]},
+        {"t": 1,    "pos": [0.5, -0.35, 0.5], "dir": "arriba"}
       ],
       "n": [
         {"t": 0,    "pos": [0.5, 0.6, 0.5], "dir": "arriba+adentro", "pal": "adentro", "forma": "plana", "punto": "puntas"},
-        {"t": 0.45, "pos": [0.05, 0.85, 0.5],  "dir": [-0.75, 1, 0]},
-        {"t": 1,    "pos": [0.5, -0.35, 0.5],  "dir": "arriba"}
-      ]
+        {"t": 0.45, "pos": [0.05, 0.85, 0.5], "dir": [-0.75, 1, 0]},
+        {"t": 1,    "pos": [0.5, -0.35, 0.5], "dir": "arriba"}
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
     },
     "jugar": {
-      "palabras": ["jugar"], "dur": 1.5, "repetir": 2,
+      "palabras": ["jugar"], "dur": 1.5, "repetir": 2, "confianza": "baja",
       "d": [
         {"t": 0,   "pos": [-0.2, -0.35, 0.52], "dir": "arriba+adentro", "pal": "atras", "forma": "plana", "punto": "puntas"},
         {"t": 0.5, "pos": [-0.02, -0.35, 0.52]},
@@ -51,28 +72,35 @@
         {"t": 0,   "pos": [-0.02, -0.35, 0.4], "dir": "arriba+adentro", "pal": "atras", "forma": "plana", "punto": "puntas"},
         {"t": 0.5, "pos": [-0.2, -0.35, 0.4]},
         {"t": 1,   "pos": [-0.02, -0.35, 0.4]}
-      ]
+      ],
+      "nm": {
+        "necesita": {"cuerpo": false, "cara": true, "ojos": false},
+        "nota": "Cara alegre, de juego.",
+        "claves": [{"t": 0, "expr": "alegria", "sonrisa": 0.6}]
+      }
     },
     "niño": {
-      "palabras": ["niño"], "dur": 1.6,
+      "palabras": ["niño"], "dur": 1.6, "confianza": "baja",
       "d": [
         {"t": 0,    "en": "sien", "desp": [-0.04, -0.12, 0.12], "dir": "arriba+adentro", "pal": "atras", "forma": "indice", "punto": "indice"},
         {"t": 0.3,  "desp": [-0.07, -0.1, 0.12]},
         {"t": 0.65, "pos": [0.35, -1.0, 0.55], "dir": "adelante", "pal": "abajo", "forma": "plana", "punto": "palma"},
         {"t": 1,    "pos": [0.35, -1.05, 0.6]}
-      ]
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
     },
     "niña": {
-      "palabras": ["niña"], "dur": 1.6,
+      "palabras": ["niña"], "dur": 1.6, "confianza": "baja",
       "d": [
         {"t": 0,    "en": "oreja", "desp": [-0.12, -0.12, 0.1], "dir": "arriba", "pal": "adentro", "forma": "plana", "punto": "palma"},
         {"t": 0.3,  "desp": [-0.1, -0.16, 0.1]},
         {"t": 0.65, "pos": [0.35, -1.0, 0.55], "dir": "adelante", "pal": "abajo", "punto": "palma"},
         {"t": 1,    "pos": [0.35, -1.05, 0.6]}
-      ]
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
     },
     "ir": {
-      "palabras": ["ir"], "dur": 1.2,
+      "palabras": ["ir"], "dur": 1.2, "confianza": "baja",
       "d": [
         {"t": 0, "pos": [0.12, -0.5, 0.3], "dir": "adelante", "pal": "abajo", "forma": "plana", "punto": "palma"},
         {"t": 1, "pos": [0.12, -0.45, 0.95]}
@@ -80,10 +108,11 @@
       "n": [
         {"t": 0, "pos": [-0.05, -0.65, 0.5], "dir": "adelante", "pal": "arriba", "forma": "plana", "punto": "palma"},
         {"t": 1, "pos": [-0.05, -0.65, 0.5]}
-      ]
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
     },
     "contento": {
-      "palabras": ["contento", "alegre", "feliz"], "dur": 1.5, "repetir": 3,
+      "palabras": ["contento", "alegre", "feliz"], "dur": 1.5, "repetir": 3, "confianza": "baja",
       "d": [
         {"t": 0,   "pos": [0.3, -0.1, 0.38], "dir": "arriba+adentro", "pal": "atras", "forma": "garra", "punto": "palma"},
         {"t": 0.5, "pos": [0.3, 0.2, 0.38]},
@@ -93,10 +122,15 @@
         {"t": 0,   "pos": [0.3, 0.2, 0.38], "dir": "arriba+adentro", "pal": "atras", "forma": "garra", "punto": "palma"},
         {"t": 0.5, "pos": [0.3, -0.1, 0.38]},
         {"t": 1,   "pos": [0.3, 0.2, 0.38]}
-      ]
+      ],
+      "nm": {
+        "necesita": {"cuerpo": false, "cara": true, "ojos": false},
+        "nota": "La cara alegre es parte del significado.",
+        "claves": [{"t": 0, "expr": "alegria", "sonrisa": 1}]
+      }
     },
     "noche": {
-      "palabras": ["noche"], "dur": 1.6,
+      "palabras": ["noche"], "dur": 1.6, "confianza": "baja",
       "d": [
         {"t": 0,   "pos": [0.3, 0.75, 0.5], "dir": "adentro+arriba", "pal": "adelante", "forma": "plana", "punto": "palma"},
         {"t": 0.6, "pos": [0.0, 0.15, 0.55], "dir": "adentro", "pal": "abajo"},
@@ -105,10 +139,19 @@
       "n": [
         {"t": 0, "pos": [0.15, -0.1, 0.45], "dir": "adentro", "pal": "abajo", "forma": "plana", "punto": "palma"},
         {"t": 1, "pos": [0.15, -0.1, 0.45]}
-      ]
+      ],
+      "nm": {
+        "necesita": {"cuerpo": true, "cara": false, "ojos": true},
+        "nota": "Los ojos se entornan y la cabeza baja al caer la noche.",
+        "claves": [
+          {"t": 0, "ojos": 1, "cabeza": {"adelante": 0}},
+          {"t": 0.6, "ojos": 0.4, "cabeza": {"adelante": 6}},
+          {"t": 1, "ojos": 0.25, "cabeza": {"adelante": 9}}
+        ]
+      }
     },
     "leer": {
-      "palabras": ["leer"], "dur": 1.5,
+      "palabras": ["leer"], "dur": 1.5, "confianza": "baja",
       "d": [
         {"t": 0, "pos": [0.05, -0.05, 0.45], "dir": "abajo+adentro", "pal": "atras", "forma": "v", "punto": "puntas"},
         {"t": 1, "pos": [0.05, -0.4, 0.45]}
@@ -116,10 +159,18 @@
       "n": [
         {"t": 0, "pos": [0.0, -0.25, 0.4], "dir": "arriba", "pal": "atras", "forma": "plana", "punto": "palma"},
         {"t": 1, "pos": [0.0, -0.25, 0.4]}
-      ]
+      ],
+      "nm": {
+        "necesita": {"cuerpo": false, "cara": false, "ojos": true},
+        "nota": "La mirada sigue las manos, hacia abajo.",
+        "claves": [
+          {"t": 0, "mirada": [0.2, -0.6]},
+          {"t": 1, "mirada": [0.2, -0.95]}
+        ]
+      }
     },
     "correr": {
-      "palabras": ["correr"], "dur": 1.4, "repetir": 3,
+      "palabras": ["correr"], "dur": 1.4, "repetir": 3, "confianza": "media",
       "d": [
         {"t": 0,   "pos": [0.45, -0.55, 0.35], "dir": "adelante", "pal": "adentro", "forma": "puño", "punto": "nudillos"},
         {"t": 0.5, "pos": [0.45, -0.45, 0.75]},
@@ -129,61 +180,107 @@
         {"t": 0,   "pos": [0.45, -0.45, 0.75], "dir": "adelante", "pal": "adentro", "forma": "puño", "punto": "nudillos"},
         {"t": 0.5, "pos": [0.45, -0.55, 0.35]},
         {"t": 1,   "pos": [0.45, -0.45, 0.75]}
-      ]
+      ],
+      "nm": {
+        "necesita": {"cuerpo": true, "cara": true, "ojos": false},
+        "nota": "El torso se inclina adelante y la cara muestra esfuerzo.",
+        "claves": [{"t": 0, "cuerpo": {"adelante": 9}, "expr": "concentracion"}]
+      }
     },
     "yo": {
-      "palabras": ["yo"], "dur": 0.9,
+      "palabras": ["yo"], "dur": 0.9, "confianza": "alta",
       "d": [
         {"t": 0,   "en": "pecho", "desp": [0.0, 0.05, 0.28], "dir": [-0.4, 0.2, -1], "pal": "abajo", "forma": "indice", "punto": "indice"},
         {"t": 0.5, "desp": [0.0, 0.05, 0.03]},
         {"t": 1,   "desp": [0.0, 0.05, 0.03]}
-      ]
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "Ninguno."}
     },
     "tú": {
-      "palabras": ["tú", "tu", "te", "usted"], "dur": 0.9,
+      "palabras": ["tú", "tu", "te", "usted"], "dur": 0.9, "confianza": "alta",
       "d": [
         {"t": 0, "pos": [0.05, -0.25, 0.5], "dir": "adelante", "pal": "abajo", "forma": "indice", "punto": "indice"},
         {"t": 1, "pos": [0.05, -0.25, 0.85]}
-      ]
+      ],
+      "nm": {"necesita": {"cuerpo": false, "cara": false, "ojos": false}, "nota": "La mirada va al interlocutor (de frente)."}
     },
     "sí": {
-      "palabras": ["sí"], "dur": 1.0, "repetir": 2,
+      "palabras": ["sí"], "dur": 1.0, "repetir": 2, "confianza": "media",
       "d": [
         {"t": 0,   "pos": [0.15, -0.3, 0.55], "dir": "adelante+arriba", "pal": "abajo", "forma": "puño", "punto": "nudillos"},
         {"t": 0.5, "pos": [0.15, -0.5, 0.55]},
         {"t": 1,   "pos": [0.15, -0.3, 0.55]}
-      ]
+      ],
+      "nm": {
+        "necesita": {"cuerpo": true, "cara": true, "ojos": false},
+        "nota": "La cabeza asiente a la vez que el puño y la cara es afirmativa.",
+        "repetir": 2,
+        "claves": [
+          {"t": 0, "cabeza": {"adelante": 0}, "sonrisa": 0.4},
+          {"t": 0.5, "cabeza": {"adelante": 10}},
+          {"t": 1, "cabeza": {"adelante": 0}}
+        ]
+      }
     },
     "no": {
-      "palabras": ["no"], "dur": 1.0, "repetir": 2,
+      "palabras": ["no"], "dur": 1.0, "repetir": 2, "confianza": "media",
       "d": [
         {"t": 0,   "pos": [0.25, 0.1, 0.55], "dir": "arriba+adentro", "pal": "adelante", "forma": "indice", "punto": "indice"},
         {"t": 0.5, "pos": [0.05, 0.1, 0.55], "dir": "arriba+afuera"},
         {"t": 1,   "pos": [0.25, 0.1, 0.55], "dir": "arriba+adentro"}
-      ]
+      ],
+      "nm": {
+        "necesita": {"cuerpo": true, "cara": true, "ojos": false},
+        "nota": "La cabeza niega de lado a lado y el gesto es de negación.",
+        "repetir": 2,
+        "claves": [
+          {"t": 0, "expr": "negacion", "cabeza": {"gira": -12}},
+          {"t": 0.5, "cabeza": {"gira": 12}},
+          {"t": 1, "cabeza": {"gira": -12}}
+        ]
+      }
     },
     "hola": {
-      "palabras": ["hola"], "dur": 1.3, "repetir": 2,
+      "palabras": ["hola"], "dur": 1.3, "repetir": 2, "confianza": "media",
       "d": [
         {"t": 0,   "en": "sien", "desp": [0.22, 0.0, 0.35], "dir": "arriba+afuera", "pal": "adelante", "forma": "abierta", "punto": "palma"},
         {"t": 0.5, "desp": [0.1, 0.0, 0.35], "dir": "arriba+adentro"},
         {"t": 1,   "desp": [0.22, 0.0, 0.35], "dir": "arriba+afuera"}
-      ]
+      ],
+      "nm": {
+        "necesita": {"cuerpo": false, "cara": true, "ojos": false},
+        "nota": "Saludo con sonrisa.",
+        "claves": [{"t": 0, "expr": "alegria", "sonrisa": 0.8}]
+      }
     },
     "adiós": {
-      "palabras": ["adiós", "adios"], "dur": 1.5, "repetir": 3,
+      "palabras": ["adiós", "adios"], "dur": 1.5, "repetir": 3, "confianza": "media",
       "d": [
         {"t": 0,   "pos": [0.4, 0.55, 0.55], "dir": "arriba+afuera", "pal": "adelante", "forma": "abierta", "punto": "palma"},
         {"t": 0.5, "pos": [0.3, 0.55, 0.55], "dir": "arriba+adentro"},
         {"t": 1,   "pos": [0.4, 0.55, 0.55], "dir": "arriba+afuera"}
-      ]
+      ],
+      "nm": {
+        "necesita": {"cuerpo": false, "cara": true, "ojos": false},
+        "nota": "Despedida con sonrisa.",
+        "claves": [{"t": 0, "expr": "alegria", "sonrisa": 0.6}]
+      }
     },
     "gracias": {
-      "palabras": ["gracias"], "dur": 1.2,
+      "palabras": ["gracias"], "dur": 1.2, "confianza": "media",
       "d": [
         {"t": 0, "en": "barbilla", "desp": [0.03, -0.03, 0.08], "dir": "arriba", "pal": "atras", "forma": "plana", "punto": "puntas"},
         {"t": 1, "en": "barbilla", "desp": [0.1, -0.25, 0.5], "dir": "arriba+adelante"}
-      ]
+      ],
+      "nm": {
+        "necesita": {"cuerpo": true, "cara": true, "ojos": false},
+        "nota": "Pequeña inclinación de cabeza hacia delante y gesto amable.",
+        "claves": [
+          {"t": 0, "cabeza": {"adelante": 0}, "sonrisa": 0.7},
+          {"t": 0.5, "cabeza": {"adelante": 10}},
+          {"t": 1, "cabeza": {"adelante": 4}}
+        ]
+      }
     }
   }
 }
