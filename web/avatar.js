@@ -530,20 +530,26 @@ const Avatar = (() => {
   // dibuja con su forma de labios (visema). Las vocales duran más que las consonantes y se
   // interpola entre una forma y la siguiente (coarticulación), no se salta de una a otra.
 
-  // [ancho, alto, dientes]  (en anchos de hombro; dientes: 0 = no se ven, 1 = se ven los de arriba)
+  // Cada sonido se describe con: [ancho, abertura, redondeo, dientes de arriba, dientes de abajo, lengua visible,
+  // posición de la lengua (0 baja, 1 contra los dientes de arriba, 2 entre los dientes), labios apretados, f]
+  // (ancho y abertura en anchos de hombro; lo demás de 0 a 1). Son las pistas que usa quien lee los labios:
+  // vocales abiertas/cerradas/redondeadas, bilabiales cerradas (b, p, m), labiodental (f), lengua en los dientes
+  // (d, t, n, l), lengua entre los dientes (z, c+e/i, propio del castellano de España) y dientes juntos (s).
   const VISEMAS = {
-    a: [0.17, 0.13, 0.3], e: [0.19, 0.085, 0.5], i: [0.21, 0.045, 1], o: [0.11, 0.12, 0], u: [0.075, 0.08, 0],
-    cerrada: [0.15, 0, 0],              // b, p, m (y la v castellana, que suena como b)
-    fv: [0.15, 0.03, 1],                // f: el labio de abajo toca los dientes de arriba
-    lengua: [0.15, 0.05, 0.6],          // d, t, n, l: la punta de la lengua toca los dientes
-    sibilante: [0.17, 0.035, 1],        // s, z, c (e/i), x: dientes casi juntos
-    palatal: [0.14, 0.045, 0.4],        // ch, y, ll, ñ
-    velar: [0.14, 0.065, 0],            // k, g, j, q: boca algo abierta
-    vibrante: [0.14, 0.055, 0.3],       // r, rr
+    a: [0.2, 0.2, 0, 0.5, 0.25, 0.3, 0, 0, 0],
+    e: [0.25, 0.11, 0, 0.8, 0.4, 0.25, 0, 0, 0],
+    i: [0.28, 0.06, 0, 1, 0.8, 0.2, 0, 0, 0],
+    o: [0.12, 0.15, 0.85, 0, 0, 0.2, 0, 0, 0],
+    u: [0.08, 0.08, 1, 0, 0, 0.15, 0, 0, 0],
+    cerrada: [0.16, 0, 0, 0, 0, 0, 0, 1, 0],            // b, p, m (y la v castellana, que suena como b)
+    fv: [0.18, 0.04, 0, 1, 0, 0, 0, 0, 1],              // f: el labio de abajo toca los dientes de arriba
+    lengua: [0.18, 0.08, 0, 0.9, 0.3, 1, 1, 0, 0],      // d, t, n, l: la punta de la lengua toca los dientes de arriba
+    interdental: [0.2, 0.065, 0, 1, 0.6, 1, 2, 0, 0],   // z, c (e/i): la lengua asoma entre los dientes
+    sibilante: [0.21, 0.04, 0, 1, 1, 0.1, 0, 0, 0],     // s, x: dientes casi juntos
+    palatal: [0.16, 0.065, 0.35, 0.6, 0.4, 0.7, 1, 0, 0],   // ch, y, ll, ñ
+    velar: [0.16, 0.1, 0, 0.3, 0, 0.6, 0, 0, 0],        // k, g, j, q: boca algo abierta, lengua atrás
+    vibrante: [0.16, 0.075, 0, 0.6, 0.2, 0.8, 1, 0, 0], // r, rr
   };
-  // Lectura labial: todas las formas llevan un cuarto número (cuánto se ve la lengua) y se exageran un poco.
-  const LENGUA_VISIBLE = { lengua: 0.95, palatal: 0.35, sibilante: 0.15, vibrante: 0.55, i: 0.1, e: 0.1, a: 0.15 };
-  for (const k of Object.keys(VISEMAS)) VISEMAS[k] = [VISEMAS[k][0] * 1.22, VISEMAS[k][1] * 1.45, VISEMAS[k][2], LENGUA_VISIBLE[k] || 0];
   const VOCALES = 'aeiou';
   const PESO = { vocal: 2.3, consonante: 1, cerrada: 0.9 };
 
@@ -561,10 +567,11 @@ const Avatar = (() => {
         case 'b': case 'p': case 'm': case 'v': poner('cerrada', 'cerrada'); break;
         case 'f': poner('fv', 'consonante'); break;
         case 'd': case 't': case 'n': case 'l': poner('lengua', 'consonante'); break;
-        case 'z': case 's': case 'x': poner('sibilante', 'consonante'); break;
+        case 'z': poner('interdental', 'consonante'); break;
+        case 's': case 'x': poner('sibilante', 'consonante'); break;
         case 'c':
           if (sig === 'h') { poner('palatal', 'consonante'); i++; }                 // ch
-          else if ('ei'.includes(sig)) poner('sibilante', 'consonante');            // ce, ci
+          else if ('ei'.includes(sig)) poner('interdental', 'consonante');          // ce, ci
           else poner('velar', 'consonante');                                        // ca, co, cu
           break;
         case 'q': poner('velar', 'consonante'); if (sig === 'u') i++; break;        // que, qui: la u no suena
@@ -601,7 +608,7 @@ const Avatar = (() => {
     if (!lista.length) return null;
     // La boca se abre un poco antes de empezar la palabra y se relaja un poco después.
     const k = Math.min(Math.max(avance, 0), 1);
-    const REPOSO_BOCA = [0.13, 0.03, 0, 0];
+    const REPOSO_BOCA = [0.15, 0, 0, 0, 0, 0, 0, 0.5, 0];
     if (k < lista[0].centro) return mezclarBoca(REPOSO_BOCA, lista[0].v, suave(k / lista[0].centro));
     const ultimo = lista.at(-1);
     if (k >= ultimo.centro) return mezclarBoca(ultimo.v, REPOSO_BOCA, suave((k - ultimo.centro) / (1 - ultimo.centro + 1e-6)) * 0.7);
@@ -617,6 +624,78 @@ const Avatar = (() => {
 
   const DEDOS = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16], [17, 18, 19, 20]];
   const PALMA = [0, 1, 5, 9, 13, 17];
+
+  // Boca con labios de verdad: labio de arriba y de abajo (con grosor), comisuras, interior oscuro, dientes de arriba y
+  // de abajo, y lengua. Todo sale de los números de cada sonido, así que se puede leer cada uno.
+  const LABIO = '#d4d4d4', INTERIOR = '#2b2b2b', LENGUA_COLOR = '#bdbdbd';
+  const AMPLIA_BOCA = 1.3;                                        // la boca se dibuja algo mayor que la real, para poder leerla
+
+  function dibujarBoca(cx, by, u, f, sonrisa, grosor) {
+    const [w, h, r, du, dd, tg, tp, aprieta, fv] = f;
+    const mw = Math.max(w * AMPLIA_BOCA * u / 2 * (1 + 0.15 * sonrisa) , 0.03 * u);   // media anchura de la abertura
+    const abre = h * AMPLIA_BOCA * u;                                                   // abertura total
+    const lt = (0.017 + 0.026 * r) * u;                                                 // grosor de los labios (más al redondear)
+    const yc = by - sonrisa * 0.03 * u;                                                 // las comisuras suben al sonreír
+    const curva = (yMedio) => 2 * yMedio - yc;                                          // punto de control para pasar por yMedio
+    ctx.save();
+    ctx.lineJoin = 'round';
+    ctx.lineWidth = grosor * 1.2;
+    if (abre < 0.014 * u) {
+      // Labios cerrados (o casi): dos labios apoyados uno en otro. Apretados (b, p, m) se ven más gruesos y planos.
+      const grosorLabio = lt * (aprieta > 0.3 ? 1.15 : 0.8);
+      ctx.beginPath();
+      ctx.moveTo(cx - mw - lt * 0.2, yc);
+      ctx.quadraticCurveTo(cx, curva(by - grosorLabio * 1.2), cx + mw + lt * 0.2, yc);
+      ctx.quadraticCurveTo(cx, curva(by + grosorLabio * 1.5), cx - mw - lt * 0.2, yc);
+      ctx.fillStyle = LABIO; ctx.fill(); ctx.stroke();
+      ctx.beginPath();                                                                  // la línea donde se juntan
+      ctx.moveTo(cx - mw, yc); ctx.quadraticCurveTo(cx, curva(by + 0.002 * u), cx + mw, yc);
+      ctx.lineWidth = grosor * 1.5; ctx.stroke();
+      if (fv) {                                                                         // f: se asoman los dientes de arriba
+        ctx.restore();
+        return;
+      }
+      ctx.restore();
+      return;
+    }
+    const arriba = by - abre * 0.38, abajo = by + abre * 0.62;                          // la mandíbula baja más que el labio de arriba
+    // Contorno exterior de los labios y abertura interior
+    ctx.beginPath();
+    ctx.moveTo(cx - mw - lt * (0.6 + 0.6 * r), yc);
+    ctx.quadraticCurveTo(cx, curva(arriba - lt * 1.35), cx + mw + lt * (0.6 + 0.6 * r), yc);
+    ctx.quadraticCurveTo(cx, curva(abajo + lt * 1.55), cx - mw - lt * (0.6 + 0.6 * r), yc);
+    ctx.fillStyle = LABIO; ctx.fill(); ctx.stroke();
+    const interior = new Path2D();
+    interior.moveTo(cx - mw, yc);
+    interior.quadraticCurveTo(cx, curva(arriba), cx + mw, yc);
+    interior.quadraticCurveTo(cx, curva(abajo), cx - mw, yc);
+    ctx.fillStyle = INTERIOR; ctx.fill(interior);
+    // Dentro de la boca: dientes y lengua
+    ctx.save();
+    ctx.clip(interior);
+    ctx.lineWidth = Math.max(grosor * 0.45, 0.5);
+    ctx.strokeStyle = '#9a9a9a';
+    const diente = (x0, y0, ancho, alto) => {
+      ctx.fillStyle = '#fff'; ctx.fillRect(x0, y0, ancho, alto);
+      for (let k = 1; k < 5; k++) { ctx.beginPath(); ctx.moveTo(x0 + ancho * k / 5, y0); ctx.lineTo(x0 + ancho * k / 5, y0 + alto); ctx.stroke(); }
+    };
+    if (du > 0.05) diente(cx - mw, arriba - 1, mw * 2, Math.max(abre * (0.16 + 0.4 * du), 0.01 * u));
+    if (dd > 0.05) { const alto = Math.max(abre * (0.12 + 0.3 * dd), 0.008 * u); diente(cx - mw, abajo - alto + 1, mw * 2, alto); }
+    if (tg > 0.08) {
+      const yL = tp === 0 ? abajo - abre * 0.24 : (tp < 1.5 ? arriba + abre * 0.48 : by + abre * 0.2);
+      ctx.fillStyle = LENGUA_COLOR; ctx.strokeStyle = TINTA; ctx.lineWidth = Math.max(grosor * 0.5, 0.5);
+      ctx.beginPath(); ctx.ellipse(cx, yL, mw * (tp >= 1.5 ? 0.6 : 0.5), Math.max(abre * 0.2 * Math.min(tg + 0.2, 1), 0.006 * u), 0, 0, Math.PI * 2);
+      ctx.fill(); ctx.stroke();
+    }
+    if (fv) {                                                                           // f: el labio de abajo sube sobre los dientes
+      ctx.fillStyle = LABIO;
+      ctx.fillRect(cx - mw, arriba + abre * 0.5, mw * 2, abre * 2);
+    }
+    ctx.restore();
+    ctx.lineWidth = grosor * 1.2; ctx.strokeStyle = TINTA;
+    ctx.stroke(interior);
+    ctx.restore();
+  }
 
   // opciones: pregunta (cejas arriba) y zoom (1 = hasta las caderas, con las manos en reposo a la vista; más = más cerca)
   function pintar(t, { pregunta = false, rotular = false, zoom = 1, pose: poseDada = null, texto: textoDado = '', avance: avanceDado = 0 } = {}) {
@@ -717,19 +796,7 @@ const Avatar = (() => {
       const comisura = by - (0.01 + 0.012 * sonrisa) * u, curva = by + (0.03 + 0.06 * sonrisa) * u, ancho = (0.09 + 0.02 * sonrisa) * u;
       ctx.moveTo(cx - ancho, comisura); ctx.quadraticCurveTo(cx, curva, cx + ancho, comisura); ctx.stroke();
     } else {
-      const [ancho, alto, dientes, lengua = 0] = forma, mw = ancho * u / 2 * (1 + 0.2 * sonrisa), mh = Math.max(alto * u / 2, 0.5);
-      if (alto < 0.012) { ctx.lineWidth = grosor * 1.25; ctx.moveTo(cx - mw, by); ctx.lineTo(cx + mw, by); ctx.stroke(); ctx.lineWidth = grosor; }   // labios cerrados
-      else {
-        // Boca abierta que se lee bien: interior oscuro, dientes de arriba blancos y lengua visible.
-        ctx.save();
-        ctx.beginPath(); ctx.ellipse(cx, by, mw, mh, 0, 0, Math.PI * 2); ctx.clip();
-        ctx.fillStyle = TINTA; ctx.fillRect(cx - mw, by - mh, mw * 2, mh * 2);
-        ctx.fillStyle = PAPEL;
-        if (dientes > 0.25 && mh > 0.008 * u) ctx.fillRect(cx - mw, by - mh, mw * 2, Math.min(mh * 0.7, mh * (0.25 + dientes * 0.45)));
-        if (lengua > 0.12 && mh > 0.012 * u) { ctx.beginPath(); ctx.ellipse(cx, by + mh * 0.5, mw * 0.55, mh * 0.5 * Math.min(lengua + 0.25, 1), 0, 0, Math.PI * 2); ctx.fill(); }
-        ctx.restore();
-        ctx.lineWidth = grosor * 1.25; ctx.beginPath(); ctx.ellipse(cx, by, mw, mh, 0, 0, Math.PI * 2); ctx.stroke(); ctx.lineWidth = grosor;
-      }
+      dibujarBoca(cx, by, u, forma, sonrisa, grosor);
     }
     if (nm[12] > 0.3) {                                           // mejillas infladas
       for (const lado of [-1, 1]) { ctx.beginPath(); ctx.arc(cx + lado * 0.27 * u, by - 0.02 * u, 0.075 * u * nm[12], 0, Math.PI * 2); ctx.stroke(); }
@@ -738,8 +805,8 @@ const Avatar = (() => {
 
     // Brazos y manos, encima de todo. Cada pieza es un "tubo": trazo negro y, por dentro, blanco.
     const borde = grosor * 0.8;
-    const tubo = (puntos, ancho, cerrado = false) => {
-      for (const [color, w] of [[TINTA, ancho + borde * 2], [PAPEL, ancho]]) {
+    const tubo = (puntos, ancho, cerrado = false, tinta = TINTA) => {
+      for (const [color, w] of [[tinta, ancho + borde * 2], [PAPEL, ancho]]) {
         ctx.strokeStyle = color; ctx.lineWidth = w; ctx.fillStyle = color;
         ctx.beginPath();
         puntos.forEach(([x, y], k) => (k ? ctx.lineTo(x, y) : ctx.moveTo(x, y)));
@@ -747,19 +814,70 @@ const Avatar = (() => {
         ctx.stroke();
       }
     };
+    // Tubo que cambia de grosor (el antebrazo se ensancha al acercarse a quien mira).
+    const cono = (a, b, w0, w1, tinta = TINTA) => {
+      const dx = b[0] - a[0], dy = b[1] - a[1], largo = Math.hypot(dx, dy) || 1, nx = -dy / largo, ny = dx / largo;
+      for (const [color, extra] of [[tinta, borde * 2], [PAPEL, 0]]) {
+        const r0 = (w0 + extra) / 2, r1 = (w1 + extra) / 2;
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.moveTo(a[0] + nx * r0, a[1] + ny * r0); ctx.lineTo(b[0] + nx * r1, b[1] + ny * r1);
+        ctx.lineTo(b[0] - nx * r1, b[1] - ny * r1); ctx.lineTo(a[0] - nx * r0, a[1] - ny * r0); ctx.closePath(); ctx.fill();
+        ctx.beginPath(); ctx.arc(a[0], a[1], r0, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(b[0], b[1], r1, 0, Math.PI * 2); ctx.fill();
+      }
+    };
+    // ---- Profundidad de cada brazo ----
+    // La profundidad grabada de la muñeca es muy ruidosa, así que se deduce de la longitud: un hueso mide siempre lo
+    // mismo, y si en el dibujo se ve más corto es porque apunta hacia quien mira (escorzo). Solo falta decidir el sentido,
+    // y al signar las manos van delante del cuerpo. Sale 0 = pegada al cuerpo ... 1 = muy adelantada.
+    const L_SUPERIOR = 1.0, L_ANTEBRAZO = 0.95;
+    const profundidad = (hombro, codo, mano) => {
+      const lS = Math.hypot(p[codo] - p[hombro], p[codo + 1] - p[hombro + 1]);
+      const lA = Math.hypot(p[mano] - p[codo], p[mano + 1] - p[codo + 1]);
+      const dzS = Math.sqrt(Math.max(L_SUPERIOR * L_SUPERIOR - lS * lS, 0)), dzA = Math.sqrt(Math.max(L_ANTEBRAZO * L_ANTEBRAZO - lA * lA, 0));
+      return { mano: Math.min(Math.max((dzS + dzA - 0.25) / 1.25, 0), 1), codo: Math.min(dzS / 0.8, 1) };
+    };
+    const gris = (prof) => { const g = Math.round(150 * (1 - Math.min(prof * 1.7, 1))); return `rgb(${g},${g},${g})`; };   // lejos = gris, cerca = negro
     // Piezas de un brazo, cada una con su profundidad media (z menor = más cerca).
     const piezas = (hombro, codo, mano, zMano, zMuneca) => {
-      const M = (k) => [X(mano + k * 2), Y(mano + k * 2)];
+      const prof = profundidad(hombro, codo, mano), tinta = gris(prof.mano);
+      const escala = 0.88 + 0.34 * prof.mano;                   // perspectiva: más cerca, más grande
+      const mx = X(mano), my = Y(mano);
+      const M = (k) => [mx + (X(mano + k * 2) - mx) * escala, my + (Y(mano + k * 2) - my) * escala];
       const z = (lista) => lista.reduce((s, k) => s + p[zMano + k], 0) / lista.length;
       const lista = [
-        { z: Infinity, pinta: () => tubo([[X(hombro), Y(hombro)], [X(codo), Y(codo)], M(0)], 0.16 * u) },
-        { z: z(PALMA), pinta: () => tubo(PALMA.map(M), (propia ? 0.085 : 0.055) * u, true) },
+        { z: Infinity, pinta: () => {
+          tubo([[X(hombro), Y(hombro)], [X(codo), Y(codo)]], 0.16 * u * (0.95 + 0.12 * prof.codo), false, tinta);
+          cono([X(codo), Y(codo)], M(0), 0.16 * u * (0.9 + 0.14 * prof.codo), 0.16 * u * (0.82 + 0.5 * prof.mano), tinta);
+        } },
+        { z: z(PALMA), pinta: () => tubo(PALMA.map(M), (propia ? 0.085 : 0.055) * u * escala, true, tinta) },
       ];
-      DEDOS.forEach((dedo, k) => lista.push({ z: z(dedo), pinta: () => tubo(dedo.map(M), (k ? 0.058 : 0.066) * (propia ? 1.55 : 1) * u) }));
-      return { fondo: p[zMuneca], piezas: lista.sort((a, b) => b.z - a.z) };   // de lejos a cerca
+      DEDOS.forEach((dedo, k) => lista.push({ z: z(dedo), pinta: () => tubo(dedo.map(M), (k ? 0.058 : 0.066) * (propia ? 1.55 : 1) * u * escala, false, tinta) }));
+      const centro = [0, 5, 9, 13, 17].map(M).reduce((a, q) => [a[0] + q[0] / 5, a[1] + q[1] / 5], [0, 0]);
+      return { fondo: -prof.mano, prof: prof.mano, centro, escala, codo: [X(codo), Y(codo)], muneca: M(0), piezas: lista.sort((a, b) => b.z - a.z) };   // de lejos a cerca
     };
     const brazos = [piezas(4, 8, DER, Z_DER, Z_MUNECAS + 1), piezas(2, 6, IZQ, Z_IZQ, Z_MUNECAS)];
-    brazos.sort((a, b) => b.fondo - a.fondo);                   // primero el brazo que queda detrás
+    brazos.sort((a, b) => b.fondo - a.fondo);                   // primero el brazo que queda detrás (el menos adelantado)
+    // Sombra sobre el cuerpo y la cara: cuanto más adelantada y más lejos del cuerpo, más separada y más tenue.
+    const sombra = (clip) => {
+      ctx.save(); ctx.clip(clip);
+      for (const b of brazos) {
+        if (b.prof < 0.3) continue;
+        const sepa = 0.04 + 0.12 * b.prof, alfa = 0.1 + 0.1 * b.prof;
+        ctx.fillStyle = `rgba(0,0,0,${alfa})`; ctx.strokeStyle = `rgba(0,0,0,${alfa * 0.8})`;
+        ctx.lineCap = 'round'; ctx.lineWidth = 0.13 * u * b.escala;
+        ctx.beginPath(); ctx.moveTo(b.codo[0] + sepa * u * 0.6, b.codo[1] + sepa * u); ctx.lineTo(b.muneca[0] + sepa * u * 0.6, b.muneca[1] + sepa * u); ctx.stroke();
+        ctx.beginPath(); ctx.ellipse(b.centro[0] + sepa * u * 0.6, b.centro[1] + sepa * u, 0.13 * u * b.escala, 0.15 * u * b.escala, 0, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.restore();
+    };
+    const torso = new Path2D();
+    torso.moveTo(hdx - 0.06 * u, H + 10); torso.lineTo(hdx - 0.02 * u, hdy + 0.12 * u);
+    torso.quadraticCurveTo(hdx, hdy - 0.06 * u, hdx + 0.2 * u, hdy - 0.1 * u); torso.lineTo(hix - 0.2 * u, hiy - 0.1 * u);
+    torso.quadraticCurveTo(hix, hiy - 0.06 * u, hix + 0.02 * u, hiy + 0.12 * u); torso.lineTo(hix + 0.06 * u, H + 10); torso.closePath();
+    const cabeza = new Path2D(); cabeza.arc(cx, cy, r, 0, Math.PI * 2);
+    sombra(torso); sombra(cabeza);
     for (const brazo of brazos) for (const pieza of brazo.piezas) pieza.pinta();
     ctx.restore();                                              // fin de la inclinación del cuerpo
     ctx.strokeStyle = TINTA; ctx.lineWidth = grosor; ctx.fillStyle = PAPEL;

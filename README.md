@@ -143,3 +143,15 @@ deletreadas y las que se quedan **sin signo**, para ver los huecos antes de expo
   la cara en cada momento; también sale en el vídeo exportado.
 - **Lectura labial**: formas de boca exageradas, interior oscuro con dientes y lengua visibles, y la boca termina de decir la
   palabra aunque el signo sea más corto.
+
+### Labios y profundidad de las manos (v2)
+
+- **Labios**: cada sonido se describe con anchura, abertura, redondeo, dientes de arriba y de abajo, lengua (y dónde está) y
+  labios apretados. Se dibujan labio de arriba y de abajo con grosor, comisuras, interior oscuro, dientes y lengua. Distingue
+  vocales abiertas, extendidas (e, i) y redondeadas (o, u), bilabiales cerradas (b, p, m), la f (labio sobre los dientes), d/t/n/l
+  (lengua contra los dientes de arriba), z y c+e/i (lengua entre los dientes, castellano de España) y la s (dientes juntos).
+- **Profundidad**: la profundidad grabada de la muñeca es muy ruidosa. En su lugar se deduce del escorzo: cada hueso mide siempre
+  lo mismo, y si se ve más corto es que apunta hacia quien mira. Con eso la mano adelantada se dibuja más grande, el antebrazo se
+  ensancha hacia la mano, el trazo es más oscuro cuanto más cerca (gris si está lejos) y proyecta una sombra sobre el cuerpo y la
+  cara, más separada cuanto más adelantada. El brazo menos adelantado se dibuja detrás. Se asume que las manos van delante del
+  cuerpo (no se distingue «delante» de «detrás» por la imagen sola).
