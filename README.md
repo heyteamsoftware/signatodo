@@ -78,7 +78,8 @@ cada dedo y resuelve el brazo. No hay vídeos ni datos de terceros en el product
 
 Hay 19 signos de prueba (comer, beber, dormir, casa, jugar, niño, niña, ir, contento, noche, leer,
 correr, yo, tú, sí, no, hola, adiós, gracias). **Todos son borrador y ninguno ha sido validado por una
-persona sorda o un intérprete de LSE.** Las palabras sin signo propio dejan al avatar en reposo.
+persona sorda o un intérprete de LSE.** Las palabras que no se pueden signar se muestran escritas en la
+camiseta del avatar (ver «Palabras sin signo: escritas en la camiseta»).
 
 Para comparar con material ajeno en local, abrir la web con `?referencia=1`: usa también el
 movimiento extraído de vídeos de terceros (que no está en el repositorio).
@@ -130,7 +131,8 @@ audio original. Dura lo que dura el vídeo y la pestaña debe quedar a la vista 
 `automóvil → coche`, `llamada → llamar`. Cada entrada indica la relación (`nombre-verbo`, `sinonimo`, `aproximada`,
 `error-lematizador`) y una confianza (`baja` hasta que lo revise una persona signante). Orden de búsqueda: palabra exacta,
 lema, equivalencia, compuesto, deletreo. Al procesar, el resumen lista las palabras resueltas por equivalencia, las
-deletreadas y las que se quedan **sin signo**, para ver los huecos antes de exportar.
+deletreadas y las que se quedan **sin signo** (que el avatar muestra escritas en la camiseta, ver más abajo), para ver los
+huecos antes de exportar.
 
 ## Expresión de la cara y lectura labial
 
@@ -289,3 +291,21 @@ o exportar sale igual. Vale para el muñeco 3D y para el plano.
 Al entrar en el modo directo (en la web y en la app) sale un aviso, una vez por sesión, y queda también en la «i»:
 para realizar una captura de voz correcta, no hablar varias personas a la vez, realizar una locución clara y hablar a un ritmo
 que ayude a la interpretación.
+
+### Palabras sin signo: escritas en la camiseta
+
+Cuando una palabra no se puede signar (no tiene signo, ni equivalencia, ni compuesto, y no se deletrea por no ser un nombre, una
+sigla o una palabra de hasta 4 letras), el muñeco **se señala la camiseta con los dos índices y la palabra sale escrita en ella,
+en blanco**. No es un signo de la LSE: es un recurso para no dejar la palabra sin decir. La boca la pronuncia como las demás.
+
+- **El gesto** (`SENALAR_CAMISETA` y `crearRotulo()` en `web/avatar.js`) es un signo propio en nuestra notación: los índices
+  apuntan al pecho, uno a cada lado de la palabra, con un toque hacia dentro; la mirada baja a la camiseta y vuelve a quien mira.
+  Dura lo que se tarda en leer la palabra (de 1,05 a 1,7 s según su largo).
+- **La palabra** va estampada en el modelo, no dibujada encima: el sombreador la proyecta sobre la pieza del pecho
+  (`uTexto`, `uRotulo` en `web/avatar3d.js`), así que se mueve con el cuerpo, recibe su luz y sus sombras y queda tapada por las
+  manos. En mayúsculas y con la misma letra que el rótulo; las palabras de 8 letras o más se parten en dos líneas por una sílaba
+  (`corteDeSilaba()`) para que la letra sea grande también en un móvil. Aparece y se va con un fundido de 0,12 s.
+- **Planificación**: en el modo vídeo cuenta como lo deletreado (se sacrifica solo si el retraso pasa del objetivo) y el resumen
+  dice «SIN SIGNO, escritas en la camiseta». En directo la palabra sigue saliendo en rojo en los subtítulos y, si no llega otra
+  detrás, se queda escrita mientras las manos esperan.
+- En el muñeco plano la camiseta es blanca, así que la palabra va en tinta.

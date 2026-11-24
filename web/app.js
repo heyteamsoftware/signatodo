@@ -415,7 +415,7 @@ iniciar().catch((error) => avisar('No se ha podido cargar: ' + error.message));
 function detalleAvatar(a) {
   const unicas = (l) => [...new Set(l)].join(', ');
   let t = '';
-  if (a.sinSigno?.length) t += ` · SIN SIGNO (${new Set(a.sinSigno).size}): ${unicas(a.sinSigno)}`;
+  if (a.sinSigno?.length) t += ` · SIN SIGNO, escritas en la camiseta (${new Set(a.sinSigno).size}): ${unicas(a.sinSigno)}`;
   if (a.porSinonimo?.length) t += ` · por equivalencia: ${unicas(a.porSinonimo)}`;
   if (a.deletreadas?.length) t += ` · deletreadas: ${unicas(a.deletreadas)}`;
   return t;

@@ -243,6 +243,34 @@ const Avatar = (() => {
     return { poses: fotogramas.map((f) => pose(f.cuerpo, f.izq, f.der, f.zi, f.zd, f.zm, f.nm)), dura, propio: true };
   }
 
+  // ----- Palabra sin signo: el muñeco se señala la camiseta y la palabra sale escrita en ella -----
+  // Los dos índices apuntan al pecho, uno a cada lado de la palabra, con un toque hacia dentro; la mirada baja a la
+  // camiseta y vuelve a quien mira. No es un signo de la LSE: es un recurso para no dejar la palabra sin decir. La boca
+  // la pronuncia igual que las demás.
+  const SENALAR_CAMISETA = {
+    d: [
+      { t: 0, forma: 'indice', dir: [-1, -0.05, -0.5], pal: 'abajo+atras', pos: [0.56, -0.5, 0.36], punto: 'indice' },
+      { t: 0.3, desp: [-0.08, 0, -0.04] },
+      { t: 1, desp: [-0.08, 0, -0.04] },
+    ],
+    nm: { claves: [
+      { t: 0, cabeza: { adelante: 9 }, mirada: [0, -0.8], cejas: 0.35 },
+      { t: 0.4, cabeza: { adelante: 9 }, mirada: [0, -0.8], cejas: 0.35 },
+      { t: 0.7, cabeza: { adelante: 0 }, mirada: [0, 0], cejas: 0.35 },
+      { t: 1, cabeza: { adelante: 0 }, mirada: [0, 0], cejas: 0.2 },
+    ] },
+  };
+  SENALAR_CAMISETA.n = SENALAR_CAMISETA.d;        // la otra mano hace lo mismo, en espejo
+  const FUNDIDO_ROTULO = 0.12;                    // segundos que tarda la palabra en aparecer y en irse
+  function crearRotulo(palabra) {
+    // Dura lo que se tarda en leerla: algo más de un segundo, y un poco más si es larga.
+    const dur = acota(0.85 + 0.05 * palabra.replace(/[^\p{L}\p{N}]/gu, '').length, 1.05, 1.7);
+    const { fotogramas, dura } = Signos.generar({ ...SENALAR_CAMISETA, dur });
+    return { poses: fotogramas.map((f) => pose(f.cuerpo, f.izq, f.der, f.zi, f.zd, f.zm, f.nm)), dura, propio: true, rotulo: palabra };
+  }
+  // La palabra de la camiseta en un instante del clip, con su fundido (nada si el clip no es de camiseta).
+  const rotuloDe = (e, alfa) => (e.clip.rotulo ? { rotulo: { texto: e.clip.rotulo, alfa: acota(alfa, 0, 1) } } : {});
+
   // Pone sobre un movimiento extraído los gestos de cuerpo, cara y ojos de un signo propio.
   function aplicarGestos(clip, ref) {     // ref: 'o:<id>' (signo propio) o 'g:<palabra>' (gestos de la lista de 500)
     const nm = ref.startsWith('o:') ? definiciones[ref.slice(2)].nm : gestosPalabra[ref.slice(2)];
@@ -333,8 +361,14 @@ const Avatar = (() => {
             id: 'l:' + l, complemento, deletreo: true, nombre: nombre || sigla, grupo: 'd' + i,
             voz: { texto: u.texto.replace(/[¿?¡!.,;:"«»()]/g, '').trim(), k, n: letras.length },
           }));
-        } else sinSigno.push(u.texto.replace(/[.,;:!?¡¿]/g, ''));
-      } else if (u.tipo === 'signo') sinSigno.push(u.texto.replace(/[.,;:!?¡¿]/g, ''));
+        } else escribirEnCamiseta();
+      } else if (u.tipo === 'signo') escribirEnCamiseta();
+      // Sin signo y sin deletreo: se apunta en la lista y el muñeco se señala la camiseta, donde sale escrita.
+      function escribirEnCamiseta() {
+        const palabra = u.texto.replace(/[¿?¡!.,;:"«»()]/g, '').trim();
+        sinSigno.push(palabra);
+        if (palabra) elegidas.push({ u, id: 'r:' + palabra, complemento, rotulo: true });
+      }
   }
 
   // Descarga (o crea) los clips que faltan.
@@ -342,6 +376,7 @@ const Avatar = (() => {
     await Promise.all([...new Set(elegidas.map((e) => e.id))].filter((id) => !clips[id]).map(async (id) => {
       if (String(id).startsWith('o:')) { clips[id] = crearPropio(id.slice(2)); return; }
       if (String(id).startsWith('l:')) { clips[id] = crearLetra(id.slice(2)); return; }
+      if (String(id).startsWith('r:')) { clips[id] = crearRotulo(id.slice(2)); return; }
       const [idExtraido, idPropio] = String(id).split('|');
       const r = await fetch(`/banco/poses/${idExtraido}.json`);
       if (!r.ok) return;
@@ -480,7 +515,7 @@ const Avatar = (() => {
     if (d.sinSigno.length > 8) d.sinSigno.shift();
     await cargarClips(elegidas);
     // Una palabra que debía signarse y no tiene ningún clip se marca (sale en rojo en los subtítulos).
-    if (u.tipo !== 'omitir' && !elegidas.some((e) => clips[e.id])) u.sinSigno = true;
+    if (u.tipo !== 'omitir' && (!elegidas.some((e) => clips[e.id]) || elegidas.some((e) => e.rotulo))) u.sinSigno = true;
     const ahora = ahoraDirecto();
     for (const e of elegidas) {
       const clip = clips[e.id];
@@ -553,6 +588,7 @@ const Avatar = (() => {
   ]);
   const nivelDeCorte = (e) => {             // 0 = intocable; mayor = se sacrifica antes
     if (e.deletreo) return e.nombre ? 0 : 2;   // un nombre propio se deletrea siempre; el resto, si hay tiempo
+    if (e.rotulo) return 2;                    // palabra escrita en la camiseta: como lo deletreado, si hay tiempo
     const p = normalizar(e.u.texto);
     if (INTOCABLES.has(p) || /^\d+$/.test(p)) return 0;
     if (RELLENO.has(p)) return 4;
@@ -570,7 +606,7 @@ const Avatar = (() => {
     const orden = [...frases.keys()].sort((a, b) => a - b);
     // Cuándo conviene empezar una frase: poco antes de su primera palabra con signo.
     const inicioIdeal = (seg) => Math.max(frases.get(seg)[0].u.t0 - ANTICIPO_FRASE, 0);
-    const cuenta = { conMovimiento: 0, recortados: 0, frasesAceleradas: 0, frasesConApuro: 0, retrasoMaximo: 0, sumaRetraso: 0, nSignos: 0, adelantadas: 0 };
+    const cuenta = { conMovimiento: 0, escritas: 0, recortados: 0, frasesAceleradas: 0, frasesConApuro: 0, retrasoMaximo: 0, sumaRetraso: 0, nSignos: 0, adelantadas: 0 };
     let cursor = 0;
 
     orden.forEach((seg, n) => {
@@ -621,7 +657,9 @@ const Avatar = (() => {
         t = t1;
       });
       cursor = t;
-      cuenta.conMovimiento += lista.length;
+      const escritas = lista.filter((e) => e.rotulo).length;
+      cuenta.escritas += escritas;
+      cuenta.conMovimiento += lista.length - escritas;
     });
     cuenta.retrasoMedio = cuenta.nSignos ? cuenta.sumaRetraso / cuenta.nSignos : 0;
     return cuenta;
@@ -766,13 +804,16 @@ const Avatar = (() => {
       esPropio = !!actual.clip.propio;
       const k = (t - actual.t0) / (actual.t1 - actual.t0);
       const local = Math.min((t - actual.t0) / bocaDe(actual, siguiente), 1);
-      return { pose: poseDeClip(actual.clip, k), texto: actual.texto, avance: local, ...dichoDe(actual, local), cara: caraDeClip(actual.clip, k), enfado: !!actual.clip.enfado };
+      // En directo, si no hay nada detrás, la palabra de la camiseta no se va al acabar el clip: sigue mientras las manos esperan.
+      const seVa = directo && !siguiente ? 1 : (actual.t1 - t) / FUNDIDO_ROTULO;
+      return { pose: poseDeClip(actual.clip, k), texto: actual.texto, avance: local, ...dichoDe(actual, local), cara: caraDeClip(actual.clip, k), enfado: !!actual.clip.enfado,
+        ...rotuloDe(actual, Math.min((t - actual.t0) / FUNDIDO_ROTULO, seVa)) };
     }
     // En directo no se sabe si vendrá otra palabra: las manos esperan un momento donde están antes de bajar.
     if (directo && actual && !siguiente && t > actual.t1) {
       const ultimo = actual.clip.poses.at(-1), tras = t - actual.t1;
       const resto = tras < bocaDe(actual, null) ? { texto: actual.texto, avance: 0, ...dichoDe(actual, Math.min((t - actual.t0) / bocaDe(actual, null), 1)) } : { texto: '', avance: 0 };
-      if (tras < ESPERA_DIRECTO) return { pose: ultimo, ...resto };
+      if (tras < ESPERA_DIRECTO) return { pose: ultimo, ...resto, ...rotuloDe(actual, (ESPERA_DIRECTO - tras) / 0.2) };
       if (tras - ESPERA_DIRECTO < A_REPOSO) return { pose: mezclar(ultimo, REPOSO, suave((tras - ESPERA_DIRECTO) / A_REPOSO)), texto: '', avance: 0 };
       return { pose: REPOSO, texto: '', avance: 0 };
     }
@@ -1097,7 +1138,7 @@ const Avatar = (() => {
 
   // Pinta el muñeco 3D sobre el lienzo. Devuelve false si no se puede (sin WebGL) para que se use el plano.
   // La cara no se dibuja aquí: se le pasa al motor su estado (forma de la boca, sonrisa, cejas, ojos) y él la modela.
-  function pintar3D(p, nm, forma, sonrisa, t, propia, W, H, u, ox, oy) {
+  function pintar3D(p, nm, forma, sonrisa, t, propia, W, H, u, ox, oy, camiseta) {
     if (!Avatar3D.disponible()) return false;
     const abierta = nm[11] > 0.15 ? nm[11] : 0;                   // boca abierta por sorpresa o miedo, sin palabra
     const reposo = [0.15, abierta * 0.16, abierta * 0.5, abierta ? 0.4 : 0, 0, abierta ? 0.2 : 0, 0, abierta ? 0 : 0.5, 0];
@@ -1106,7 +1147,7 @@ const Avatar = (() => {
       sonrisa: acota(sonrisa + 0.22, -1, 1),                      // de natural, una sonrisa leve: cara amable
       cejas: nm[5], ceno: nm[6], ojos: nm[7] * (1 - parpadeoEn(t)), mirada: [nm[8], nm[9]], mejillas: nm[12],
     };
-    const imagen = Avatar3D.pintar(esqueletoDe(p, nm, t, propia, cara), { ancho: W, alto: H, u, ox, oy });
+    const imagen = Avatar3D.pintar({ ...esqueletoDe(p, nm, t, propia, cara), rotulo: camiseta }, { ancho: W, alto: H, u, ox, oy });
     if (!imagen) return false;
     ctx.drawImage(imagen, 0, 0, W, H);
     return true;
@@ -1116,7 +1157,7 @@ const Avatar = (() => {
   function pintar(t, { pregunta = false, rotular = false, zoom = 1, margen = null, tresD = false, pose: poseDada = null, texto: textoDado = '', avance: avanceDado = 0 } = {}) {
     t *= escalaTiempo;
     const estado = poseDada ? { pose: poseDada, texto: textoDado, avance: avanceDado } : estadoEn(t);
-    const { pose: p, texto, avance, cara = null, enfado: enfadoClip = false } = estado;
+    const { pose: p, texto, avance, cara = null, enfado: enfadoClip = false, rotulo: camiseta = null } = estado;
     const dicho = estado.dicho === undefined ? texto : estado.dicho, avanceDicho = estado.avanceDicho === undefined ? avance : estado.avanceDicho;
     const propia = poseDada ? true : esPropio;
     const W = lienzo.width, H = lienzo.height;
@@ -1146,7 +1187,7 @@ const Avatar = (() => {
     const sonrisa = acota(nm[10] + (cara ? acota(cara[3] / 0.05, -1, 1) * 0.5 : 0), -1, 1);
 
     // Muñeco 3D: el mismo esqueleto con volumen, sombreado y sombras. Si no hay WebGL, sigue el plano de abajo.
-    if (tresD && typeof Avatar3D !== 'undefined' && pintar3D(p, nm, forma, sonrisa, t, propia, W, H, u, ox, oy)) {
+    if (tresD && typeof Avatar3D !== 'undefined' && pintar3D(p, nm, forma, sonrisa, t, propia, W, H, u, ox, oy, camiseta)) {
       rotularExpresion(rotular, capa, W, H);
       return texto;
     }
@@ -1171,6 +1212,15 @@ const Avatar = (() => {
     ctx.lineTo(hix + 0.06 * u, H + 10);
     ctx.fill();
     ctx.stroke();
+    // Palabra sin signo, escrita en la camiseta (en el muñeco plano la camiseta es blanca: va en tinta).
+    if (camiseta && camiseta.alfa > 0.01 && typeof Avatar3D !== 'undefined') {
+      const { y, medio } = Avatar3D.ROTULO;
+      ctx.save();
+      ctx.globalAlpha = camiseta.alfa; ctx.fillStyle = TINTA;
+      // En el plano las manos se dibujan más grandes y llegan más adentro: la caja de la palabra es más estrecha.
+      Avatar3D.escribir(ctx, camiseta.texto, (hix + hdx) / 2, (hiy + hdy) / 2 - y * u, medio[0] * 1.45 * u, medio[1] * 1.88 * u);
+      ctx.restore();
+    }
 
     // Cabeza y cara.
     const cx = X(0), cy = Y(0) - 0.1 * u, r = 0.46 * u;

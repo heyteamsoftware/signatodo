@@ -21,7 +21,12 @@ const Avatar3D = (() => {
   let lienzo = null, gl = null, listo = null;
   let prog = null, progSombra = null, malla = null, fbo = null, texSombra = null, texCara = null;
   let lienzoRostro = null;
+  let texTexto = null, lienzoTexto = null, textoPuesto = null, alfaRotulo = 0;
   const TAM_SOMBRA = 1024, TAM_ROSTRO = 256;
+  // Palabra escrita en la camiseta (cuando una palabra no tiene signo): un rectángulo en el pecho, centrado bajo los
+  // hombros. Medidas en anchos de hombro: cuánto baja su centro y su media anchura y media altura.
+  const ROTULO_Y = -0.5, ROTULO_MEDIO = [0.43, 0.2], TAM_TEXTO = [512, 256];
+  const LETRA_ROTULO = '"Times New Roman", Times, serif';      // la misma letra que el rótulo de debajo del recuadro
   const LUZ = normalizar([-0.36, 0.55, 0.75]);          // de arriba a la izquierda y bastante de frente
   const CAMARA = [0, -0.35, 9];                          // eje a la altura del pecho; cámara a 9 anchos de hombro
   const ALCANCE_LUZ = 2.9, CENTRO_LUZ = [0, -0.75, 0.2], FONDO_LUZ = 4.5;
@@ -105,13 +110,16 @@ const Avatar3D = (() => {
     uniform vec3 uLuzX, uLuzY, uLuzZ, uLuzCentro; uniform vec3 uLuzEscala;
     uniform vec3 uCabCentro; uniform mat3 uCabInv; uniform float uCabRadio;   // para saber dónde cae cada punto en la cara
     uniform float uPase;                             // 0 color y contorno, 1 sombras (vista desde la luz)
+    uniform vec2 uRotCentro, uRotMedio;              // el rectángulo del pecho donde se escribe la palabra sin signo
     varying vec3 vN, vLuz, vCab;
+    varying vec2 vRot;
     void main() {
       vec3 centro = mix(uA, uB, aLado);
       float r = mix(uRA, uRB, aLado);
       vec3 n = normalize(uN * aDir);
       vec3 p = centro + r * (uM * aDir) + n * uContorno;
       vCab = uCabInv * (p - uCabCentro) / uCabRadio;                    // coordenadas de la cara: la cabeza es la esfera unidad
+      vRot = (p.xy - uRotCentro) / uRotMedio;                           // coordenadas del rótulo de la camiseta: de -1 a 1
       vec3 w = uPivote + uGiro * (p - uPivote);
       vN = uGiro * n;
       vec3 q = w - uLuzCentro;
@@ -132,8 +140,10 @@ const Avatar3D = (() => {
     #endif
     uniform vec3 uColor, uLuz; uniform float uTinta, uCara, uTexel, uHueco, uTonos, uAmbiente, uPlano;
     uniform vec4 uBoca;                              // el hueco de la boca en la cara: media anchura, comisuras, borde de arriba y de abajo
-    uniform sampler2D uSombra, uRostro;
+    uniform sampler2D uSombra, uRostro, uTexto;
+    uniform float uRotulo;                           // cuánto se ve la palabra de la camiseta en esta pieza (0 = nada)
     varying vec3 vN, vLuz, vCab;
+    varying vec2 vRot;
     float profundidad(vec2 uv) { vec4 c = texture2D(uSombra, uv); return dot(c, vec4(1.0, 1.0 / 255.0, 1.0 / 65025.0, 1.0 / 16581375.0)); }
     float enLuz(vec3 pos, float sesgo) {
       vec2 uv = pos.xy * 0.5 + 0.5;
@@ -163,6 +173,11 @@ const Avatar3D = (() => {
       float luz = mix(uAmbiente, 1.0, t);
       float canto = pow(1.0 - max(n.z, 0.0), 3.0);                     // se oscurece donde la superficie se aleja de la vista
       vec3 color = uColor * (luz - 0.07 * canto);
+      if (uRotulo > 0.001 && abs(vRot.x) < 1.0 && abs(vRot.y) < 1.0) {
+        // La palabra va estampada en blanco en el jersey: se proyecta de frente y recibe la misma luz y sombras que él.
+        float letra = texture2D(uTexto, vec2(vRot.x * 0.5 + 0.5, 0.5 - vRot.y * 0.5)).a;
+        color = mix(color, vec3(mix(0.8, 1.0, t)), letra * uRotulo);
+      }
       if (uCara > 0.5 && vCab.z > 0.02) {
         // Lo poco que sigue pintado (flequillo, rubor) se proyecta de frente; cerca del borde se desvanece para no estirarse.
         vec4 rasgo = texture2D(uRostro, vec2(vCab.x * 0.5 + 0.5, 0.5 - vCab.y * 0.5));
@@ -236,6 +251,12 @@ const Avatar3D = (() => {
       for (const [k, v] of [[gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR], [gl.TEXTURE_MAG_FILTER, gl.LINEAR], [gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE], [gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE]]) gl.texParameteri(gl.TEXTURE_2D, k, v);
       lienzoRostro = document.createElement('canvas');
       lienzoRostro.width = lienzoRostro.height = TAM_ROSTRO;
+      lienzoTexto = document.createElement('canvas');
+      [lienzoTexto.width, lienzoTexto.height] = TAM_TEXTO;
+      texTexto = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, texTexto);
+      for (const [k, v] of [[gl.TEXTURE_MIN_FILTER, gl.LINEAR], [gl.TEXTURE_MAG_FILTER, gl.LINEAR], [gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE], [gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE]]) gl.texParameteri(gl.TEXTURE_2D, k, v);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, lienzoTexto);
       gl.enable(gl.DEPTH_TEST); gl.enable(gl.CULL_FACE);
       listo = true;
     } catch (error) {
@@ -269,7 +290,8 @@ const Avatar3D = (() => {
   // esqueleto: { cabeza, hombros:[i,d], codos:[i,d], munecas:[i,d], caderas:[i,d] } en (x, y) con y hacia arriba,
   //            manos: [izq, der], cada una 21 puntos [x, y, zRelativa] (z relativa a la muñeca, + = hacia quien mira),
   //            propia: manos del modelo propio (más grandes), gestos: { tronco:[lateral, adelante], cabeza:[lado, asiente, gira] } en grados,
-  //            cara: { forma (los 9 números del sonido), sonrisa, cejas, ceno, ojos (0 cerrados … 1 abiertos), mirada:[x, y], mejillas }.
+  //            cara: { forma (los 9 números del sonido), sonrisa, cejas, ceno, ojos (0 cerrados … 1 abiertos), mirada:[x, y], mejillas },
+  //            rotulo: { texto, alfa } si hay una palabra escrita en la camiseta (alfa de 0 a 1).
   function construir(esq) {
     const piezas = [], tramos = [];
     const [hI, hD] = esq.hombros;
@@ -285,7 +307,7 @@ const Avatar3D = (() => {
     const PECHO = 0.47, CINTURA = 0.41, CADERAS = 0.45, FONDO = 0.58, CUPULA = 0.5, R_HOMBROS = 0.125;
     const yPecho = medio[1] - 0.17, yCintura = medio[1] - 1.0;
     const aplastada = (a, b, ra, rb) => ({ a, b, ra, rb, m: escala3(1, CUPULA, FONDO), n: escala3(1, 1 / CUPULA, 1 / FONDO), mat: 'ropa', contorno: 1 });
-    piezas.push(aplastada([medio[0], yCintura, 0], [medio[0], yPecho, 0], CINTURA, PECHO));            // pecho
+    piezas.push({ ...aplastada([medio[0], yCintura, 0], [medio[0], yPecho, 0], CINTURA, PECHO), rotulo: 1 });   // pecho (aquí se escribe la palabra sin signo)
     piezas.push(aplastada([medio[0], cadera, 0], [medio[0], yCintura, 0], CADERAS, CINTURA));          // de la cintura a las caderas
     piezas.push(aplastada([medio[0], cadera - 1.4, 0], [medio[0], cadera, 0], CADERAS, CADERAS));      // sigue hacia abajo, fuera del recuadro
     const yHombros = (hI[1] + hD[1]) / 2 - 0.02;
@@ -476,6 +498,7 @@ const Avatar3D = (() => {
     return {
       piezas, giro, pivote: [medio[0], cadera, 0], tramos, frente,
       cabeza: { centro: centroCabeza, inversa: traspuesta(giroCabeza), radio: R },
+      rotulo: [medio[0], medio[1] + ROTULO_Y],
       boca: abierta ? [mw / R, yComisura / R, arriba / R, abajo / R] : [0, 0, 0, 0],
     };
   }
@@ -515,6 +538,44 @@ const Avatar3D = (() => {
     }
   }
 
+  // Por dónde partir una palabra larga en dos líneas: por el principio de sílaba más cercano al centro (consonante seguida
+  // de vocal, sin separar los grupos que van juntos: pr, bl, ch, ll, rr…). Si no encuentra ninguno, por la mitad.
+  const VOCALES = 'AEIOUÁÉÍÓÚÜ', GRUPOS = new Set(['PR', 'BR', 'TR', 'DR', 'CR', 'GR', 'FR', 'PL', 'BL', 'CL', 'GL', 'FL', 'CH', 'LL', 'RR']);
+  function corteDeSilaba(palabra) {
+    const n = palabra.length, medio = n / 2;
+    let mejor = Math.ceil(medio), distancia = Infinity;
+    for (let i = 1; i < n - 1; i++) {
+      if (VOCALES.includes(palabra[i]) || !VOCALES.includes(palabra[i + 1])) continue;
+      const corte = GRUPOS.has(palabra[i - 1] + palabra[i]) ? i - 1 : i;
+      if (corte < 2 || n - corte < 2 || Math.abs(corte - medio) >= distancia) continue;
+      mejor = corte; distancia = Math.abs(corte - medio);
+    }
+    return mejor;
+  }
+
+  // Escribe una palabra centrada en (cx, cy) dentro de una caja de ancho x alto, en mayúsculas y en negrita: en una línea
+  // si cabe con buen tamaño; si no, en dos (por el espacio más centrado o, en una palabra sola, partida con guion).
+  // El color lo pone quien llama (fillStyle). Sirve para la camiseta del muñeco 3D y para la del plano.
+  function escribir(g, texto, cx, cy, ancho, alto) {
+    texto = texto.toUpperCase().replace(/\s+/g, ' ').trim();
+    if (!texto) return;
+    const fuente = (px) => { g.font = `700 ${px}px ${LETRA_ROTULO}`; };
+    const cabe = (lineas, px) => { fuente(px); return Math.max(...lineas.map((l) => g.measureText(l).width)) <= ancho; };
+    const ajustar = (lineas, maximo) => { let px = maximo; while (px > 6 && !cabe(lineas, px)) px *= 0.94; return px; };
+    let lineas = [texto], px = ajustar(lineas, alto * 0.62);
+    if (px < alto * 0.36 && texto.length > 7) {                          // en una línea quedaría pequeña (mal en un móvil): mejor dos
+      const medio = texto.length / 2, espacios = [...texto].map((c, i) => (c === ' ' ? i : -1)).filter((i) => i > 0);
+      if (espacios.length) {
+        const corte = espacios.reduce((a, b) => (Math.abs(b - medio) < Math.abs(a - medio) ? b : a));
+        lineas = [texto.slice(0, corte), texto.slice(corte + 1)];
+      } else { const corte = corteDeSilaba(texto); lineas = [texto.slice(0, corte) + '-', texto.slice(corte)]; }
+      px = ajustar(lineas, alto * 0.44);
+    }
+    fuente(px);
+    g.textAlign = 'center'; g.textBaseline = 'middle';
+    lineas.forEach((l, i) => g.fillText(l, cx, cy + (i - (lineas.length - 1) / 2) * px * 1.08));
+  }
+
   // ---------- Dibujo ----------
   function ponerPieza(u, pz, contorno, color) {
     gl.uniform3fv(u.uA, pz.a); gl.uniform3fv(u.uB, pz.b);
@@ -524,6 +585,7 @@ const Avatar3D = (() => {
     if (u.uColor) gl.uniform3fv(u.uColor, color);
     if (u.uCara) gl.uniform1f(u.uCara, pz.cara ? 1 : 0);
     if (u.uHueco) gl.uniform1f(u.uHueco, pz.hueco ? 1 : 0);
+    if (u.uRotulo) gl.uniform1f(u.uRotulo, pz.rotulo ? alfaRotulo : 0);
     if (u.uTonos) { const l = LUZ_MATERIAL[pz.mat]; gl.uniform1f(u.uTonos, l[0]); gl.uniform1f(u.uAmbiente, l[1]); gl.uniform1f(u.uPlano, l[2]); }
     gl.drawElements(gl.TRIANGLES, malla.n, gl.UNSIGNED_SHORT, 0);
   }
@@ -533,6 +595,7 @@ const Avatar3D = (() => {
     gl.uniform4fv(u.uVista, vista);
     gl.uniform3fv(u.uCamara, CAMARA);
     gl.uniform1f(u.uPase, pase);
+    if (u.uRotCentro) { gl.uniform2fv(u.uRotCentro, escena.rotulo); gl.uniform2fv(u.uRotMedio, ROTULO_MEDIO); }
     if (u.uCabCentro) { gl.uniform3fv(u.uCabCentro, escena.cabeza.centro); gl.uniformMatrix3fv(u.uCabInv, false, escena.cabeza.inversa); gl.uniform1f(u.uCabRadio, escena.cabeza.radio); }
     const ejeX = normalizar(cruz([0, 1, 0], LUZ)), ejeY = cruz(LUZ, ejeX);
     gl.uniform3fv(u.uLuzX, ejeX); gl.uniform3fv(u.uLuzY, ejeY); gl.uniform3fv(u.uLuzZ, LUZ); gl.uniform3fv(u.uLuzCentro, CENTRO_LUZ);
@@ -571,6 +634,19 @@ const Avatar3D = (() => {
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, lienzoRostro);
     gl.generateMipmap(gl.TEXTURE_2D);
     gl.uniform1i(prog.u.uRostro, 1);
+    // La palabra de la camiseta: se vuelve a escribir en su textura solo cuando cambia.
+    const rotulo = esqueleto.rotulo && esqueleto.rotulo.alfa > 0.01 && esqueleto.rotulo.texto ? esqueleto.rotulo : null;
+    alfaRotulo = rotulo ? Math.min(rotulo.alfa, 1) : 0;
+    gl.activeTexture(gl.TEXTURE2); gl.bindTexture(gl.TEXTURE_2D, texTexto);
+    if (rotulo && rotulo.texto !== textoPuesto) {
+      const g = lienzoTexto.getContext('2d'), [tw, th] = TAM_TEXTO;
+      g.clearRect(0, 0, tw, th);
+      g.fillStyle = '#fff';
+      escribir(g, rotulo.texto, tw / 2, th / 2, tw * 0.94, th * 0.94);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, lienzoTexto);
+      textoPuesto = rotulo.texto;
+    }
+    gl.uniform1i(prog.u.uTexto, 2);
     const trazo = Math.max(0.013, 2.1 / u);                              // grosor del contorno, en anchos de hombro
     gl.cullFace(gl.FRONT);
     gl.uniform1f(prog.u.uTinta, 1);
@@ -597,5 +673,5 @@ const Avatar3D = (() => {
     return peor;
   }
 
-  return { pintar, disponible: iniciar, penetracion };
+  return { pintar, disponible: iniciar, penetracion, escribir, ROTULO: { y: ROTULO_Y, medio: ROTULO_MEDIO } };
 })();
